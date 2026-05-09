@@ -5,12 +5,12 @@
   type CategoryKey = 'languages' | 'backend' | 'db' | 'frontend' | 'ai' | 'devops';
 
   const stack: Record<CategoryKey, string[]> = {
-    languages: ['Go', 'Python', 'TypeScript', 'C', 'Bash'],
+    languages: ['Go', 'Python', 'C', 'Bash'],
     backend: ['Gin', 'Fiber', 'REST API', 'WebSockets', 'Goroutines', 'JWT', 'OAuth 2.0'],
-    db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite'],
-    frontend: ['Svelte 5', 'SvelteKit', 'Wails', 'Tailwind CSS', 'Vite'],
-    ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK'],
-    devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'Bruno', 'Typst', 'mdBook']
+    db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
+    frontend: ['Svelte 5', 'Wails', 'Tailwind CSS', 'Vite'],
+    ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK', 'Google AI Studio'],
+    devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'Bruno', 'Typst', 'mdBook', 'Cloudeflare']
   };
 
   const accents: Record<CategoryKey, string> = {

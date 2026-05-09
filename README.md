@@ -22,13 +22,21 @@ Cloudflare Pages, or any CDN.
 
 ## GitHub Pages
 
-`static/CNAME` carries the custom domain. To wire up Pages:
+Auto-deploys on every push to `main` via `.github/workflows/deploy.yml`
+(builds with `npm run build`, uploads `./build` as a Pages artifact,
+deploys via `actions/deploy-pages`).
 
-1. Push to `main`.
-2. Add a workflow that runs `npm run build` and deploys `./build`
-   via `actions/upload-pages-artifact` + `actions/deploy-pages`.
-3. In repo settings → Pages, choose "GitHub Actions" as source and add
-   the custom domain.
+One-time setup:
+
+1. Repo settings → **Pages** → Source: **GitHub Actions**.
+2. The `static/CNAME` file is already wired to `ishawyha.dev` — after
+   the first successful deploy, GitHub will pick it up. Make sure the
+   DNS for `ishawyha.dev` points at GitHub Pages
+   (`A` records to `185.199.108.153/109/110/111` or `CNAME` for
+   `<user>.github.io` if it's a `*.github.io` deploy).
+3. Optional: enable "Enforce HTTPS" once the cert provisions.
+
+Manual run: Actions tab → **Deploy to GitHub Pages** → *Run workflow*.
 
 ## Piton interpreter
 

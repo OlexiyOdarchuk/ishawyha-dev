@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Oleksiy Odarchuk — ishawyha.dev",
+    "title": "Oleksii Odarchuk — ishawyha.dev",
     "description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
   },
   "nav": {
@@ -12,7 +12,7 @@
   },
   "hero": {
     "available": "Open to offers",
-    "name": "Oleksiy Odarchuk",
+    "name": "Oleksii Odarchuk",
     "role": "Backend Developer (Go)",
     "tagline": "I build systems where speed meets architectural reliability.",
     "intro": "Product-minded engineer. I turn ideas into services in hours — from hackathon MVPs to production-ready Go services. Off the clock — designing my own programming language.",
@@ -180,7 +180,7 @@
     "copied": "Copied!"
   },
   "footer": {
-    "rights": "© 2026 Oleksiy Odarchuk",
+    "rights": "© 2026 Oleksii Odarchuk",
     "made": "Crafted with a taste for architecture"
   }
 }

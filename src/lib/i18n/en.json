@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "title": "Oleksiy Odarchuk — ishawyha.dev",
+    "description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
+  },
+  "nav": {
+    "about": "About",
+    "achievements": "Wins",
+    "projects": "Projects",
+    "lab": "Piton Lab",
+    "contact": "Contact"
+  },
+  "hero": {
+    "available": "Open to offers",
+    "name": "Oleksiy Odarchuk",
+    "role": "Backend Developer (Go)",
+    "tagline": "I build systems where speed meets architectural reliability.",
+    "intro": "Product-minded engineer. I turn ideas into services in hours — from hackathon MVPs to production-ready Go services. Off the clock — designing my own programming language.",
+    "ctaPrimary": "Try Piton",
+    "ctaSecondary": "Get in touch",
+    "ctaGithub": "GitHub",
+    "badges": {
+      "dou": "DOU Day 2026 — Student with High Potential",
+      "best": "🏆 BEST Hackathon 2026 — 1st place",
+      "mate": "🥉 Mate Hackathon 2026 — 3rd place"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "p1": "I'm a Go backend engineer, second-year student at Lviv Polytechnic IT College. I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
+    "p2": "Outside of code: 10+ years of folk dancing, occasional poetry, and recently — screenwriting. That taught me rhythm and structure — the things every good product is built on.",
+    "facts": [
+      { "label": "Based in", "value": "Mizoch, Rivne Region, Ukraine" },
+      { "label": "Education", "value": "Lviv Polytechnic IT College" },
+      { "label": "Stack", "value": "Go · PostgreSQL · Wails · Svelte" },
+      { "label": "Languages", "value": "Ukrainian (native), English B1" }
+    ]
+  },
+  "achievements": {
+    "title": "Wins & hackathons",
+    "subtitle": "Not just code — outcomes measured in places, speed, and offers.",
+    "items": {
+      "best": {
+        "label": "🏆 1st place",
+        "title": "BEST Hackathon",
+        "company": "Drone control systems",
+        "date": "April 18–19, 2026",
+        "description": "Built drone control software in Go and C. Took first place among top teams for the cleanest architecture and fastest execution.",
+        "tags": ["Go", "C", "Embedded", "Real-time"]
+      },
+      "mate": {
+        "label": "🥉 3rd place",
+        "title": "Mate Hackathon",
+        "company": "AI MarTech (50 participants, 10 teams)",
+        "date": "March 14, 2026",
+        "description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banano 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
+        "tags": ["Go", "GPT-4o", "fal.ai", "REST", "7-hour MVP"]
+      },
+      "dou": {
+        "label": "🎟 Invitation",
+        "title": "DOU Day 2026",
+        "company": "Student with High Potential",
+        "date": "2026",
+        "description": "Personally invited by the organisers to DOU Day with a free ticket as a student with high potential. Dedicated track for promising student developers.",
+        "tags": ["Invitation", "Free ticket", "Community"]
+      },
+      "security": {
+        "label": "🛡 Disclosure → offer",
+        "title": "Security Researcher",
+        "company": "Student Hryvnia (college blockchain)",
+        "date": "2026",
+        "description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool — 1000× faster.",
+        "tags": ["Reverse engineering", "Go", "Goroutines", "AES", "WebSockets"]
+      }
+    }
+  },
+  "projects": {
+    "title": "Selected projects",
+    "subtitle": "What I build off-hours — and what I'm proud of.",
+    "viewSource": "View on GitHub",
+    "viewDocs": "Documentation",
+    "featured": {
+      "piton": {
+        "kicker": "Flagship",
+        "name": "Piton",
+        "tagline": "A Ukrainian programming language with a homegrown interpreter",
+        "description": "A lightweight interpreted language with an authentic Ukrainian syntax (in transliteration). Recursive descent parser, tree-walking evaluator, native SVG flowchart generation, Turing-complete. Written from scratch in Go, no yacc/bison. REPL, imports, dictionaries, slices, ANSI colors.",
+        "tags": ["Go", "Interpreter", "AST", "WASM", "SVG", "Nix"],
+        "cta1": "Try in your browser",
+        "cta2": "Documentation",
+        "cta3": "GitHub"
+      }
+    },
+    "list": {
+      "shminer": {
+        "title": "SHMiner",
+        "subtitle": "Desktop crypto miner",
+        "description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
+        "tags": ["Go", "Svelte", "Wails", "Goroutines", "WebSockets", "AES"]
+      },
+      "linkshortener": {
+        "title": "LinkShortener Bot",
+        "subtitle": "Telegram + analytics",
+        "description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
+        "tags": ["Go", "PostgreSQL", "Redis", "ClickHouse", "Docker"]
+      },
+      "todolist": {
+        "title": "ToDoList Pro",
+        "subtitle": "Production-grade task manager",
+        "description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
+        "tags": ["Go", "Gin", "Svelte 5", "JWT", "OAuth 2.0", "PostgreSQL"]
+      },
+      "abit": {
+        "title": "AbitAssistant Bot",
+        "subtitle": "Telegram bot for applicants",
+        "description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
+        "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
+      }
+    }
+  },
+  "lab": {
+    "kicker": "Lab",
+    "title": "Piton Lab — try my language",
+    "subtitle": "The Piton interpreter is compiled to WebAssembly. Everything runs in your browser — even the flowchart generator.",
+    "loadHint": "Hit \"Run\" — the interpreter loads on first interaction (~24 MB).",
+    "loading": "Loading WASM...",
+    "loaded": "Interpreter ready",
+    "run": "Run",
+    "visualize": "Flowchart",
+    "output": "Console",
+    "flowchart": "Flowchart",
+    "examples": "Examples",
+    "exampleNames": {
+      "hello": "Hello, world",
+      "loop": "poky loop",
+      "list": "List + dodaty",
+      "func": "Functions + conditions",
+      "math": "Math"
+    },
+    "emptyOutput": "Hit \"Run\" to see output",
+    "emptyFlow": "Hit \"Flowchart\" to generate SVG",
+    "error": "Failed to load the interpreter"
+  },
+  "stack": {
+    "title": "Tech stack",
+    "subtitle": "Tools I live with day to day.",
+    "categories": {
+      "languages": "Languages",
+      "backend": "Backend",
+      "db": "Databases",
+      "frontend": "Frontend",
+      "ai": "AI / APIs",
+      "devops": "DevOps & tools"
+    }
+  },
+  "education": {
+    "title": "Education",
+    "items": {
+      "college": {
+        "title": "Network Technologies",
+        "place": "Lviv Polytechnic IT College",
+        "date": "2024 — present",
+        "note": "2nd year"
+      },
+      "lyceum": {
+        "title": "IT class",
+        "place": "Science Lyceum, Rivne",
+        "date": "2022 — 2024"
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's talk?",
+    "subtitle": "Looking for a Strong Junior Go role or a serious internship. Ready for intensive work.",
+    "emailLabel": "Email",
+    "telegramLabel": "Telegram",
+    "githubLabel": "GitHub",
+    "phoneLabel": "Phone",
+    "copyEmail": "Copy",
+    "copied": "Copied!"
+  },
+  "footer": {
+    "rights": "© 2026 Oleksiy Odarchuk",
+    "made": "Crafted with a taste for architecture"
+  }
+}

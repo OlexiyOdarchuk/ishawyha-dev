@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# ishawyha.dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Persistent landing for [ishawyha.dev](https://ishawyha.dev).
+SvelteKit (adapter-static) · Svelte 5 · Tailwind v4 · Piton WASM playground.
 
-Currently, two official plugins are available:
+## Dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Build
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run build      # output → ./build (static)
+npm run preview
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The `build/` directory is fully static — drop it on GitHub Pages,
+Cloudflare Pages, or any CDN.
+
+## GitHub Pages
+
+`static/CNAME` carries the custom domain. To wire up Pages:
+
+1. Push to `main`.
+2. Add a workflow that runs `npm run build` and deploys `./build`
+   via `actions/upload-pages-artifact` + `actions/deploy-pages`.
+3. In repo settings → Pages, choose "GitHub Actions" as source and add
+   the custom domain.
+
+## Piton interpreter
+
+`static/piton.wasm` is the prebuilt WebAssembly artefact of the
+[Piton](https://github.com/OlexiyOdarchuk/piton) interpreter, compiled
+from `cmd/wasm` in the upstream repo. To rebuild:
+
+```bash
+cd /path/to/piton
+GOOS=js GOARCH=wasm go build -o piton.wasm ./cmd/wasm
+cp piton.wasm /path/to/this-site/static/piton.wasm
+cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" /path/to/this-site/static/wasm_exec.js
 ```

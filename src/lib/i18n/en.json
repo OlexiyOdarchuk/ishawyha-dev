@@ -15,6 +15,8 @@
   "hero": {
     "available": "Open to offers",
     "name": "Oleksii Odarchuk",
+    "nameLine1": "Oleksii",
+    "nameLine2": "Odarchuk",
     "role": "Backend Developer (Go) · Creator of Piton",
     "tagline": "I build systems where speed meets architectural reliability.",
     "intro": "Product-minded engineer. I turn ideas into services in hours — from hackathon MVPs to production-ready Go services. Off the clock — designing my own programming language.",

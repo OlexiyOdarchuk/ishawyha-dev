@@ -6,6 +6,8 @@ dist-ssr
 *.log
 *.local
 
+piton/
+
 .DS_Store
 .env
 .env.*
@@ -13,6 +15,8 @@ dist-ssr
 
 CV_Odarchuk_EN*
 CV_Odarchuk_UA*
+!static/CV_Odarchuk_EN.pdf
+!static/CV_Odarchuk_UA.pdf
 avatar.jpg
 
 .vscode/*

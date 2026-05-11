@@ -17,7 +17,7 @@
           href="https://github.com/OlexiyOdarchuk/piton"
           target="_blank"
           rel="noopener noreferrer"
-          class="ml-1 text-white/70 transition hover:text-violet-200"
+          class="ml-1 text-white/80 transition hover:text-violet-200"
         >
           built with Piton DNA
         </a>

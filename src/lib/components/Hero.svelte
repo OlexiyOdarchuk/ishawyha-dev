@@ -73,6 +73,14 @@
         </a>
       </div>
 
+      <!-- Now strip — a live "what I'm currently doing" line -->
+      <div class="mt-6 inline-flex max-w-full flex-wrap items-baseline gap-x-3 gap-y-1 rounded-xl border border-white/10 bg-white/[0.025] px-3.5 py-2 text-sm text-white/85 backdrop-blur-sm">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-300">{$t.hero.nowLabel}</span>
+        <span class="text-white/85">
+          {#each $t.hero.nowItems as item, i}{item}{#if i < $t.hero.nowItems.length - 1}<span class="mx-2 text-[var(--color-muted)]">·</span>{/if}{/each}
+        </span>
+      </div>
+
       <!-- CV download row -->
       <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--color-muted)]">
         <span class="font-mono uppercase tracking-wider">{$t.hero.cvLabel}</span>

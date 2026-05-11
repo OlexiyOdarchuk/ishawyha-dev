@@ -1,8 +1,45 @@
 <script lang="ts">
-  // Декоративний bg: 3 gradient blob-и + grain + grid
+  import { onMount } from 'svelte';
+
+  // Pause expensive blob animations when the page isn't visible (off-tab or
+  // way past the hero). Saves real CPU on long scrolls and idle backgrounds.
+  let host: HTMLDivElement | null = $state(null);
+  let running = $state(true);
+
+  onMount(() => {
+    if (!host) return;
+    const visTarget = document.getElementById('top');
+    if (!visTarget || typeof IntersectionObserver === 'undefined') return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        running = entries[0]?.isIntersecting ?? true;
+      },
+      // generous root margin — keep blobs running while hero + first sections are near.
+      { rootMargin: '120% 0px 120% 0px' }
+    );
+    io.observe(visTarget);
+
+    const onVisibility = () => {
+      // Hard pause if the whole tab is hidden.
+      if (document.hidden) running = false;
+      else running = (visTarget.getBoundingClientRect().bottom > -window.innerHeight * 1.2);
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  });
 </script>
 
-<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+<div
+  bind:this={host}
+  class="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+  class:is-paused={!running}
+  aria-hidden="true"
+>
   <!-- Base radial -->
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(124,58,237,0.18),transparent_55%)]"></div>
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(236,72,153,0.10),transparent_60%)]"></div>
@@ -51,3 +88,9 @@
     <rect width="100%" height="100%" filter="url(#noise)" />
   </svg>
 </div>
+
+<style>
+  .is-paused :global([class*='animate-blob']) {
+    animation-play-state: paused;
+  }
+</style>

@@ -1,7 +1,35 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
+  import TypewriterCode from './TypewriterCode.svelte';
   import { Github, ExternalLink, Sparkles, ArrowRight } from 'lucide-svelte';
+
+  const pitonSnippet = [
+    [{ text: 'functia ', cls: 'text-pink-300' }, { text: 'main', cls: 'text-amber-200' }, { text: '():' }],
+    [{ text: '    ' }, { text: 'drukuvaty ', cls: 'text-pink-300' }, { text: '"Hello, Piton!"', cls: 'text-emerald-300' }],
+    [],
+    [
+      { text: '    числа = [' },
+      { text: '1', cls: 'text-cyan-300' }, { text: ', ' },
+      { text: '2', cls: 'text-cyan-300' }, { text: ', ' },
+      { text: '3', cls: 'text-cyan-300' }, { text: ', ' },
+      { text: '5', cls: 'text-cyan-300' }, { text: ', ' },
+      { text: '8', cls: 'text-cyan-300' }, { text: ']' }
+    ],
+    [{ text: '    sum = ' }, { text: '0', cls: 'text-cyan-300' }],
+    [{ text: '    i = ' }, { text: '0', cls: 'text-cyan-300' }],
+    [
+      { text: '    ' }, { text: 'poky ', cls: 'text-pink-300' },
+      { text: 'i < ' }, { text: 'dovzhyna', cls: 'text-violet-300' }, { text: '(числа):' }
+    ],
+    [{ text: '        sum = sum + числа[i]' }],
+    [{ text: '        i = i + ' }, { text: '1', cls: 'text-cyan-300' }],
+    [],
+    [{ text: '    ' }, { text: 'drukuvaty ', cls: 'text-pink-300' }, { text: '"Сума:"', cls: 'text-emerald-300' }],
+    [{ text: '    ' }, { text: 'drukuvaty ', cls: 'text-pink-300' }, { text: 'sum' }],
+    [],
+    [{ text: 'main()' }]
+  ];
 
   const order = ['shminer', 'todolist', 'linkshortener', 'abit'] as const;
 
@@ -93,20 +121,7 @@
               <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
               <span class="ml-2 text-[11px] text-[var(--color-muted)]">main.piton</span>
             </div>
-            <pre class="overflow-x-auto p-4 text-white/90"><code><span class="text-pink-300">functia</span> <span class="text-amber-200">main</span>():
-    <span class="text-pink-300">drukuvaty</span> <span class="text-emerald-300">"Hello, Piton!"</span>
-
-    числа = [<span class="text-cyan-300">1</span>, <span class="text-cyan-300">2</span>, <span class="text-cyan-300">3</span>, <span class="text-cyan-300">5</span>, <span class="text-cyan-300">8</span>]
-    sum = <span class="text-cyan-300">0</span>
-    i = <span class="text-cyan-300">0</span>
-    <span class="text-pink-300">poky</span> i &lt; <span class="text-violet-300">dovzhyna</span>(числа):
-        sum = sum + числа[i]
-        i = i + <span class="text-cyan-300">1</span>
-
-    <span class="text-pink-300">drukuvaty</span> <span class="text-emerald-300">"Сума:"</span>
-    <span class="text-pink-300">drukuvaty</span> sum
-
-main()</code></pre>
+            <TypewriterCode lines={pitonSnippet} />
           </div>
         </div>
       </article>
@@ -140,14 +155,14 @@ main()</code></pre>
             <ul class="mt-5 flex flex-wrap gap-2">
               {#each project.tags as tag}
                 <li
-                  class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] text-white/70"
+                  class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] text-white/80"
                 >
                   {tag}
                 </li>
               {/each}
             </ul>
 
-            <div class="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-white/60 transition group-hover:text-violet-300">
+            <div class="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition group-hover:text-violet-300">
               {$t.projects.viewSource}
               <ArrowRight class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
             </div>

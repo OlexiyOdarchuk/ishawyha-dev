@@ -35,8 +35,29 @@ if (browser) {
 
 export const t: Readable<Translations> = derived(lang, ($lang) => dictionaries[$lang]);
 
+type DocWithVT = Document & {
+  startViewTransition?: (cb: () => void | Promise<void>) => { finished: Promise<void> };
+};
+
+/**
+ * Swap language inside a View Transition when the browser supports it —
+ * gives a smooth crossfade across all localised text. Falls back to a
+ * plain `lang.set` everywhere else.
+ */
 export function setLang(value: Lang) {
-  lang.set(value);
+  if (!browser) {
+    lang.set(value);
+    return;
+  }
+  const doc = document as DocWithVT;
+  const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (doc.startViewTransition && !reduced) {
+    doc.startViewTransition(() => {
+      lang.set(value);
+    });
+  } else {
+    lang.set(value);
+  }
 }
 
 export function toggleLang() {

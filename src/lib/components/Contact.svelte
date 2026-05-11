@@ -48,7 +48,7 @@
                 <button
                   type="button"
                   onclick={copyEmail}
-                  class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.03] text-white/70 transition hover:border-white/20 hover:text-white"
+                  class="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-white/[0.03] text-white/80 transition hover:border-white/20 hover:text-white"
                   aria-label={$t.contact.copyEmail}
                   title={copied ? $t.contact.copied : $t.contact.copyEmail}
                 >

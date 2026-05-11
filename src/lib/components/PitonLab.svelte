@@ -4,7 +4,8 @@
   import FlowViewer from './FlowViewer.svelte';
   import { loadPiton, runPiton, visualizePiton } from '$lib/piton/runtime';
   import { EXAMPLES, KEYWORDS, type ExampleKey } from '$lib/piton/examples';
-  import { Play, GitBranch, Terminal, Loader2, Sparkles, ChevronDown } from 'lucide-svelte';
+  import { Play, GitBranch, Terminal, Loader2, Sparkles, ChevronDown, Share2, Check } from 'lucide-svelte';
+  import { onMount } from 'svelte';
 
   type Status = 'idle' | 'loading' | 'ready' | 'error';
   let status = $state<Status>('idle');
@@ -17,6 +18,55 @@
   let activeTab = $state<'output' | 'flowchart'>('output');
   let exampleKey = $state<ExampleKey>('hello');
   let lastVisualizedCode = $state('');
+  let shareCopied = $state(false);
+
+  // URL hash codec — base64url of utf-8 bytes. Prefix `#code=` so other
+  // hashes (e.g. anchor links) don't accidentally trigger restore.
+  function encodeShare(src: string): string {
+    const bytes = new TextEncoder().encode(src);
+    let bin = '';
+    for (const b of bytes) bin += String.fromCharCode(b);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function decodeShare(hash: string): string | null {
+    try {
+      let b64 = hash.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return new TextDecoder().decode(bytes);
+    } catch {
+      return null;
+    }
+  }
+
+  async function handleShare() {
+    const encoded = encodeShare(code);
+    const url = `${location.origin}${location.pathname}#code=${encoded}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      shareCopied = true;
+      setTimeout(() => (shareCopied = false), 1800);
+    } catch {
+      // fallback: just push to hash so user can copy from address bar
+      history.replaceState(null, '', `#code=${encoded}`);
+    }
+  }
+
+  onMount(() => {
+    const m = location.hash.match(/^#code=(.+)$/);
+    if (m) {
+      const restored = decodeShare(m[1]);
+      if (restored) {
+        code = restored;
+        // Scroll to lab so the visitor sees the loaded snippet immediately.
+        requestAnimationFrame(() => {
+          document.getElementById('lab')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    }
+  });
 
   let editorEl: HTMLTextAreaElement | null = $state(null);
   let highlightEl: HTMLPreElement | null = $state(null);
@@ -249,6 +299,22 @@
               {/if}
               {$t.lab.visualize}
             </button>
+
+            <button
+              type="button"
+              onclick={handleShare}
+              title={$t.lab.share}
+              aria-label={$t.lab.share}
+              class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/90 transition hover:border-white/20 hover:bg-white/[0.08]"
+            >
+              {#if shareCopied}
+                <Check class="h-3.5 w-3.5 text-emerald-300" />
+                {$t.lab.shared}
+              {:else}
+                <Share2 class="h-3.5 w-3.5" />
+                {$t.lab.share}
+              {/if}
+            </button>
           </div>
         </div>
 
@@ -387,5 +453,15 @@
   .piton-editor::selection {
     background: rgba(139, 92, 246, 0.45);
     color: transparent;
+  }
+  /* iOS Safari auto-zooms inputs whose computed font-size is < 16px on focus.
+     Bump the textarea and its hidden highlight overlay to 16px on coarse
+     pointers (phones/tablets) so the page never zooms on edit. */
+  @media (pointer: coarse) {
+    :global(.piton-overlay),
+    .piton-editor,
+    .piton-gutter {
+      font-size: 16px !important;
+    }
   }
 </style>

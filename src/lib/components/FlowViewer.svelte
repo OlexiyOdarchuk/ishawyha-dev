@@ -163,7 +163,10 @@
     document.addEventListener('fullscreenchange', fsHandler);
 
     const keyHandler = (e: KeyboardEvent) => {
-      if (document.fullscreenElement !== viewerEl) return;
+      const inFs = document.fullscreenElement === viewerEl;
+      const focused = viewerEl && (viewerEl === document.activeElement || viewerEl.contains(document.activeElement));
+      if (!inFs && !focused) return;
+      const step = e.shiftKey ? 60 : 20;
       if (e.key === '+' || e.key === '=') {
         e.preventDefault();
         zoomIn();
@@ -173,6 +176,22 @@
       } else if (e.key === '0') {
         e.preventDefault();
         fit();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        interacted = true;
+        tx += step;
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        interacted = true;
+        tx -= step;
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        interacted = true;
+        ty += step;
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        interacted = true;
+        ty -= step;
       }
     };
     document.addEventListener('keydown', keyHandler);
@@ -186,16 +205,18 @@
   });
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   bind:this={viewerEl}
   class="flow-viewer"
+  tabindex="0"
   onpointerdown={onPointerDown}
   onpointermove={onPointerMove}
   onpointerup={onPointerUp}
   onpointercancel={onPointerUp}
   ondblclick={fit}
   role="application"
-  aria-label="Flowchart viewer"
+  aria-label="Flowchart viewer — wheel to zoom, drag to pan, arrows to pan, +/− to zoom, 0 to fit"
 >
   <div
     bind:this={canvasEl}

@@ -8,6 +8,7 @@
 
   type Status = 'idle' | 'loading' | 'ready' | 'error';
   let status = $state<Status>('idle');
+  let vizLoading = $state(false);
   let errorMessage = $state('');
 
   let code = $state(EXAMPLES.hello);
@@ -38,15 +39,30 @@
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
+  // Single-pass tokenizer — avoids nested spans (e.g. keywords matching inside
+  // already-highlighted strings/comments).
+  const TOKEN_RE = new RegExp(
+    `(?<comment>#[^\\n]*)|(?<str>"[^"\\n]*")|(?<num>\\b\\d+\\.?\\d*\\b)|(?<kw>\\b(?:${KEYWORDS.join('|')})\\b)`,
+    'g'
+  );
+
   function highlight(text: string): string {
-    let res = escapeHtml(text);
-    res = res.replace(/(#[^\n]*)/g, '<span class="tok-comment">$1</span>');
-    res = res.replace(/("[^"\n]*")/g, '<span class="tok-string">$1</span>');
-    res = res.replace(/\b(\d+\.?\d*)\b/g, '<span class="tok-num">$1</span>');
-    for (const kw of KEYWORDS) {
-      res = res.replace(new RegExp(`\\b${kw}\\b`, 'g'), `<span class="tok-kw">${kw}</span>`);
+    const escaped = escapeHtml(text);
+    let out = '';
+    let last = 0;
+    for (const m of escaped.matchAll(TOKEN_RE)) {
+      const idx = m.index ?? 0;
+      out += escaped.slice(last, idx);
+      const tok = m[0];
+      if (m.groups?.comment) out += `<span class="tok-comment">${tok}</span>`;
+      else if (m.groups?.str) out += `<span class="tok-string">${tok}</span>`;
+      else if (m.groups?.num) out += `<span class="tok-num">${tok}</span>`;
+      else if (m.groups?.kw) out += `<span class="tok-kw">${tok}</span>`;
+      else out += tok;
+      last = idx + tok.length;
     }
-    return res + '\n';
+    out += escaped.slice(last);
+    return out + '\n';
   }
 
   async function ensureLoaded() {
@@ -71,10 +87,16 @@
 
   async function handleVisualize() {
     if (!(await ensureLoaded())) return;
-    const result = visualizePiton(code);
-    svg = result;
-    lastVisualizedCode = code;
     activeTab = 'flowchart';
+    vizLoading = true;
+    try {
+      svg = await visualizePiton(code);
+      lastVisualizedCode = code;
+    } catch (err) {
+      svg = err instanceof Error ? err.message : String(err);
+    } finally {
+      vizLoading = false;
+    }
   }
 
   async function selectTab(tab: 'output' | 'flowchart') {
@@ -105,6 +127,16 @@
 
   function onEditorKey(e: KeyboardEvent) {
     if (!editorEl) return;
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      void handleRun();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'b' || e.key === 'B')) {
+      e.preventDefault();
+      void handleVisualize();
+      return;
+    }
     if (e.key === 'Tab') {
       e.preventDefault();
       const start = editorEl.selectionStart;
@@ -192,6 +224,7 @@
               type="button"
               onclick={handleRun}
               disabled={status === 'loading'}
+              title="Ctrl + Enter"
               class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md shadow-violet-500/30 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {#if status === 'loading'}
@@ -205,10 +238,15 @@
             <button
               type="button"
               onclick={handleVisualize}
-              disabled={status === 'loading'}
+              disabled={status === 'loading' || vizLoading}
+              title="Ctrl + B"
               class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/90 transition hover:border-white/20 hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <GitBranch class="h-3.5 w-3.5" />
+              {#if vizLoading}
+                <Loader2 class="h-3.5 w-3.5 animate-spin" />
+              {:else}
+                <GitBranch class="h-3.5 w-3.5" />
+              {/if}
               {$t.lab.visualize}
             </button>
           </div>
@@ -245,9 +283,11 @@
                 onscroll={onEditorScroll}
                 onkeydown={onEditorKey}
                 spellcheck="false"
+                aria-label="Piton code editor"
                 class="piton-editor relative h-full w-full resize-none bg-transparent py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.6] text-transparent caret-white outline-none"
                 autocomplete="off"
                 autocapitalize="off"
+                {...{ autocorrect: 'off' }}
               ></textarea>
             </div>
           </div>
@@ -280,6 +320,13 @@
             <div class="relative flex-1 overflow-hidden">
               {#if activeTab === 'output'}
                 <pre class="m-0 h-full overflow-auto p-5 font-mono text-[13px] leading-[1.6] whitespace-pre-wrap text-emerald-200/90">{output || $t.lab.emptyOutput}</pre>
+              {:else if vizLoading && !svg}
+                <div class="grid h-full place-items-center p-5">
+                  <span class="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-muted)]">
+                    <Loader2 class="h-3.5 w-3.5 animate-spin" />
+                    {$t.lab.loadingViz}
+                  </span>
+                </div>
               {:else if status === 'loading' && !svg}
                 <div class="grid h-full place-items-center p-5">
                   <span class="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-muted)]">

@@ -10,7 +10,7 @@
     db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
     frontend: ['Svelte 5', 'Wails', 'Tailwind CSS', 'Vite'],
     ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK', 'Google AI Studio'],
-    devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'Bruno', 'Typst', 'mdBook', 'Cloudeflare']
+    devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'TinyGo', 'Bruno', 'Typst', 'mdBook', 'Cloudflare']
   };
 
   const accents: Record<CategoryKey, string> = {

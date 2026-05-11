@@ -2,11 +2,14 @@ import { browser } from '$app/environment';
 
 type Status = 'idle' | 'loading' | 'ready' | 'error';
 
-let status: Status = 'idle';
-let loadPromise: Promise<void> | null = null;
+let runnerStatus: Status = 'idle';
+let runnerPromise: Promise<void> | null = null;
+
+let vizReady = false;
+let vizPromise: Promise<void> | null = null;
 
 export function getStatus(): Status {
-  return status;
+  return runnerStatus;
 }
 
 function loadScript(src: string, dataKey: string): Promise<void> {
@@ -34,65 +37,70 @@ function loadScript(src: string, dataKey: string): Promise<void> {
   });
 }
 
-function loadGoRuntime(): Promise<void> {
-  if (typeof window === 'undefined') return Promise.reject(new Error('not browser'));
-  if (window.Go) return Promise.resolve();
-  return loadScript('/wasm_exec.js', 'goWasm');
-}
-
-interface DagreGlobal {
-  Graph?: unknown;
-  graphlib?: { Graph: unknown };
-  layout?: unknown;
-}
-
-function loadDagre(): Promise<void> {
-  if (typeof window === 'undefined') return Promise.reject(new Error('not browser'));
-  const w = window as unknown as { dagre?: DagreGlobal };
-  if (w.dagre?.Graph) return Promise.resolve();
-  return loadScript('/dagre.min.js', 'dagreLib').then(() => {
-    // Piton's WASM expects dagre.Graph at top-level; dagre@0.8.5 puts it
-    // under graphlib. Bridge the two so the visualizer can find it.
-    const dagre = w.dagre;
-    if (dagre && !dagre.Graph && dagre.graphlib?.Graph) {
-      dagre.Graph = dagre.graphlib.Graph;
-    }
-  });
-}
-
-async function waitForGlobals(timeoutMs = 8000): Promise<void> {
+async function waitForGlobal(name: string, timeoutMs = 30000): Promise<void> {
   const start = Date.now();
-  while (!window.runPiton || !window.visualizePiton) {
+  while (!(name in window)) {
     if (Date.now() - start > timeoutMs) {
-      throw new Error('Piton globals never registered');
+      throw new Error(`${name} never registered`);
     }
     await new Promise((r) => setTimeout(r, 25));
   }
 }
 
+// Both TinyGo's and Go's wasm_exec.js set window.Go. We load the TinyGo
+// runtime first, capture its constructor, then load Go's (which overwrites
+// window.Go) before instantiating the viz module.
+type GoCtor = new () => {
+  importObject: WebAssembly.Imports;
+  run(instance: WebAssembly.Instance): Promise<void>;
+};
+
 export async function loadPiton(): Promise<void> {
   if (!browser) return;
-  if (status === 'ready') return;
-  if (loadPromise) return loadPromise;
+  if (runnerStatus === 'ready') return;
+  if (runnerPromise) return runnerPromise;
 
-  status = 'loading';
-  loadPromise = (async () => {
+  runnerStatus = 'loading';
+  runnerPromise = (async () => {
     try {
-      await Promise.all([loadGoRuntime(), loadDagre()]);
-      const go = new window.Go();
-      const result = await WebAssembly.instantiateStreaming(fetch('/piton.wasm'), go.importObject);
-      // Fire-and-forget — Go program blocks on a channel forever.
-      // Globals get registered synchronously inside main() before it parks.
+      await loadScript('/wasm_exec_tinygo.js', 'goTinyGo');
+      const GoTiny = (window as unknown as { Go: GoCtor }).Go;
+      const go = new GoTiny();
+      const result = await WebAssembly.instantiateStreaming(fetch('/piton-runner.wasm'), go.importObject);
+      // Fire-and-forget — TinyGo program parks on `select {}` forever so the
+      // JS callbacks stay live. We never await go.run.
       void go.run(result.instance);
-      await waitForGlobals();
-      status = 'ready';
+      await waitForGlobal('runPiton');
+      runnerStatus = 'ready';
     } catch (err) {
-      status = 'error';
-      loadPromise = null;
+      runnerStatus = 'error';
+      runnerPromise = null;
       throw err;
     }
   })();
-  return loadPromise;
+  return runnerPromise;
+}
+
+export function ensureViz(): Promise<void> {
+  if (!browser) return Promise.resolve();
+  if (vizReady) return Promise.resolve();
+  if (vizPromise) return vizPromise;
+  vizPromise = (async () => {
+    try {
+      await loadPiton(); // runner must be up first (and TinyGo's wasm_exec parked)
+      await loadScript('/wasm_exec.js', 'goWasm');
+      const GoStd = (window as unknown as { Go: GoCtor }).Go;
+      const go = new GoStd();
+      const result = await WebAssembly.instantiateStreaming(fetch('/piton-viz.wasm'), go.importObject);
+      void go.run(result.instance);
+      await waitForGlobal('visualizePiton');
+      vizReady = true;
+    } catch (err) {
+      vizPromise = null;
+      throw err;
+    }
+  })();
+  return vizPromise;
 }
 
 export function runPiton(code: string): string {
@@ -100,7 +108,9 @@ export function runPiton(code: string): string {
   return window.runPiton(code);
 }
 
-export function visualizePiton(code: string): string {
-  if (!browser || !window.visualizePiton) return '';
+export async function visualizePiton(code: string): Promise<string> {
+  if (!browser) return '';
+  await ensureViz();
+  if (!window.visualizePiton) return '';
   return window.visualizePiton(code);
 }

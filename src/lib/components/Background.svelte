@@ -38,7 +38,7 @@
 
   <!-- Cyan accent for lab section -->
   <div
-    class="absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full opacity-30 blur-3xl"
+    class="animate-blob-3 absolute bottom-0 right-0 h-[28rem] w-[28rem] rounded-full opacity-30 blur-3xl"
     style="background: radial-gradient(circle, rgba(34,211,238,0.35) 0%, transparent 65%);"
   ></div>
 

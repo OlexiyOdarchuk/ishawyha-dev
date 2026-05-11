@@ -8,21 +8,41 @@
     "achievements": "Wins",
     "projects": "Projects",
     "lab": "Piton Lab",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "hero": {
     "available": "Open to offers",
     "name": "Oleksii Odarchuk",
-    "role": "Backend Developer (Go)",
+    "role": "Backend Developer (Go) · Creator of Piton",
     "tagline": "I build systems where speed meets architectural reliability.",
     "intro": "Product-minded engineer. I turn ideas into services in hours — from hackathon MVPs to production-ready Go services. Off the clock — designing my own programming language.",
     "ctaPrimary": "Try Piton",
     "ctaSecondary": "Get in touch",
     "ctaGithub": "GitHub",
+    "cvLabel": "Resume",
+    "cvUa": "UA · PDF",
+    "cvEn": "EN · PDF",
     "badges": {
-      "dou": "DOU Day 2026 — Student with High Potential",
-      "best": "🏆 BEST Hackathon 2026 — 1st place",
-      "mate": "🥉 Mate Hackathon 2026 — 3rd place"
+      "best": {
+        "emoji": "🏆",
+        "label": "1st place",
+        "title": "BEST Hackathon 2026",
+        "subtitle": "GPS-less drone trajectory · IMU"
+      },
+      "mate": {
+        "emoji": "🥉",
+        "label": "3rd place",
+        "title": "Mate Hackathon 2026",
+        "subtitle": "AI MarTech · 7-hour MVP"
+      },
+      "dou": {
+        "emoji": "🎟",
+        "label": "DOU Day 2026",
+        "title": "Student with High Potential",
+        "subtitle": "Invitation · free ticket"
+      }
     }
   },
   "about": {
@@ -32,7 +52,7 @@
     "facts": [
       { "label": "Based in", "value": "Mizoch, Rivne Region, Ukraine" },
       { "label": "Education", "value": "Lviv Polytechnic IT College" },
-      { "label": "Stack", "value": "Go · PostgreSQL · Wails · Svelte" },
+      { "label": "Stack", "value": "Go · C · TinyGo · PostgreSQL · Svelte" },
       { "label": "Languages", "value": "Ukrainian (native), English B1" }
     ]
   },
@@ -43,10 +63,10 @@
       "best": {
         "label": "🏆 1st place",
         "title": "BEST Hackathon",
-        "company": "Drone control systems",
+        "company": "GPS-less drone trajectory",
         "date": "April 18–19, 2026",
-        "description": "Built drone control software in Go and C. Took first place among top teams for the cleanest architecture and fastest execution.",
-        "tags": ["Go", "C", "Embedded", "Real-time"]
+        "description": "Algorithm to reconstruct a UAV's trajectory without GPS — from IMU, barometer and other inertial-sensor logs. Sensor fusion in Go + C, clean modular architecture (telemetry / integration / simulation). The judges singled out the architectural resilience — 1st place among top teams.",
+        "tags": ["Go", "C", "Sensor Fusion", "IMU", "Inertial Nav"]
       },
       "mate": {
         "label": "🥉 3rd place",
@@ -78,14 +98,13 @@
     "title": "Selected projects",
     "subtitle": "What I build off-hours — and what I'm proud of.",
     "viewSource": "View on GitHub",
-    "viewDocs": "Documentation",
     "featured": {
       "piton": {
         "kicker": "Flagship",
         "name": "Piton",
         "tagline": "A Ukrainian programming language with a homegrown interpreter",
-        "description": "A lightweight interpreted language with an authentic Ukrainian syntax (in transliteration). Recursive descent parser, tree-walking evaluator, native SVG flowchart generation, Turing-complete. Written from scratch in Go, no yacc/bison. REPL, imports, dictionaries, slices, ANSI colors.",
-        "tags": ["Go", "Interpreter", "AST", "WASM", "SVG", "Nix"],
+        "description": "A lightweight interpreted language with an authentic Ukrainian syntax (in transliteration). Recursive descent parser, tree-walking evaluator, native SVG flowchart generation, Turing-complete. Written from scratch in Go, no yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — 220 KB instead of 24 MB, runs entirely in the browser.",
+        "tags": ["Go", "TinyGo", "WebAssembly", "AST", "SVG", "Nix"],
         "cta1": "Try in your browser",
         "cta2": "Documentation",
         "cta3": "GitHub"
@@ -121,9 +140,10 @@
   "lab": {
     "kicker": "Lab",
     "title": "Piton Lab — try my language",
-    "subtitle": "The Piton interpreter is compiled to WebAssembly. Everything runs in your browser — even the flowchart generator.",
-    "loadHint": "Hit \"Run\" — the interpreter loads on first interaction (~24 MB).",
-    "loading": "Loading WASM...",
+    "subtitle": "The interpreter is compiled to WebAssembly via TinyGo — ~220 KB. The flowchart engine is a separate ~5 MB brotli module (full D2 engine), lazy-loaded only when you actually need a chart.",
+    "loadHint": "Hit \"Run\" — the interpreter loads on first interaction (~220 KB).",
+    "loading": "Loading interpreter...",
+    "loadingViz": "Loading visualizer...",
     "loaded": "Interpreter ready",
     "run": "Run",
     "visualize": "Flowchart",
@@ -175,12 +195,14 @@
     "emailLabel": "Email",
     "telegramLabel": "Telegram",
     "githubLabel": "GitHub",
-    "phoneLabel": "Phone",
     "copyEmail": "Copy",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "cvLabel": "Resume (PDF)",
+    "cvUa": "Завантажити українською",
+    "cvEn": "Download in English"
   },
   "footer": {
-    "rights": "© 2026 Oleksii Odarchuk",
+    "rights": "Oleksii Odarchuk",
     "made": "Crafted with a taste for architecture"
   }
 }

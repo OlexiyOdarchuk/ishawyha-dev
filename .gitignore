@@ -11,7 +11,9 @@ dist-ssr
 .env.*
 !.env.example
 
-CV_Odarchuk_EN.typ
+CV_Odarchuk_EN*
+CV_Odarchuk_UA*
+avatar.jpg
 
 .vscode/*
 !.vscode/extensions.json

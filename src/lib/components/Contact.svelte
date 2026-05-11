@@ -1,7 +1,7 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
-  import { Mail, Send, Github, Phone, Copy, Check } from 'lucide-svelte';
+  import { Mail, Send, Github, Copy, Check, FileDown } from 'lucide-svelte';
 
   let copied = $state(false);
 
@@ -97,6 +97,27 @@
                   <span class="block truncate text-sm text-white">github.com/OlexiyOdarchuk</span>
                 </div>
               </a>
+            </li>
+
+            <li>
+              <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-amber-500/20 text-amber-200">
+                  <FileDown class="h-4 w-4" />
+                </span>
+                <div class="min-w-0 flex-1">
+                  <div class="font-mono text-[11px] uppercase tracking-wider text-[var(--color-muted)]">
+                    {$t.contact.cvLabel}
+                  </div>
+                  <div class="mt-0.5 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                    <a href="/CV_Odarchuk_UA.pdf" download class="text-white hover:text-amber-200">
+                      {$t.contact.cvUa}
+                    </a>
+                    <a href="/CV_Odarchuk_EN.pdf" download class="text-white hover:text-amber-200">
+                      {$t.contact.cvEn}
+                    </a>
+                  </div>
+                </div>
+              </div>
             </li>
           </ul>
         </div>

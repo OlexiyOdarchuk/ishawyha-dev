@@ -10,7 +10,6 @@
   --color-muted: #8a86b4;
   --color-line: #1d1b2e;
 
-  --color-violet-50: #f5f3ff;
   --color-violet-400: #a78bfa;
   --color-violet-500: #8b5cf6;
   --color-violet-600: #7c3aed;
@@ -34,6 +33,7 @@
 
   body {
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--color-bg);
     overflow-x: hidden;
   }
@@ -100,7 +100,7 @@
   }
 
   .scroll-mt-nav {
-    scroll-margin-top: 96px;
+    scroll-margin-top: 80px;
   }
 
   @keyframes blob-1 {

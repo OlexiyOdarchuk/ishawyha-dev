@@ -8,6 +8,7 @@
     "achievements": "Досягнення",
     "projects": "Проєкти",
     "lab": "Piton Lab",
+    "bench": "Бенч",
     "contact": "Зв'язок",
     "openMenu": "Відкрити меню",
     "closeMenu": "Закрити меню"
@@ -19,7 +20,7 @@
     "nameLine2": "Одарчук",
     "role": "Backend Developer (Go) · Творець мови Piton",
     "tagline": "Будую системи, де швидкість зустрічає архітектурну надійність.",
-    "intro": "Інженер з продуктовим мисленням. Перетворюю ідеї на сервіси за лічені години — від хакатонських MVP до прод-готових Go-сервісів. У вільний час — створюю власну мову програмування.",
+    "intro": "Backend-інженер на Go. Цікавить чиста архітектура, складна доменна логіка і перформанс там, де він важить. У вільний час пишу власну мову програмування (Piton), реверсю чужий код і копаюся в безпеці.",
     "ctaPrimary": "Спробувати Piton",
     "ctaSecondary": "Написати",
     "ctaGithub": "GitHub",
@@ -66,6 +67,7 @@
   "achievements": {
     "title": "Досягнення та хакатони",
     "subtitle": "Не лише код — а результат, виміряний у місцях, у швидкості та в офертах.",
+    "benchLink": "Запусти бенчмарк",
     "items": {
       "best": {
         "label": "🏆 1-ше місце",
@@ -105,6 +107,7 @@
     "title": "Вибрані проєкти",
     "subtitle": "Те, що я будую у вільний час — і чим пишаюся.",
     "viewSource": "Дивитись на GitHub",
+    "liveBench": "Live бенчмарк",
     "featured": {
       "piton": {
         "kicker": "Особливий проєкт",
@@ -170,6 +173,47 @@
     "share": "Поділитись",
     "shared": "Скопійовано!"
   },
+  "bench": {
+    "title": "JS vs Go·WASM — той самий хеш",
+    "subtitle": "Той самий SHA-256, той самий вхід, два двигуни. Зліва — JS-копія офіційного клієнта Студентської Гривні. Справа — мій Go-варіант із SHMiner, скомпільований у WASM через TinyGo. Гілки запускаються по черзі по 10 секунд: спочатку JS на повному ядрі, потім Go·WASM на N ядрах. Так кожна гілка отримує весь CPU для себе — числа чесні.",
+    "start": "Старт",
+    "startAgain": "Запустити знову",
+    "stop": "Стоп",
+    "loading": "Завантажую WASM...",
+    "ready": "Готово до старту",
+    "running": "Триває...",
+    "runningJs": "Заміряю JS-гілку",
+    "runningGo": "Заміряю Go·WASM",
+    "done": "Завершено",
+    "live": "у роботі",
+    "labelJs": "Офіційний JS-майнер",
+    "labelGo": "SHMiner (Go·WASM)",
+    "hashrate": "H/s",
+    "speedupLabel": "Перевага Go·WASM",
+    "speedupBody": "так Go·WASM швидший за офіційний JS-майнер на твоєму залізі — для цього порівняння",
+    "elapsed": "Час",
+    "elapsedSec": "с",
+    "tokensLabel": "Знайдено токенів",
+    "hashesLabel": "Хешів усього",
+    "errorTitle": "Помилка бенчмарку",
+    "workersLabel": "Воркерів Go",
+    "workersOverCore": "Більше за число ядер",
+    "workersCustom": "своє",
+    "workersApply": "Застосувати",
+    "workersActive": "запущено",
+    "detectedCores": "у тебе ядер",
+    "jsModeLabel": "JS-режим",
+    "jsModeOriginal": "Оригінальний майнер",
+    "jsModeFast": "Без sleep(1)",
+    "jsModeOriginalTag": "verbatim",
+    "jsModeFastTag": "no sleep",
+    "jsModeOriginalHint": "копія офіційного клієнта — з `sleep(1)` кожні 1000 хешів",
+    "jsModeFastHint": "той самий код, але без штучного sleep",
+    "disclaimer": "Виконується на твоєму залізі у твоєму браузері. JS-гілка — один потік, точна копія `calculateBlockHash` з офіційного клієнта (`await window.crypto.subtle.digest`, опціонально + `sleep(1)` кожні 1000 хешів). Go·WASM крутиться у пулі Web Worker'ів — по одному на ядро, як SHMiner використовує пул горутин. Складність — 20 біт (5 нулевих hex-символів на початку), як у SHMiner за замовчуванням.",
+    "desktopNoteTitle": "Це браузерна демонстрація",
+    "desktopNoteBody": "Native-Go з desktop-клієнта набагато швидший за TinyGo·WASM у браузері — SHA-256 у native Go використовує SIMD/AVX-інструкції CPU (4-8 блоків паралельно у скалярному WASM = 0), а Web Worker'и платять за serialization. Реальні цифри (1000×+ vs офіційний JS-майнер) виходять лише на справжньому SHMiner. Wails-додаток — кросплатформа: Linux · macOS · Windows.",
+    "desktopCta": "SHMiner на GitHub"
+  },
   "stack": {
     "title": "Технологічний стек",
     "subtitle": "Інструменти, з якими я живу щодня.",
@@ -209,6 +253,25 @@
     "cvLabel": "Резюме (PDF)",
     "cvUa": "Завантажити українською",
     "cvEn": "Download in English"
+  },
+  "activity": {
+    "title": "Останні коміти"
+  },
+  "palette": {
+    "placeholder": "Шукай команду або секцію...",
+    "empty": "Нічого не знайдено",
+    "gotoAbout": "Перейти → Про мене",
+    "gotoAchievements": "Перейти → Досягнення",
+    "gotoProjects": "Перейти → Проєкти",
+    "gotoLab": "Відкрити → Piton Lab",
+    "gotoBench": "Запустити → Бенчмарк",
+    "gotoContact": "Перейти → Зв'язок",
+    "copyEmail": "Скопіювати email",
+    "openTelegram": "Відкрити Telegram",
+    "openGithub": "Відкрити GitHub",
+    "downloadCvUa": "Завантажити резюме (UA)",
+    "downloadCvEn": "Download resume (EN)",
+    "toggleLang": "Перемкнути мову"
   },
   "footer": {
     "rights": "Олексій Одарчук",

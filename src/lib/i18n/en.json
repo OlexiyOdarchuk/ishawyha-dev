@@ -8,6 +8,7 @@
     "achievements": "Wins",
     "projects": "Projects",
     "lab": "Piton Lab",
+    "bench": "Bench",
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
@@ -19,7 +20,7 @@
     "nameLine2": "Odarchuk",
     "role": "Backend Developer (Go) · Creator of Piton",
     "tagline": "I build systems where speed meets architectural reliability.",
-    "intro": "Product-minded engineer. I turn ideas into services in hours — from hackathon MVPs to production-ready Go services. Off the clock — designing my own programming language.",
+    "intro": "Go backend engineer. Drawn to clean architecture, complex domain logic, and performance where it matters. Off the clock — building my own programming language (Piton), reverse-engineering other people's code, and poking at security.",
     "ctaPrimary": "Try Piton",
     "ctaSecondary": "Get in touch",
     "ctaGithub": "GitHub",
@@ -66,6 +67,7 @@
   "achievements": {
     "title": "Wins & hackathons",
     "subtitle": "Not just code — outcomes measured in places, speed, and offers.",
+    "benchLink": "Run the benchmark",
     "items": {
       "best": {
         "label": "🏆 1st place",
@@ -105,6 +107,7 @@
     "title": "Selected projects",
     "subtitle": "What I build off-hours — and what I'm proud of.",
     "viewSource": "View on GitHub",
+    "liveBench": "Live benchmark",
     "featured": {
       "piton": {
         "kicker": "Flagship",
@@ -170,6 +173,47 @@
     "share": "Share",
     "shared": "Copied!"
   },
+  "bench": {
+    "title": "JS vs Go·WASM — same hash, two engines",
+    "subtitle": "Same SHA-256, same input, two engines. Left: a JS copy of the official Student Hryvnia client. Right: my Go rewrite from SHMiner, compiled to WASM with TinyGo. Lanes run sequentially, 10 seconds each — JS first on a single core, then Go·WASM on N cores. Each lane gets the full CPU to itself, so the numbers stay honest.",
+    "start": "Start",
+    "startAgain": "Run again",
+    "stop": "Stop",
+    "loading": "Loading WASM...",
+    "ready": "Ready to start",
+    "running": "Running...",
+    "runningJs": "Measuring JS lane",
+    "runningGo": "Measuring Go·WASM",
+    "done": "Finished",
+    "live": "live",
+    "labelJs": "Official JS miner",
+    "labelGo": "SHMiner (Go·WASM)",
+    "hashrate": "H/s",
+    "speedupLabel": "Go·WASM speedup",
+    "speedupBody": "that's how much faster Go·WASM is than the official JS miner on your machine — in this configuration",
+    "elapsed": "Elapsed",
+    "elapsedSec": "s",
+    "tokensLabel": "Tokens found",
+    "hashesLabel": "Hashes total",
+    "errorTitle": "Bench error",
+    "workersLabel": "Go workers",
+    "workersOverCore": "Above core count",
+    "workersCustom": "custom",
+    "workersApply": "Apply",
+    "workersActive": "running",
+    "detectedCores": "your cores",
+    "jsModeLabel": "JS mode",
+    "jsModeOriginal": "Original miner",
+    "jsModeFast": "Without sleep(1)",
+    "jsModeOriginalTag": "verbatim",
+    "jsModeFastTag": "no sleep",
+    "jsModeOriginalHint": "verbatim from the official client — with `sleep(1)` every 1000 hashes",
+    "jsModeFastHint": "same code, no artificial sleep",
+    "disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Go·WASM lane spins up a pool of Web Workers — one per core, just like SHMiner's goroutine pool. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
+    "desktopNoteTitle": "This is a browser demo",
+    "desktopNoteBody": "Native Go from the desktop client is much faster than TinyGo·WASM in the browser — native Go's SHA-256 uses SIMD/AVX CPU instructions (4-8 blocks in parallel; scalar WASM does 0), and Web Workers pay for serialization. The real numbers (1000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
+    "desktopCta": "SHMiner on GitHub"
+  },
   "stack": {
     "title": "Tech stack",
     "subtitle": "Tools I live with day to day.",
@@ -209,6 +253,25 @@
     "cvLabel": "Resume (PDF)",
     "cvUa": "Завантажити українською",
     "cvEn": "Download in English"
+  },
+  "activity": {
+    "title": "Latest commits"
+  },
+  "palette": {
+    "placeholder": "Search a command or section...",
+    "empty": "No matches",
+    "gotoAbout": "Go to → About",
+    "gotoAchievements": "Go to → Wins",
+    "gotoProjects": "Go to → Projects",
+    "gotoLab": "Open → Piton Lab",
+    "gotoBench": "Run → Benchmark",
+    "gotoContact": "Go to → Contact",
+    "copyEmail": "Copy email",
+    "openTelegram": "Open Telegram",
+    "openGithub": "Open GitHub",
+    "downloadCvUa": "Download resume (UA)",
+    "downloadCvEn": "Download resume (EN)",
+    "toggleLang": "Toggle language"
   },
   "footer": {
     "rights": "Oleksii Odarchuk",

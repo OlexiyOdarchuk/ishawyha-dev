@@ -3,6 +3,8 @@
   import { t, lang } from '$lib/i18n';
   import Background from '$lib/components/Background.svelte';
   import Header from '$lib/components/Header.svelte';
+  import CommandPalette from '$lib/components/CommandPalette.svelte';
+  import Konami from '$lib/components/Konami.svelte';
 
   let { children } = $props();
 
@@ -37,3 +39,7 @@
 <main class="relative">
   {@render children?.()}
 </main>
+
+<!-- Global UI overlays: Cmd+K palette and Konami easter egg -->
+<CommandPalette />
+<Konami />

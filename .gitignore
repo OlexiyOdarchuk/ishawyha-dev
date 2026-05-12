@@ -7,6 +7,10 @@ dist-ssr
 *.local
 
 piton/
+Student-Hryvnia-Miner/
+
+# Internal harness state — never commit.
+.claude/scheduled_tasks.lock
 
 .DS_Store
 .env

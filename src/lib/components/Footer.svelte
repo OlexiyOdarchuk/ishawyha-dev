@@ -2,6 +2,9 @@
   import { t } from '$lib/i18n';
 
   const year = new Date().getFullYear();
+  // Injected by vite.config.ts at build time — git short hash + build date.
+  const buildHash = __BUILD_HASH__;
+  const buildDate = __BUILD_DATE__;
 </script>
 
 <footer class="relative px-6 pt-12 pb-10">
@@ -10,17 +13,21 @@
       <p class="font-mono text-xs text-[var(--color-muted)]">
         © {year} {$t.footer.rights}
       </p>
-      <p class="font-mono text-xs text-[var(--color-muted)]">
+      <p class="flex flex-wrap items-center gap-x-2 font-mono text-xs text-[var(--color-muted)]">
         {$t.footer.made}
-        <span class="ml-2 inline-block text-violet-300">·</span>
+        <span class="text-violet-300">·</span>
         <a
           href="https://github.com/OlexiyOdarchuk/piton"
           target="_blank"
           rel="noopener noreferrer"
-          class="ml-1 text-white/80 transition hover:text-violet-200"
+          class="text-white/80 transition hover:text-violet-200"
         >
           built with Piton DNA
         </a>
+        <span class="text-violet-300">·</span>
+        <span title="git short hash · build date">
+          {buildHash} · {buildDate}
+        </span>
       </p>
     </div>
   </div>

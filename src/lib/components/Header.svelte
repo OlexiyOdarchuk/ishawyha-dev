@@ -13,6 +13,7 @@
     { id: 'achievements', label: $t.nav.achievements },
     { id: 'projects', label: $t.nav.projects },
     { id: 'lab', label: $t.nav.lab },
+    { id: 'bench', label: $t.nav.bench },
     { id: 'contact', label: $t.nav.contact }
   ]);
 
@@ -27,7 +28,7 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    const ids = ['about', 'achievements', 'projects', 'lab', 'stack', 'education', 'contact'];
+    const ids = ['about', 'achievements', 'projects', 'lab', 'bench', 'stack', 'education', 'contact'];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
@@ -69,8 +70,14 @@
   });
 </script>
 
+<!--
+  Anchored to the viewport (fixed), not to the document — `sticky` plays poorly
+  with the iOS address-bar dance and any future ancestor that creates a
+  transform/filter stacking context. Fixed is the safe default for an always-on
+  top nav.
+-->
 <header
-  class="sticky top-0 z-40 w-full transition-all duration-300 {scrolled
+  class="fixed inset-x-0 top-0 z-40 w-full transition-all duration-300 {scrolled
     ? 'border-b border-white/5 bg-[#08070f]/70 backdrop-blur-xl'
     : 'bg-transparent'}"
 >

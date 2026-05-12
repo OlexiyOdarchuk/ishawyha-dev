@@ -2,7 +2,14 @@
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
   import TypewriterCode from './TypewriterCode.svelte';
-  import { Github, ExternalLink, Sparkles, ArrowRight } from 'lucide-svelte';
+  import { Github, ExternalLink, Sparkles, ArrowRight, Activity } from 'lucide-svelte';
+
+  function gotoBench(e: MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    const el = document.getElementById('bench');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   const pitonSnippet = [
     [{ text: 'functia ', cls: 'text-pink-300' }, { text: 'main', cls: 'text-amber-200' }, { text: '():' }],
@@ -162,9 +169,21 @@
               {/each}
             </ul>
 
-            <div class="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition group-hover:text-violet-300">
-              {$t.projects.viewSource}
-              <ArrowRight class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+            <div class="mt-5 flex items-center justify-between gap-3">
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition group-hover:text-violet-300">
+                {$t.projects.viewSource}
+                <ArrowRight class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
+              </span>
+              {#if key === 'shminer'}
+                <button
+                  type="button"
+                  onclick={gotoBench}
+                  class="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-cyan-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/20"
+                >
+                  <Activity class="h-3 w-3" />
+                  {$t.projects.liveBench}
+                </button>
+              {/if}
             </div>
           </a>
         </Reveal>

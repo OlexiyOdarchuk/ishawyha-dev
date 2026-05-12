@@ -4,98 +4,89 @@
       <stop offset="0%" stop-color="#0b0a18"/>
       <stop offset="100%" stop-color="#08070f"/>
     </linearGradient>
-    <radialGradient id="violet" cx="20%" cy="25%" r="55%">
+    <radialGradient id="violet" cx="15%" cy="20%" r="60%">
       <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.55"/>
       <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="pink" cx="85%" cy="80%" r="50%">
+    <radialGradient id="pink" cx="85%" cy="85%" r="55%">
       <stop offset="0%" stop-color="#ec4899" stop-opacity="0.45"/>
       <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="amber" cx="60%" cy="50%" r="35%">
-      <stop offset="0%" stop-color="#fcd34d" stop-opacity="0.25"/>
+    <radialGradient id="amber" cx="65%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#fcd34d" stop-opacity="0.22"/>
       <stop offset="100%" stop-color="#fcd34d" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="0%"  stop-color="#c4b5fd"/>
       <stop offset="50%" stop-color="#f472b6"/>
       <stop offset="100%" stop-color="#fcd34d"/>
     </linearGradient>
     <linearGradient id="logoFill" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="0%"  stop-color="#8b5cf6"/>
       <stop offset="50%" stop-color="#ec4899"/>
       <stop offset="100%" stop-color="#fbbf24"/>
     </linearGradient>
   </defs>
 
+  <!-- Background -->
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#violet)"/>
   <rect width="1200" height="630" fill="url(#pink)"/>
   <rect width="1200" height="630" fill="url(#amber)"/>
 
-  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+  <!-- Faint grid -->
+  <g opacity="0.06" stroke="#ffffff" stroke-width="1">
     <path d="M0 90 H1200 M0 180 H1200 M0 270 H1200 M0 360 H1200 M0 450 H1200 M0 540 H1200"/>
     <path d="M120 0 V630 M240 0 V630 M360 0 V630 M480 0 V630 M600 0 V630 M720 0 V630 M840 0 V630 M960 0 V630 M1080 0 V630"/>
   </g>
 
-  <!-- Logo + handle -->
-  <g transform="translate(80, 80)">
-    <rect width="68" height="68" rx="18" fill="url(#logoFill)"/>
-    <text x="34" y="46" font-family="JetBrains Mono, ui-monospace, monospace" font-size="26" font-weight="700" fill="#08070f" text-anchor="middle">iO</text>
-    <text x="92" y="46" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="600" fill="#ffffff">ishawyha<tspan fill="#8a86b4">.dev</tspan></text>
+  <!-- Header bar: logo + handle (left) · status pill (right) -->
+  <g transform="translate(80, 76)">
+    <rect width="60" height="60" rx="16" fill="url(#logoFill)"/>
+    <text x="30" y="42" font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" fill="#08070f" text-anchor="middle">iO</text>
+    <text x="80" y="40" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600" fill="#ffffff">ishawyha<tspan fill="#8a86b4">.dev</tspan></text>
   </g>
 
-  <!-- Status pill -->
-  <g transform="translate(80, 200)">
-    <rect width="280" height="38" rx="19" fill="rgba(16,185,129,0.12)" stroke="rgba(52,211,153,0.4)"/>
-    <circle cx="22" cy="19" r="5" fill="#34d399"/>
-    <text x="42" y="25" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="500" fill="#a7f3d0">Backend Developer · Go</text>
+  <g transform="translate(780, 88)">
+    <rect width="340" height="36" rx="18" fill="rgba(16,185,129,0.12)" stroke="rgba(52,211,153,0.4)"/>
+    <circle cx="20" cy="18" r="5" fill="#34d399"/>
+    <text x="38" y="23" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="500" fill="#a7f3d0">Backend Developer (Go) · Open to offers</text>
   </g>
 
-  <!-- Name -->
-  <text x="80" y="332" font-family="Inter, system-ui, sans-serif" font-size="86" font-weight="800" fill="url(#title)" letter-spacing="-2">Олексій Одарчук</text>
+  <!-- Two-line name — fits comfortably in full width -->
+  <text x="80" y="260" font-family="Inter, system-ui, sans-serif" font-size="108" font-weight="800" fill="url(#title)" letter-spacing="-3">Олексій</text>
+  <text x="80" y="370" font-family="Inter, system-ui, sans-serif" font-size="108" font-weight="800" fill="url(#title)" letter-spacing="-3">Одарчук<tspan fill="#fcd34d">.</tspan></text>
 
-  <!-- Tagline -->
-  <text x="80" y="400" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="500" fill="rgba(255,255,255,0.85)">Творець мови Piton · BEST Hackathon 1st place</text>
+  <!-- Subtitle (single tight line) -->
+  <text x="80" y="430" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="500" fill="rgba(255,255,255,0.88)">Творець мови Piton · 1st @ BEST Hackathon 2026</text>
 
-  <text x="80" y="446" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="400" fill="#8a86b4">Будую системи, де швидкість зустрічає архітектурну надійність</text>
+  <!-- Sub-subtitle -->
+  <text x="80" y="466" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="400" fill="#8a86b4">Будую системи, де швидкість зустрічає архітектурну надійність</text>
 
-  <!-- Badges row -->
-  <g transform="translate(80, 510)">
+  <!-- Badges row — three boxes sized to their content -->
+  <g transform="translate(80, 514)" font-family="Inter, system-ui, sans-serif">
+    <!-- BEST -->
     <g>
-      <rect width="220" height="64" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
-      <text x="20" y="30" font-size="26">🏆</text>
-      <text x="60" y="28" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#fcd34d" letter-spacing="1">1ST PLACE</text>
-      <text x="60" y="48" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff">BEST Hackathon 2026</text>
+      <rect width="320" height="72" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+      <text x="22" y="38" font-size="28">🏆</text>
+      <text x="62" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#fcd34d" letter-spacing="1.4">1ST · APR 2026</text>
+      <text x="62" y="56" font-size="15" font-weight="600" fill="#ffffff">BEST Hackathon · GPS-less drone</text>
     </g>
-    <g transform="translate(240, 0)">
-      <rect width="220" height="64" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
-      <text x="20" y="30" font-size="26">🥉</text>
-      <text x="60" y="28" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#f472b6" letter-spacing="1">3RD PLACE</text>
-      <text x="60" y="48" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Mate Hackathon 2026</text>
-    </g>
-    <g transform="translate(480, 0)">
-      <rect width="240" height="64" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
-      <text x="20" y="30" font-size="26">🎟</text>
-      <text x="60" y="28" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#c4b5fd" letter-spacing="1">DOU DAY 2026</text>
-      <text x="60" y="48" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff">Student with High Potential</text>
-    </g>
-  </g>
 
-  <!-- Right-side code snippet -->
-  <g transform="translate(880, 200)" font-family="JetBrains Mono, ui-monospace, monospace" font-size="18">
-    <rect width="260" height="240" rx="20" fill="rgba(10,9,22,0.7)" stroke="rgba(255,255,255,0.08)"/>
-    <circle cx="22" cy="22" r="5" fill="rgba(248,113,113,0.7)"/>
-    <circle cx="40" cy="22" r="5" fill="rgba(251,191,36,0.7)"/>
-    <circle cx="58" cy="22" r="5" fill="rgba(52,211,153,0.7)"/>
-    <text x="80" y="27" font-size="12" fill="#8a86b4">main.piton</text>
-    <text x="22" y="70" fill="#f9a8d4">functia</text>
-    <text x="120" y="70" fill="#fde68a">main</text>
-    <text x="176" y="70" fill="#e9e7ff">():</text>
-    <text x="40" y="100" fill="#f9a8d4">drukuvaty</text>
-    <text x="172" y="100" fill="#6ee7b7">"Привіт"</text>
-    <text x="22" y="140" fill="#6b7280" font-style="italic"># tree-walking</text>
-    <text x="22" y="166" fill="#6b7280" font-style="italic"># evaluator</text>
-    <text x="22" y="206" fill="#a78bfa">→ Go · WASM · SVG</text>
+    <!-- MATE -->
+    <g transform="translate(340, 0)">
+      <rect width="320" height="72" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+      <text x="22" y="38" font-size="28">🥉</text>
+      <text x="62" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#f472b6" letter-spacing="1.4">3RD · MAR 2026</text>
+      <text x="62" y="56" font-size="15" font-weight="600" fill="#ffffff">Mate Hackathon · AI MarTech</text>
+    </g>
+
+    <!-- DOU -->
+    <g transform="translate(680, 0)">
+      <rect width="360" height="72" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+      <text x="22" y="38" font-size="28">🎟</text>
+      <text x="62" y="32" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600" fill="#c4b5fd" letter-spacing="1.4">DOU DAY 2026</text>
+      <text x="62" y="56" font-size="15" font-weight="600" fill="#ffffff">Student with High Potential</text>
+    </g>
   </g>
 </svg>

@@ -9,7 +9,7 @@
     backend: ['Gin', 'Fiber', 'REST API', 'WebSockets', 'Goroutines', 'JWT', 'OAuth 2.0'],
     db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
     frontend: ['Svelte 5', 'Wails', 'Tailwind CSS', 'Vite'],
-    ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK', 'Google AI Studio'],
+    ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK', 'Google AI Studio', 'monobank API', 'go-monobank-sdk'],
     devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'TinyGo', 'Bruno', 'Typst', 'mdBook', 'Cloudflare']
   };
 

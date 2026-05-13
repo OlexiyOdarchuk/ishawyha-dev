@@ -121,25 +121,43 @@
       }
     },
     "list": {
+      "gomonobanksdk": {
+        "kicker": "Open source SDK",
+        "title": "go-monobank-sdk",
+        "subtitle": "Go SDK for every monobank API",
+        "description": "Full coverage of personal, provider (with monoКЕП), business for legal entities, acquiring (subscriptions, monopay button, split-receivers, T2P) and Installment Purchases. ECDSA webhook verification with auto-rotating keys, drop-in http.Handler, typed money/currency/MCC, HMAC-SHA256 for installment callbacks, a fake monobank server for tests, and a separate OpenTelemetry sub-module.",
+        "tags": ["Go", "ECDSA", "HMAC-SHA256", "OpenTelemetry", "iter.Seq2", "MIT"]
+      },
+      "monokasa": {
+        "kicker": "SDK consumer",
+        "title": "monokasa",
+        "subtitle": "Telegram bot for selling tickets",
+        "description": "Sells tickets to a single show through a monobank jar and issues PDFs with QR codes scanned at the venue entrance. Live consumer of my own go-monobank-sdk: webhook auto-registers at startup, reservations get a 15-minute hold, and show-time reminders fire at-most-once even across restarts.",
+        "tags": ["Go", "SQLite", "telebot", "PDF", "QR", "go-monobank-sdk"]
+      },
       "shminer": {
+        "kicker": "1000× faster",
         "title": "SHMiner",
         "subtitle": "Desktop crypto miner",
         "description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
         "tags": ["Go", "Svelte", "Wails", "Goroutines", "WebSockets", "AES"]
       },
       "linkshortener": {
+        "kicker": "",
         "title": "LinkShortener Bot",
         "subtitle": "Telegram + analytics",
         "description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
         "tags": ["Go", "PostgreSQL", "Redis", "ClickHouse", "Docker"]
       },
       "todolist": {
+        "kicker": "",
         "title": "ToDoList Pro",
         "subtitle": "Production-grade task manager",
         "description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
         "tags": ["Go", "Gin", "Svelte 5", "JWT", "OAuth 2.0", "PostgreSQL"]
       },
       "abit": {
+        "kicker": "150+ users",
         "title": "AbitAssistant Bot",
         "subtitle": "Telegram bot for applicants",
         "description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",

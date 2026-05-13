@@ -38,13 +38,46 @@
     [{ text: 'main()' }]
   ];
 
-  const order = ['shminer', 'todolist', 'linkshortener', 'abit'] as const;
+  const order = ['gomonobanksdk', 'monokasa', 'shminer', 'abit', 'todolist', 'linkshortener'] as const;
 
   const links: Record<(typeof order)[number], string> = {
+    gomonobanksdk: 'https://github.com/OlexiyOdarchuk/go-monobank-sdk',
+    monokasa: 'https://github.com/OlexiyOdarchuk/monokasa',
     shminer: 'https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner',
+    abit: 'https://github.com/OlexiyOdarchuk/AbitAssistant_Bot',
     todolist: 'https://github.com/OlexiyOdarchuk/todolist',
-    linkshortener: 'https://github.com/OlexiyOdarchuk/linkShortener',
-    abit: 'https://github.com/OlexiyOdarchuk/AbitAssistant_Bot'
+    linkshortener: 'https://github.com/OlexiyOdarchuk/linkShortener'
+  };
+
+  // Per-project accent styling. Important projects get distinctive border + glow,
+  // less-important ones fall back to the neutral glass treatment.
+  const accents: Record<(typeof order)[number], { ring: string; glow: string; kicker: string; tagAccent: string } | null> = {
+    gomonobanksdk: {
+      ring: 'border-cyan-400/30 hover:border-cyan-400/50',
+      glow: 'from-cyan-500/15 to-emerald-500/10',
+      kicker: 'border-cyan-400/30 bg-cyan-500/10 text-cyan-200',
+      tagAccent: 'group-hover:text-cyan-300'
+    },
+    monokasa: {
+      ring: 'border-emerald-400/25 hover:border-emerald-400/50',
+      glow: 'from-emerald-500/12 to-cyan-500/8',
+      kicker: 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200',
+      tagAccent: 'group-hover:text-emerald-300'
+    },
+    shminer: {
+      ring: 'border-amber-400/30 hover:border-amber-400/50',
+      glow: 'from-amber-500/15 to-rose-500/10',
+      kicker: 'border-amber-400/30 bg-amber-500/10 text-amber-200',
+      tagAccent: 'group-hover:text-amber-300'
+    },
+    abit: {
+      ring: 'border-violet-400/30 hover:border-violet-400/50',
+      glow: 'from-violet-500/15 to-indigo-500/10',
+      kicker: 'border-violet-400/30 bg-violet-500/10 text-violet-200',
+      tagAccent: 'group-hover:text-violet-300'
+    },
+    todolist: null,
+    linkshortener: null
   };
 </script>
 
@@ -138,15 +171,26 @@
     <div class="grid gap-5 md:grid-cols-2">
       {#each order as key, i}
         {@const project = $t.projects.list[key]}
+        {@const accent = accents[key]}
         <Reveal delay={i * 80}>
           <a
             href={links[key]}
             target="_blank"
             rel="noopener noreferrer"
-            class="glass group relative flex h-full flex-col overflow-hidden rounded-3xl p-7 transition hover:-translate-y-1 hover:bg-white/[0.06]"
+            class="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border p-7 transition hover:-translate-y-1 hover:bg-white/[0.06] {accent ? accent.ring : 'border-white/10 hover:border-white/20'}"
           >
-            <div class="flex items-start justify-between gap-4">
+            {#if accent}
+              <div class="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br {accent.glow} blur-3xl"></div>
+            {/if}
+
+            <div class="relative flex items-start justify-between gap-4">
               <div>
+                {#if accent && project.kicker}
+                  <div class="mb-2 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider {accent.kicker}">
+                    <Sparkles class="h-3 w-3" />
+                    {project.kicker}
+                  </div>
+                {/if}
                 <h3 class="text-xl font-semibold text-white">{project.title}</h3>
                 <p class="mt-1 text-sm text-[var(--color-muted)]">{project.subtitle}</p>
               </div>
@@ -157,9 +201,9 @@
               </span>
             </div>
 
-            <p class="mt-4 flex-1 text-sm leading-relaxed text-white/75">{project.description}</p>
+            <p class="relative mt-4 flex-1 text-sm leading-relaxed text-white/75">{project.description}</p>
 
-            <ul class="mt-5 flex flex-wrap gap-2">
+            <ul class="relative mt-5 flex flex-wrap gap-2">
               {#each project.tags as tag}
                 <li
                   class="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[11px] text-white/80"
@@ -169,8 +213,8 @@
               {/each}
             </ul>
 
-            <div class="mt-5 flex items-center justify-between gap-3">
-              <span class="inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition group-hover:text-violet-300">
+            <div class="relative mt-5 flex items-center justify-between gap-3">
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition {accent ? accent.tagAccent : 'group-hover:text-violet-300'}">
                 {$t.projects.viewSource}
                 <ArrowRight class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
               </span>

@@ -121,25 +121,43 @@
       }
     },
     "list": {
+      "gomonobanksdk": {
+        "kicker": "Open source SDK",
+        "title": "go-monobank-sdk",
+        "subtitle": "Go SDK на всі п'ять API monobank",
+        "description": "Повне покриття personal, provider (з monoКЕП), business для юр. осіб, acquiring (підписки, monopay-кнопка, split-receivers, T2P) і «Покупки частинами». ECDSA-верифікація вебхуків з авторотацією ключа, готовий http.Handler, типізовані money/currency/MCC, HMAC-SHA256 для ПЧ-callback, фейковий monobank-сервер для тестів, окремий sub-module для OpenTelemetry.",
+        "tags": ["Go", "ECDSA", "HMAC-SHA256", "OpenTelemetry", "iter.Seq2", "MIT"]
+      },
+      "monokasa": {
+        "kicker": "Консумер SDK",
+        "title": "monokasa",
+        "subtitle": "Telegram-бот продажу квитків",
+        "description": "Продає квитки на одну виставу через банку monobank і видає PDF з QR-кодом, який зчитується сканером на вході. Споживач власного go-monobank-sdk: вебхук авто-реєструється при старті, бронь має 15-хвилинний hold, нагадування за годину до шоу — at-most-once навіть після рестарту.",
+        "tags": ["Go", "SQLite", "telebot", "PDF", "QR", "go-monobank-sdk"]
+      },
       "shminer": {
+        "kicker": "1000× швидше",
         "title": "SHMiner",
         "subtitle": "Десктопний крипто-майнер",
         "description": "Крос-платформний майнер на Wails (Go + Svelte/TS). Переписав SHA-256 з JS на Go з пулом горутин — 1000× швидший хешрейт на тому ж залізі. AES-шифрування гаманця, real-time WebSocket-дашборд, мульти-гаманець, zen mode.",
         "tags": ["Go", "Svelte", "Wails", "Goroutines", "WebSockets", "AES"]
       },
       "linkshortener": {
+        "kicker": "",
         "title": "LinkShortener Bot",
         "subtitle": "Telegram + аналітика",
         "description": "Telegram-бот для скорочення URL з QR-генерацією і гео-аналітикою. PostgreSQL для зберігання, Redis для кешу редиректів, ClickHouse для real-time аналітики кліків (країна, місто, платформа). Docker, GeoIP2.",
         "tags": ["Go", "PostgreSQL", "Redis", "ClickHouse", "Docker"]
       },
       "todolist": {
+        "kicker": "",
         "title": "ToDoList Pro",
         "subtitle": "Прод-готовий task manager",
         "description": "Go/Gin бекенд з чистою архітектурою (repository → service → handler), JWT + OAuth 2.0 (Google), email-верифікація, Swagger-документація. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
         "tags": ["Go", "Gin", "Svelte 5", "JWT", "OAuth 2.0", "PostgreSQL"]
       },
       "abit": {
+        "kicker": "150+ користувачів",
         "title": "AbitAssistant Bot",
         "subtitle": "Telegram-бот для абітурієнтів",
         "description": "Telegram-бот, що допомагає українським студентам відстежувати рейтинги вступу. Реверснув закриті third-party API. 150+ активних користувачів за перший рік, маркетинг-кампанія на 2026.",

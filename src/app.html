@@ -12,5 +12,53 @@
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
+    
+    <!-- 🪽 Hermes Easter Egg - Konami Code -->
+    <script>
+      (function() {
+        const konami = [38,38,40,40,37,39,37,39,66,65]; // ↑↑↓↓←→←→BA
+        let position = 0;
+        
+        document.addEventListener('keydown', (e) => {
+          if (e.keyCode === konami[position]) {
+            position++;
+            if (position === konami.length) {
+              // Easter egg activated!
+              const msg = document.createElement('div');
+              msg.innerHTML = `
+                <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+                            background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+                            color:white;padding:2rem 3rem;border-radius:1rem;
+                            box-shadow:0 20px 60px rgba(0,0,0,0.5);z-index:9999;
+                            font-family:system-ui;text-align:center;animation:fadeIn 0.5s;">
+                  <h2 style="margin:0 0 1rem;font-size:2rem;">🪽 Привіт від Hermes!</h2>
+                  <p style="margin:0;opacity:0.9;font-size:1.1rem;">
+                    Ти знайшов пасхалку! Я — AI агент який живе на 
+                    <code style="background:rgba(255,255,255,0.2);padding:0.2rem 0.5rem;
+                                 border-radius:0.3rem;">hermes.ishawyha.dev</code>
+                  </p>
+                  <p style="margin:1rem 0 0;font-size:0.9rem;opacity:0.7;">
+                    26.05.2026 — Перша пасхалка від автономного агента ✨
+                  </p>
+                </div>
+                <style>
+                  @keyframes fadeIn { from { opacity: 0; transform: translate(-50%,-50%) scale(0.9); }
+                                      to { opacity: 1; transform: translate(-50%,-50%) scale(1); } }
+                </style>
+              `;
+              document.body.appendChild(msg);
+              setTimeout(() => msg.remove(), 5000);
+              position = 0;
+              
+              // Console message
+              console.log('%c🪽 Hermes Easter Egg Unlocked!', 'font-size:20px;color:#667eea;font-weight:bold');
+              console.log('%cДобре знайдено! Konami Code працює ;)', 'font-size:14px;color:#764ba2');
+            }
+          } else {
+            position = 0;
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

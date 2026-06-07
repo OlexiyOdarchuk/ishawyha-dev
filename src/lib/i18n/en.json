@@ -7,6 +7,7 @@
     "about": "About",
     "achievements": "Wins",
     "projects": "Projects",
+    "services": "Services",
     "lab": "Piton Lab",
     "bench": "Bench",
     "contact": "Contact",
@@ -165,6 +166,57 @@
       }
     }
   },
+  "services": {
+    "kicker": "// services/",
+    "title": "Hire me",
+    "subtitle": "I take on commercial work — backends, bots, and integrations. Clean architecture and real deadlines, like a hackathon but without the rush.",
+    "list": {
+      "bots": {
+        "title": "Telegram bots",
+        "description": "Bots of any complexity: sales and payments via monobank, analytics, scraping, reminders, API integrations. From MVP to a production-ready solution with a database and deployment.",
+        "tags": ["Go", "Python", "Aiogram", "PostgreSQL", "monobank"]
+      },
+      "backend": {
+        "title": "Backend & APIs",
+        "description": "Go/Gin services with clean architecture, REST APIs, auth (JWT, OAuth 2.0), payment and webhook integrations, Docker deploys. Built to survive load and shifting requirements.",
+        "tags": ["Go", "Gin", "REST", "PostgreSQL", "Docker"]
+      },
+      "web": {
+        "title": "Web apps",
+        "description": "Fast sites, landing pages and dashboards on SvelteKit + TypeScript + Tailwind. Animations, i18n, responsive, polished design — just like this site.",
+        "tags": ["Svelte 5", "TypeScript", "Tailwind", "Vite"]
+      },
+      "automation": {
+        "title": "Automation & scraping",
+        "description": "Scripts, scrapers, closed-API integrations (reverse-engineered when needed), data processing, one-off engineering tasks. I'll save you hours of routine.",
+        "tags": ["Python", "Go", "Reverse engineering", "API"]
+      }
+    },
+    "form": {
+      "title": "Tell me about the task",
+      "subtitle": "Fill in the form — I'll reply on Telegram or by email within a day.",
+      "name": "Name",
+      "namePlaceholder": "What should I call you",
+      "contact": "Contact",
+      "contactPlaceholder": "Telegram, email or phone",
+      "service": "Task type",
+      "servicePlaceholder": "Pick a direction",
+      "serviceOther": "Other",
+      "budget": "Budget (optional)",
+      "budgetPlaceholder": "e.g. $200–500 or \"let's discuss\"",
+      "message": "Description",
+      "messagePlaceholder": "What needs to be done, timeline, links to examples...",
+      "submit": "Send request",
+      "sending": "Sending...",
+      "successTitle": "Request sent!",
+      "successBody": "Thanks — I'll get back to you as soon as I can. You can also ping me directly on Telegram.",
+      "errorTitle": "Couldn't send",
+      "errorBody": "Please try again, or reach me directly on Telegram or by email.",
+      "again": "Send another",
+      "required": "Please fill this in",
+      "altTelegram": "Message on Telegram"
+    }
+  },
   "lab": {
     "kicker": "Lab",
     "title": "Piton Lab — try my language",
@@ -281,6 +333,7 @@
     "gotoAbout": "Go to → About",
     "gotoAchievements": "Go to → Wins",
     "gotoProjects": "Go to → Projects",
+    "gotoServices": "Go to → Services",
     "gotoLab": "Open → Piton Lab",
     "gotoBench": "Run → Benchmark",
     "gotoContact": "Go to → Contact",

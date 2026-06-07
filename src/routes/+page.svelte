@@ -4,6 +4,7 @@
   import About from '$lib/components/About.svelte';
   import Achievements from '$lib/components/Achievements.svelte';
   import Projects from '$lib/components/Projects.svelte';
+  import Services from '$lib/components/Services.svelte';
   import PitonLab from '$lib/components/PitonLab.svelte';
   import Bench from '$lib/components/Bench.svelte';
   import Stack from '$lib/components/Stack.svelte';
@@ -17,6 +18,7 @@
 <About />
 <Achievements />
 <Projects />
+<Services />
 <PitonLab />
 <Bench />
 <Stack />

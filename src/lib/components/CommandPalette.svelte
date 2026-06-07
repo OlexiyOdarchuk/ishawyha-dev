@@ -38,6 +38,7 @@
     { id: 'goto-about',        title: $t.palette.gotoAbout,        keywords: 'about me',          run: () => scrollTo('about') },
     { id: 'goto-achievements', title: $t.palette.gotoAchievements, keywords: 'wins hackathon',    run: () => scrollTo('achievements') },
     { id: 'goto-projects',     title: $t.palette.gotoProjects,     keywords: 'piton shminer',     run: () => scrollTo('projects') },
+    { id: 'goto-services',     title: $t.palette.gotoServices,     keywords: 'hire freelance order замовити послуги', run: () => scrollTo('services') },
     { id: 'goto-lab',          title: $t.palette.gotoLab,          keywords: 'piton playground',  run: () => scrollTo('lab') },
     { id: 'goto-bench',        title: $t.palette.gotoBench,        keywords: 'sha256 hashrate',   run: () => scrollTo('bench') },
     { id: 'goto-contact',      title: $t.palette.gotoContact,      keywords: 'email telegram',    run: () => scrollTo('contact') },

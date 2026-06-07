@@ -12,6 +12,7 @@
     { id: 'about', label: $t.nav.about },
     { id: 'achievements', label: $t.nav.achievements },
     { id: 'projects', label: $t.nav.projects },
+    { id: 'services', label: $t.nav.services },
     { id: 'lab', label: $t.nav.lab },
     { id: 'bench', label: $t.nav.bench },
     { id: 'contact', label: $t.nav.contact }
@@ -28,7 +29,7 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    const ids = ['about', 'achievements', 'projects', 'lab', 'bench', 'stack', 'education', 'contact'];
+    const ids = ['about', 'achievements', 'projects', 'services', 'lab', 'bench', 'stack', 'education', 'contact'];
     const sections = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

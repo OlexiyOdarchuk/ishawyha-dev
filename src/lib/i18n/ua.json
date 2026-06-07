@@ -7,6 +7,7 @@
     "about": "Про мене",
     "achievements": "Досягнення",
     "projects": "Проєкти",
+    "services": "Послуги",
     "lab": "Piton Lab",
     "bench": "Бенч",
     "contact": "Зв'язок",
@@ -165,6 +166,57 @@
       }
     }
   },
+  "services": {
+    "kicker": "// services/",
+    "title": "Замовити розробку",
+    "subtitle": "Беру комерційні замовлення на бекенд, ботів та інтеграції. Працюю з чіткою архітектурою і дедлайнами — як на хакатонах, тільки без поспіху.",
+    "list": {
+      "bots": {
+        "title": "Telegram-боти",
+        "description": "Боти будь-якої складності: продажі та оплати через monobank, аналітика, парсинг, нагадування, інтеграції з API. Від MVP до прод-готового рішення з БД і деплоєм.",
+        "tags": ["Go", "Python", "Aiogram", "PostgreSQL", "monobank"]
+      },
+      "backend": {
+        "title": "Бекенд та API",
+        "description": "Go/Gin сервіси з чистою архітектурою, REST API, авторизація (JWT, OAuth 2.0), інтеграція платежів та вебхуків, Docker-деплой. Те, що витримує навантаження і зміни вимог.",
+        "tags": ["Go", "Gin", "REST", "PostgreSQL", "Docker"]
+      },
+      "web": {
+        "title": "Веб-додатки",
+        "description": "Швидкі сайти, лендинги та дашборди на SvelteKit + TypeScript + Tailwind. Анімації, i18n, адаптив, гарний дизайн — такий самий, як цей сайт.",
+        "tags": ["Svelte 5", "TypeScript", "Tailwind", "Vite"]
+      },
+      "automation": {
+        "title": "Автоматизація та парсинг",
+        "description": "Скрипти, парсери, інтеграції закритих API (реверс при потребі), обробка даних, разові інженерні задачі. Зекономлю вам години рутини.",
+        "tags": ["Python", "Go", "Reverse engineering", "API"]
+      }
+    },
+    "form": {
+      "title": "Розкажіть про задачу",
+      "subtitle": "Заповніть форму — відповім у Telegram або на пошту впродовж дня.",
+      "name": "Ім'я",
+      "namePlaceholder": "Як до вас звертатися",
+      "contact": "Контакт",
+      "contactPlaceholder": "Telegram, email або телефон",
+      "service": "Тип задачі",
+      "servicePlaceholder": "Оберіть напрям",
+      "serviceOther": "Інше",
+      "budget": "Бюджет (необов'язково)",
+      "budgetPlaceholder": "Напр. 200–500$ або «обговоримо»",
+      "message": "Опис",
+      "messagePlaceholder": "Що треба зробити, які строки, посилання на приклади...",
+      "submit": "Надіслати заявку",
+      "sending": "Надсилаю...",
+      "successTitle": "Заявку надіслано!",
+      "successBody": "Дякую — повернуся до вас якнайшвидше. Можете також написати напряму в Telegram.",
+      "errorTitle": "Не вдалося надіслати",
+      "errorBody": "Спробуйте ще раз або напишіть мені напряму в Telegram чи на пошту.",
+      "again": "Надіслати ще одну",
+      "required": "Заповніть це поле",
+      "altTelegram": "Написати в Telegram"
+    }
+  },
   "lab": {
     "kicker": "Лабораторія",
     "title": "Piton Lab — спробуй мою мову",
@@ -281,6 +333,7 @@
     "gotoAbout": "Перейти → Про мене",
     "gotoAchievements": "Перейти → Досягнення",
     "gotoProjects": "Перейти → Проєкти",
+    "gotoServices": "Перейти → Послуги",
     "gotoLab": "Відкрити → Piton Lab",
     "gotoBench": "Запустити → Бенчмарк",
     "gotoContact": "Перейти → Зв'язок",

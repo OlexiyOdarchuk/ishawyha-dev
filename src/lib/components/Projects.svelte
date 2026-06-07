@@ -2,13 +2,19 @@
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
   import TypewriterCode from './TypewriterCode.svelte';
+  import { goto } from '$app/navigation';
   import { Github, ExternalLink, Sparkles, ArrowRight, Activity } from 'lucide-svelte';
+
+  // 'full' = featured Piton + grid (used on /projects).
+  // 'featured' = just the featured Piton card (used as a teaser on Home).
+  // showHeader is turned off when a PageHero already titles the page.
+  let { variant = 'full', showHeader = true }: { variant?: 'full' | 'featured'; showHeader?: boolean } =
+    $props();
 
   function gotoBench(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
-    const el = document.getElementById('bench');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    goto('/lab#bench');
   }
 
   const pitonSnippet = [
@@ -38,13 +44,14 @@
     [{ text: 'main()' }]
   ];
 
-  const order = ['gomonobanksdk', 'monokasa', 'shminer', 'abit', 'todolist', 'linkshortener'] as const;
+  const order = ['gomonobanksdk', 'monokasa', 'shminer', 'abit', 'rombik', 'todolist', 'linkshortener'] as const;
 
   const links: Record<(typeof order)[number], string> = {
     gomonobanksdk: 'https://github.com/OlexiyOdarchuk/go-monobank-sdk',
     monokasa: 'https://github.com/OlexiyOdarchuk/monokasa',
     shminer: 'https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner',
     abit: 'https://github.com/OlexiyOdarchuk/AbitAssistant_Bot',
+    rombik: 'https://github.com/OlexiyOdarchuk/rombik',
     todolist: 'https://github.com/OlexiyOdarchuk/todolist',
     linkshortener: 'https://github.com/OlexiyOdarchuk/linkShortener'
   };
@@ -76,6 +83,12 @@
       kicker: 'border-violet-400/30 bg-violet-500/10 text-violet-200',
       tagAccent: 'group-hover:text-violet-300'
     },
+    rombik: {
+      ring: 'border-rose-400/30 hover:border-rose-400/50',
+      glow: 'from-rose-500/15 to-amber-500/10',
+      kicker: 'border-rose-400/30 bg-rose-500/10 text-rose-200',
+      tagAccent: 'group-hover:text-rose-300'
+    },
     todolist: null,
     linkshortener: null
   };
@@ -83,13 +96,32 @@
 
 <section id="projects" class="scroll-mt-nav relative px-6 py-24">
   <div class="mx-auto max-w-6xl">
-    <Reveal>
-      <div class="mb-12">
-        <span class="font-mono text-sm text-amber-300">// projects/</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.projects.title}</h2>
-        <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.projects.subtitle}</p>
-      </div>
-    </Reveal>
+    {#if variant === 'full' && showHeader}
+      <Reveal>
+        <div class="mb-12">
+          <span class="font-mono text-sm text-amber-300">// projects/</span>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.projects.title}</h2>
+          <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.projects.subtitle}</p>
+        </div>
+      </Reveal>
+    {:else if variant === 'featured'}
+      <Reveal>
+        <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <span class="font-mono text-sm text-amber-300">// projects/</span>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.home.teaserProjects.title}</h2>
+            <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.home.teaserProjects.subtitle}</p>
+          </div>
+          <a
+            href="/projects"
+            class="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 transition hover:bg-white/10"
+          >
+            {$t.home.teaserProjects.cta}
+            <ArrowRight class="h-4 w-4 transition group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </Reveal>
+    {/if}
 
     <!-- Featured: Piton -->
     <Reveal>
@@ -124,7 +156,7 @@
 
             <div class="mt-7 flex flex-wrap gap-3">
               <a
-                href="#lab"
+                href="/lab"
                 class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:brightness-110"
               >
                 {$t.projects.featured.piton.cta1}
@@ -168,6 +200,7 @@
     </Reveal>
 
     <!-- Grid of other projects -->
+    {#if variant === 'full'}
     <div class="grid gap-5 md:grid-cols-2">
       {#each order as key, i}
         {@const project = $t.projects.list[key]}
@@ -233,5 +266,6 @@
         </Reveal>
       {/each}
     </div>
+    {/if}
   </div>
 </section>

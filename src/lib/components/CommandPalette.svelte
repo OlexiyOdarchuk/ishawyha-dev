@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
+  import { goto } from '$app/navigation';
   import { t, lang, setLang } from '$lib/i18n';
   import { Search, ArrowRight } from 'lucide-svelte';
 
@@ -17,9 +18,8 @@
   let inputEl: HTMLInputElement | null = $state(null);
   let listEl: HTMLUListElement | null = $state(null);
 
-  function scrollTo(id: string) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function nav(path: string) {
+    goto(path);
   }
 
   async function copy(text: string) {
@@ -35,13 +35,14 @@
 
   // Commands are derived so labels translate with $t.
   const commands = $derived<Cmd[]>([
-    { id: 'goto-about',        title: $t.palette.gotoAbout,        keywords: 'about me',          run: () => scrollTo('about') },
-    { id: 'goto-achievements', title: $t.palette.gotoAchievements, keywords: 'wins hackathon',    run: () => scrollTo('achievements') },
-    { id: 'goto-projects',     title: $t.palette.gotoProjects,     keywords: 'piton shminer',     run: () => scrollTo('projects') },
-    { id: 'goto-services',     title: $t.palette.gotoServices,     keywords: 'hire freelance order замовити послуги', run: () => scrollTo('services') },
-    { id: 'goto-lab',          title: $t.palette.gotoLab,          keywords: 'piton playground',  run: () => scrollTo('lab') },
-    { id: 'goto-bench',        title: $t.palette.gotoBench,        keywords: 'sha256 hashrate',   run: () => scrollTo('bench') },
-    { id: 'goto-contact',      title: $t.palette.gotoContact,      keywords: 'email telegram',    run: () => scrollTo('contact') },
+    { id: 'goto-home',         title: $t.palette.gotoHome,         keywords: 'home main головна',  run: () => nav('/') },
+    { id: 'goto-about',        title: $t.palette.gotoAbout,        keywords: 'about me',          run: () => nav('/about') },
+    { id: 'goto-achievements', title: $t.palette.gotoAchievements, keywords: 'wins hackathon',    run: () => nav('/about#achievements') },
+    { id: 'goto-projects',     title: $t.palette.gotoProjects,     keywords: 'piton shminer',     run: () => nav('/projects') },
+    { id: 'goto-services',     title: $t.palette.gotoServices,     keywords: 'hire freelance order замовити послуги', run: () => nav('/services') },
+    { id: 'goto-lab',          title: $t.palette.gotoLab,          keywords: 'piton playground',  run: () => nav('/lab') },
+    { id: 'goto-bench',        title: $t.palette.gotoBench,        keywords: 'sha256 hashrate',   run: () => nav('/lab#bench') },
+    { id: 'goto-contact',      title: $t.palette.gotoContact,      keywords: 'email telegram',    run: () => nav('/#contact') },
     { id: 'copy-email',        title: $t.palette.copyEmail,        hint: 'me@ishawyha.dev',       run: () => copy('me@ishawyha.dev') },
     { id: 'open-telegram',     title: $t.palette.openTelegram,     hint: '@NeShawyha',            run: () => window.open('https://t.me/NeShawyha', '_blank') },
     { id: 'open-github',       title: $t.palette.openGithub,       hint: 'OlexiyOdarchuk',        run: () => window.open('https://github.com/OlexiyOdarchuk', '_blank') },

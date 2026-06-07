@@ -4,6 +4,7 @@
     "description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
   },
   "nav": {
+    "home": "Home",
     "about": "About",
     "achievements": "Wins",
     "projects": "Projects",
@@ -13,6 +14,43 @@
     "contact": "Contact",
     "openMenu": "Open menu",
     "closeMenu": "Close menu"
+  },
+  "pages": {
+    "projects": {
+      "metaTitle": "Projects — Oleksii Odarchuk",
+      "metaDesc": "Selected projects: Piton, go-monobank-sdk, monokasa, SHMiner and more — Go, WebAssembly, Telegram bots.",
+      "kicker": "// projects/",
+      "title": "Projects",
+      "subtitle": "What I build off-hours — from my own programming language to SDKs and bots."
+    },
+    "lab": {
+      "metaTitle": "Piton Lab — try the Piton language in your browser",
+      "metaDesc": "Interactive lab: run Piton code right in your browser (WebAssembly) and compare JS vs Go·WASM speed.",
+      "kicker": "// lab/",
+      "title": "Piton Lab",
+      "subtitle": "Run my programming language right in the browser and watch the live SHA-256 benchmark."
+    },
+    "services": {
+      "metaTitle": "Services — hire me",
+      "metaDesc": "I take commercial work: Telegram bots, Go backends, web apps, automation. Send a request.",
+      "kicker": "// services/",
+      "title": "Hire me",
+      "subtitle": "Backends, bots and integrations end to end — clean architecture and real deadlines."
+    },
+    "about": {
+      "metaTitle": "About — Oleksii Odarchuk",
+      "metaDesc": "Go backend developer, creator of the Piton language. Wins, stack, education and contacts.",
+      "kicker": "// about/",
+      "title": "About me",
+      "subtitle": "Go backend engineer, creator of the Piton language. A bit about the path, results and tech."
+    }
+  },
+  "home": {
+    "teaserProjects": {
+      "title": "Selected projects",
+      "subtitle": "The flagship is Piton. Plus SDKs, bots and a miner.",
+      "cta": "All projects"
+    }
   },
   "hero": {
     "available": "Open to offers",
@@ -163,6 +201,13 @@
         "subtitle": "Telegram bot for applicants",
         "description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
         "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
+      },
+      "rombik": {
+        "kicker": "Live in browser",
+        "title": "rombik",
+        "subtitle": "Flowcharts from Python (DSTU)",
+        "description": "Generates DSTU 19.701-90 flowcharts straight from Python code — if/elif/else, for, while, functions, I/O, arbitrarily nested. A Go parser compiled to WebAssembly: parsing happens locally in the browser, nothing leaves the client. SVG/PNG export, no signup.",
+        "tags": ["Go", "Svelte", "WebAssembly", "AST", "SVG", "DSTU"]
       }
     }
   },
@@ -170,6 +215,7 @@
     "kicker": "// services/",
     "title": "Hire me",
     "subtitle": "I take on commercial work — backends, bots, and integrations. Clean architecture and real deadlines, like a hackathon but without the rush.",
+    "teaserCta": "Hire me",
     "list": {
       "bots": {
         "title": "Telegram bots",
@@ -330,6 +376,7 @@
   "palette": {
     "placeholder": "Search a command or section...",
     "empty": "No matches",
+    "gotoHome": "Go to → Home",
     "gotoAbout": "Go to → About",
     "gotoAchievements": "Go to → Wins",
     "gotoProjects": "Go to → Projects",

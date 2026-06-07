@@ -1,22 +1,28 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
+  import { page } from '$app/state';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
   import { onMount } from 'svelte';
   import { Menu, X } from 'lucide-svelte';
 
   let scrolled = $state(false);
   let mobileOpen = $state(false);
-  let activeId = $state('');
 
   const links = $derived([
-    { id: 'about', label: $t.nav.about },
-    { id: 'achievements', label: $t.nav.achievements },
-    { id: 'projects', label: $t.nav.projects },
-    { id: 'services', label: $t.nav.services },
-    { id: 'lab', label: $t.nav.lab },
-    { id: 'bench', label: $t.nav.bench },
-    { id: 'contact', label: $t.nav.contact }
+    { href: '/', label: $t.nav.home },
+    { href: '/projects', label: $t.nav.projects },
+    { href: '/services', label: $t.nav.services },
+    { href: '/lab', label: $t.nav.lab },
+    { href: '/about', label: $t.nav.about }
   ]);
+
+  // Active when the path matches exactly, or is a sub-path (never treat '/'
+  // as a prefix of everything).
+  function isActive(href: string): boolean {
+    const path = page.url.pathname;
+    if (href === '/') return path === '/';
+    return path === href || path.startsWith(href + '/');
+  }
 
   function closeMobile() {
     mobileOpen = false;
@@ -29,26 +35,6 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    const ids = ['about', 'achievements', 'projects', 'services', 'lab', 'bench', 'stack', 'education', 'contact'];
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    let observer: IntersectionObserver | null = null;
-    if (sections.length && typeof IntersectionObserver !== 'undefined') {
-      observer = new IntersectionObserver(
-        (entries) => {
-          // Pick the entry closest to the top among intersecting ones.
-          const visible = entries
-            .filter((e) => e.isIntersecting)
-            .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-          if (visible[0]) activeId = visible[0].target.id;
-        },
-        { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
-      );
-      for (const s of sections) observer.observe(s);
-    }
-
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileOpen) mobileOpen = false;
     };
@@ -57,7 +43,6 @@
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('keydown', onKey);
-      observer?.disconnect();
     };
   });
 
@@ -83,7 +68,7 @@
     : 'bg-transparent'}"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="#top" class="group flex items-center gap-2 text-sm font-semibold tracking-tight" onclick={closeMobile}>
+    <a href="/" class="group flex items-center gap-2 text-sm font-semibold tracking-tight" onclick={closeMobile}>
       <span
         class="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-violet-500 via-pink-500 to-amber-400 font-mono text-[11px] text-black shadow-lg shadow-violet-500/30"
       >
@@ -95,9 +80,9 @@
     <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
       {#each links as link}
         <a
-          href="#{link.id}"
-          aria-current={activeId === link.id ? 'page' : undefined}
-          class="rounded-full px-3 py-1.5 text-sm transition {activeId === link.id
+          href={link.href}
+          aria-current={isActive(link.href) ? 'page' : undefined}
+          class="rounded-full px-3 py-1.5 text-sm transition {isActive(link.href)
             ? 'bg-white/10 text-white'
             : 'text-[var(--color-muted)] hover:bg-white/5 hover:text-white'}"
         >
@@ -145,10 +130,10 @@
           {#each links as link}
             <li>
               <a
-                href="#{link.id}"
+                href={link.href}
                 onclick={closeMobile}
-                aria-current={activeId === link.id ? 'page' : undefined}
-                class="block rounded-xl px-4 py-3 text-base transition {activeId === link.id
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                class="block rounded-xl px-4 py-3 text-base transition {isActive(link.href)
                   ? 'bg-white/10 text-white'
                   : 'text-white/80 hover:bg-white/5 hover:text-white'}"
               >

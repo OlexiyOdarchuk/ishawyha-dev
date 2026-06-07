@@ -1,27 +1,26 @@
 <script lang="ts">
+  import { t } from '$lib/i18n';
+  import Seo from '$lib/components/Seo.svelte';
   import Hero from '$lib/components/Hero.svelte';
   import LiveActivity from '$lib/components/LiveActivity.svelte';
   import About from '$lib/components/About.svelte';
-  import Achievements from '$lib/components/Achievements.svelte';
   import Projects from '$lib/components/Projects.svelte';
   import Services from '$lib/components/Services.svelte';
-  import PitonLab from '$lib/components/PitonLab.svelte';
-  import Bench from '$lib/components/Bench.svelte';
-  import Stack from '$lib/components/Stack.svelte';
-  import Education from '$lib/components/Education.svelte';
   import Contact from '$lib/components/Contact.svelte';
-  import Footer from '$lib/components/Footer.svelte';
 </script>
+
+<Seo title={$t.meta.title} description={$t.meta.description} path="/" />
 
 <Hero />
 <LiveActivity />
+
 <About />
-<Achievements />
-<Projects />
-<Services />
-<PitonLab />
-<Bench />
-<Stack />
-<Education />
+
+<!-- Featured project teaser → /projects -->
+<Projects variant="featured" />
+
+<!-- Services teaser → /services -->
+<Services variant="teaser" />
+
+<!-- Contact CTA -->
 <Contact />
-<Footer />

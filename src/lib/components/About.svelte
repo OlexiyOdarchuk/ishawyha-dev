@@ -1,16 +1,21 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
+
+  // showHeader is turned off when a PageHero already titles the page.
+  let { showHeader = true }: { showHeader?: boolean } = $props();
 </script>
 
 <section id="about" class="scroll-mt-nav relative px-6 py-24">
   <div class="mx-auto max-w-6xl">
-    <Reveal>
-      <div class="mb-10">
-        <span class="font-mono text-sm text-violet-400">// Hello World!</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.about.title}</h2>
-      </div>
-    </Reveal>
+    {#if showHeader}
+      <Reveal>
+        <div class="mb-10">
+          <span class="font-mono text-sm text-violet-400">// Hello World!</span>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.about.title}</h2>
+        </div>
+      </Reveal>
+    {/if}
 
     <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
       <Reveal delay={80}>

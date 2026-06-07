@@ -3,6 +3,12 @@
   import Reveal from './Reveal.svelte';
   import { Bot, Server, LayoutTemplate, Workflow, Send, Check, AlertTriangle, Loader2, ArrowRight } from 'lucide-svelte';
 
+  // 'full' = service cards + order form (used on /services).
+  // 'teaser' = cards + a CTA to /services (used on Home).
+  // showHeader is turned off when a PageHero already titles the page.
+  let { variant = 'full', showHeader = true }: { variant?: 'full' | 'teaser'; showHeader?: boolean } =
+    $props();
+
   // Same Cloudflare Worker that SHMiner posts telemetry to — it forwards to my
   // Telegram. We just send a different payload `type` ("order"), handled there.
   const ENDPOINT = 'https://s-uah-miner-telemetry.ishawyha.workers.dev';
@@ -83,13 +89,15 @@
 
 <section id="services" class="scroll-mt-nav relative px-6 py-24">
   <div class="mx-auto max-w-6xl">
-    <Reveal>
-      <div class="mb-12">
-        <span class="font-mono text-sm text-emerald-300">{$t.services.kicker}</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.services.title}</h2>
-        <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.services.subtitle}</p>
-      </div>
-    </Reveal>
+    {#if showHeader}
+      <Reveal>
+        <div class="mb-12">
+          <span class="font-mono text-sm text-emerald-300">{$t.services.kicker}</span>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.services.title}</h2>
+          <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.services.subtitle}</p>
+        </div>
+      </Reveal>
+    {/if}
 
     <!-- Service cards -->
     <div class="mb-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -114,6 +122,20 @@
       {/each}
     </div>
 
+    {#if variant === 'teaser'}
+      <!-- Teaser CTA → full services page -->
+      <Reveal>
+        <div class="flex justify-center">
+          <a
+            href="/services"
+            class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:brightness-110"
+          >
+            {$t.services.teaserCta}
+            <ArrowRight class="h-4 w-4 transition group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </Reveal>
+    {:else}
     <!-- Order form -->
     <Reveal>
       <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl p-8 sm:p-10">
@@ -263,5 +285,6 @@
         </div>
       </div>
     </Reveal>
+    {/if}
   </div>
 </section>

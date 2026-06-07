@@ -7,6 +7,9 @@
   import { Play, GitBranch, Terminal, Loader2, Sparkles, ChevronDown, Share2, Check } from 'lucide-svelte';
   import { onMount } from 'svelte';
 
+  // showHeader is turned off when a PageHero already titles the page.
+  let { showHeader = true }: { showHeader?: boolean } = $props();
+
   type Status = 'idle' | 'loading' | 'ready' | 'error';
   let status = $state<Status>('idle');
   let vizLoading = $state(false);
@@ -217,13 +220,15 @@
 
 <section id="lab" class="scroll-mt-nav relative px-6 py-24">
   <div class="mx-auto max-w-6xl">
-    <Reveal>
-      <div class="mb-10">
-        <span class="font-mono text-sm text-cyan-300">// {$t.lab.kicker}</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.lab.title}</h2>
-        <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.subtitle}</p>
-      </div>
-    </Reveal>
+    {#if showHeader}
+      <Reveal>
+        <div class="mb-10">
+          <span class="font-mono text-sm text-cyan-300">// {$t.lab.kicker}</span>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.lab.title}</h2>
+          <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.subtitle}</p>
+        </div>
+      </Reveal>
+    {/if}
 
     <Reveal>
       <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl">

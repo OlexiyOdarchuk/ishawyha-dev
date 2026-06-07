@@ -4,6 +4,7 @@
     "description": "Backend Developer (Go), творець мови Piton. BEST Hackathon 2026 — 1-ше місце. DOU Day 2026 — Student with High Potential."
   },
   "nav": {
+    "home": "Головна",
     "about": "Про мене",
     "achievements": "Досягнення",
     "projects": "Проєкти",
@@ -13,6 +14,43 @@
     "contact": "Зв'язок",
     "openMenu": "Відкрити меню",
     "closeMenu": "Закрити меню"
+  },
+  "pages": {
+    "projects": {
+      "metaTitle": "Проєкти — Олексій Одарчук",
+      "metaDesc": "Вибрані проєкти: Piton, go-monobank-sdk, monokasa, SHMiner та інші — Go, WebAssembly, Telegram-боти.",
+      "kicker": "// projects/",
+      "title": "Проєкти",
+      "subtitle": "Те, що я будую у вільний час — від власної мови програмування до SDK і ботів."
+    },
+    "lab": {
+      "metaTitle": "Piton Lab — спробуй мову Piton у браузері",
+      "metaDesc": "Інтерактивна лабораторія: запусти код мовою Piton прямо в браузері (WebAssembly) і порівняй швидкість JS vs Go·WASM.",
+      "kicker": "// lab/",
+      "title": "Piton Lab",
+      "subtitle": "Запусти мою мову програмування прямо в браузері й поглянь на живий бенчмарк SHA-256."
+    },
+    "services": {
+      "metaTitle": "Послуги — замовити розробку",
+      "metaDesc": "Беру комерційні замовлення: Telegram-боти, бекенд на Go, веб-додатки, автоматизація. Залиш заявку.",
+      "kicker": "// services/",
+      "title": "Замовити розробку",
+      "subtitle": "Бекенд, боти та інтеграції під ключ — з чіткою архітектурою й дедлайнами."
+    },
+    "about": {
+      "metaTitle": "Про мене — Олексій Одарчук",
+      "metaDesc": "Backend-розробник на Go, творець мови Piton. Досягнення, стек, освіта та контакти.",
+      "kicker": "// about/",
+      "title": "Про мене",
+      "subtitle": "Backend-інженер на Go, творець мови Piton. Трохи про шлях, результати й технології."
+    }
+  },
+  "home": {
+    "teaserProjects": {
+      "title": "Вибрані проєкти",
+      "subtitle": "Особливий проєкт — Piton. А ще SDK, боти й майнер.",
+      "cta": "Усі проєкти"
+    }
   },
   "hero": {
     "available": "Відкритий до пропозицій",
@@ -163,6 +201,13 @@
         "subtitle": "Telegram-бот для абітурієнтів",
         "description": "Telegram-бот, що допомагає українським студентам відстежувати рейтинги вступу. Реверснув закриті third-party API. 150+ активних користувачів за перший рік, маркетинг-кампанія на 2026.",
         "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
+      },
+      "rombik": {
+        "kicker": "Live в браузері",
+        "title": "rombik",
+        "subtitle": "Блок-схеми з Python за ДСТУ",
+        "description": "Генерує блок-схеми за ДСТУ 19.701-90 прямо з Python-коду — if/elif/else, for, while, функції, ввід-вивід, вкладеність будь-якої глибини. Парсер на Go скомпільований у WebAssembly: розбір коду відбувається локально в браузері, нічого не йде на сервер. Експорт у SVG/PNG, без реєстрації.",
+        "tags": ["Go", "Svelte", "WebAssembly", "AST", "SVG", "ДСТУ"]
       }
     }
   },
@@ -170,6 +215,7 @@
     "kicker": "// services/",
     "title": "Замовити розробку",
     "subtitle": "Беру комерційні замовлення на бекенд, ботів та інтеграції. Працюю з чіткою архітектурою і дедлайнами — як на хакатонах, тільки без поспіху.",
+    "teaserCta": "Замовити розробку",
     "list": {
       "bots": {
         "title": "Telegram-боти",
@@ -330,6 +376,7 @@
   "palette": {
     "placeholder": "Шукай команду або секцію...",
     "empty": "Нічого не знайдено",
+    "gotoHome": "Перейти → Головна",
     "gotoAbout": "Перейти → Про мене",
     "gotoAchievements": "Перейти → Досягнення",
     "gotoProjects": "Перейти → Проєкти",

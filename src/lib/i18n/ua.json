@@ -13,7 +13,8 @@
     "bench": "Бенч",
     "contact": "Зв'язок",
     "openMenu": "Відкрити меню",
-    "closeMenu": "Закрити меню"
+    "closeMenu": "Закрити меню",
+    "donate": "Підтримати"
   },
   "pages": {
     "projects": {

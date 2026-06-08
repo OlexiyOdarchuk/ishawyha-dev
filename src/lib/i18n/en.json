@@ -13,7 +13,8 @@
     "bench": "Bench",
     "contact": "Contact",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "donate": "Donate"
   },
   "pages": {
     "projects": {

@@ -3,7 +3,7 @@
   import { page } from '$app/state';
   import LanguageSwitcher from './LanguageSwitcher.svelte';
   import { onMount } from 'svelte';
-  import { Menu, X } from 'lucide-svelte';
+  import { Menu, X, Coffee } from 'lucide-svelte';
 
   let scrolled = $state(false);
   let mobileOpen = $state(false);
@@ -92,6 +92,15 @@
     </nav>
 
     <div class="flex items-center gap-3">
+      <a
+        href="https://send.monobank.ua/jar/23E3WYNesG"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-300 transition hover:bg-rose-500/20 sm:flex"
+      >
+        <Coffee class="h-3.5 w-3.5" />
+        {$t.nav.donate}
+      </a>
       <LanguageSwitcher />
       <button
         type="button"
@@ -141,6 +150,17 @@
               </a>
             </li>
           {/each}
+          <li>
+            <a
+              href="https://send.monobank.ua/jar/23E3WYNesG"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-2 flex items-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-base font-medium text-rose-300 transition hover:bg-rose-500/20"
+            >
+              <Coffee class="h-5 w-5" />
+              {$t.nav.donate}
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

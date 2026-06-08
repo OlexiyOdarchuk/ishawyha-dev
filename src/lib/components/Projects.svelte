@@ -3,7 +3,7 @@
   import Reveal from './Reveal.svelte';
   import TypewriterCode from './TypewriterCode.svelte';
   import { goto } from '$app/navigation';
-  import { Github, ExternalLink, Sparkles, ArrowRight, Activity } from 'lucide-svelte';
+  import { Github, ExternalLink, Sparkles, ArrowRight, Activity, Globe } from 'lucide-svelte';
 
   // 'full' = featured Piton + grid (used on /projects).
   // 'featured' = just the featured Piton card (used as a teaser on Home).
@@ -15,6 +15,18 @@
     e.preventDefault();
     e.stopPropagation();
     goto('/lab#bench');
+  }
+
+  // Projects with a live deployment — the card leads to the site, with a
+  // secondary button to the source.
+  const live: Partial<Record<(typeof order)[number], string>> = {
+    rombik: 'https://rombik.ishawyha.dev'
+  };
+
+  function openExternal(e: MouseEvent, url: string) {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   const pitonSnippet = [
@@ -207,10 +219,10 @@
         {@const accent = accents[key]}
         <Reveal delay={i * 80}>
           <a
-            href={links[key]}
+            href={live[key] ?? links[key]}
             target="_blank"
             rel="noopener noreferrer"
-            class="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border p-7 transition hover:-translate-y-1 hover:bg-white/[0.06] {accent ? accent.ring : 'border-white/10 hover:border-white/20'}"
+            class="glass group relative flex h-full flex-col overflow-hidden rounded-3xl border p-7 transition hover:-translate-y-1 hover:bg-white/[0.06] {accent ? accent.ring : 'border-white/10 hover:border-white/20'} md:[&:last-child:nth-child(odd)]:col-span-2"
           >
             {#if accent}
               <div class="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-gradient-to-br {accent.glow} blur-3xl"></div>
@@ -230,7 +242,11 @@
               <span
                 class="grid h-9 w-9 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-[var(--color-muted)] transition group-hover:border-white/20 group-hover:text-white"
               >
-                <Github class="h-4 w-4" />
+                {#if live[key]}
+                  <Globe class="h-4 w-4" />
+                {:else}
+                  <Github class="h-4 w-4" />
+                {/if}
               </span>
             </div>
 
@@ -248,7 +264,7 @@
 
             <div class="relative mt-5 flex items-center justify-between gap-3">
               <span class="inline-flex items-center gap-1.5 text-xs font-medium text-white/75 transition {accent ? accent.tagAccent : 'group-hover:text-violet-300'}">
-                {$t.projects.viewSource}
+                {live[key] ? $t.projects.viewLive : $t.projects.viewSource}
                 <ArrowRight class="h-3.5 w-3.5 transition group-hover:translate-x-0.5" />
               </span>
               {#if key === 'shminer'}
@@ -259,6 +275,16 @@
                 >
                   <Activity class="h-3 w-3" />
                   {$t.projects.liveBench}
+                </button>
+              {:else if live[key]}
+                <button
+                  type="button"
+                  onclick={(e) => openExternal(e, links[key])}
+                  class="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-white/70 transition hover:border-white/20 hover:text-white"
+                  aria-label="GitHub"
+                >
+                  <Github class="h-3 w-3" />
+                  {$t.projects.sourceShort}
                 </button>
               {/if}
             </div>

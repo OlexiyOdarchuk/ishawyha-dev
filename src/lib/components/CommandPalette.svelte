@@ -42,6 +42,7 @@
     { id: 'goto-services',     title: $t.palette.gotoServices,     keywords: 'hire freelance order замовити послуги', run: () => nav('/services') },
     { id: 'goto-lab',          title: $t.palette.gotoLab,          keywords: 'piton playground',  run: () => nav('/lab') },
     { id: 'goto-bench',        title: $t.palette.gotoBench,        keywords: 'sha256 hashrate',   run: () => nav('/lab#bench') },
+    { id: 'goto-rombik',       title: $t.palette.gotoRombik,       keywords: 'rombik flowchart блок-схема dstu python', run: () => nav('/lab#rombik') },
     { id: 'goto-contact',      title: $t.palette.gotoContact,      keywords: 'email telegram',    run: () => nav('/#contact') },
     { id: 'copy-email',        title: $t.palette.copyEmail,        hint: 'me@ishawyha.dev',       run: () => copy('me@ishawyha.dev') },
     { id: 'open-telegram',     title: $t.palette.openTelegram,     hint: '@NeShawyha',            run: () => window.open('https://t.me/NeShawyha', '_blank') },

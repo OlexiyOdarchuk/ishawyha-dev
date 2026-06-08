@@ -16,15 +16,6 @@
       <p class="flex flex-wrap items-center gap-x-2 font-mono text-xs text-[var(--color-muted)]">
         {$t.footer.made}
         <span class="text-violet-300">·</span>
-        <a
-          href="https://github.com/OlexiyOdarchuk/piton"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-white/80 transition hover:text-violet-200"
-        >
-          built with Piton DNA
-        </a>
-        <span class="text-violet-300">·</span>
         <span title="git short hash · build date">
           {buildHash} · {buildDate}
         </span>

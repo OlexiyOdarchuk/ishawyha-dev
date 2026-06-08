@@ -9,7 +9,7 @@
     "achievements": "Wins",
     "projects": "Projects",
     "services": "Services",
-    "lab": "Piton Lab",
+    "lab": "Lab",
     "bench": "Bench",
     "contact": "Contact",
     "openMenu": "Open menu",
@@ -24,11 +24,11 @@
       "subtitle": "What I build off-hours — from my own programming language to SDKs and bots."
     },
     "lab": {
-      "metaTitle": "Piton Lab — try the Piton language in your browser",
-      "metaDesc": "Interactive lab: run Piton code right in your browser (WebAssembly) and compare JS vs Go·WASM speed.",
+      "metaTitle": "Lab — Piton, rombik, benchmark in the browser",
+      "metaDesc": "Interactive lab: run the Piton language in your browser (WebAssembly), play with rombik (DSTU flowcharts), and compare JS vs Go·WASM speed.",
       "kicker": "// lab/",
-      "title": "Piton Lab",
-      "subtitle": "Run my programming language right in the browser and watch the live SHA-256 benchmark."
+      "title": "Lab",
+      "subtitle": "My things, live: the Piton language in the browser, rombik (flowcharts from code, DSTU), and a live SHA-256 benchmark."
     },
     "services": {
       "metaTitle": "Services — hire me",
@@ -146,13 +146,15 @@
     "title": "Selected projects",
     "subtitle": "What I build off-hours — and what I'm proud of.",
     "viewSource": "View on GitHub",
+    "viewLive": "Open the site",
+    "sourceShort": "Source",
     "liveBench": "Live benchmark",
     "featured": {
       "piton": {
         "kicker": "Flagship",
         "name": "Piton",
         "tagline": "A Ukrainian programming language with a homegrown interpreter",
-        "description": "A lightweight interpreted language with an authentic Ukrainian syntax (in transliteration). Recursive descent parser, tree-walking evaluator, native SVG flowchart generation, Turing-complete. Written from scratch in Go, no yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — 220 KB instead of 24 MB, runs entirely in the browser.",
+        "description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. Now embeds the rombik project to generate SVG flowcharts. The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server.",
         "tags": ["Go", "TinyGo", "WebAssembly", "AST", "SVG", "Nix"],
         "cta1": "Try in your browser",
         "cta2": "Documentation",
@@ -203,11 +205,11 @@
         "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
       },
       "rombik": {
-        "kicker": "Live in browser",
+        "kicker": "Live · compiler",
         "title": "rombik",
-        "subtitle": "Flowcharts from Python (DSTU)",
-        "description": "Generates DSTU 19.701-90 flowcharts straight from Python code — if/elif/else, for, while, functions, I/O, arbitrarily nested. A Go parser compiled to WebAssembly: parsing happens locally in the browser, nothing leaves the client. SVG/PNG export, no signup.",
-        "tags": ["Go", "Svelte", "WebAssembly", "AST", "SVG", "DSTU"]
+        "subtitle": "Python → DSTU flowchart",
+        "description": "A compiler pipeline for DSTU 19.701-90 flowcharts. Python is parsed by CPython's ast right in the browser via Pyodide, then a Go engine (compiled to WASM) builds an IR → recursive tree layout (size/place) → A* edge routing on a Hanan grid with a turn penalty. Renders to SVG, PNG, PDF and Typst — natively in Go, with zero external binaries. Fully local: code never leaves the browser.",
+        "tags": ["Go", "WebAssembly", "Pyodide", "A* routing", "SVG · PDF", "DSTU"]
       }
     }
   },
@@ -287,7 +289,38 @@
     "emptyFlow": "Hit \"Flowchart\" to generate SVG",
     "error": "Failed to load the interpreter",
     "share": "Share",
-    "shared": "Copied!"
+    "shared": "Copied!",
+    "piton": {
+      "highlights": [
+        { "title": "Latest Version 1.9.0", "desc": "The newest engine and optimizations straight from the repo." },
+        { "title": "WASM Interpreter", "desc": "Only ~220 KB for lightning-fast loading (via TinyGo)." },
+        { "title": "Flowcharts via rombik", "desc": "Native integration with the rombik engine for SVG generation." },
+        { "title": "100% Local", "desc": "Serverless and secure, all code runs directly in your browser." }
+      ]
+    },
+    "rombik": {
+      "kicker": "rombik",
+      "title": "rombik — flowcharts from code",
+      "subtitle": "Another tool in the spirit of Piton: a compiler that draws DSTU 19.701-90 flowcharts straight from Python — entirely in the browser.",
+      "body": "What colleges still draw by hand for hours, rombik builds in a second: paste Python, get a clean standards-compliant flowchart ready for coursework. The live editor is right here.",
+      "highlights": [
+        { "title": "Compiler pipeline", "desc": "Python → AST → IR → geometry → render; clean stage boundaries" },
+        { "title": "A* edge routing", "desc": "Few-bend edges — A* over a Hanan grid with a turn penalty" },
+        { "title": "Native export", "desc": "SVG · PNG · PDF · Typst in pure Go, zero external binaries" },
+        { "title": "100% local", "desc": "Parsing runs in Pyodide in the browser — code never leaves your device" }
+      ],
+      "openApp": "Open the full editor",
+      "source": "Source on GitHub",
+      "run": "Build",
+      "ready": "Done",
+      "building": "Building chart…",
+      "loadingPython": "Loading Python…",
+      "loadingEngine": "Loading engine…",
+      "emptyOutput": "Hit \"Build\" to see the flowchart",
+      "filename": "algorithm.py",
+      "weightHint": "First run pulls Python (Pyodide) + the rombik engine — a few MB; instant and local afterwards",
+      "examples": { "grade": "Grade", "loop": "Loop sum", "factorial": "Factorial" }
+    }
   },
   "bench": {
     "title": "JS vs Go·WASM — same hash, two engines",
@@ -383,6 +416,7 @@
     "gotoServices": "Go to → Services",
     "gotoLab": "Open → Piton Lab",
     "gotoBench": "Run → Benchmark",
+    "gotoRombik": "Open → rombik (flowcharts)",
     "gotoContact": "Go to → Contact",
     "copyEmail": "Copy email",
     "openTelegram": "Open Telegram",

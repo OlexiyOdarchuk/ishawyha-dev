@@ -4,7 +4,7 @@
   import FlowViewer from './FlowViewer.svelte';
   import { loadPiton, runPiton, visualizePiton } from '$lib/piton/runtime';
   import { EXAMPLES, KEYWORDS, type ExampleKey } from '$lib/piton/examples';
-  import { Play, GitBranch, Terminal, Loader2, Sparkles, ChevronDown, Share2, Check } from 'lucide-svelte';
+  import { Play, GitBranch, Terminal, Loader2, Sparkles, ChevronDown, Share2, Check, Zap, Cpu, Route, ShieldCheck } from 'lucide-svelte';
   import { onMount } from 'svelte';
 
   // showHeader is turned off when a PageHero already titles the page.
@@ -231,6 +231,23 @@
     {/if}
 
     <Reveal>
+      <ul class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {#each $t.lab.piton.highlights as h, i}
+          {@const Icon = [Zap, Cpu, Route, ShieldCheck][i]}
+          <li class="glass flex items-start gap-3 rounded-2xl p-4 transition hover:-translate-y-1 hover:bg-white/[0.06]">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/15 text-violet-300">
+              <Icon class="h-5 w-5" />
+            </span>
+            <div>
+              <div class="text-sm font-bold text-white">{h.title}</div>
+              <div class="mt-0.5 text-xs leading-relaxed text-[var(--color-muted)]">{h.desc}</div>
+            </div>
+          </li>
+        {/each}
+      </ul>
+    </Reveal>
+
+    <Reveal>
       <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl">
         <!-- Toolbar -->
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 bg-white/[0.02] px-5 py-3">
@@ -280,12 +297,12 @@
               onclick={handleRun}
               disabled={status === 'loading'}
               title="Ctrl + Enter"
-              class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-3.5 py-1.5 text-xs font-semibold text-white shadow-md shadow-violet-500/30 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-violet-500/30 transition hover:scale-105 hover:shadow-pink-500/40 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
             >
               {#if status === 'loading'}
-                <Loader2 class="h-3.5 w-3.5 animate-spin" />
+                <Loader2 class="h-4 w-4 animate-spin" />
               {:else}
-                <Play class="h-3.5 w-3.5" />
+                <Play class="h-4 w-4" />
               {/if}
               {$t.lab.run}
             </button>
@@ -295,12 +312,12 @@
               onclick={handleVisualize}
               disabled={status === 'loading' || vizLoading}
               title="Ctrl + B"
-              class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/90 transition hover:border-white/20 hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-50"
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
             >
               {#if vizLoading}
-                <Loader2 class="h-3.5 w-3.5 animate-spin" />
+                <Loader2 class="h-4 w-4 animate-spin" />
               {:else}
-                <GitBranch class="h-3.5 w-3.5" />
+                <GitBranch class="h-4 w-4" />
               {/if}
               {$t.lab.visualize}
             </button>
@@ -310,13 +327,13 @@
               onclick={handleShare}
               title={$t.lab.share}
               aria-label={$t.lab.share}
-              class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/90 transition hover:border-white/20 hover:bg-white/[0.08]"
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
             >
               {#if shareCopied}
-                <Check class="h-3.5 w-3.5 text-emerald-300" />
+                <Check class="h-4 w-4 text-emerald-300" />
                 {$t.lab.shared}
               {:else}
-                <Share2 class="h-3.5 w-3.5" />
+                <Share2 class="h-4 w-4" />
                 {$t.lab.share}
               {/if}
             </button>

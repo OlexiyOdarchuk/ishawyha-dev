@@ -294,7 +294,7 @@
 
             <button
               type="button"
-              onclick={handleRun}
+              onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_run'); handleRun(); }}
               disabled={status === 'loading'}
               title="Ctrl + Enter"
               class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-violet-500/30 transition hover:scale-105 hover:shadow-pink-500/40 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
@@ -309,7 +309,7 @@
 
             <button
               type="button"
-              onclick={handleVisualize}
+              onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_visualize'); handleVisualize(); }}
               disabled={status === 'loading' || vizLoading}
               title="Ctrl + B"
               class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
@@ -324,7 +324,7 @@
 
             <button
               type="button"
-              onclick={handleShare}
+              onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_share'); handleShare(); }}
               title={$t.lab.share}
               aria-label={$t.lab.share}
               class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"

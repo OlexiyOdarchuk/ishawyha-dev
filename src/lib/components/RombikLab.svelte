@@ -250,7 +250,7 @@
 
             <button
               type="button"
-              onclick={run}
+              onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_run'); run(); }}
               disabled={status === 'loading'}
               title="Ctrl + Enter"
               class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-rose-500/25 transition hover:scale-105 hover:shadow-amber-500/30 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
@@ -336,6 +336,7 @@
             href={APP}
             target="_blank"
             rel="noopener noreferrer"
+            onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_open_app')}
             class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
           >
             <ExternalLink class="h-4 w-4" />
@@ -345,6 +346,7 @@
             href={REPO}
             target="_blank"
             rel="noopener noreferrer"
+            onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_source')}
             class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
           >
             <Github class="h-4 w-4" />

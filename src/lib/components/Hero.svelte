@@ -47,6 +47,7 @@
       <div class="mt-10 flex flex-wrap items-center gap-3">
         <a
           href="/lab"
+          onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_hero_primary')}
           class="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 px-5 py-3 text-sm font-semibold text-black shadow-lg shadow-violet-500/30 transition hover:shadow-pink-500/40 hover:brightness-110"
         >
           <Sparkles class="h-4 w-4" />
@@ -56,6 +57,7 @@
 
         <a
           href="/services"
+          onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_hero_services')}
           class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 backdrop-blur transition hover:border-white/25 hover:bg-white/10"
         >
           <Mail class="h-4 w-4" />
@@ -66,6 +68,7 @@
           href="https://github.com/OlexiyOdarchuk"
           target="_blank"
           rel="noopener noreferrer"
+          onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_hero_github')}
           class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-transparent px-5 py-3 text-sm font-medium text-[var(--color-muted)] transition hover:border-white/20 hover:text-white"
         >
           <Github class="h-4 w-4" />
@@ -87,6 +90,7 @@
         <a
           href="/CV_Odarchuk_UA.pdf"
           download
+          onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'download_cv_ua')}
           class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/80 transition hover:border-amber-300/40 hover:bg-amber-300/5 hover:text-amber-200"
         >
           <FileDown class="h-3.5 w-3.5" />
@@ -95,6 +99,7 @@
         <a
           href="/CV_Odarchuk_EN.pdf"
           download
+          onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'download_cv_en')}
           class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs font-medium text-white/80 transition hover:border-amber-300/40 hover:bg-amber-300/5 hover:text-amber-200"
         >
           <FileDown class="h-3.5 w-3.5" />

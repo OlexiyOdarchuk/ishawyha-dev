@@ -12,6 +12,7 @@ declare global {
     };
     runPiton?: (code: string) => string;
     visualizePiton?: (code: string) => string;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 

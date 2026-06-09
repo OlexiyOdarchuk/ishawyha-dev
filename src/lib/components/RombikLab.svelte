@@ -173,10 +173,6 @@
     }
   }
 
-  import { onMount } from 'svelte';
-  onMount(() => {
-    if (typeof location !== 'undefined' && location.search.includes('rombikauto')) run();
-  });
 </script>
 
 <section id="rombik" class="scroll-mt-nav relative px-6 py-24">

@@ -11,6 +11,6 @@
 
 <PageHero kicker={$t.pages.lab.kicker} title={$t.pages.lab.title} subtitle={$t.pages.lab.subtitle} />
 
-<PitonLab showHeader={false} />
 <RombikLab />
+<PitonLab showHeader={false} />
 <Bench />

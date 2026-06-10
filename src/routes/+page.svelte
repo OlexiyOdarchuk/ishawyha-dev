@@ -16,11 +16,11 @@
 
 <About />
 
+<!-- Services teaser → /services (surfaced early: hire-me first) -->
+<Services variant="teaser" />
+
 <!-- Featured project teaser → /projects -->
 <Projects variant="featured" />
-
-<!-- Services teaser → /services -->
-<Services variant="teaser" />
 
 <!-- Contact CTA -->
 <Contact />

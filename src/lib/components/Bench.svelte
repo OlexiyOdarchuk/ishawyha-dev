@@ -292,7 +292,7 @@
   <div class="mx-auto max-w-6xl">
     <Reveal>
       <div class="mb-10">
-        <span class="font-mono text-sm text-emerald-300">// benchmark.bench</span>
+        <span class="font-mono text-sm text-cyan-300">// benchmark.bench</span>
         <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.bench.title}</h2>
         <p class="mt-3 max-w-3xl text-base leading-relaxed text-[var(--color-muted)]">{$t.bench.subtitle}</p>
       </div>

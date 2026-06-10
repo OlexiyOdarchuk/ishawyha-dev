@@ -69,7 +69,7 @@
 
   async function refit() {
     await tick();
-    // SVG can take a frame or two to lay out (D2 uses embedded styles + nested svg).
+    // SVG can take a frame or two to lay out (rombik's SVG has embedded styles + nested svg).
     let attempts = 0;
     const tryFit = () => {
       if (fit()) return;

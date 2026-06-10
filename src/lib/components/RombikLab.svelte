@@ -61,9 +61,7 @@
   }
 
   function stageLabel(s: LoadStage | ''): string {
-    if (s === 'python') return $t.lab.rombik.loadingPython;
     if (s === 'engine') return $t.lab.rombik.loadingEngine;
-    if (s === 'build') return $t.lab.rombik.building;
     return $t.lab.rombik.building;
   }
 

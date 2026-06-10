@@ -43,8 +43,13 @@
     </Reveal>
 
     <Reveal delay={120}>
+      <!-- Hire-me line -->
+      <p class="mt-6 max-w-2xl rounded-xl border border-emerald-400/20 bg-emerald-500/[0.06] px-4 py-2.5 text-sm font-medium text-emerald-100/90">
+        {$t.hero.hireLine}
+      </p>
+
       <!-- CTAs -->
-      <div class="mt-10 flex flex-wrap items-center gap-3">
+      <div class="mt-6 flex flex-wrap items-center gap-3">
         <a
           href="/lab"
           onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_hero_primary')}
@@ -58,7 +63,7 @@
         <a
           href="/services"
           onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_hero_services')}
-          class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white/90 backdrop-blur transition hover:border-white/25 hover:bg-white/10"
+          class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-5 py-3 text-sm font-semibold text-emerald-100 backdrop-blur transition hover:border-emerald-300/50 hover:bg-emerald-500/15"
         >
           <Mail class="h-4 w-4" />
           {$t.hero.ctaSecondary}

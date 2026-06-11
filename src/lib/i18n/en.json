@@ -51,6 +51,31 @@
       "title": "Selected projects",
       "subtitle": "The flagship is rombik (live + on npm). Plus the Piton language, SDKs, bots and a miner.",
       "cta": "All projects"
+    },
+    "metrics": {
+      "title": "By the numbers",
+      "items": [
+        {
+          "value": 1000,
+          "suffix": "×",
+          "label": "faster SHA-256 — Go vs JS in SHMiner"
+        },
+        {
+          "value": 150,
+          "suffix": "+",
+          "label": "AbitAssistant users"
+        },
+        {
+          "value": 4,
+          "suffix": "",
+          "label": "input languages in rombik"
+        },
+        {
+          "value": 5,
+          "suffix": "",
+          "label": "monobank APIs in go-monobank-sdk"
+        }
+      ]
     }
   },
   "hero": {
@@ -69,6 +94,7 @@
     "cvUa": "UA · PDF",
     "cvEn": "EN · PDF",
     "nowLabel": "Now",
+    "winsLabel": "Selected wins",
     "nowItems": [
       "Working as a Backend Golang developer at SkyService"
     ],
@@ -98,10 +124,22 @@
     "p1": "I'm a Go backend engineer, second-year student at Lviv Polytechnic IT College. I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
     "p2": "Outside of code: 10+ years of folk dancing, occasional poetry, and recently — screenwriting. That taught me rhythm and structure — the things every good product is built on.",
     "facts": [
-      { "label": "Based in", "value": "Mizoch, Rivne Region, Ukraine" },
-      { "label": "Education", "value": "Lviv Polytechnic IT College" },
-      { "label": "Stack", "value": "Go · C · TinyGo · PostgreSQL · Svelte" },
-      { "label": "Languages", "value": "Ukrainian (native), English B1" }
+      {
+        "label": "Based in",
+        "value": "Mizoch, Rivne Region, Ukraine"
+      },
+      {
+        "label": "Education",
+        "value": "Lviv Polytechnic IT College"
+      },
+      {
+        "label": "Stack",
+        "value": "Go · C · TinyGo · PostgreSQL · Svelte"
+      },
+      {
+        "label": "Languages",
+        "value": "Ukrainian (native), English B1"
+      }
     ]
   },
   "achievements": {
@@ -115,7 +153,13 @@
         "company": "GPS-less drone trajectory",
         "date": "April 18–19, 2026",
         "description": "Algorithm to reconstruct a UAV's trajectory without GPS — from IMU, barometer and other inertial-sensor logs. Sensor fusion in Go + C, clean modular architecture (telemetry / integration / simulation). The judges singled out the architectural resilience — 1st place among top teams.",
-        "tags": ["Go", "C", "Sensor Fusion", "IMU", "Inertial Nav"]
+        "tags": [
+          "Go",
+          "C",
+          "Sensor Fusion",
+          "IMU",
+          "Inertial Nav"
+        ]
       },
       "mate": {
         "label": "🥉 3rd place",
@@ -123,7 +167,13 @@
         "company": "AI MarTech (50 participants, 10 teams)",
         "date": "March 14, 2026",
         "description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banano 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
-        "tags": ["Go", "GPT-4o", "fal.ai", "REST", "7-hour MVP"]
+        "tags": [
+          "Go",
+          "GPT-4o",
+          "fal.ai",
+          "REST",
+          "7-hour MVP"
+        ]
       },
       "dou": {
         "label": "🎟 Invitation",
@@ -131,7 +181,11 @@
         "company": "Student with High Potential",
         "date": "2026",
         "description": "Personally invited by the organisers to DOU Day with a free ticket as a student with high potential. Dedicated track for promising student developers.",
-        "tags": ["Invitation", "Free ticket", "Community"]
+        "tags": [
+          "Invitation",
+          "Free ticket",
+          "Community"
+        ]
       },
       "security": {
         "label": "🛡 Disclosure → offer",
@@ -139,7 +193,13 @@
         "company": "Student Hryvnia (college blockchain)",
         "date": "2026",
         "description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool — 1000× faster.",
-        "tags": ["Reverse engineering", "Go", "Goroutines", "AES", "WebSockets"]
+        "tags": [
+          "Reverse engineering",
+          "Go",
+          "Goroutines",
+          "AES",
+          "WebSockets"
+        ]
       }
     }
   },
@@ -156,7 +216,14 @@
         "name": "rombik",
         "tagline": "Code → DSTU flowchart, right in the browser",
         "description": "A compiler that turns Python, C++, C and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. The engine is pure TypeScript, published on npm (rombik-engine, zero runtime deps): tree-sitter → AST → layout → SVG/Typst/Excalidraw. Fully local — code never leaves the browser. Ships a visual editor and 1-click PDF export.",
-        "tags": ["TypeScript", "tree-sitter", "npm", "WebAssembly", "SVG · Typst", "DSTU"],
+        "tags": [
+          "TypeScript",
+          "tree-sitter",
+          "npm",
+          "WebAssembly",
+          "SVG · Typst",
+          "DSTU"
+        ],
         "cta1": "Try it live",
         "cta2": "Open the app",
         "cta3": "GitHub"
@@ -166,9 +233,16 @@
         "name": "Piton",
         "tagline": "A Ukrainian programming language with a homegrown interpreter",
         "description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. Now embeds the rombik project to generate SVG flowcharts. The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server.",
-        "tags": ["Go", "TinyGo", "WebAssembly", "AST", "SVG", "Nix"],
-        "cta1": "Try in your browser",
-        "cta2": "Documentation",
+        "tags": [
+          "Go",
+          "TinyGo",
+          "WebAssembly",
+          "AST",
+          "SVG",
+          "Nix"
+        ],
+        "cta1": "Try in the browser",
+        "cta2": "Open documentation",
         "cta3": "GitHub"
       }
     },
@@ -178,56 +252,109 @@
         "title": "Piton",
         "subtitle": "A Ukrainian programming language + interpreter",
         "description": "An interpreted language with authentic Ukrainian syntax (transliterated): recursive descent parser, tree-walking evaluator, Turing-complete, written from scratch in Go without yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — ~220 KB, runs right in the browser. Flowcharts are generated by the embedded rombik.",
-        "tags": ["Go", "TinyGo", "WebAssembly", "AST", "Nix"]
+        "tags": [
+          "Go",
+          "TinyGo",
+          "WebAssembly",
+          "AST",
+          "Nix"
+        ]
       },
       "gomonobanksdk": {
         "kicker": "Open source SDK",
         "title": "go-monobank-sdk",
         "subtitle": "Go SDK for every monobank API",
         "description": "Full coverage of personal, provider (with monoКЕП), business for legal entities, acquiring (subscriptions, monopay button, split-receivers, T2P) and Installment Purchases. ECDSA webhook verification with auto-rotating keys, drop-in http.Handler, typed money/currency/MCC, HMAC-SHA256 for installment callbacks, a fake monobank server for tests, and a separate OpenTelemetry sub-module.",
-        "tags": ["Go", "ECDSA", "HMAC-SHA256", "OpenTelemetry", "iter.Seq2", "MIT"]
+        "tags": [
+          "Go",
+          "ECDSA",
+          "HMAC-SHA256",
+          "OpenTelemetry",
+          "iter.Seq2",
+          "MIT"
+        ]
       },
       "monokasa": {
         "kicker": "SDK consumer",
         "title": "monokasa",
         "subtitle": "Telegram bot for selling tickets",
         "description": "Sells tickets to a single show through a monobank jar and issues PDFs with QR codes scanned at the venue entrance. Live consumer of my own go-monobank-sdk: webhook auto-registers at startup, reservations get a 15-minute hold, and show-time reminders fire at-most-once even across restarts.",
-        "tags": ["Go", "SQLite", "telebot", "PDF", "QR", "go-monobank-sdk"]
+        "tags": [
+          "Go",
+          "SQLite",
+          "telebot",
+          "PDF",
+          "QR",
+          "go-monobank-sdk"
+        ]
       },
       "shminer": {
         "kicker": "1000× faster",
         "title": "SHMiner",
         "subtitle": "Desktop crypto miner",
         "description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
-        "tags": ["Go", "Svelte", "Wails", "Goroutines", "WebSockets", "AES"]
+        "tags": [
+          "Go",
+          "Svelte",
+          "Wails",
+          "Goroutines",
+          "WebSockets",
+          "AES"
+        ]
       },
       "linkshortener": {
         "kicker": "",
         "title": "LinkShortener Bot",
         "subtitle": "Telegram + analytics",
         "description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
-        "tags": ["Go", "PostgreSQL", "Redis", "ClickHouse", "Docker"]
+        "tags": [
+          "Go",
+          "PostgreSQL",
+          "Redis",
+          "ClickHouse",
+          "Docker"
+        ]
       },
       "todolist": {
         "kicker": "",
         "title": "ToDoList Pro",
         "subtitle": "Production-grade task manager",
         "description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
-        "tags": ["Go", "Gin", "Svelte 5", "JWT", "OAuth 2.0", "PostgreSQL"]
+        "tags": [
+          "Go",
+          "Gin",
+          "Svelte 5",
+          "JWT",
+          "OAuth 2.0",
+          "PostgreSQL"
+        ]
       },
       "abit": {
         "kicker": "150+ users",
         "title": "AbitAssistant Bot",
         "subtitle": "Telegram bot for applicants",
         "description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
-        "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
+        "tags": [
+          "Python",
+          "Aiogram",
+          "PostgreSQL",
+          "BeautifulSoup",
+          "Pandas"
+        ]
       },
       "rombik": {
         "kicker": "Live · compiler",
         "title": "rombik",
         "subtitle": "Python · C++ · C · Pascal → DSTU flowchart",
         "description": "A compiler pipeline for DSTU 19.701-90 flowcharts — pure TypeScript, entirely in the browser. tree-sitter (a WASM grammar) parses Python, C++, C and Pascal into a language-agnostic AST-JSON → IR → recursive tree layout → bus-routed edges → render. The rombik-engine core (zero runtime deps) emits SVG, Typst and Excalidraw; PNG/PDF via browser canvas. Published on npm, runs in Node too. Fully local: code never leaves the browser.",
-        "tags": ["TypeScript", "tree-sitter", "WebAssembly", "SVG · Typst", "npm", "DSTU"]
+        "tags": [
+          "TypeScript",
+          "tree-sitter",
+          "WebAssembly",
+          "SVG · Typst",
+          "npm",
+          "DSTU"
+        ]
       }
     }
   },
@@ -240,22 +367,44 @@
       "bots": {
         "title": "Telegram bots",
         "description": "Bots of any complexity: sales and payments via monobank, analytics, scraping, reminders, API integrations. From MVP to a production-ready solution with a database and deployment.",
-        "tags": ["Go", "Python", "Aiogram", "PostgreSQL", "monobank"]
+        "tags": [
+          "Go",
+          "Python",
+          "Aiogram",
+          "PostgreSQL",
+          "monobank"
+        ]
       },
       "backend": {
         "title": "Backend & APIs",
         "description": "Go/Gin services with clean architecture, REST APIs, auth (JWT, OAuth 2.0), payment and webhook integrations, Docker deploys. Built to survive load and shifting requirements.",
-        "tags": ["Go", "Gin", "REST", "PostgreSQL", "Docker"]
+        "tags": [
+          "Go",
+          "Gin",
+          "REST",
+          "PostgreSQL",
+          "Docker"
+        ]
       },
       "web": {
         "title": "Web apps",
         "description": "Fast sites, landing pages and dashboards on SvelteKit + TypeScript + Tailwind. Animations, i18n, responsive, polished design — just like this site.",
-        "tags": ["Svelte 5", "TypeScript", "Tailwind", "Vite"]
+        "tags": [
+          "Svelte 5",
+          "TypeScript",
+          "Tailwind",
+          "Vite"
+        ]
       },
       "automation": {
         "title": "Automation & scraping",
         "description": "Scripts, scrapers, closed-API integrations (reverse-engineered when needed), data processing, one-off engineering tasks. I'll save you hours of routine.",
-        "tags": ["Python", "Go", "Reverse engineering", "API"]
+        "tags": [
+          "Python",
+          "Go",
+          "Reverse engineering",
+          "API"
+        ]
       }
     },
     "form": {
@@ -310,10 +459,22 @@
     "shared": "Copied!",
     "piton": {
       "highlights": [
-        { "title": "Latest Version 1.9.0", "desc": "The newest engine and optimizations straight from the repo." },
-        { "title": "WASM Interpreter", "desc": "Only ~220 KB for lightning-fast loading (via TinyGo)." },
-        { "title": "Flowcharts via rombik", "desc": "Native integration with the rombik engine for SVG generation." },
-        { "title": "100% Local", "desc": "Serverless and secure, all code runs directly in your browser." }
+        {
+          "title": "Latest Version 1.9.0",
+          "desc": "The newest engine and optimizations straight from the repo."
+        },
+        {
+          "title": "WASM Interpreter",
+          "desc": "Only ~220 KB for lightning-fast loading (via TinyGo)."
+        },
+        {
+          "title": "Flowcharts via rombik",
+          "desc": "Native integration with the rombik engine for SVG generation."
+        },
+        {
+          "title": "100% Local",
+          "desc": "Serverless and secure, all code runs directly in your browser."
+        }
       ]
     },
     "rombik": {
@@ -322,10 +483,22 @@
       "subtitle": "A compiler that draws DSTU 19.701-90 flowcharts from code — pure TypeScript, entirely in the browser. Python is live here; the full app also speaks C++, C and Pascal.",
       "body": "What colleges still draw by hand for hours, rombik builds in a second: paste Python, get a clean standards-compliant flowchart ready for coursework. The live editor is right here.",
       "highlights": [
-        { "title": "Compiler pipeline", "desc": "tree-sitter → AST-JSON → IR → geometry → render; clean stage boundaries" },
-        { "title": "Pure TypeScript", "desc": "The rombik-engine core — zero runtime deps; in the browser and in Node, on npm" },
-        { "title": "Multi-format export", "desc": "SVG · Typst · Excalidraw from the engine; PNG · PDF via browser canvas" },
-        { "title": "100% local", "desc": "tree-sitter parsing (WASM) in the browser — code never leaves your device" }
+        {
+          "title": "Compiler pipeline",
+          "desc": "tree-sitter → AST-JSON → IR → geometry → render; clean stage boundaries"
+        },
+        {
+          "title": "Pure TypeScript",
+          "desc": "The rombik-engine core — zero runtime deps; in the browser and in Node, on npm"
+        },
+        {
+          "title": "Multi-format export",
+          "desc": "SVG · Typst · Excalidraw from the engine; PNG · PDF via browser canvas"
+        },
+        {
+          "title": "100% local",
+          "desc": "tree-sitter parsing (WASM) in the browser — code never leaves your device"
+        }
       ],
       "openApp": "Open the full editor",
       "source": "Source on GitHub",
@@ -336,7 +509,14 @@
       "emptyOutput": "Hit \"Build\" to see the flowchart",
       "filename": "algorithm.py",
       "weightHint": "First run pulls tree-sitter (a WASM grammar) + the engine — a few MB; instant and local afterwards",
-      "examples": { "grade": "Grade", "loop": "Loop sum", "factorial": "Factorial" }
+      "examples": {
+        "grade": "Grade",
+        "loop": "Loop sum",
+        "factorial": "Factorial"
+      },
+      "tryRombik": "Open in rombik",
+      "demoHint": "Ready-made examples: pick an algorithm — rombik shows its DSTU flowchart. Want to paste your own code? Open the full rombik.",
+      "build": "Rebuild"
     }
   },
   "bench": {
@@ -444,6 +624,9 @@
   },
   "footer": {
     "rights": "Oleksii Odarchuk",
+    "stamp": {
+      "rev": "Rev."
+    },
     "made": "Crafted with a taste for architecture"
   }
 }

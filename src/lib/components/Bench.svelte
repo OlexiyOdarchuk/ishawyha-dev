@@ -292,14 +292,14 @@
   <div class="mx-auto max-w-6xl">
     <Reveal>
       <div class="mb-10">
-        <span class="font-mono text-sm text-cyan-300">// benchmark.bench</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.bench.title}</h2>
+        <span class="kicker">// benchmark.bench</span>
+        <h2 class="display mt-2 text-4xl text-[var(--color-fg)] sm:text-5xl">{$t.bench.title}</h2>
         <p class="mt-3 max-w-3xl text-base leading-relaxed text-[var(--color-muted)]">{$t.bench.subtitle}</p>
       </div>
     </Reveal>
 
     <Reveal>
-      <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl p-6 sm:p-8">
+      <div class="glass-strong border-gradient relative overflow-hidden p-6 text-[var(--color-ink-fg)] sm:p-8" style="--color-muted: var(--color-ink-muted); --color-line: var(--color-ink-line); --color-line-strong: var(--color-ink-line);">
         <!-- Control row -->
         <div class="flex flex-wrap items-center justify-between gap-3">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[11px] uppercase tracking-wider">
@@ -307,20 +307,20 @@
               <span class="text-[var(--color-muted)]">●</span>
               <span class="text-[var(--color-muted)]">{$t.bench.ready}</span>
             {:else if phase === 'loading'}
-              <Loader2 class="h-3.5 w-3.5 animate-spin text-cyan-300" />
-              <span class="text-cyan-300">{$t.bench.loading}</span>
+              <Loader2 class="h-3.5 w-3.5 animate-spin text-cyan-500" />
+              <span class="text-cyan-500">{$t.bench.loading}</span>
             {:else if phase === 'running' && activeLane === 'js'}
-              <span class="text-amber-300 motion-safe:animate-pulse">●</span>
-              <span class="text-amber-300">{$t.bench.runningJs}</span>
+              <span class="text-amber-500 motion-safe:animate-pulse">●</span>
+              <span class="text-amber-500">{$t.bench.runningJs}</span>
             {:else if phase === 'running' && activeLane === 'go'}
-              <span class="text-cyan-300 motion-safe:animate-pulse">●</span>
-              <span class="text-cyan-300">{$t.bench.runningGo}</span>
+              <span class="text-cyan-500 motion-safe:animate-pulse">●</span>
+              <span class="text-cyan-500">{$t.bench.runningGo}</span>
             {:else if phase === 'done'}
-              <span class="text-emerald-300">●</span>
-              <span class="text-emerald-300">{$t.bench.done}</span>
+              <span class="text-emerald-500">●</span>
+              <span class="text-emerald-500">{$t.bench.done}</span>
             {:else if phase === 'error'}
-              <AlertTriangle class="h-3.5 w-3.5 text-red-300" />
-              <span class="text-red-300">{$t.bench.errorTitle}</span>
+              <AlertTriangle class="h-3.5 w-3.5 text-red-500" />
+              <span class="text-red-500">{$t.bench.errorTitle}</span>
             {/if}
 
             {#if phase === 'running' && activeLane}
@@ -337,7 +337,7 @@
                 type="button"
                 onclick={start}
                 disabled={phase === 'loading'}
-                class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-black shadow-md shadow-emerald-500/30 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+                class="inline-flex items-center gap-1.5 bg-[var(--color-accent-400)] px-4 py-2 text-sm font-bold text-black transition hover:bg-[var(--color-accent-300)] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {#if phase === 'loading'}
                   <Loader2 class="h-3.5 w-3.5 animate-spin" />
@@ -350,7 +350,7 @@
               <button
                 type="button"
                 onclick={stop}
-                class="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/15"
+                class="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-4 py-2 text-sm font-semibold text-[var(--color-ink-fg)] transition hover:bg-[var(--color-ink-soft)]"
               >
                 <Square class="h-3.5 w-3.5" />
                 {$t.bench.stop}
@@ -360,7 +360,7 @@
         </div>
 
         <!-- Worker count selector -->
-        <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-white/5 bg-white/[0.02] p-3">
+        <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] p-3">
           <span class="font-mono text-[11px] uppercase tracking-wider text-[var(--color-muted)]">
             {$t.bench.workersLabel}
           </span>
@@ -372,8 +372,8 @@
                 disabled={phase === 'running' || n > hwCores}
                 title={n > hwCores ? `${$t.bench.workersOverCore} (${hwCores})` : ''}
                 class="rounded-full px-3 py-1 font-mono text-[12px] transition disabled:cursor-not-allowed disabled:opacity-40 {workerCount === n && !customInput
-                  ? 'bg-cyan-500/20 text-cyan-200 ring-1 ring-cyan-400/40'
-                  : 'border border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20 hover:bg-white/[0.06]'}"
+                  ? 'bg-cyan-500/20 text-cyan-500 ring-1 ring-cyan-400/40'
+                  : 'border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] text-[var(--color-ink-fg)] hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)]'}"
               >
                 {n}
               </button>
@@ -393,18 +393,18 @@
               disabled={phase === 'running'}
               onkeydown={(e) => { if (e.key === 'Enter') applyCustom(); }}
               aria-label={$t.bench.workersCustom}
-              class="w-16 sm:w-24 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[12px] text-white/90 placeholder:text-white/30 focus:border-cyan-400/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
+              class="w-16 sm:w-24 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-3 py-1 font-mono text-[12px] text-[var(--color-ink-fg)] placeholder:text-[var(--color-ink-muted)] focus:border-cyan-400/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
             />
             <button
               type="button"
               onclick={applyCustom}
               disabled={phase === 'running' || !customInput}
-              class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-mono text-[12px] text-cyan-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/20 disabled:cursor-not-allowed disabled:opacity-40"
+              class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-mono text-[12px] text-cyan-500 transition hover:border-cyan-400/50 hover:bg-cyan-500/20 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {$t.bench.workersApply}
             </button>
             {#if customError}
-              <span class="font-mono text-[11px] text-red-300">{customError}</span>
+              <span class="font-mono text-[11px] text-red-500">{customError}</span>
             {/if}
           </div>
 
@@ -414,7 +414,7 @@
         </div>
 
         <!-- JS-lane mode toggle: verbatim official vs throttle-removed -->
-        <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-white/5 bg-white/[0.02] p-3">
+        <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-2xl border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] p-3">
           <span class="font-mono text-[11px] uppercase tracking-wider text-[var(--color-muted)]">
             {$t.bench.jsModeLabel}
           </span>
@@ -424,8 +424,8 @@
               onclick={() => (jsMode = 'original')}
               disabled={phase === 'running'}
               class="rounded-full px-3 py-1 font-mono text-[12px] transition disabled:cursor-not-allowed disabled:opacity-40 {jsMode === 'original'
-                ? 'bg-amber-500/20 text-amber-200 ring-1 ring-amber-400/40'
-                : 'border border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20 hover:bg-white/[0.06]'}"
+                ? 'bg-amber-500/20 text-amber-600 ring-1 ring-amber-400/40'
+                : 'border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] text-[var(--color-ink-fg)] hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)]'}"
             >
               ⏱ {$t.bench.jsModeOriginal}
             </button>
@@ -434,8 +434,8 @@
               onclick={() => (jsMode = 'fast')}
               disabled={phase === 'running'}
               class="rounded-full px-3 py-1 font-mono text-[12px] transition disabled:cursor-not-allowed disabled:opacity-40 {jsMode === 'fast'
-                ? 'bg-amber-500/20 text-amber-200 ring-1 ring-amber-400/40'
-                : 'border border-white/10 bg-white/[0.03] text-white/70 hover:border-white/20 hover:bg-white/[0.06]'}"
+                ? 'bg-amber-500/20 text-amber-600 ring-1 ring-amber-400/40'
+                : 'border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] text-[var(--color-ink-fg)] hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)]'}"
             >
               ⚡ {$t.bench.jsModeFast}
             </button>
@@ -456,7 +456,7 @@
         <div class="mt-6 grid gap-4 md:grid-cols-2">
           <!-- JS lane -->
           <div
-            class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition {phase === 'running' && activeLane !== 'js' ? 'opacity-50' : ''}"
+            class="relative overflow-hidden rounded-2xl border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] p-6 transition {phase === 'running' && activeLane !== 'js' ? 'opacity-50' : ''}"
           >
             <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-amber-300 via-orange-400 to-red-400"></div>
             <!-- Progress bar -->
@@ -467,39 +467,39 @@
               ></div>
             {/if}
             <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 text-amber-200/90">
+              <div class="flex items-center gap-2 text-amber-600/90">
                 <Cpu class="h-4 w-4" />
                 <span class="font-mono text-xs uppercase tracking-wider">{$t.bench.labelJs}</span>
               </div>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-amber-200/70">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-amber-600/70">
                 ×1 · {jsMode === 'original' ? $t.bench.jsModeOriginalTag : $t.bench.jsModeFastTag}
                 {#if phase === 'running' && activeLane === 'js'}
                   · {$t.bench.live}
                 {/if}
               </span>
             </div>
-            <div class="mt-4 font-mono text-4xl font-bold tabular-nums tracking-tight text-white sm:text-5xl">
+            <div class="mt-4 font-mono text-4xl font-bold tabular-nums tracking-tight text-[var(--color-ink-fg)] sm:text-5xl">
               {jsCount > 0 ? fmt(jsRate) : '—'}
             </div>
             <div class="mt-1 font-mono text-xs text-[var(--color-muted)]">{$t.bench.hashrate}</div>
 
-            <div class="mt-5 grid grid-cols-2 gap-3 border-t border-white/5 pt-4 font-mono text-[11px]">
+            <div class="mt-5 grid grid-cols-2 gap-3 border-t border-[var(--color-ink-line)] pt-4 font-mono text-[11px]">
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.tokensLabel}</div>
-                <div class="mt-1 text-2xl font-bold tabular-nums text-amber-200">{jsCount > 0 ? fmt(jsTokens) : '—'}</div>
+                <div class="mt-1 text-2xl font-bold tabular-nums text-amber-600">{jsCount > 0 ? fmt(jsTokens) : '—'}</div>
               </div>
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.hashesLabel}</div>
-                <div class="mt-1 text-sm tabular-nums text-white/80">{jsCount > 0 ? fmt(jsCount) : '—'}</div>
+                <div class="mt-1 text-sm tabular-nums text-[var(--color-ink-fg)]">{jsCount > 0 ? fmt(jsCount) : '—'}</div>
               </div>
             </div>
           </div>
 
           <!-- Go lane -->
           <div
-            class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition {phase === 'running' && activeLane !== 'go' ? 'opacity-50' : ''}"
+            class="relative overflow-hidden rounded-2xl border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] p-6 transition {phase === 'running' && activeLane !== 'go' ? 'opacity-50' : ''}"
           >
-            <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-500"></div>
+            <div class="absolute inset-x-0 top-0 h-[2px] bg-[var(--color-accent-400)]"></div>
             {#if goProgress > 0 && goProgress < 1}
               <div
                 class="absolute inset-x-0 top-0 h-[2px] bg-cyan-300/80 transition-all"
@@ -507,30 +507,30 @@
               ></div>
             {/if}
             <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 text-cyan-200/90">
+              <div class="flex items-center gap-2 text-cyan-500/90">
                 <Zap class="h-4 w-4" />
                 <span class="font-mono text-xs uppercase tracking-wider">{$t.bench.labelGo}</span>
               </div>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-cyan-200/80">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-cyan-500/80">
                 ×{workerCount}
                 {#if phase === 'running' && activeLane === 'go'}
                   · {$t.bench.live}
                 {/if}
               </span>
             </div>
-            <div class="mt-4 font-mono text-4xl font-bold tabular-nums tracking-tight text-white sm:text-5xl">
+            <div class="mt-4 font-mono text-4xl font-bold tabular-nums tracking-tight text-[var(--color-ink-fg)] sm:text-5xl">
               {goCount > 0 ? fmt(goRate) : '—'}
             </div>
             <div class="mt-1 font-mono text-xs text-[var(--color-muted)]">{$t.bench.hashrate}</div>
 
-            <div class="mt-5 grid grid-cols-2 gap-3 border-t border-white/5 pt-4 font-mono text-[11px]">
+            <div class="mt-5 grid grid-cols-2 gap-3 border-t border-[var(--color-ink-line)] pt-4 font-mono text-[11px]">
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.tokensLabel}</div>
-                <div class="mt-1 text-2xl font-bold tabular-nums text-cyan-200">{goCount > 0 ? fmt(goTokens) : '—'}</div>
+                <div class="mt-1 text-2xl font-bold tabular-nums text-cyan-500">{goCount > 0 ? fmt(goTokens) : '—'}</div>
               </div>
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.hashesLabel}</div>
-                <div class="mt-1 text-sm tabular-nums text-white/80">{goCount > 0 ? fmt(goCount) : '—'}</div>
+                <div class="mt-1 text-sm tabular-nums text-[var(--color-ink-fg)]">{goCount > 0 ? fmt(goCount) : '—'}</div>
               </div>
             </div>
           </div>
@@ -563,7 +563,7 @@
               <Cpu class="h-3.5 w-3.5" />
               {$t.bench.desktopNoteTitle}
             </div>
-            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-white/80">
+            <p class="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-ink-fg)]">
               {$t.bench.desktopNoteBody}
             </p>
           </div>
@@ -571,7 +571,7 @@
             href="https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner/releases"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-violet-500/30 transition hover:brightness-110"
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-accent-400)] px-5 py-2.5 text-sm font-semibold text-[var(--color-ink-fg)] transition hover:bg-[var(--color-accent-300)]"
           >
             <Download class="h-4 w-4" />
             {$t.bench.desktopCta}

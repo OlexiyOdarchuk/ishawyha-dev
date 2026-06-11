@@ -114,8 +114,8 @@
 
 {#if loaded && commits.length > 0 && !failed}
   <aside class="mx-auto mt-12 max-w-6xl px-6" aria-label="Recent commits">
-    <div class="flex items-baseline justify-between gap-3 border-b border-white/5 pb-2">
-      <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)]">
+    <div class="flex items-baseline justify-between gap-3 border-b border-[var(--color-line)] pb-2">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-accent-500)] font-semibold">
         <GitCommit class="h-3.5 w-3.5" />
         {$t.activity.title}
       </div>
@@ -123,7 +123,7 @@
         href="https://github.com/{USER}?tab=overview"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--color-muted)] hover:text-white"
+        class="inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--color-muted)] hover:text-[var(--color-fg)]"
       >
         @{USER}
         <ExternalLink class="h-3 w-3" />
@@ -136,13 +136,13 @@
             href={c.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="group block rounded-xl border border-white/5 bg-white/[0.02] p-3 transition hover:border-white/15 hover:bg-white/[0.05]"
+            class="card card-hover group block p-3"
           >
             <div class="flex items-baseline justify-between gap-2 font-mono text-[10px] uppercase tracking-wider">
-              <span class="text-violet-300">{c.repo}</span>
+              <span class="font-semibold text-[var(--color-accent-500)]">{c.repo}</span>
               <span class="text-[var(--color-muted)]">{c.sha} · {relativeTime(c.when)}</span>
             </div>
-            <div class="mt-1 truncate text-sm text-white/85">{c.message}</div>
+            <div class="mt-1 truncate text-sm text-[var(--color-fg)]">{c.message}</div>
           </a>
         </li>
       {/each}

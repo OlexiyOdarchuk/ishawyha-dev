@@ -86,13 +86,13 @@
   });
 </script>
 
-<pre bind:this={el} class="overflow-x-auto p-4 text-white/90"><code>{#each visible as line, lineIdx}{#each line as tok}<span class={tok.cls ?? ''}>{tok.text}</span>{/each}{#if lineIdx < visible.length - 1}{'\n'}{/if}{/each}{#if cursorActive}<span class="typer-caret">▍</span>{/if}</code></pre>
+<pre bind:this={el} class="overflow-x-auto p-4 text-[var(--color-ink-fg)]"><code>{#each visible as line, lineIdx}{#each line as tok}<span class={tok.cls ?? ''}>{tok.text}</span>{/each}{#if lineIdx < visible.length - 1}{'\n'}{/if}{/each}{#if cursorActive}<span class="typer-caret">▍</span>{/if}</code></pre>
 
 <style>
   .typer-caret {
     display: inline-block;
     margin-left: 1px;
-    color: #67e8f9;
+    color: var(--color-accent-400);
     animation: caret-blink 0.9s steps(2, start) infinite;
   }
   @keyframes caret-blink {

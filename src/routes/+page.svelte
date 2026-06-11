@@ -2,6 +2,7 @@
   import { t } from '$lib/i18n';
   import Seo from '$lib/components/Seo.svelte';
   import Hero from '$lib/components/Hero.svelte';
+  import Metrics from '$lib/components/Metrics.svelte';
   import LiveActivity from '$lib/components/LiveActivity.svelte';
   import About from '$lib/components/About.svelte';
   import Projects from '$lib/components/Projects.svelte';
@@ -12,6 +13,7 @@
 <Seo title={$t.meta.title} description={$t.meta.description} path="/" />
 
 <Hero />
+<Metrics />
 <LiveActivity />
 
 <About />

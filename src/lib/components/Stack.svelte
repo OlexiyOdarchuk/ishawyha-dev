@@ -5,7 +5,7 @@
   type CategoryKey = 'languages' | 'backend' | 'db' | 'frontend' | 'ai' | 'devops';
 
   const stack: Record<CategoryKey, string[]> = {
-    languages: ['Go', 'Python', 'C', 'Bash'],
+    languages: ['Go', 'Python', 'TypeScript', 'C', 'Bash'],
     backend: ['Gin', 'Fiber', 'REST API', 'WebSockets', 'Goroutines', 'JWT', 'OAuth 2.0'],
     db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
     frontend: ['Svelte 5', 'Wails', 'Tailwind CSS', 'Vite'],
@@ -13,43 +13,27 @@
     devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'TinyGo', 'Bruno', 'Typst', 'mdBook', 'Cloudflare']
   };
 
-  const accents: Record<CategoryKey, string> = {
-    languages: 'from-violet-400 to-fuchsia-400',
-    backend: 'from-cyan-300 to-violet-400',
-    db: 'from-emerald-300 to-cyan-400',
-    frontend: 'from-pink-400 to-amber-300',
-    ai: 'from-amber-300 to-pink-400',
-    devops: 'from-violet-400 to-cyan-300'
-  };
-
   const order: CategoryKey[] = ['languages', 'backend', 'db', 'frontend', 'ai', 'devops'];
 </script>
 
-<section id="stack" class="scroll-mt-nav relative px-6 py-24">
+<section id="stack" class="scroll-mt-nav relative px-6 py-16">
   <div class="mx-auto max-w-6xl">
     <Reveal>
-      <div class="mb-12">
-        <span class="font-mono text-sm text-violet-300">// stack.toml</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.stack.title}</h2>
+      <div class="mb-8">
+        <span class="kicker">// stack</span>
+        <h2 class="display mt-3 text-4xl text-[var(--color-fg)] sm:text-5xl">{$t.stack.title}</h2>
         <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.stack.subtitle}</p>
       </div>
     </Reveal>
 
-    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {#each order as cat, i}
         <Reveal delay={i * 60}>
-          <div class="glass relative h-full overflow-hidden rounded-3xl p-6">
-            <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r {accents[cat]}"></div>
-            <h3 class="mb-4 font-mono text-xs uppercase tracking-wider text-[var(--color-muted)]">
-              {$t.stack.categories[cat]}
-            </h3>
-            <ul class="flex flex-wrap gap-2">
+          <div class="card h-full p-5">
+            <h3 class="mb-3 font-mono text-xs font-semibold tracking-[0.12em] text-[var(--color-accent-500)] uppercase">{$t.stack.categories[cat]}</h3>
+            <ul class="flex flex-wrap gap-1.5">
               {#each stack[cat] as tool}
-                <li
-                  class="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-[12px] text-white/85 transition hover:border-white/20 hover:bg-white/[0.08]"
-                >
-                  {tool}
-                </li>
+                <li class="tag">{tool}</li>
               {/each}
             </ul>
           </div>

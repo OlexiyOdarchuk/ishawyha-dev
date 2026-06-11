@@ -51,6 +51,31 @@
       "title": "Вибрані проєкти",
       "subtitle": "Особливий проєкт — rombik (live + npm). А ще мова Piton, SDK, боти й майнер.",
       "cta": "Усі проєкти"
+    },
+    "metrics": {
+      "title": "Цифрами",
+      "items": [
+        {
+          "value": 1000,
+          "suffix": "×",
+          "label": "швидший SHA-256 — Go vs JS у SHMiner"
+        },
+        {
+          "value": 150,
+          "suffix": "+",
+          "label": "користувачів AbitAssistant"
+        },
+        {
+          "value": 4,
+          "suffix": "",
+          "label": "мови на вході rombik"
+        },
+        {
+          "value": 5,
+          "suffix": "",
+          "label": "API monobank у go-monobank-sdk"
+        }
+      ]
     }
   },
   "hero": {
@@ -69,6 +94,7 @@
     "cvUa": "UA · PDF",
     "cvEn": "EN · PDF",
     "nowLabel": "Зараз",
+    "winsLabel": "Відзнаки",
     "nowItems": [
       "Працюю Backend Golang developer в SkyService"
     ],
@@ -98,10 +124,22 @@
     "p1": "Я — backend-розробник на Go, другокурсник IT Коледжу Львівської Політехніки. Будую системи, де кожна мілісекунда має значення, а архітектура витримує і навантаження, і зміни вимог.",
     "p2": "Поза кодом — народні танці більше 10 років, інколи поезія, останнім часом — сценарій. Це навчило мене ритму та структури — речам, на яких тримається будь-який добрий продукт.",
     "facts": [
-      { "label": "Рідне місто", "value": "Мізоч, Рівненщина, Україна" },
-      { "label": "Освіта", "value": "ІТ Коледж НУЛП" },
-      { "label": "Стек", "value": "Go · C · TinyGo · PostgreSQL · Svelte" },
-      { "label": "Мови", "value": "Українська (рідна), English B1" }
+      {
+        "label": "Рідне місто",
+        "value": "Мізоч, Рівненщина, Україна"
+      },
+      {
+        "label": "Освіта",
+        "value": "ІТ Коледж НУЛП"
+      },
+      {
+        "label": "Стек",
+        "value": "Go · C · TinyGo · PostgreSQL · Svelte"
+      },
+      {
+        "label": "Мови",
+        "value": "Українська (рідна), English B1"
+      }
     ]
   },
   "achievements": {
@@ -115,7 +153,13 @@
         "company": "Траєкторія дрона без GPS",
         "date": "18–19 квітня, 2026",
         "description": "Алгоритм відновлення траєкторії БПЛА без GPS — за логами IMU, барометра й інших інерційних датчиків. Sensor fusion на Go + C, чиста модульна архітектура (телеметрія / інтегрування / симуляція). Журі відмітило саме архітектурну стійкість — 1-ше місце серед топових команд.",
-        "tags": ["Go", "C", "Sensor Fusion", "IMU", "Інерційна навігація"]
+        "tags": [
+          "Go",
+          "C",
+          "Sensor Fusion",
+          "IMU",
+          "Інерційна навігація"
+        ]
       },
       "mate": {
         "label": "🥉 3-тє місце",
@@ -123,7 +167,13 @@
         "company": "AI MarTech (50 учасників, 10 команд)",
         "date": "14 березня, 2026",
         "description": "Спроєктував і написав Go-бекенд з нуля за 7 годин для AI-інструменту аналізу реклами конкурентів. Подвійний AI-пайплайн: GPT-4o (тригери) + Nano Banano 2 / fal.ai (генерація). Обійшли команди з 5+ роками досвіду — взяли стабільним MVP.",
-        "tags": ["Go", "GPT-4o", "fal.ai", "REST", "MVP за 7 год"]
+        "tags": [
+          "Go",
+          "GPT-4o",
+          "fal.ai",
+          "REST",
+          "MVP за 7 год"
+        ]
       },
       "dou": {
         "label": "🎟 Запрошення",
@@ -131,7 +181,11 @@
         "company": "Student with High Potential",
         "date": "2026",
         "description": "Запрошений організаторами на DOU Day з безкоштовним квитком як студент з високим потенціалом. Окремий трек для перспективних студентів-розробників.",
-        "tags": ["Запрошення", "Безкоштовний квиток", "Спільнота"]
+        "tags": [
+          "Запрошення",
+          "Безкоштовний квиток",
+          "Спільнота"
+        ]
       },
       "security": {
         "label": "🛡 Дослідження → оффер",
@@ -139,7 +193,13 @@
         "company": "«Студентська Гривня» (блокчейн коледжу)",
         "date": "2026",
         "description": "Знайшов і експлуатував критичну вразливість: фронтенд обмежував суми транзакцій, бекенд — ні. Це дозволяло довільні від'ємні перекази. Відповідально розкрив, отримав оффер від адміністрації. Реверснув офіційний JS-майнер через Webpack-бандли і написав швидший Go-замінник з пулом горутин (1000× прискорення).",
-        "tags": ["Reverse engineering", "Go", "Goroutines", "AES", "WebSockets"]
+        "tags": [
+          "Reverse engineering",
+          "Go",
+          "Goroutines",
+          "AES",
+          "WebSockets"
+        ]
       }
     }
   },
@@ -156,7 +216,14 @@
         "name": "rombik",
         "tagline": "Код → блок-схема за ДСТУ, прямо в браузері",
         "description": "Компілятор, що перетворює Python, C++, C і Pascal на акуратну блок-схему за ДСТУ 19.701-90 — те, що в коледжах малюють годинами вручну. Рушій — чистий TypeScript, опублікований в npm (rombik-engine, нуль рантайм-залежностей): tree-sitter → AST → розкладка → SVG/Typst/Excalidraw. Усе локально — код не залишає браузер. Є візуальний редактор і 1-click експорт у PDF.",
-        "tags": ["TypeScript", "tree-sitter", "npm", "WebAssembly", "SVG · Typst", "ДСТУ"],
+        "tags": [
+          "TypeScript",
+          "tree-sitter",
+          "npm",
+          "WebAssembly",
+          "SVG · Typst",
+          "ДСТУ"
+        ],
         "cta1": "Спробувати наживо",
         "cta2": "Відкрити застосунок",
         "cta3": "GitHub"
@@ -166,9 +233,16 @@
         "name": "Piton",
         "tagline": "Українська мова програмування з рідним інтерпретатором",
         "description": "Легка інтерпретована мова з автентичним українським синтаксисом (транслітом). Recursive descent parser, tree-walking evaluator, тюринг-повна. Написана з нуля на Go, без yacc/bison. Відтепер використовує вбудований проєкт rombik для генерації блок-схем у SVG. Інтерпретатор скомпільовано в WebAssembly через TinyGo — 220 КБ, працює прямо в браузері без сервера.",
-        "tags": ["Go", "TinyGo", "WebAssembly", "AST", "SVG", "Nix"],
+        "tags": [
+          "Go",
+          "TinyGo",
+          "WebAssembly",
+          "AST",
+          "SVG",
+          "Nix"
+        ],
         "cta1": "Спробувати в браузері",
-        "cta2": "Документація",
+        "cta2": "Відкрити документацію",
         "cta3": "GitHub"
       }
     },
@@ -178,56 +252,109 @@
         "title": "Piton",
         "subtitle": "Українська мова програмування + інтерпретатор",
         "description": "Інтерпретована мова з автентичним українським синтаксисом (транслітом): recursive descent parser, tree-walking evaluator, тюринг-повна, написана з нуля на Go без yacc/bison. Інтерпретатор скомпільовано у WebAssembly через TinyGo — ~220 КБ, працює прямо в браузері. Блок-схеми генерує вбудований rombik.",
-        "tags": ["Go", "TinyGo", "WebAssembly", "AST", "Nix"]
+        "tags": [
+          "Go",
+          "TinyGo",
+          "WebAssembly",
+          "AST",
+          "Nix"
+        ]
       },
       "gomonobanksdk": {
         "kicker": "Open source SDK",
         "title": "go-monobank-sdk",
         "subtitle": "Go SDK на всі п'ять API monobank",
         "description": "Повне покриття personal, provider (з monoКЕП), business для юр. осіб, acquiring (підписки, monopay-кнопка, split-receivers, T2P) і «Покупки частинами». ECDSA-верифікація вебхуків з авторотацією ключа, готовий http.Handler, типізовані money/currency/MCC, HMAC-SHA256 для ПЧ-callback, фейковий monobank-сервер для тестів, окремий sub-module для OpenTelemetry.",
-        "tags": ["Go", "ECDSA", "HMAC-SHA256", "OpenTelemetry", "iter.Seq2", "MIT"]
+        "tags": [
+          "Go",
+          "ECDSA",
+          "HMAC-SHA256",
+          "OpenTelemetry",
+          "iter.Seq2",
+          "MIT"
+        ]
       },
       "monokasa": {
         "kicker": "Консумер SDK",
         "title": "monokasa",
         "subtitle": "Telegram-бот продажу квитків",
         "description": "Продає квитки на одну виставу через банку monobank і видає PDF з QR-кодом, який зчитується сканером на вході. Споживач власного go-monobank-sdk: вебхук авто-реєструється при старті, бронь має 15-хвилинний hold, нагадування за годину до шоу — at-most-once навіть після рестарту.",
-        "tags": ["Go", "SQLite", "telebot", "PDF", "QR", "go-monobank-sdk"]
+        "tags": [
+          "Go",
+          "SQLite",
+          "telebot",
+          "PDF",
+          "QR",
+          "go-monobank-sdk"
+        ]
       },
       "shminer": {
         "kicker": "1000× швидше",
         "title": "SHMiner",
         "subtitle": "Десктопний крипто-майнер",
         "description": "Крос-платформний майнер на Wails (Go + Svelte/TS). Переписав SHA-256 з JS на Go з пулом горутин — 1000× швидший хешрейт на тому ж залізі. AES-шифрування гаманця, real-time WebSocket-дашборд, мульти-гаманець, zen mode.",
-        "tags": ["Go", "Svelte", "Wails", "Goroutines", "WebSockets", "AES"]
+        "tags": [
+          "Go",
+          "Svelte",
+          "Wails",
+          "Goroutines",
+          "WebSockets",
+          "AES"
+        ]
       },
       "linkshortener": {
         "kicker": "",
         "title": "LinkShortener Bot",
         "subtitle": "Telegram + аналітика",
         "description": "Telegram-бот для скорочення URL з QR-генерацією і гео-аналітикою. PostgreSQL для зберігання, Redis для кешу редиректів, ClickHouse для real-time аналітики кліків (країна, місто, платформа). Docker, GeoIP2.",
-        "tags": ["Go", "PostgreSQL", "Redis", "ClickHouse", "Docker"]
+        "tags": [
+          "Go",
+          "PostgreSQL",
+          "Redis",
+          "ClickHouse",
+          "Docker"
+        ]
       },
       "todolist": {
         "kicker": "",
         "title": "ToDoList Pro",
         "subtitle": "Прод-готовий task manager",
         "description": "Go/Gin бекенд з чистою архітектурою (repository → service → handler), JWT + OAuth 2.0 (Google), email-верифікація, Swagger-документація. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
-        "tags": ["Go", "Gin", "Svelte 5", "JWT", "OAuth 2.0", "PostgreSQL"]
+        "tags": [
+          "Go",
+          "Gin",
+          "Svelte 5",
+          "JWT",
+          "OAuth 2.0",
+          "PostgreSQL"
+        ]
       },
       "abit": {
         "kicker": "150+ користувачів",
         "title": "AbitAssistant Bot",
         "subtitle": "Telegram-бот для абітурієнтів",
         "description": "Telegram-бот, що допомагає українським студентам відстежувати рейтинги вступу. Реверснув закриті third-party API. 150+ активних користувачів за перший рік, маркетинг-кампанія на 2026.",
-        "tags": ["Python", "Aiogram", "PostgreSQL", "BeautifulSoup", "Pandas"]
+        "tags": [
+          "Python",
+          "Aiogram",
+          "PostgreSQL",
+          "BeautifulSoup",
+          "Pandas"
+        ]
       },
       "rombik": {
         "kicker": "Live · компілятор",
         "title": "rombik",
         "subtitle": "Python · C++ · C · Pascal → блок-схема за ДСТУ",
         "description": "Компіляторний конвеєр для блок-схем за ДСТУ 19.701-90 — повністю на TypeScript і повністю в браузері. tree-sitter (WASM-граматика) парсить Python, C++, C і Pascal у мова-агностик AST-JSON → IR → рекурсивна розкладка дерева → шинна маршрутизація ребер → рендер. Рушій rombik-engine (нуль рантайм-залежностей) друкує SVG, Typst та Excalidraw; PNG/PDF — браузерним canvas. Опубліковано в npm, працює і в Node. Усе локально: код не залишає браузер.",
-        "tags": ["TypeScript", "tree-sitter", "WebAssembly", "SVG · Typst", "npm", "ДСТУ"]
+        "tags": [
+          "TypeScript",
+          "tree-sitter",
+          "WebAssembly",
+          "SVG · Typst",
+          "npm",
+          "ДСТУ"
+        ]
       }
     }
   },
@@ -240,22 +367,44 @@
       "bots": {
         "title": "Telegram-боти",
         "description": "Боти будь-якої складності: продажі та оплати через monobank, аналітика, парсинг, нагадування, інтеграції з API. Від MVP до прод-готового рішення з БД і деплоєм.",
-        "tags": ["Go", "Python", "Aiogram", "PostgreSQL", "monobank"]
+        "tags": [
+          "Go",
+          "Python",
+          "Aiogram",
+          "PostgreSQL",
+          "monobank"
+        ]
       },
       "backend": {
         "title": "Бекенд та API",
         "description": "Go/Gin сервіси з чистою архітектурою, REST API, авторизація (JWT, OAuth 2.0), інтеграція платежів та вебхуків, Docker-деплой. Те, що витримує навантаження і зміни вимог.",
-        "tags": ["Go", "Gin", "REST", "PostgreSQL", "Docker"]
+        "tags": [
+          "Go",
+          "Gin",
+          "REST",
+          "PostgreSQL",
+          "Docker"
+        ]
       },
       "web": {
         "title": "Веб-додатки",
         "description": "Швидкі сайти, лендинги та дашборди на SvelteKit + TypeScript + Tailwind. Анімації, i18n, адаптив, гарний дизайн — такий самий, як цей сайт.",
-        "tags": ["Svelte 5", "TypeScript", "Tailwind", "Vite"]
+        "tags": [
+          "Svelte 5",
+          "TypeScript",
+          "Tailwind",
+          "Vite"
+        ]
       },
       "automation": {
         "title": "Автоматизація та парсинг",
         "description": "Скрипти, парсери, інтеграції закритих API (реверс при потребі), обробка даних, разові інженерні задачі. Зекономлю вам години рутини.",
-        "tags": ["Python", "Go", "Reverse engineering", "API"]
+        "tags": [
+          "Python",
+          "Go",
+          "Reverse engineering",
+          "API"
+        ]
       }
     },
     "form": {
@@ -310,10 +459,22 @@
     "shared": "Скопійовано!",
     "piton": {
       "highlights": [
-        { "title": "Остання версія 1.9.0", "desc": "Найновіший рушій та оптимізації прямо з репозиторію." },
-        { "title": "Інтерпретатор у WASM", "desc": "Лише ~220 КБ для швидкого завантаження (через TinyGo)." },
-        { "title": "Блок-схеми через rombik", "desc": "Нативна інтеграція з рушієм rombik для генерації SVG." },
-        { "title": "100% Локально", "desc": "Без сервера, безпечно, весь код виконується у твоєму браузері." }
+        {
+          "title": "Остання версія 1.9.0",
+          "desc": "Найновіший рушій та оптимізації прямо з репозиторію."
+        },
+        {
+          "title": "Інтерпретатор у WASM",
+          "desc": "Лише ~220 КБ для швидкого завантаження (через TinyGo)."
+        },
+        {
+          "title": "Блок-схеми через rombik",
+          "desc": "Нативна інтеграція з рушієм rombik для генерації SVG."
+        },
+        {
+          "title": "100% Локально",
+          "desc": "Без сервера, безпечно, весь код виконується у твоєму браузері."
+        }
       ]
     },
     "rombik": {
@@ -322,10 +483,22 @@
       "subtitle": "Компілятор, що малює блок-схеми за ДСТУ 19.701-90 з коду — повністю на TypeScript, повністю в браузері. Тут наживо Python; повний застосунок розуміє ще C++, C і Pascal.",
       "body": "Те, що в коледжах малюють годинами вручну, rombik збирає за секунду: встав Python — отримай акуратну блок-схему за стандартом, готову для курсової. Праворуч — живий редактор прямо тут.",
       "highlights": [
-        { "title": "Компіляторний конвеєр", "desc": "tree-sitter → AST-JSON → IR → геометрія → рендер; чисті межі між етапами" },
-        { "title": "Чистий TypeScript", "desc": "Рушій rombik-engine — нуль рантайм-залежностей; у браузері й у Node, є в npm" },
-        { "title": "Багатоформатний експорт", "desc": "SVG · Typst · Excalidraw з рушія; PNG · PDF — браузерним canvas" },
-        { "title": "100% локально", "desc": "Парсинг tree-sitter (WASM) у браузері — код не залишає твій пристрій" }
+        {
+          "title": "Компіляторний конвеєр",
+          "desc": "tree-sitter → AST-JSON → IR → геометрія → рендер; чисті межі між етапами"
+        },
+        {
+          "title": "Чистий TypeScript",
+          "desc": "Рушій rombik-engine — нуль рантайм-залежностей; у браузері й у Node, є в npm"
+        },
+        {
+          "title": "Багатоформатний експорт",
+          "desc": "SVG · Typst · Excalidraw з рушія; PNG · PDF — браузерним canvas"
+        },
+        {
+          "title": "100% локально",
+          "desc": "Парсинг tree-sitter (WASM) у браузері — код не залишає твій пристрій"
+        }
       ],
       "openApp": "Відкрити повний редактор",
       "source": "Код на GitHub",
@@ -336,7 +509,14 @@
       "emptyOutput": "Натисни «Побудувати», щоб побачити блок-схему",
       "filename": "algorithm.py",
       "weightHint": "Перший запуск підтягне tree-sitter (WASM-граматика) + рушій — кілька МБ; далі миттєво й локально",
-      "examples": { "grade": "Оцінка", "loop": "Сума циклом", "factorial": "Факторіал" }
+      "examples": {
+        "grade": "Оцінка",
+        "loop": "Сума циклом",
+        "factorial": "Факторіал"
+      },
+      "tryRombik": "Відкрити в rombik",
+      "demoHint": "Готові приклади: обери алгоритм — rombik покаже блок-схему за ДСТУ. Хочеш увести свій код? Відкрий повний rombik.",
+      "build": "Побудувати знову"
     }
   },
   "bench": {
@@ -444,6 +624,9 @@
   },
   "footer": {
     "rights": "Олексій Одарчук",
+    "stamp": {
+      "rev": "Зміна"
+    },
     "made": "Зроблено зі смаком до архітектури"
   }
 }

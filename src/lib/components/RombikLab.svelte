@@ -1,348 +1,180 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
-  import { generate, type LoadStage } from '$lib/rombik/runtime';
-  import {
-    Workflow,
-    Route,
-    FileDown,
-    ShieldCheck,
-    Play,
-    Loader2,
-    ChevronDown,
-    ExternalLink,
-    Github
-  } from 'lucide-svelte';
+  import { DEMOS } from '$lib/rombik/demo';
+  import { Workflow, Route, FileDown, ShieldCheck, Play, ExternalLink, Github, ChevronDown } from 'lucide-svelte';
 
   const APP = 'https://rombik.ishawyha.dev/app';
   const REPO = 'https://github.com/OlexiyOdarchuk/rombik';
+  const VERSION = '0.4.0';
 
   const icons = [Workflow, Route, FileDown, ShieldCheck];
 
-  type ExampleKey = 'grade' | 'loop' | 'factorial';
-  const EXAMPLES: Record<ExampleKey, string> = {
-    grade: `def grade(score):
-    name = input("Ваше ім'я: ")
-    print("Привіт,", name)
-    total = score + 5
-    if total >= 90:
-        print("Відмінно")
-    else:
-        if total >= 60:
-            print("Задовільно")
-        else:
-            print("Незадовільно")
-    print("Готово")`,
-    loop: `def suma(n):
-    s = 0
-    for i in range(1, n + 1):
-        s = s + i
-    print("Сума:", s)
-    return s`,
-    factorial: `def factorial(n):
-    result = 1
-    while n > 1:
-        result = result * n
-        n = n - 1
-    return result`
+  // Friendly function-name labels (language-neutral — work for UA & EN).
+  const fnName: Record<string, string> = {
+    grade: 'grade()',
+    suma: 'sum()',
+    factorial: 'factorial()',
+    bubble: 'bubble_sort()',
+    prime: 'is_prime()',
+    gcd: 'gcd()'
   };
 
-  type Status = 'idle' | 'loading' | 'ready' | 'error';
-  let status = $state<Status>('idle');
-  let stage = $state<LoadStage | ''>('');
-  let code = $state(EXAMPLES.grade);
-  let exampleKey = $state<ExampleKey>('grade');
-  let svgs = $state<{ name: string; svg: string }[]>([]);
-  let errorMsg = $state('');
+  let idx = $state(0);
+  let animId = $state(0); // bump to replay the "build" reveal animation
+  const demo = $derived(DEMOS[idx]);
 
-  function loadExample(key: ExampleKey) {
-    exampleKey = key;
-    code = EXAMPLES[key];
+  function select(i: number) {
+    idx = i;
+    animId++;
+  }
+  function rebuild() {
+    animId++;
+    if (typeof window !== 'undefined') window.gtag?.('event', 'click_rombik_run');
   }
 
-  function stageLabel(s: LoadStage | ''): string {
-    if (s === 'engine') return $t.lab.rombik.loadingEngine;
-    return $t.lab.rombik.building;
-  }
-
-  async function run() {
-    if (status === 'loading') return;
-    status = 'loading';
-    errorMsg = '';
+  // --- "Open in rombik" share link -----------------------------------------
+  // rombik web app reads #s=<urlencoded base64(deflate-raw(JSON{code,language,settings}))>.
+  // We reproduce its encodeShare with the native CompressionStream — no deps.
+  let shareBusy = $state(false);
+  async function openInRombik() {
+    shareBusy = true;
     try {
-      const res = await generate(code, (s) => (stage = s));
-      if (res.error) {
-        errorMsg = res.error;
-        svgs = [];
-      } else {
-        svgs = res.functions ?? [];
-        errorMsg = '';
-      }
-      status = 'ready';
-    } catch (e) {
-      errorMsg = String((e as Error)?.message ?? e);
-      status = 'error';
+      const payload = JSON.stringify({ code: demo.code, language: 'python', settings: {} });
+      const bytes = new TextEncoder().encode(payload);
+      const compressed = new Uint8Array(
+        await new Response(
+          new Blob([bytes]).stream().pipeThrough(new CompressionStream('deflate-raw'))
+        ).arrayBuffer()
+      );
+      let bin = '';
+      for (const b of compressed) bin += String.fromCharCode(b);
+      const url = `${APP}#s=${encodeURIComponent(btoa(bin))}`;
+      if (typeof window !== 'undefined') window.gtag?.('event', 'click_rombik_open_share');
+      window.open(url, '_blank', 'noopener,noreferrer');
+    } catch {
+      window.open(APP, '_blank', 'noopener,noreferrer');
+    } finally {
+      shareBusy = false;
     }
   }
-
-  let editorEl: HTMLTextAreaElement | null = $state(null);
-  let highlightEl: HTMLPreElement | null = $state(null);
-  let gutterEl: HTMLDivElement | null = $state(null);
-
-  const lineCount = $derived(code.length === 0 ? 1 : code.split('\n').length);
-  const lineNumbers = $derived(Array.from({ length: lineCount }, (_, i) => i + 1));
+  // -------------------------------------------------------------------------
 
   function escapeHtml(text: string): string {
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
-
   const PYTHON_KEYWORDS = [
     'def', 'return', 'if', 'else', 'elif', 'for', 'in', 'while', 'break', 'continue',
     'pass', 'and', 'or', 'not', 'is', 'import', 'from', 'as', 'True', 'False', 'None',
-    'print', 'input', 'range'
+    'print', 'input', 'range', 'len'
   ];
-
   const TOKEN_RE = new RegExp(
     `(?<comment>#[^\\n]*)|(?<str>"[^"\\n]*"|'[^'\\n]*')|(?<num>\\b\\d+\\.?\\d*\\b)|(?<kw>\\b(?:${PYTHON_KEYWORDS.join('|')})\\b)`,
     'g'
   );
-
   function highlight(text: string): string {
     const escaped = escapeHtml(text);
     let out = '';
     let last = 0;
     for (const m of escaped.matchAll(TOKEN_RE)) {
-      const idx = m.index ?? 0;
-      out += escaped.slice(last, idx);
+      const i = m.index ?? 0;
+      out += escaped.slice(last, i);
       const tok = m[0];
       if (m.groups?.comment) out += `<span class="tok-comment">${tok}</span>`;
       else if (m.groups?.str) out += `<span class="tok-string">${tok}</span>`;
       else if (m.groups?.num) out += `<span class="tok-num">${tok}</span>`;
       else if (m.groups?.kw) out += `<span class="tok-kw">${tok}</span>`;
       else out += tok;
-      last = idx + tok.length;
+      last = i + tok.length;
     }
-    out += escaped.slice(last);
-    return out + '\n';
+    return out + escaped.slice(last);
   }
-
-  function onEditorScroll() {
-    if (!editorEl) return;
-    if (highlightEl) {
-      highlightEl.scrollTop = editorEl.scrollTop;
-      highlightEl.scrollLeft = editorEl.scrollLeft;
-    }
-    if (gutterEl) {
-      gutterEl.scrollTop = editorEl.scrollTop;
-    }
-  }
-
-  function onEditorKey(e: KeyboardEvent) {
-    if (!editorEl) return;
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-      e.preventDefault();
-      void run();
-      return;
-    }
-    if (e.key === 'Tab') {
-      e.preventDefault();
-      const start = editorEl.selectionStart;
-      const end = editorEl.selectionEnd;
-      const before = code.slice(0, start);
-      const after = code.slice(end);
-      code = before + '    ' + after;
-      requestAnimationFrame(() => {
-        if (editorEl) editorEl.selectionStart = editorEl.selectionEnd = start + 4;
-      });
-    } else if (e.key === 'Enter') {
-      const start = editorEl.selectionStart;
-      const lineStart = code.lastIndexOf('\n', start - 1) + 1;
-      const currentLine = code.slice(lineStart, start);
-      const indent = currentLine.match(/^\s*/)?.[0] ?? '';
-      const extra = currentLine.trimEnd().endsWith(':') ? '    ' : '';
-      e.preventDefault();
-      const before = code.slice(0, start);
-      const after = code.slice(editorEl.selectionEnd);
-      code = before + '\n' + indent + extra + after;
-      const pos = start + 1 + indent.length + extra.length;
-      requestAnimationFrame(() => {
-        if (editorEl) editorEl.selectionStart = editorEl.selectionEnd = pos;
-      });
-    }
-  }
-
+  const lineNumbers = $derived(demo.code.split('\n').map((_, i) => i + 1));
 </script>
 
-<section id="rombik" class="scroll-mt-nav relative px-6 py-24">
+<section id="rombik" class="scroll-mt-nav relative px-6 py-20">
   <div class="mx-auto max-w-6xl">
     <Reveal>
-      <div class="mb-8">
-        <span class="font-mono text-sm text-rose-300">// {$t.lab.rombik.kicker}</span>
-        <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.lab.rombik.title}</h2>
-        <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.rombik.subtitle}</p>
+      <div class="mb-3 flex items-center gap-3">
+        <span class="kicker">// {$t.lab.rombik.kicker} · v{VERSION}</span>
       </div>
+      <h2 class="display max-w-3xl text-4xl text-[var(--color-fg)] sm:text-5xl">{$t.lab.rombik.title}</h2>
+      <p class="mt-4 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.rombik.subtitle}</p>
     </Reveal>
 
-    <!-- Strongest, accurate technical points -->
+    <!-- Highlights -->
     <Reveal>
-      <ul class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {#each $t.lab.rombik.highlights as h, i}
           {@const Icon = icons[i]}
-          <li class="glass flex items-start gap-3 rounded-2xl p-4">
-            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-rose-500/15 text-rose-200">
-              <Icon class="h-4 w-4" />
-            </span>
-            <div>
-              <div class="text-sm font-semibold text-white">{h.title}</div>
-              <div class="mt-0.5 text-xs leading-snug text-[var(--color-muted)]">{h.desc}</div>
-            </div>
+          <li class="card flex flex-col gap-2 p-5">
+            <span class="grid h-9 w-9 place-items-center rounded-lg bg-[var(--color-accent-400)]/12 text-[var(--color-accent-500)]"><Icon class="h-4 w-4" /></span>
+            <div class="mt-1 text-sm font-bold text-[var(--color-fg)]">{h.title}</div>
+            <div class="text-xs leading-snug text-[var(--color-muted)]">{h.desc}</div>
           </li>
         {/each}
       </ul>
     </Reveal>
 
-    <!-- Native lab: Python editor → DSTU flowchart (SVG) -->
+    <!-- Demo: prebuilt code → flowchart (theme-aware surface, no engine) -->
     <Reveal>
-      <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl">
-        <!-- Toolbar -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 bg-white/[0.02] px-5 py-3">
-          <div class="flex items-center gap-3">
-            <div class="flex items-center gap-1.5">
-              <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
-            </div>
-            <span class="font-mono text-xs text-[var(--color-muted)]">{$t.lab.rombik.filename}</span>
-
-            <div class="relative ml-2">
-              <select
-                class="cursor-pointer appearance-none rounded-full border border-white/10 bg-white/[0.04] py-1.5 pr-7 pl-3 font-mono text-xs text-white/90 transition hover:border-white/20 focus:outline-none"
-                value={exampleKey}
-                onchange={(e) => loadExample((e.currentTarget as HTMLSelectElement).value as ExampleKey)}
-                aria-label="examples"
+      <div class="card mt-5 overflow-hidden p-0">
+        <!-- Toolbar: example tabs -->
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--color-line)] bg-[var(--color-bg-soft)]/50 px-4 py-3">
+          <div class="flex flex-wrap items-center gap-1.5">
+            {#each DEMOS as d, i}
+              <button
+                type="button"
+                onclick={() => select(i)}
+                class="rounded-full px-3 py-1.5 font-mono text-xs transition {idx === i
+                  ? 'bg-[var(--color-accent-400)] font-semibold text-white'
+                  : 'text-[var(--color-muted)] hover:bg-[var(--color-card)] hover:text-[var(--color-fg)]'}"
               >
-                {#each Object.keys(EXAMPLES) as key}
-                  <option value={key} class="bg-[#0a0916]">{$t.lab.rombik.examples[key as ExampleKey]}</option>
-                {/each}
-              </select>
-              <ChevronDown class="pointer-events-none absolute top-1/2 right-2 h-3.5 w-3.5 -translate-y-1/2 text-[var(--color-muted)]" />
-            </div>
+                {fnName[d.key] ?? d.key}
+              </button>
+            {/each}
           </div>
-
-          <div class="flex items-center gap-2">
-            {#if status === 'loading'}
-              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--color-muted)]">
-                <Loader2 class="h-3.5 w-3.5 animate-spin" />
-                {stageLabel(stage)}
-              </span>
-            {:else if status === 'ready' && svgs.length}
-              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
-                {$t.lab.rombik.ready}
-              </span>
-            {/if}
-
-            <button
-              type="button"
-              onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_run'); run(); }}
-              disabled={status === 'loading'}
-              title="Ctrl + Enter"
-              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-rose-500 to-amber-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-rose-500/25 transition hover:scale-105 hover:shadow-amber-500/30 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
-            >
-              {#if status === 'loading'}
-                <Loader2 class="h-4 w-4 animate-spin" />
-              {:else}
-                <Play class="h-4 w-4" />
-              {/if}
-              {$t.lab.rombik.run}
-            </button>
-          </div>
+          <button type="button" onclick={rebuild} class="btn-ghost text-xs" title="{$t.lab.rombik.build}">
+            <Play class="h-3.5 w-3.5" />
+            {$t.lab.rombik.build}
+          </button>
         </div>
 
-        {#if status === 'idle'}
-          <div class="border-b border-white/5 bg-rose-500/5 px-5 py-2 font-mono text-[11px] text-rose-200">
-            {$t.lab.rombik.weightHint}
-          </div>
-        {/if}
+        <div class="border-b border-[var(--color-line)] bg-[var(--color-accent-400)]/[0.05] px-4 py-2 font-mono text-[11px] text-[var(--color-accent-500)]">
+          {$t.lab.rombik.demoHint}
+        </div>
 
-        <!-- Body: editor (left) + flowchart on a white sheet (right) -->
+        <!-- Body -->
         <div class="grid lg:grid-cols-2">
-          <div class="relative flex h-[460px] overflow-hidden border-b border-white/5 lg:border-r lg:border-b-0">
-            <div
-              bind:this={gutterEl}
-              class="rombik-gutter pointer-events-none flex-none overflow-hidden py-5 pr-3 pl-4 font-mono text-[13px] leading-[1.6] text-right select-none"
-              aria-hidden="true"
-            >
-              {#each lineNumbers as n (n)}
-                <div class="rombik-line-num">{n}</div>
-              {/each}
+          <!-- Code (static, highlighted, theme-aware) -->
+          <div class="flex max-h-[460px] overflow-auto border-b border-[var(--color-line)] bg-[var(--color-ink)] lg:border-r lg:border-b-0">
+            <div class="rombik-gutter pointer-events-none flex-none py-5 pr-3 pl-4 text-right font-mono text-[13px] leading-[1.65] select-none" aria-hidden="true">
+              {#each lineNumbers as n (n)}<div>{n}</div>{/each}
             </div>
-            <div class="relative flex-1">
-              <pre
-                bind:this={highlightEl}
-                class="rombik-overlay pointer-events-none absolute inset-0 m-0 overflow-auto py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.6] whitespace-pre"
-                aria-hidden="true">{@html highlight(code)}</pre>
-              <textarea
-                bind:this={editorEl}
-                bind:value={code}
-                onscroll={onEditorScroll}
-                onkeydown={onEditorKey}
-                spellcheck="false"
-                aria-label="Python code editor"
-                class="rombik-editor relative h-full w-full resize-none bg-transparent py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.6] text-transparent caret-white outline-none"
-                autocomplete="off"
-                autocapitalize="off"
-                {...{ autocorrect: 'off' }}
-              ></textarea>
-            </div>
+            <pre class="rombik-code m-0 flex-1 overflow-x-auto py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.65] whitespace-pre">{@html highlight(demo.code)}</pre>
           </div>
 
-          <div class="h-[460px] overflow-auto bg-[#0a0916]/40 p-4">
-            {#if errorMsg}
-              <div class="flex h-full items-center justify-center px-6 text-center">
-                <p class="font-mono text-sm text-red-300">⚠ {errorMsg}</p>
+          <!-- Flowchart sheet with build-reveal animation -->
+          <div class="flex max-h-[460px] items-start justify-center overflow-auto bg-[var(--color-ink-soft)] p-5">
+            {#key animId}
+              <div class="rombik-sheet w-full overflow-hidden rounded-lg bg-white p-4 shadow-sm">
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
+                {@html demo.svg}
               </div>
-            {:else if svgs.length}
-              <div class="flex flex-col gap-4">
-                {#each svgs as fn}
-                  <div class="overflow-hidden rounded-xl bg-white p-4">
-                    {#if fn.name}
-                      <div class="mb-2 font-mono text-[11px] text-black/50">{fn.name}</div>
-                    {/if}
-                    <div class="rombik-svg overflow-auto">
-                      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                      {@html fn.svg}
-                    </div>
-                  </div>
-                {/each}
-              </div>
-            {:else}
-              <div class="flex h-full items-center justify-center px-6 text-center">
-                <p class="text-sm text-[var(--color-muted)]">{$t.lab.rombik.emptyOutput}</p>
-              </div>
-            {/if}
+            {/key}
           </div>
         </div>
 
         <!-- Footer CTAs -->
-        <div class="flex flex-wrap items-center gap-3 border-t border-white/5 bg-white/[0.02] px-5 py-3">
-          <a
-            href={APP}
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_open_app')}
-            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
-          >
+        <div class="flex flex-wrap items-center gap-3 border-t border-[var(--color-line)] bg-[var(--color-bg-soft)]/50 px-4 py-3">
+          <button type="button" onclick={openInRombik} disabled={shareBusy} class="btn-primary disabled:opacity-60">
             <ExternalLink class="h-4 w-4" />
+            {$t.lab.rombik.tryRombik}
+          </button>
+          <a href={APP} target="_blank" rel="noopener noreferrer" onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_open_app')} class="btn-secondary">
             {$t.lab.rombik.openApp}
           </a>
-          <a
-            href={REPO}
-            target="_blank"
-            rel="noopener noreferrer"
-            onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_source')}
-            class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
-          >
+          <a href={REPO} target="_blank" rel="noopener noreferrer" onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_source')} class="btn-ghost">
             <Github class="h-4 w-4" />
             {$t.lab.rombik.source}
           </a>
@@ -353,47 +185,38 @@
 </section>
 
 <style>
-  .rombik-svg :global(svg) {
+  .rombik-sheet :global(svg) {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
   }
-  :global(.rombik-overlay) {
-    color: rgb(229 231 235);
+  /* «Будує схему»: проявлення зверху вниз. */
+  .rombik-sheet {
+    animation: sheet-build 1.05s cubic-bezier(0.45, 0, 0.2, 1) backwards;
   }
-  :global(.rombik-overlay .tok-kw) {
-    color: #f9a8d4;
-    font-weight: 600;
-  }
-  :global(.rombik-overlay .tok-string) {
-    color: #6ee7b7;
-  }
-  :global(.rombik-overlay .tok-num) {
-    color: #67e8f9;
-  }
-  :global(.rombik-overlay .tok-comment) {
-    color: #6b7280;
-    font-style: italic;
+  @keyframes sheet-build {
+    from { clip-path: inset(0 0 100% 0); }
+    to { clip-path: inset(0 0 0 0); }
   }
   .rombik-gutter {
-    color: rgba(138, 134, 180, 0.55);
-    background: rgba(255, 255, 255, 0.015);
-    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--color-ink-muted);
+    background: color-mix(in srgb, var(--color-ink-soft) 60%, transparent);
+    border-right: 1px solid var(--color-ink-line);
     width: 3.25rem;
     min-width: 3.25rem;
   }
-  .rombik-line-num {
-    height: calc(13px * 1.6);
-    font-variant-numeric: tabular-nums;
+  .rombik-code {
+    color: var(--color-ink-fg);
   }
-  .rombik-editor::selection {
-    background: rgba(139, 92, 246, 0.45);
-    color: transparent;
+  :global(.rombik-code .tok-kw) { color: var(--tok-kw); font-weight: 600; }
+  :global(.rombik-code .tok-string) { color: var(--tok-str); }
+  :global(.rombik-code .tok-num) { color: var(--tok-num); }
+  :global(.rombik-code .tok-comment) { color: var(--tok-comment); font-style: italic; }
+  @media (prefers-reduced-motion: reduce) {
+    .rombik-sheet { animation-duration: 0.01s; }
   }
   @media (pointer: coarse) {
-    :global(.rombik-overlay),
-    .rombik-editor,
-    .rombik-gutter {
-      font-size: 16px !important;
-    }
+    .rombik-code, .rombik-gutter { font-size: 16px !important; }
   }
 </style>

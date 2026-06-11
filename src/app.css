@@ -1,30 +1,115 @@
 @import 'tailwindcss';
 
+/*
+  Дизайн-система сайту — у мові резюме (CV): прохолодний slate-фон, білі
+  заокруглені картки з м'якою тінню, основний акцент індиго + золото для
+  перемог, троянда для rombik, sky для Piton. Тег-пігулки. Ієрархія:
+  флагмани — тоновані картки з кольоровим бейджем, решта — звичайні білі.
+  Гарнітура — Onest + JetBrains Mono для технічних підписів.
+*/
+
 @theme {
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Onest', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-display: 'Onest', system-ui, sans-serif;
 
-  --color-bg: #08070f;
-  --color-bg-soft: #0d0c1a;
-  --color-fg: #e9e7ff;
-  --color-muted: #8a86b4;
-  --color-line: #1d1b2e;
+  --color-bg: #f8fafc;       /* slate-50 */
+  --color-bg-soft: #eef2f8;
+  --color-fg: #0f172a;       /* slate-900 — заголовки / сильний текст */
+  --color-body: #334155;     /* slate-700 — основний текст */
+  --color-muted: #64748b;    /* slate-500 */
+  --color-line: #e2e8f0;     /* slate-200 */
+  --color-card: #ffffff;
 
-  --color-violet-400: #a78bfa;
-  --color-violet-500: #8b5cf6;
-  --color-violet-600: #7c3aed;
-  --color-pink-400: #f472b6;
-  --color-pink-500: #ec4899;
-  --color-amber-300: #fcd34d;
-  --color-amber-400: #fbbf24;
-  --color-cyan-300: #67e8f9;
-  --color-cyan-400: #22d3ee;
+  /* Індиго — основний акцент */
+  --color-accent-300: #818cf8;
+  --color-accent-400: #6366f1;
+  --color-accent-500: #4f46e5;
+
+  /* Додаткові «фарби» (як у CV) — кожна має tint-фон/лінію, що темнішають у dark */
+  --color-sky: #0284c7;
+  --color-sky-bg: #e0f2fe;
+  --color-sky-line: #bae6fd;
+  --color-gold: #b45309;
+  --color-gold-bg: #fffbeb;
+  --color-gold-line: #fcd34d;
+  --color-rose: #be123c;
+  --color-rose-bg: #fff1f2;
+  --color-rose-line: #fecdd3;
+  --color-emerald: #059669;
+  --color-emerald-bg: #ecfdf5;
+  --color-emerald-line: #a7f3d0;
+  --color-indigo-bg: #eef2ff;
+  --color-indigo-line: #c7d2fe;
+  --color-violet: #6d28d9;
+  --color-tag-bg: #e0e7ff;
+
+  /*
+    «Зразки» (код / лаб) тепер слідують за темою сайту, а не завжди темні.
+    Світла тема → світла панель; .dark перевизначає на темну (нижче).
+  */
+  --color-ink: #ffffff;
+  --color-ink-soft: #f1f5f9;
+  --color-ink-line: #e2e8f0;
+  --color-ink-fg: #0f172a;
+  --color-ink-muted: #64748b;
+
+  /* Кольори синтаксису — тема-залежні (значення для світлої теми). */
+  --tok-kw: #4338ca;
+  --tok-str: #047857;
+  --tok-num: #b45309;
+  --tok-comment: #94a3b8;
+}
+
+/* Темна тема — перевизначення токенів. */
+.dark {
+  --color-bg: #0b1120;
+  --color-bg-soft: #131c30;
+  --color-fg: #f1f5f9;
+  --color-body: #cbd5e1;
+  --color-muted: #94a3b8;
+  --color-line: #243049;
+  --color-card: #131c30;
+
+  --color-accent-300: #a5b4fc;
+  --color-accent-400: #818cf8;
+  --color-accent-500: #a5b4fc;
+
+  --color-sky: #38bdf8;
+  --color-sky-bg: #122433;
+  --color-sky-line: #1e445e;
+  --color-gold: #fbbf24;
+  --color-gold-bg: #2a210d;
+  --color-gold-line: #5c4711;
+  --color-rose: #fb7185;
+  --color-rose-bg: #2b1620;
+  --color-rose-line: #5e2336;
+  --color-emerald: #34d399;
+  --color-emerald-bg: #112a22;
+  --color-emerald-line: #1d4d3c;
+  --color-indigo-bg: #1a1f3d;
+  --color-indigo-line: #2f3566;
+  --color-violet: #c4b5fd;
+  --color-tag-bg: rgba(129, 140, 248, 0.18);
+
+  --color-ink: #131c30;
+  --color-ink-soft: #1b2540;
+  --color-ink-line: #2a3654;
+  --color-ink-fg: #e2e8f0;
+  --color-ink-muted: #94a3b8;
+
+  --tok-kw: #a5b4fc;
+  --tok-str: #86efac;
+  --tok-num: #fcd34d;
+  --tok-comment: #64748b;
+
+  color-scheme: dark;
 }
 
 @layer base {
   html {
     background-color: var(--color-bg);
-    color: var(--color-fg);
+    color: var(--color-body);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -37,103 +122,174 @@
     background-color: var(--color-bg);
     overflow-x: clip;
   }
-  /* Belt-and-braces — no element should ever cause horizontal scroll. */
   html { overflow-x: clip; }
 
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--color-fg);
+  }
+
   ::selection {
-    background-color: rgb(139 92 246 / 0.4);
-    color: white;
+    background-color: var(--color-accent-400);
+    color: #fff;
   }
 
   *:focus-visible {
-    outline: 2px solid var(--color-violet-400);
-    outline-offset: 3px;
-    border-radius: 6px;
+    outline: 2px solid var(--color-accent-400);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
+@layer components {
+  /* Біла картка — базовий будівельний блок. */
+  .card {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 12px 28px -16px rgba(15, 23, 42, 0.12);
+  }
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent-300);
+    box-shadow:
+      0 2px 4px rgba(15, 23, 42, 0.05),
+      0 20px 40px -18px rgba(79, 70, 229, 0.28);
+  }
+
+  /* Тег-пігулка (як у CV). */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    background: var(--color-tag-bg);
+    padding: 0.15rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-accent-500);
+    white-space: nowrap;
+  }
+
+  /* Кнопки — єдина система. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-accent-400);
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 0 8px 20px -8px rgba(79, 70, 229, 0.6);
+    transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-500);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-fg);
+    transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-accent-400);
+    color: var(--color-accent-500);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.18s ease, background 0.18s ease;
+  }
+  .btn-ghost:hover {
+    color: var(--color-fg);
+    background: var(--color-bg-soft);
+  }
+
+  /* Тема-залежні класи підсвітки коду — читабельні і в світлій, і в темній. */
+  .tok-kw { color: var(--tok-kw); font-weight: 600; }
+  .tok-string { color: var(--tok-str); }
+  .tok-num { color: var(--tok-num); }
+  .tok-comment { color: var(--tok-comment); font-style: italic; }
+}
+
 @layer utilities {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.0;
+  }
+
   .text-gradient {
-    background: linear-gradient(120deg, #c4b5fd 0%, #f472b6 45%, #fcd34d 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    color: var(--color-accent-500);
   }
-
   .text-gradient-cool {
-    background: linear-gradient(120deg, #a78bfa 0%, #22d3ee 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-sky);
   }
 
-  .border-gradient {
-    position: relative;
-    background-clip: padding-box;
+  /* Секційний підпис: «// projects» mono, індиго. */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-accent-500);
   }
-  .border-gradient::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(244, 114, 182, 0.45), rgba(252, 211, 77, 0.35));
-    -webkit-mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+
+  /* Легасі-аліаси, щоб стара розмітка не ламалась. */
+  .glass.glass {
+    background: var(--color-card);
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 12px 28px -16px rgba(15, 23, 42, 0.12);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
+  .glass-strong.glass-strong {
+    background: var(--color-ink);
+    color: var(--color-ink-fg);
+    border: 1px solid var(--color-ink-line);
+    border-radius: 1rem;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .border-gradient.border-gradient { border-radius: 1rem; }
+  .border-gradient::before { content: none; }
 
   .scroll-mt-nav {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 88px;
   }
-
-  .glass {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .glass-strong {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Big editorial display type for hero + page headers. */
-  .display {
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
-  }
-
-  @keyframes blob-1 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -30px) scale(1.1); }
-    66% { transform: translate(-20px, 30px) scale(0.95); }
-  }
-  @keyframes blob-2 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-30px, 20px) scale(1.05); }
-    66% { transform: translate(30px, -20px) scale(0.9); }
-  }
-  @keyframes blob-3 {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, -40px) scale(1.15); }
-  }
-  .animate-blob-1 { animation: blob-1 18s ease-in-out infinite; }
-  .animate-blob-2 { animation: blob-2 22s ease-in-out infinite; }
-  .animate-blob-3 { animation: blob-3 26s ease-in-out infinite; }
-
-  @keyframes float-y {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-  .animate-float { animation: float-y 6s ease-in-out infinite; }
 
   @keyframes pulse-soft {
     0%, 100% { opacity: 0.5; }
@@ -141,10 +297,14 @@
   }
   .animate-pulse-soft { animation: pulse-soft 2.5s ease-in-out infinite; }
 
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .animate-float { animation: float-y 6s ease-in-out infinite; }
+
   @media (prefers-reduced-motion: reduce) {
-    .animate-blob-1, .animate-blob-2, .animate-blob-3, .animate-float, .animate-pulse-soft {
-      animation: none;
-    }
+    .animate-float, .animate-pulse-soft, .card-hover { animation: none; transition: none; }
     html { scroll-behavior: auto; }
   }
 }

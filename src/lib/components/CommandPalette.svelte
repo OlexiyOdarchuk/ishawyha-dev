@@ -127,18 +127,18 @@
       onclick={hide}
     ></button>
 
-    <div class="relative mt-[8vh] w-full max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-[#0a0916]/95 shadow-2xl shadow-black/50">
-      <div class="flex items-center gap-2 border-b border-white/5 px-4 py-3">
-        <Search class="h-4 w-4 text-[var(--color-muted)]" />
+    <div class="relative mt-[8vh] w-full max-w-xl overflow-hidden border border-[var(--color-ink-line)] bg-[var(--color-ink)] text-[var(--color-ink-fg)] shadow-2xl shadow-black/50">
+      <div class="flex items-center gap-2 border-b border-[var(--color-ink-line)] px-4 py-3">
+        <Search class="h-4 w-4 text-[var(--color-ink-muted)]" />
         <input
           bind:this={inputEl}
           bind:value={query}
           type="text"
           placeholder={$t.palette.placeholder}
           aria-label={$t.palette.placeholder}
-          class="flex-1 bg-transparent text-sm text-white placeholder:text-[var(--color-muted)] focus:outline-none"
+          class="flex-1 bg-transparent text-sm text-[var(--color-ink-fg)] placeholder:text-[var(--color-ink-muted)] focus:outline-none"
         />
-        <kbd class="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-[var(--color-muted)]">ESC</kbd>
+        <kbd class="border border-[var(--color-ink-line)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--color-ink-muted)]">ESC</kbd>
       </div>
 
       <ul bind:this={listEl} class="max-h-[60vh] overflow-y-auto py-1.5" role="listbox">
@@ -150,25 +150,25 @@
               aria-selected={i === activeIdx}
               onclick={() => run(c)}
               onmouseenter={() => (activeIdx = i)}
-              class="flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-sm transition {i === activeIdx ? 'bg-white/[0.08]' : ''}"
+              class="flex w-full items-center justify-between gap-3 px-4 py-2 text-left text-sm transition {i === activeIdx ? 'bg-white/[0.07]' : ''}"
             >
               <span class="flex min-w-0 items-center gap-3">
-                <ArrowRight class="h-3.5 w-3.5 shrink-0 {i === activeIdx ? 'text-violet-300' : 'text-[var(--color-muted)]'}" />
-                <span class="truncate text-white/90">{c.title}</span>
+                <ArrowRight class="h-3.5 w-3.5 shrink-0 {i === activeIdx ? 'text-[var(--color-accent-300)]' : 'text-[var(--color-ink-muted)]'}" />
+                <span class="truncate text-[var(--color-ink-fg)]">{c.title}</span>
               </span>
               {#if c.hint}
-                <span class="shrink-0 font-mono text-[11px] text-[var(--color-muted)]">{c.hint}</span>
+                <span class="shrink-0 font-mono text-[11px] text-[var(--color-ink-muted)]">{c.hint}</span>
               {/if}
             </button>
           </li>
         {:else}
-          <li class="px-4 py-6 text-center font-mono text-xs text-[var(--color-muted)]">
+          <li class="px-4 py-6 text-center font-mono text-xs text-[var(--color-ink-muted)]">
             {$t.palette.empty}
           </li>
         {/each}
       </ul>
 
-      <div class="flex items-center justify-between gap-2 border-t border-white/5 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-[var(--color-muted)]">
+      <div class="flex items-center justify-between gap-2 border-t border-[var(--color-ink-line)] px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-[var(--color-ink-muted)]">
         <span class="flex items-center gap-3">
           <span>↑↓</span>
           <span>↵</span>

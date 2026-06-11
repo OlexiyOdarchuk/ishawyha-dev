@@ -223,34 +223,30 @@
     {#if showHeader}
       <Reveal>
         <div class="mb-10">
-          <span class="font-mono text-sm text-cyan-300">// {$t.lab.kicker}</span>
-          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">{$t.lab.title}</h2>
+          <span class="kicker">// {$t.lab.kicker}</span>
+          <h2 class="display mt-2 text-4xl text-[var(--color-fg)] sm:text-5xl">{$t.lab.title}</h2>
           <p class="mt-3 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.subtitle}</p>
         </div>
       </Reveal>
     {/if}
 
     <Reveal>
-      <ul class="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {#each $t.lab.piton.highlights as h, i}
           {@const Icon = [Zap, Cpu, Route, ShieldCheck][i]}
-          <li class="glass flex items-start gap-3 rounded-2xl p-4 transition hover:-translate-y-1 hover:bg-white/[0.06]">
-            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-violet-500/15 text-violet-300">
-              <Icon class="h-5 w-5" />
-            </span>
-            <div>
-              <div class="text-sm font-bold text-white">{h.title}</div>
-              <div class="mt-0.5 text-xs leading-relaxed text-[var(--color-muted)]">{h.desc}</div>
-            </div>
+          <li class="card flex flex-col gap-2 p-5">
+            <span class="grid h-9 w-9 place-items-center rounded-lg bg-[var(--color-sky)]/10 text-[var(--color-sky)]"><Icon class="h-4 w-4" /></span>
+            <div class="mt-1 text-sm font-bold text-[var(--color-fg)]">{h.title}</div>
+            <div class="text-xs leading-relaxed text-[var(--color-muted)]">{h.desc}</div>
           </li>
         {/each}
       </ul>
     </Reveal>
 
     <Reveal>
-      <div class="glass-strong border-gradient relative overflow-hidden rounded-3xl">
+      <div class="glass-strong border-gradient relative overflow-hidden rounded-2xl text-[var(--color-ink-fg)] shadow-xl" style="--color-muted: var(--color-ink-muted); --color-line: var(--color-ink-line); --color-line-strong: var(--color-ink-line);">
         <!-- Toolbar -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/5 bg-white/[0.02] px-5 py-3">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-5 py-3">
           <div class="flex items-center gap-3">
             <div class="flex items-center gap-1.5">
               <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
@@ -262,13 +258,13 @@
             <!-- Example dropdown -->
             <div class="relative ml-2">
               <select
-                class="cursor-pointer appearance-none rounded-full border border-white/10 bg-white/[0.04] py-1.5 pr-7 pl-3 font-mono text-xs text-white/90 transition hover:border-white/20 focus:outline-none"
+                class="cursor-pointer appearance-none rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] py-1.5 pr-7 pl-3 font-mono text-xs text-[var(--color-ink-fg)] transition hover:border-[var(--color-ink-line)] focus:outline-none"
                 value={exampleKey}
                 onchange={(e) => loadExample((e.currentTarget as HTMLSelectElement).value as ExampleKey)}
                 aria-label={$t.lab.examples}
               >
                 {#each Object.keys(EXAMPLES) as key}
-                  <option value={key} class="bg-[#0a0916]">{$t.lab.exampleNames[key as ExampleKey]}</option>
+                  <option value={key} class="bg-[var(--color-ink)]">{$t.lab.exampleNames[key as ExampleKey]}</option>
                 {/each}
               </select>
               <ChevronDown class="pointer-events-none absolute top-1/2 right-2 h-3.5 w-3.5 -translate-y-1/2 text-[var(--color-muted)]" />
@@ -282,12 +278,12 @@
                 {$t.lab.loading}
               </span>
             {:else if status === 'ready'}
-              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-emerald-300">
+              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-emerald-500">
                 <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                 {$t.lab.loaded}
               </span>
             {:else if status === 'error'}
-              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-red-300">
+              <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-red-500">
                 ⚠ {$t.lab.error}
               </span>
             {/if}
@@ -297,7 +293,7 @@
               onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_run'); handleRun(); }}
               disabled={status === 'loading'}
               title="Ctrl + Enter"
-              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-500 via-pink-500 to-amber-400 px-5 py-2.5 text-sm font-bold text-black shadow-lg shadow-violet-500/30 transition hover:scale-105 hover:shadow-pink-500/40 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
+              class="inline-flex items-center gap-2 bg-[var(--color-accent-400)] px-5 py-2.5 text-sm font-bold text-black transition hover:bg-[var(--color-accent-300)] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {#if status === 'loading'}
                 <Loader2 class="h-4 w-4 animate-spin" />
@@ -312,7 +308,7 @@
               onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_visualize'); handleVisualize(); }}
               disabled={status === 'loading' || vizLoading}
               title="Ctrl + B"
-              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
+              class="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-fg)] transition hover:scale-105 hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
             >
               {#if vizLoading}
                 <Loader2 class="h-4 w-4 animate-spin" />
@@ -327,10 +323,10 @@
               onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_share'); handleShare(); }}
               title={$t.lab.share}
               aria-label={$t.lab.share}
-              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-bold text-white/90 transition hover:scale-105 hover:border-white/30 hover:bg-white/10"
+              class="inline-flex items-center gap-2 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-5 py-2.5 text-sm font-bold text-[var(--color-ink-fg)] transition hover:scale-105 hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)]"
             >
               {#if shareCopied}
-                <Check class="h-4 w-4 text-emerald-300" />
+                <Check class="h-4 w-4 text-emerald-500" />
                 {$t.lab.shared}
               {:else}
                 <Share2 class="h-4 w-4" />
@@ -341,7 +337,7 @@
         </div>
 
         {#if status === 'idle'}
-          <div class="border-b border-white/5 bg-violet-500/5 px-5 py-2 font-mono text-[11px] text-violet-200">
+          <div class="border-b border-[var(--color-line)] bg-[var(--color-accent-400)]/[0.06] px-5 py-2 font-mono text-[11px] text-[var(--color-accent-300)]">
             <Sparkles class="mr-1 inline h-3 w-3" />
             {$t.lab.loadHint}
           </div>
@@ -350,7 +346,7 @@
         <!-- Lab body: editor + viewer -->
         <div class="grid lg:grid-cols-2">
           <!-- Editor -->
-          <div class="relative flex h-[460px] overflow-hidden border-b border-white/5 lg:border-r lg:border-b-0">
+          <div class="relative flex h-[460px] overflow-hidden border-b border-[var(--color-ink-line)] lg:border-r lg:border-b-0">
             <div
               bind:this={gutterEl}
               class="piton-gutter pointer-events-none flex-none overflow-hidden py-5 pr-3 pl-4 font-mono text-[13px] leading-[1.6] text-right select-none"
@@ -372,7 +368,7 @@
                 onkeydown={onEditorKey}
                 spellcheck="false"
                 aria-label="Piton code editor"
-                class="piton-editor relative h-full w-full resize-none bg-transparent py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.6] text-transparent caret-white outline-none"
+                class="piton-editor relative h-full w-full resize-none bg-transparent py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.6] text-transparent caret-[var(--color-accent-400)] outline-none"
                 autocomplete="off"
                 autocapitalize="off"
                 {...{ autocorrect: 'off' }}
@@ -382,13 +378,13 @@
 
           <!-- Viewer -->
           <div class="flex h-[460px] flex-col">
-            <div role="tablist" class="flex border-b border-white/5 bg-white/[0.015]">
+            <div role="tablist" class="flex border-b border-[var(--color-ink-line)] bg-[var(--color-ink-soft)]">
               <button
                 role="tab"
                 type="button"
                 aria-selected={activeTab === 'output'}
                 onclick={() => selectTab('output')}
-                class="inline-flex items-center gap-1.5 border-b-2 px-4 py-2.5 font-mono text-xs transition {activeTab === 'output' ? 'border-violet-400 text-white' : 'border-transparent text-[var(--color-muted)] hover:text-white'}"
+                class="inline-flex items-center gap-1.5 border-b-2 px-4 py-2.5 font-mono text-xs transition {activeTab === 'output' ? 'border-[var(--color-accent-400)] text-[var(--color-ink-fg)]' : 'border-transparent text-[var(--color-muted)] hover:text-[var(--color-ink-fg)]'}"
               >
                 <Terminal class="h-3.5 w-3.5" />
                 {$t.lab.output}
@@ -398,7 +394,7 @@
                 type="button"
                 aria-selected={activeTab === 'flowchart'}
                 onclick={() => selectTab('flowchart')}
-                class="inline-flex items-center gap-1.5 border-b-2 px-4 py-2.5 font-mono text-xs transition {activeTab === 'flowchart' ? 'border-pink-400 text-white' : 'border-transparent text-[var(--color-muted)] hover:text-white'}"
+                class="inline-flex items-center gap-1.5 border-b-2 px-4 py-2.5 font-mono text-xs transition {activeTab === 'flowchart' ? 'border-[var(--color-accent-400)] text-[var(--color-ink-fg)]' : 'border-transparent text-[var(--color-muted)] hover:text-[var(--color-ink-fg)]'}"
               >
                 <GitBranch class="h-3.5 w-3.5" />
                 {$t.lab.flowchart}
@@ -407,7 +403,7 @@
 
             <div class="relative flex-1 overflow-hidden">
               {#if activeTab === 'output'}
-                <pre class="m-0 h-full overflow-auto p-5 font-mono text-[13px] leading-[1.6] whitespace-pre-wrap text-emerald-200/90">{output || $t.lab.emptyOutput}</pre>
+                <pre class="m-0 h-full overflow-auto p-5 font-mono text-[13px] leading-[1.6] whitespace-pre-wrap text-emerald-600">{output || $t.lab.emptyOutput}</pre>
               {:else if vizLoading && !svg}
                 <div class="grid h-full place-items-center p-5">
                   <span class="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-muted)]">
@@ -423,7 +419,7 @@
                   </span>
                 </div>
               {:else if svg && svgIsError}
-                <pre class="m-0 h-full overflow-auto p-5 font-mono text-[12px] leading-[1.6] whitespace-pre-wrap text-red-300">{svg}</pre>
+                <pre class="m-0 h-full overflow-auto p-5 font-mono text-[12px] leading-[1.6] whitespace-pre-wrap text-red-500">{svg}</pre>
               {:else if svg}
                 <FlowViewer svg={cleanSvg} />
               {:else}
@@ -438,33 +434,33 @@
     </Reveal>
 
     {#if status === 'error' && errorMessage}
-      <p class="mt-3 font-mono text-xs text-red-300">{errorMessage}</p>
+      <p class="mt-3 font-mono text-xs text-red-500">{errorMessage}</p>
     {/if}
   </div>
 </section>
 
 <style>
   :global(.piton-overlay) {
-    color: rgb(229 231 235);
+    color: var(--color-ink-fg);
   }
   :global(.piton-overlay .tok-kw) {
-    color: #f9a8d4;
+    color: var(--tok-kw);
     font-weight: 600;
   }
   :global(.piton-overlay .tok-string) {
-    color: #6ee7b7;
+    color: var(--tok-str);
   }
   :global(.piton-overlay .tok-num) {
-    color: #67e8f9;
+    color: var(--tok-num);
   }
   :global(.piton-overlay .tok-comment) {
-    color: #6b7280;
+    color: var(--tok-comment);
     font-style: italic;
   }
   .piton-gutter {
-    color: rgba(138, 134, 180, 0.55);
-    background: rgba(255, 255, 255, 0.015);
-    border-right: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--color-ink-muted);
+    background: color-mix(in srgb, var(--color-ink-soft) 60%, transparent);
+    border-right: 1px solid var(--color-ink-line);
     width: 3.25rem;
     min-width: 3.25rem;
   }
@@ -473,7 +469,7 @@
     font-variant-numeric: tabular-nums;
   }
   .piton-editor::selection {
-    background: rgba(139, 92, 246, 0.45);
+    background: color-mix(in srgb, var(--color-accent-400) 40%, transparent);
     color: transparent;
   }
   /* iOS Safari auto-zooms inputs whose computed font-size is < 16px on focus.

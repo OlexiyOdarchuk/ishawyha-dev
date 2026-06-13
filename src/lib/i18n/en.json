@@ -628,5 +628,12 @@
       "rev": "Rev."
     },
     "made": "Crafted with a taste for architecture"
+  },
+  "errorPage": {
+    "title404": "Page Not Found",
+    "desc404": "Looks like you are lost. This page doesn't exist or has been moved.",
+    "titleGeneric": "Something went wrong",
+    "descGeneric": "An unexpected error has occurred.",
+    "home": "Back to Home"
   }
 }

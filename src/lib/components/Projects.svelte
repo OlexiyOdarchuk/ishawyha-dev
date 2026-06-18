@@ -167,7 +167,7 @@
             </ul>
 
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href={live.piton} target="_blank" rel="noopener noreferrer" class="btn-primary group" style="background: var(--color-sky); box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-sky) 60%, transparent);">
+              <a href="/lab#lab" class="btn-primary group" style="background: var(--color-sky); box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-sky) 60%, transparent);">
                 {$t.projects.featured.piton.cta1}
                 <ArrowRight class="h-4 w-4 transition group-hover:translate-x-0.5" />
               </a>

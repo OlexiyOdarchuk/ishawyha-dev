@@ -215,7 +215,7 @@
         "kicker": "Flagship · hosted SaaS",
         "name": "rombik",
         "tagline": "Code → DSTU flowchart: web, API, CLI",
-        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI and a skill for AI agents. Five formats: SVG, PNG, PDF, Typst, Excalidraw. Free PNG, no sign-up.",
+        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Five formats: SVG, PNG, PDF, Typst, Excalidraw. Free PNG, no sign-up.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
@@ -346,7 +346,7 @@
         "kicker": "Hosted SaaS",
         "title": "rombik",
         "subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
-        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI and a skill for AI agents. Billing — 1 chart = 1 credit, free PNG with no sign-up.",
+        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Billing — 1 chart = 1 credit, free PNG with no sign-up.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
@@ -491,8 +491,8 @@
           "desc": "Python, C, C++, C#, Java, Pascal — exact DSTU primitives"
         },
         {
-          "title": "Web · API · CLI · AI skill",
-          "desc": "editor with pan/zoom, a public HTTP API, a CLI and a skill for agents"
+          "title": "Web · API · CLI · MCP",
+          "desc": "editor with pan/zoom, a public HTTP API, a CLI, an MCP server and a skill for agents"
         },
         {
           "title": "Five formats",

@@ -9,7 +9,7 @@
   let { variant = 'full', showHeader = true }: { variant?: 'full' | 'featured'; showHeader?: boolean } =
     $props();
 
-  const ROMBIK_VERSION = '0.4.0';
+  const ROMBIK_VERSION = '1.0.0';
 
   function gotoBench(e: MouseEvent) {
     e.preventDefault();
@@ -125,8 +125,8 @@
                 <ExternalLink class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta2}
               </a>
-              <a href="https://github.com/OlexiyOdarchuk/rombik" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                <Github class="h-4 w-4" />
+              <a href="https://rombik.ishawyha.dev/api/v1/openapi.json" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+                <BookText class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta3}
               </a>
             </div>

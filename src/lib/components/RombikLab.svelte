@@ -2,11 +2,11 @@
   import { t } from '$lib/i18n';
   import Reveal from './Reveal.svelte';
   import { DEMOS } from '$lib/rombik/demo';
-  import { Workflow, Route, FileDown, ShieldCheck, Play, ExternalLink, Github, ChevronDown } from 'lucide-svelte';
+  import { Workflow, Route, FileDown, ShieldCheck, Play, ExternalLink, Code2, ChevronDown } from 'lucide-svelte';
 
   const APP = 'https://rombik.ishawyha.dev/app';
-  const REPO = 'https://github.com/OlexiyOdarchuk/rombik';
-  const VERSION = '0.4.0';
+  const API = 'https://rombik.ishawyha.dev/api/v1/openapi.json';
+  const VERSION = '1.0.0';
 
   const icons = [Workflow, Route, FileDown, ShieldCheck];
 
@@ -40,7 +40,7 @@
   async function openInRombik() {
     shareBusy = true;
     try {
-      const payload = JSON.stringify({ code: demo.code, language: 'python', settings: {} });
+      const payload = JSON.stringify({ code: demo.code, language: demo.lang, settings: {} });
       const bytes = new TextEncoder().encode(payload);
       const compressed = new Uint8Array(
         await new Response(
@@ -63,20 +63,31 @@
   function escapeHtml(text: string): string {
     return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
-  const PYTHON_KEYWORDS = [
-    'def', 'return', 'if', 'else', 'elif', 'for', 'in', 'while', 'break', 'continue',
-    'pass', 'and', 'or', 'not', 'is', 'import', 'from', 'as', 'True', 'False', 'None',
-    'print', 'input', 'range', 'len'
-  ];
-  const TOKEN_RE = new RegExp(
-    `(?<comment>#[^\\n]*)|(?<str>"[^"\\n]*"|'[^'\\n]*')|(?<num>\\b\\d+\\.?\\d*\\b)|(?<kw>\\b(?:${PYTHON_KEYWORDS.join('|')})\\b)`,
-    'g'
-  );
-  function highlight(text: string): string {
+  // Per-language keywords + comment syntax — rombik now reads 6 languages.
+  const KEYWORDS: Record<string, string[]> = {
+    python: ['def', 'return', 'if', 'else', 'elif', 'for', 'in', 'while', 'break', 'continue',
+      'pass', 'and', 'or', 'not', 'is', 'import', 'from', 'as', 'True', 'False', 'None',
+      'print', 'input', 'range', 'len'],
+    cfamily: ['int', 'void', 'char', 'float', 'double', 'bool', 'long', 'short', 'unsigned',
+      'return', 'if', 'else', 'for', 'while', 'do', 'switch', 'case', 'break', 'continue',
+      'true', 'false', 'null', 'class', 'struct', 'public', 'private', 'static', 'new', 'const'],
+    pascal: ['program', 'function', 'procedure', 'begin', 'end', 'var', 'const', 'type',
+      'if', 'then', 'else', 'for', 'to', 'downto', 'do', 'while', 'repeat', 'until', 'case', 'of',
+      'and', 'or', 'not', 'mod', 'div', 'exit', 'true', 'false', 'integer', 'boolean', 'real', 'string']
+  };
+  function tokenRe(lang: string): RegExp {
+    const kw = lang === 'pascal' ? KEYWORDS.pascal : lang === 'python' ? KEYWORDS.python : KEYWORDS.cfamily;
+    const comment = lang === 'python' ? '#[^\\n]*' : lang === 'pascal' ? '\\{[^}]*\\}|//[^\\n]*' : '//[^\\n]*';
+    return new RegExp(
+      `(?<comment>${comment})|(?<str>"[^"\\n]*"|'[^'\\n]*')|(?<num>\\b\\d+\\.?\\d*\\b)|(?<kw>\\b(?:${kw.join('|')})\\b)`,
+      'g'
+    );
+  }
+  function highlight(text: string, lang: string): string {
     const escaped = escapeHtml(text);
     let out = '';
     let last = 0;
-    for (const m of escaped.matchAll(TOKEN_RE)) {
+    for (const m of escaped.matchAll(tokenRe(lang))) {
       const i = m.index ?? 0;
       out += escaped.slice(last, i);
       const tok = m[0];
@@ -89,6 +100,7 @@
     }
     return out + escaped.slice(last);
   }
+  const highlighted = $derived(highlight(demo.code, demo.lang));
   const lineNumbers = $derived(demo.code.split('\n').map((_, i) => i + 1));
 </script>
 
@@ -151,7 +163,7 @@
             <div class="rombik-gutter pointer-events-none flex-none py-5 pr-3 pl-4 text-right font-mono text-[13px] leading-[1.65] select-none" aria-hidden="true">
               {#each lineNumbers as n (n)}<div>{n}</div>{/each}
             </div>
-            <pre class="rombik-code m-0 flex-1 overflow-x-auto py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.65] whitespace-pre">{@html highlight(demo.code)}</pre>
+            <pre class="rombik-code m-0 flex-1 overflow-x-auto py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.65] whitespace-pre">{@html highlighted}</pre>
           </div>
 
           <!-- Flowchart sheet with build-reveal animation -->
@@ -174,9 +186,9 @@
           <a href={APP} target="_blank" rel="noopener noreferrer" onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_open_app')} class="btn-secondary">
             {$t.lab.rombik.openApp}
           </a>
-          <a href={REPO} target="_blank" rel="noopener noreferrer" onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_source')} class="btn-ghost">
-            <Github class="h-4 w-4" />
-            {$t.lab.rombik.source}
+          <a href={API} target="_blank" rel="noopener noreferrer" onclick={() => typeof window !== 'undefined' && window.gtag?.('event', 'click_rombik_api')} class="btn-ghost">
+            <Code2 class="h-4 w-4" />
+            {$t.lab.rombik.api}
           </a>
         </div>
       </div>

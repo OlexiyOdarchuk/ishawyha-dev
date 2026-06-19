@@ -216,13 +216,13 @@
         "kicker": "Flagship · hosted SaaS",
         "name": "rombik",
         "tagline": "Code → DSTU flowchart: web, API, CLI",
-        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Five formats: SVG, PNG, PDF, Typst, Excalidraw. Free PNG, no sign-up.",
+        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Six formats: SVG, PNG, PDF, DOCX, Typst, Excalidraw. Free PNG, no sign-up.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
           "API",
           "CLI",
-          "SVG · PDF · Typst",
+          "SVG · PDF · DOCX",
           "DSTU"
         ],
         "cta1": "Learn more",
@@ -347,12 +347,12 @@
         "kicker": "Hosted SaaS",
         "title": "rombik",
         "subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
-        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Billing — 1 chart = 1 credit, free PNG with no sign-up.",
+        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Billing — 1 chart = 1 credit, free PNG with no sign-up.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
           "API · CLI",
-          "SVG · PDF · Typst",
+          "SVG · PDF · DOCX",
           "DSTU"
         ]
       }
@@ -496,8 +496,8 @@
           "desc": "editor with pan/zoom, a public HTTP API, a CLI, an MCP server and a skill for agents"
         },
         {
-          "title": "Five formats",
-          "desc": "SVG · PNG · PDF · Typst · Excalidraw; free PNG with no sign-up"
+          "title": "Six formats",
+          "desc": "SVG · PNG · PDF · DOCX · Typst · Excalidraw; free PNG with no sign-up"
         }
       ],
       "openApp": "Open the full editor",
@@ -648,7 +648,7 @@
     "ctaDemo": "Try the demo ↓",
     "stats": [
       { "value": "6", "label": "input languages" },
-      { "value": "5", "label": "export formats" },
+      { "value": "6", "label": "export formats" },
       { "value": "100%", "label": "to DSTU 19.701-90" },
       { "value": "1", "label": "person — engine to billing" }
     ],
@@ -661,7 +661,7 @@
         { "name": "IR", "desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry" },
         { "name": "layout", "desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts" },
         { "name": "diagram", "desc": "shapes with coordinates, polyline edges, a “Figure N” caption" },
-        { "name": "render", "desc": "SVG · Typst · Excalidraw · PNG · PDF" }
+        { "name": "render", "desc": "SVG · PNG · PDF · DOCX · Typst · Excalidraw" }
       ],
       "problemsTitle": "The details everyone gets wrong — and here they're right",
       "problems": [
@@ -679,7 +679,7 @@
       "items": [
         { "title": "Exact DSTU primitives", "desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye." },
         { "title": "Six languages", "desc": "Python, C, C++, C#, Java, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods." },
-        { "title": "Five formats", "desc": "SVG, PNG, PDF, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)." },
+        { "title": "Six formats", "desc": "SVG, PNG, PDF, DOCX (MS Word), Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)." },
         { "title": "Web editor", "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo." },
         { "title": "Each function — its own chart", "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call." },
         { "title": "To your professor's spec", "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options." }

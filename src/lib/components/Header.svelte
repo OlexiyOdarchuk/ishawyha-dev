@@ -12,6 +12,7 @@
 
   const links = $derived([
     { href: '/', label: $t.nav.home },
+    { href: '/rombik', label: $t.nav.rombik },
     { href: '/projects', label: $t.nav.projects },
     { href: '/services', label: $t.nav.services },
     { href: '/lab', label: $t.nav.lab },

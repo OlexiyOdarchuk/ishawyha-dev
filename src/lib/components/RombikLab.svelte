@@ -4,6 +4,9 @@
   import { DEMOS } from '$lib/rombik/demo';
   import { Workflow, Route, FileDown, ShieldCheck, Play, ExternalLink, Code2, ChevronDown } from 'lucide-svelte';
 
+  // showHeader=false embeds just the demo (no section title/highlights) — used on /rombik.
+  let { showHeader = true }: { showHeader?: boolean } = $props();
+
   const APP = 'https://rombik.ishawyha.dev/app';
   const API = 'https://rombik.ishawyha.dev/api/v1/openapi.json';
   const VERSION = '1.0.0';
@@ -106,6 +109,7 @@
 
 <section id="rombik" class="scroll-mt-nav relative px-6 py-20">
   <div class="mx-auto max-w-6xl">
+    {#if showHeader}
     <Reveal>
       <div class="mb-3 flex items-center gap-3">
         <span class="kicker">// {$t.lab.rombik.kicker} · v{VERSION}</span>
@@ -127,6 +131,7 @@
         {/each}
       </ul>
     </Reveal>
+    {/if}
 
     <!-- Demo: prebuilt code → flowchart (theme-aware surface, no engine) -->
     <Reveal>

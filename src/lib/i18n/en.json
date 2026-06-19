@@ -8,6 +8,7 @@
     "about": "About",
     "achievements": "Wins",
     "projects": "Projects",
+    "rombik": "rombik",
     "services": "Services",
     "lab": "Lab",
     "bench": "Bench",
@@ -224,7 +225,7 @@
           "SVG · PDF · Typst",
           "DSTU"
         ],
-        "cta1": "Try it live",
+        "cta1": "Learn more",
         "cta2": "Open rombik",
         "cta3": "Public API"
       },
@@ -612,7 +613,7 @@
     "gotoServices": "Go to → Services",
     "gotoLab": "Open → Piton Lab",
     "gotoBench": "Run → Benchmark",
-    "gotoRombik": "Open → rombik (flowcharts)",
+    "gotoRombik": "Open → rombik (product)",
     "gotoContact": "Go to → Contact",
     "copyEmail": "Copy email",
     "openTelegram": "Open Telegram",
@@ -634,5 +635,98 @@
     "titleGeneric": "Something went wrong",
     "descGeneric": "An unexpected error has occurred.",
     "home": "Back to Home"
+  },
+  "rombikPage": {
+    "metaTitle": "rombik — a SaaS flowchart generator (DSTU)",
+    "metaDesc": "rombik — my first real commercial SaaS: code in six languages → a DSTU 19.701-90 flowchart. Go engine, web editor, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
+    "kicker": "// rombik · flagship",
+    "title": "rombik",
+    "tagline": "Code → a DSTU flowchart. My first full-fledged commercial SaaS.",
+    "intro": "Paste Python, C, C++, C#, Java or Pascal code — get a clean DSTU 19.701-90 flowchart, ready for coursework or a report. What colleges still draw by hand for hours, rombik builds in a second. I designed and run all of it myself: the engine, the backend, billing, analytics, the web editor, the CLI and the AI integrations.",
+    "ctaApp": "Open rombik",
+    "ctaApi": "Public API",
+    "ctaDemo": "Try the demo ↓",
+    "stats": [
+      { "value": "6", "label": "input languages" },
+      { "value": "5", "label": "export formats" },
+      { "value": "100%", "label": "to DSTU 19.701-90" },
+      { "value": "1", "label": "person — engine to billing" }
+    ],
+    "pipeline": {
+      "kicker": "How the engine works",
+      "title": "A compiler pipeline — from code to diamonds",
+      "subtitle": "A classic compiler pipeline, except the output isn't machine code but a flowchart. Every stage has clean boundaries and its own tests.",
+      "stages": [
+        { "name": "parser", "desc": "tree-sitter parses 6 languages into a structured tree (Pascal — a custom cgo binding)" },
+        { "name": "IR", "desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry" },
+        { "name": "layout", "desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts" },
+        { "name": "diagram", "desc": "shapes with coordinates, polyline edges, a “Figure N” caption" },
+        { "name": "render", "desc": "SVG · Typst · Excalidraw · PNG · PDF" }
+      ],
+      "problemsTitle": "The details everyone gets wrong — and here they're right",
+      "problems": [
+        "Half-open range: “for i in range(a, b)” → a hexagon with “end = b − 1”",
+        "The loop's back-edge enters the header arrow, not a side vertex of the diamond — as DSTU requires",
+        "if / elif / else as a vertical ladder, no diagonal steps",
+        "A call to your own function → a subprogram symbol, not a plain process",
+        "Tall charts are split with named connectors (A/B/C…), not just a page break",
+        "Byte-exact golden tests: accidentally broken geometry trips a test immediately"
+      ]
+    },
+    "features": {
+      "kicker": "What it does",
+      "title": "Not “roughly like Graphviz” — pixel-for-pixel to the standard",
+      "items": [
+        { "title": "Exact DSTU primitives", "desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye." },
+        { "title": "Six languages", "desc": "Python, C, C++, C#, Java, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods." },
+        { "title": "Five formats", "desc": "SVG, PNG, PDF, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)." },
+        { "title": "Web editor", "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo." },
+        { "title": "Each function — its own chart", "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call." },
+        { "title": "To your professor's spec", "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options." }
+      ]
+    },
+    "stack": {
+      "kicker": "On my own stack",
+      "title": "Built from what I made myself",
+      "subtitle": "rombik isn't assembled from someone else's blocks — it stands on my own earlier projects.",
+      "items": [
+        { "title": "Billing on my own go-monobank-sdk", "desc": "Payments, credits and receipts run on my own open-source SDK (go-monobank-sdk v1.3.0): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic credit grants. My own tool powering my own product.", "link": "/projects", "linkLabel": "go-monobank-sdk →" },
+        { "title": "Compiler craft from Piton", "desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.", "link": "/lab#lab", "linkLabel": "Piton in the lab →" }
+      ]
+    },
+    "commercial": {
+      "kicker": "A live commercial product",
+      "title": "Not a pet project — a working business",
+      "subtitle": "A credit model, real payments, analytics and an admin panel — all in production.",
+      "items": [
+        { "title": "Honest billing", "desc": "1 chart = 1 credit (not per call, not per file). Free PNG with no sign-up; Pro unlocks custom options." },
+        { "title": "Real analytics", "desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code." },
+        { "title": "Production-grade", "desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy." },
+        { "title": "Everywhere", "desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update." }
+      ]
+    },
+    "ai": {
+      "kicker": "AI-native",
+      "title": "Made for humans and agents alike",
+      "subtitle": "Beyond the web editor — a full set of machine interfaces.",
+      "items": [
+        { "title": "Public HTTP API", "desc": "/render, /render/batch, /me, /products, /topup, /gift. Machine-readable spec at /api/v1/openapi.json." },
+        { "title": "CLI", "desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design." },
+        { "title": "MCP server", "desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent." },
+        { "title": "AI skill", "desc": "/api/v1/skill.md — a ready guide an agent reads, then installs the CLI and renders charts itself." }
+      ],
+      "mcpTitle": "Connect to Claude / an agent",
+      "mcpSnippet": "{\n  \"mcpServers\": {\n    \"rombik\": { \"command\": \"rombik\", \"args\": [\"mcp\"] }\n  }\n}"
+    },
+    "demo": {
+      "kicker": "Try it live",
+      "title": "Ready-made examples from the real engine",
+      "subtitle": "Pick an algorithm — a DSTU flowchart appears below. Want your own code? Open the full rombik."
+    },
+    "finalCta": {
+      "title": "See how it works",
+      "subtitle": "Free PNG with no sign-up. Web editor, API, CLI and MCP — in the app.",
+      "button": "Open rombik"
+    }
   }
 }

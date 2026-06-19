@@ -117,7 +117,7 @@
             </ul>
 
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="/lab#rombik" class="btn-primary group" style="background: var(--color-rose); box-shadow: 0 8px 20px -8px rgba(190,18,60,0.5);">
+              <a href="/rombik" class="btn-primary group" style="background: var(--color-rose); box-shadow: 0 8px 20px -8px rgba(190,18,60,0.5);">
                 {$t.projects.featured.rombik.cta1}
                 <ArrowRight class="h-4 w-4 transition group-hover:translate-x-0.5" />
               </a>

@@ -1,6 +1,6 @@
 // Заготовлені приклади rombik: код + готова SVG-схема (CLI rombik 1.0.0).
 // Вихід хостеного Go-рушія rombik; демо саме рушій НЕ вантажить.
-// Щоб спробувати на своєму коді — rombik.ishawyha.dev.
+// Щоб спробувати на своєму коді — rombik.app.
 export type RombikLang = 'python' | 'c' | 'cpp' | 'csharp' | 'java' | 'pascal';
 export type RombikDemo = { key: string; label: string; lang: RombikLang; code: string; svg: string };
 

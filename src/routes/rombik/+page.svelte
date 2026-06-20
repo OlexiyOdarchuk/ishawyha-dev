@@ -9,8 +9,8 @@
     CreditCard, BarChart3, ShieldCheck, Globe, Cpu, Boxes
   } from 'lucide-svelte';
 
-  const APP = 'https://rombik.ishawyha.dev';
-  const API = 'https://rombik.ishawyha.dev/api/v1/openapi.json';
+  const APP = 'https://rombik.app';
+  const API = 'https://rombik.app/api/v1/openapi.json';
 
   const p = $derived($t.rombikPage);
 

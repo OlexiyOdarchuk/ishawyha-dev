@@ -121,11 +121,11 @@
                 {$t.projects.featured.rombik.cta1}
                 <ArrowRight class="h-4 w-4 transition group-hover:translate-x-0.5" />
               </a>
-              <a href="https://rombik.ishawyha.dev" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <a href="https://rombik.app" target="_blank" rel="noopener noreferrer" class="btn-secondary">
                 <ExternalLink class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta2}
               </a>
-              <a href="https://rombik.ishawyha.dev/api/v1/openapi.json" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+              <a href="https://rombik.app/api/v1/openapi.json" target="_blank" rel="noopener noreferrer" class="btn-ghost">
                 <BookText class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta3}
               </a>

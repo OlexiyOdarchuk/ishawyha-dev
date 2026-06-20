@@ -7,8 +7,8 @@
   // showHeader=false embeds just the demo (no section title/highlights) — used on /rombik.
   let { showHeader = true }: { showHeader?: boolean } = $props();
 
-  const APP = 'https://rombik.ishawyha.dev/app';
-  const API = 'https://rombik.ishawyha.dev/api/v1/openapi.json';
+  const APP = 'https://rombik.app/app';
+  const API = 'https://rombik.app/api/v1/openapi.json';
   const VERSION = '1.0.0';
 
   const icons = [Workflow, Route, FileDown, ShieldCheck];

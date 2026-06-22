@@ -6,7 +6,7 @@
   import {
     ArrowRight, ExternalLink, Code2, Terminal, Bot, BookText, Check,
     Workflow, Languages, FileDown, Layers, Route, SlidersHorizontal,
-    CreditCard, BarChart3, ShieldCheck, Globe, Cpu, Boxes
+    CreditCard, BarChart3, ShieldCheck, Globe, Cpu, Boxes, Sparkles
   } from 'lucide-svelte';
 
   const APP = 'https://rombik.app';
@@ -14,7 +14,7 @@
 
   const p = $derived($t.rombikPage);
 
-  const featureIcons = [ShieldCheck, Languages, FileDown, Layers, Workflow, SlidersHorizontal];
+  const featureIcons = [ShieldCheck, Languages, FileDown, Layers, Workflow, SlidersHorizontal, Sparkles];
   const stackIcons = [CreditCard, Cpu];
   const commIcons = [CreditCard, BarChart3, ShieldCheck, Globe];
   const aiIcons = [Code2, Terminal, Workflow, Bot];

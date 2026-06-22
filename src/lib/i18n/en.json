@@ -216,7 +216,7 @@
         "kicker": "Flagship · hosted SaaS",
         "name": "rombik",
         "tagline": "Code → DSTU flowchart: web, API, CLI",
-        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Six formats: SVG, PNG, PDF, DOCX, Typst, Excalidraw. Free PNG, no sign-up.",
+        "description": "A SaaS I designed and run: turns Python, C, C++, C#, Java and Pascal into a clean DSTU 19.701-90 flowchart — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Six formats: SVG, PNG, PDF, DOCX, Typst, Excalidraw. Free preview without sign-up; export needs an account.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
@@ -347,7 +347,7 @@
         "kicker": "Hosted SaaS",
         "title": "rombik",
         "subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
-        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Billing — 1 chart = 1 credit, free PNG with no sign-up.",
+        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
         "tags": [
           "Go · Gin",
           "tree-sitter",
@@ -497,7 +497,7 @@
         },
         {
           "title": "Six formats",
-          "desc": "SVG · PNG · PDF · DOCX · Typst · Excalidraw; free PNG with no sign-up"
+          "desc": "SVG · PNG · PDF · DOCX · Typst · Excalidraw; multi-page PDF with connectors"
         }
       ],
       "openApp": "Open the full editor",
@@ -638,7 +638,7 @@
   },
   "rombikPage": {
     "metaTitle": "rombik — a SaaS flowchart generator (DSTU)",
-    "metaDesc": "rombik — my first real commercial SaaS: code in six languages → a DSTU 19.701-90 flowchart. Go engine, web editor, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
+    "metaDesc": "rombik — my first real commercial SaaS: code in six languages → a DSTU/GOST 19.701-90 flowchart. Go engine, web editor, describe→flowchart via AI, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
     "kicker": "// rombik · flagship",
     "title": "rombik",
     "tagline": "Code → a DSTU flowchart. My first full-fledged commercial SaaS.",
@@ -682,7 +682,8 @@
         { "title": "Six formats", "desc": "SVG, PNG, PDF, DOCX (MS Word), Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)." },
         { "title": "Web editor", "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo." },
         { "title": "Each function — its own chart", "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call." },
-        { "title": "To your professor's spec", "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options." }
+        { "title": "To your professor's spec", "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options." },
+        { "title": "Describe → flowchart via AI", "desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart." }
       ]
     },
     "stack": {
@@ -690,16 +691,16 @@
       "title": "Built from what I made myself",
       "subtitle": "rombik isn't assembled from someone else's blocks — it stands on my own earlier projects.",
       "items": [
-        { "title": "Billing on my own go-monobank-sdk", "desc": "Payments, credits and receipts run on my own open-source SDK (go-monobank-sdk v1.3.0): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic credit grants. My own tool powering my own product.", "link": "/projects", "linkLabel": "go-monobank-sdk →" },
+        { "title": "Billing on my own go-monobank-sdk", "desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk v1.3.0): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.", "link": "/projects", "linkLabel": "go-monobank-sdk →" },
         { "title": "Compiler craft from Piton", "desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.", "link": "/lab#lab", "linkLabel": "Piton in the lab →" }
       ]
     },
     "commercial": {
       "kicker": "A live commercial product",
       "title": "Not a pet project — a working business",
-      "subtitle": "A credit model, real payments, analytics and an admin panel — all in production.",
+      "subtitle": "Pay-per-chart, real payments, analytics and an admin panel — all in production.",
       "items": [
-        { "title": "Honest billing", "desc": "1 chart = 1 credit (not per call, not per file). Free PNG with no sign-up; Pro unlocks custom options." },
+        { "title": "Honest billing", "desc": "Pay per chart (not per call, not per file). Free preview without sign-up; export needs an account; Pro is the editor subscription + custom options." },
         { "title": "Real analytics", "desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code." },
         { "title": "Production-grade", "desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy." },
         { "title": "Everywhere", "desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update." }
@@ -725,7 +726,7 @@
     },
     "finalCta": {
       "title": "See how it works",
-      "subtitle": "Free PNG with no sign-up. Web editor, API, CLI and MCP — in the app.",
+      "subtitle": "Free preview without sign-up. Web editor, API, CLI and MCP — in the app.",
       "button": "Open rombik"
     }
   }

@@ -9,7 +9,6 @@
 
   const APP = 'https://rombik.app/app';
   const API = 'https://rombik.app/api/v1/openapi.json';
-  const VERSION = '1.0.0';
 
   const icons = [Workflow, Route, FileDown, ShieldCheck];
 
@@ -112,7 +111,7 @@
     {#if showHeader}
     <Reveal>
       <div class="mb-3 flex items-center gap-3">
-        <span class="kicker">// {$t.lab.rombik.kicker} · v{VERSION}</span>
+        <span class="kicker">// {$t.lab.rombik.kicker}</span>
       </div>
       <h2 class="display max-w-3xl text-4xl text-[var(--color-fg)] sm:text-5xl">{$t.lab.rombik.title}</h2>
       <p class="mt-4 max-w-2xl text-base text-[var(--color-muted)]">{$t.lab.rombik.subtitle}</p>

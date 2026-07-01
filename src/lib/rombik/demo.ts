@@ -1,4 +1,4 @@
-// Заготовлені приклади rombik: код + готова SVG-схема (CLI rombik 1.0.0).
+// Заготовлені приклади rombik: код + готова SVG-схема (з rombik CLI).
 // Вихід хостеного Go-рушія rombik; демо саме рушій НЕ вантажить.
 // Щоб спробувати на своєму коді — rombik.app.
 export type RombikLang = 'python' | 'c' | 'cpp' | 'csharp' | 'java' | 'pascal';

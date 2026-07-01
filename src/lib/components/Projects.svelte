@@ -9,8 +9,6 @@
   let { variant = 'full', showHeader = true }: { variant?: 'full' | 'featured'; showHeader?: boolean } =
     $props();
 
-  const ROMBIK_VERSION = '1.0.0';
-
   function gotoBench(e: MouseEvent) {
     e.preventDefault();
     e.stopPropagation();
@@ -103,7 +101,6 @@
                 <Sparkles class="h-3 w-3" />
                 {$t.projects.featured.rombik.kicker}
               </span>
-              <span class="tag">v{ROMBIK_VERSION}</span>
             </div>
 
             <h3 class="display mt-4 text-4xl sm:text-5xl" style="color: var(--color-rose);">{$t.projects.featured.rombik.name}</h3>

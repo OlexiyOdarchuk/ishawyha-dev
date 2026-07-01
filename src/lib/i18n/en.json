@@ -647,21 +647,48 @@
     "ctaApi": "Public API",
     "ctaDemo": "Try the demo ↓",
     "stats": [
-      { "value": "10", "label": "input languages" },
-      { "value": "8", "label": "export formats" },
-      { "value": "100%", "label": "to DSTU / ISO 5807" },
-      { "value": "1", "label": "person — engine to billing" }
+      {
+        "value": "10",
+        "label": "input languages"
+      },
+      {
+        "value": "8",
+        "label": "export formats"
+      },
+      {
+        "value": "100%",
+        "label": "to DSTU / ISO 5807"
+      },
+      {
+        "value": "1",
+        "label": "person — engine to billing"
+      }
     ],
     "pipeline": {
       "kicker": "How the engine works",
       "title": "A compiler pipeline — from code to diamonds",
       "subtitle": "A classic compiler pipeline, except the output isn't machine code but a flowchart. Every stage has clean boundaries and its own tests.",
       "stages": [
-        { "name": "parser", "desc": "tree-sitter parses 10 languages into a structured tree (Pascal — a custom cgo binding)" },
-        { "name": "IR", "desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry" },
-        { "name": "layout", "desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts" },
-        { "name": "diagram", "desc": "shapes with coordinates, polyline edges, a “Figure N” caption" },
-        { "name": "render", "desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw" }
+        {
+          "name": "parser",
+          "desc": "tree-sitter parses 10 languages into a structured tree (Pascal — a custom cgo binding)"
+        },
+        {
+          "name": "IR",
+          "desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry"
+        },
+        {
+          "name": "layout",
+          "desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts"
+        },
+        {
+          "name": "diagram",
+          "desc": "shapes with coordinates, polyline edges, a “Figure N” caption"
+        },
+        {
+          "name": "render",
+          "desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw"
+        }
       ],
       "problemsTitle": "The details everyone gets wrong — and here they're right",
       "problems": [
@@ -677,14 +704,38 @@
       "kicker": "What it does",
       "title": "Not “roughly like Graphviz” — pixel-for-pixel to the standard",
       "items": [
-        { "title": "Exact DSTU primitives", "desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye." },
-        { "title": "Ten languages", "desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods." },
-        { "title": "Flowcharts and structograms", "desc": "The same code as a classic DSTU flowchart or a Nassi–Shneiderman structogram (nested boxes, no arrows). A toggle in the editor — every language and format." },
-        { "title": "Eight formats", "desc": "SVG, PNG, PDF, Word and Visio as native editable shapes, draw.io, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)." },
-        { "title": "Web editor", "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo." },
-        { "title": "Each function — its own chart", "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call." },
-        { "title": "To your professor's spec", "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options." },
-        { "title": "Describe → flowchart via AI", "desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart." }
+        {
+          "title": "Exact DSTU primitives",
+          "desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye."
+        },
+        {
+          "title": "Ten languages",
+          "desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods."
+        },
+        {
+          "title": "Flowcharts and structograms",
+          "desc": "The same code as a classic DSTU flowchart or a Nassi–Shneiderman structogram (nested boxes, no arrows). A toggle in the editor — every language and format."
+        },
+        {
+          "title": "Eight formats",
+          "desc": "SVG, PNG, PDF, Word and Visio as native editable shapes, draw.io, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)."
+        },
+        {
+          "title": "Web editor",
+          "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo."
+        },
+        {
+          "title": "Each function — its own chart",
+          "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call."
+        },
+        {
+          "title": "To your professor's spec",
+          "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options."
+        },
+        {
+          "title": "Describe → flowchart via AI",
+          "desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart."
+        }
       ]
     },
     "stack": {
@@ -692,8 +743,18 @@
       "title": "Built from what I made myself",
       "subtitle": "rombik isn't assembled from someone else's blocks — it stands on my own earlier projects.",
       "items": [
-        { "title": "Billing on my own go-monobank-sdk", "desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk v1.3.0): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.", "link": "/projects", "linkLabel": "go-monobank-sdk →" },
-        { "title": "Compiler craft from Piton", "desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.", "link": "/lab#lab", "linkLabel": "Piton in the lab →" }
+        {
+          "title": "Billing on my own go-monobank-sdk",
+          "desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.",
+          "link": "/projects",
+          "linkLabel": "go-monobank-sdk →"
+        },
+        {
+          "title": "Compiler craft from Piton",
+          "desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.",
+          "link": "/lab#lab",
+          "linkLabel": "Piton in the lab →"
+        }
       ]
     },
     "commercial": {
@@ -701,10 +762,22 @@
       "title": "Not a pet project — a working business",
       "subtitle": "Pay-per-chart, real payments, analytics and an admin panel — all in production.",
       "items": [
-        { "title": "Honest billing", "desc": "Pay per chart (not per call, not per file). Free watermarked PNG without sign-up; a clean export in any format needs an account (1 chart); Pro is the editor subscription + custom options." },
-        { "title": "Real analytics", "desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code." },
-        { "title": "Production-grade", "desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy." },
-        { "title": "Everywhere", "desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update." }
+        {
+          "title": "Honest billing",
+          "desc": "Pay per chart (not per call, not per file). Free watermarked PNG without sign-up; a clean export in any format needs an account (1 chart); Pro is the editor subscription + custom options."
+        },
+        {
+          "title": "Real analytics",
+          "desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code."
+        },
+        {
+          "title": "Production-grade",
+          "desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy."
+        },
+        {
+          "title": "Everywhere",
+          "desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update."
+        }
       ]
     },
     "ai": {
@@ -712,10 +785,22 @@
       "title": "Made for humans and agents alike",
       "subtitle": "Beyond the web editor — a full set of machine interfaces.",
       "items": [
-        { "title": "Public HTTP API", "desc": "/render, /render/batch, /me, /products, /topup, /gift. Machine-readable spec at /api/v1/openapi.json." },
-        { "title": "CLI", "desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design." },
-        { "title": "MCP server", "desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent." },
-        { "title": "AI skill", "desc": "/api/v1/skill.md — a ready guide an agent reads, then installs the CLI and renders charts itself." }
+        {
+          "title": "Public HTTP API",
+          "desc": "/render, /render/batch, /me, /products, /topup, /gift. Machine-readable spec at /api/v1/openapi.json."
+        },
+        {
+          "title": "CLI",
+          "desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design."
+        },
+        {
+          "title": "MCP server",
+          "desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent."
+        },
+        {
+          "title": "AI skill",
+          "desc": "/api/v1/skill.md — a ready guide an agent reads, then installs the CLI and renders charts itself."
+        }
       ],
       "mcpTitle": "Connect to Claude / an agent",
       "mcpSnippet": "{\n  \"mcpServers\": {\n    \"rombik\": { \"command\": \"rombik\", \"args\": [\"mcp\"] }\n  }\n}"

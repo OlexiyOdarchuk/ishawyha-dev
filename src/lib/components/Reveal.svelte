@@ -26,11 +26,22 @@
       visible = true;
       return;
     }
+    // Куленепробивність: якщо елемент УЖЕ у вьюпорті на монтуванні (герой над згином),
+    // показуємо синхронно — IO-колбек асинхронний, і без цього заголовок «блимав»
+    // невидимим (а іноді застрягав, лишаючи мертву діру згори сторінки).
+    const r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) {
+      visible = true;
+      if (once) return;
+    }
+    // Страховка від «застряглого» невидимого блоку, якщо IO чомусь не спрацює.
+    const fallback = setTimeout(() => (visible = true), 600);
     const obs = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
             visible = true;
+            clearTimeout(fallback);
             if (once) obs.disconnect();
           } else if (!once) {
             visible = false;
@@ -40,7 +51,10 @@
       { threshold: 0.12, rootMargin: '0px 0px -10% 0px' }
     );
     obs.observe(el);
-    return () => obs.disconnect();
+    return () => {
+      clearTimeout(fallback);
+      obs.disconnect();
+    };
   });
 </script>
 

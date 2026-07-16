@@ -293,7 +293,7 @@
               onclick={() => { typeof window !== 'undefined' && window.gtag?.('event', 'click_piton_run'); handleRun(); }}
               disabled={status === 'loading'}
               title="Ctrl + Enter"
-              class="inline-flex items-center gap-2 bg-[var(--color-accent-400)] px-5 py-2.5 text-sm font-bold text-black transition hover:bg-[var(--color-accent-300)] disabled:cursor-not-allowed disabled:opacity-50"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-[var(--color-accent-400)] to-[var(--color-accent-500)] px-5 py-2.5 text-sm font-bold text-white shadow-[0_8px_20px_-8px_rgba(79,70,229,0.55)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {#if status === 'loading'}
                 <Loader2 class="h-4 w-4 animate-spin" />

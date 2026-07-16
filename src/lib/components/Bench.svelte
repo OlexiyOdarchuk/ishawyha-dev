@@ -307,14 +307,14 @@
               <span class="text-[var(--color-muted)]">●</span>
               <span class="text-[var(--color-muted)]">{$t.bench.ready}</span>
             {:else if phase === 'loading'}
-              <Loader2 class="h-3.5 w-3.5 animate-spin text-cyan-500" />
-              <span class="text-cyan-500">{$t.bench.loading}</span>
+              <Loader2 class="h-3.5 w-3.5 animate-spin text-indigo-500" />
+              <span class="text-indigo-500">{$t.bench.loading}</span>
             {:else if phase === 'running' && activeLane === 'js'}
               <span class="text-amber-500 motion-safe:animate-pulse">●</span>
               <span class="text-amber-500">{$t.bench.runningJs}</span>
             {:else if phase === 'running' && activeLane === 'go'}
-              <span class="text-cyan-500 motion-safe:animate-pulse">●</span>
-              <span class="text-cyan-500">{$t.bench.runningGo}</span>
+              <span class="text-indigo-500 motion-safe:animate-pulse">●</span>
+              <span class="text-indigo-500">{$t.bench.runningGo}</span>
             {:else if phase === 'done'}
               <span class="text-emerald-500">●</span>
               <span class="text-emerald-500">{$t.bench.done}</span>
@@ -372,7 +372,7 @@
                 disabled={phase === 'running' || n > hwCores}
                 title={n > hwCores ? `${$t.bench.workersOverCore} (${hwCores})` : ''}
                 class="rounded-full px-3 py-1 font-mono text-[12px] transition disabled:cursor-not-allowed disabled:opacity-40 {workerCount === n && !customInput
-                  ? 'bg-cyan-500/20 text-cyan-500 ring-1 ring-cyan-400/40'
+                  ? 'bg-indigo-500/20 text-indigo-500 ring-1 ring-indigo-400/40'
                   : 'border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] text-[var(--color-ink-fg)] hover:border-[var(--color-ink-line)] hover:bg-[var(--color-ink-soft)]'}"
               >
                 {n}
@@ -393,13 +393,13 @@
               disabled={phase === 'running'}
               onkeydown={(e) => { if (e.key === 'Enter') applyCustom(); }}
               aria-label={$t.bench.workersCustom}
-              class="w-16 sm:w-24 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-3 py-1 font-mono text-[12px] text-[var(--color-ink-fg)] placeholder:text-[var(--color-ink-muted)] focus:border-cyan-400/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
+              class="w-16 sm:w-24 rounded-full border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] px-3 py-1 font-mono text-[12px] text-[var(--color-ink-fg)] placeholder:text-[var(--color-ink-muted)] focus:border-indigo-400/40 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
             />
             <button
               type="button"
               onclick={applyCustom}
               disabled={phase === 'running' || !customInput}
-              class="rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 font-mono text-[12px] text-cyan-500 transition hover:border-cyan-400/50 hover:bg-cyan-500/20 disabled:cursor-not-allowed disabled:opacity-40"
+              class="rounded-full border border-indigo-400/30 bg-indigo-500/10 px-3 py-1 font-mono text-[12px] text-indigo-500 transition hover:border-indigo-400/50 hover:bg-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-40"
             >
               {$t.bench.workersApply}
             </button>
@@ -502,16 +502,16 @@
             <div class="absolute inset-x-0 top-0 h-[2px] bg-[var(--color-accent-400)]"></div>
             {#if goProgress > 0 && goProgress < 1}
               <div
-                class="absolute inset-x-0 top-0 h-[2px] bg-cyan-300/80 transition-all"
+                class="absolute inset-x-0 top-0 h-[2px] bg-indigo-300/80 transition-all"
                 style="width: {Math.round(goProgress * 100)}%"
               ></div>
             {/if}
             <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 text-cyan-500/90">
+              <div class="flex items-center gap-2 text-indigo-500/90">
                 <Zap class="h-4 w-4" />
                 <span class="font-mono text-xs uppercase tracking-wider">{$t.bench.labelGo}</span>
               </div>
-              <span class="font-mono text-[10px] uppercase tracking-wider text-cyan-500/80">
+              <span class="font-mono text-[10px] uppercase tracking-wider text-indigo-500/80">
                 ×{workerCount}
                 {#if phase === 'running' && activeLane === 'go'}
                   · {$t.bench.live}
@@ -526,7 +526,7 @@
             <div class="mt-5 grid grid-cols-2 gap-3 border-t border-[var(--color-ink-line)] pt-4 font-mono text-[11px]">
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.tokensLabel}</div>
-                <div class="mt-1 text-2xl font-bold tabular-nums text-cyan-500">{goCount > 0 ? fmt(goTokens) : '—'}</div>
+                <div class="mt-1 text-2xl font-bold tabular-nums text-indigo-500">{goCount > 0 ? fmt(goTokens) : '—'}</div>
               </div>
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.hashesLabel}</div>

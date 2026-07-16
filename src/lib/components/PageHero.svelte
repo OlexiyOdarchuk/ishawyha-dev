@@ -14,7 +14,7 @@
   } = $props();
 </script>
 
-<section class="relative px-6 pt-32 pb-10 sm:pt-36 sm:pb-14">
+<section class="relative px-6 pt-28 pb-6 sm:pt-32 sm:pb-8">
   <div class="relative mx-auto max-w-6xl">
     <Reveal>
       {#if kicker}

@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"title": "Oleksii Odarchuk — ishawyha.dev",
-		"description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
+		"description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — personal invitation."
 	},
 	"nav": {
 		"home": "Home",
@@ -115,8 +115,8 @@
 			"dou": {
 				"emoji": "🎟",
 				"label": "DOU Day 2026",
-				"title": "Student with High Potential",
-				"subtitle": "Invitation · free ticket"
+				"title": "Personal invitation",
+				"subtitle": "From the organisers · free ticket"
 			}
 		}
 	},
@@ -179,9 +179,9 @@
 			"dou": {
 				"label": "🎟 Invitation",
 				"title": "DOU Day 2026",
-				"company": "Student with High Potential",
+				"company": "Personal invitation",
 				"date": "2026",
-				"description": "Personally invited by the organisers to DOU Day with a free ticket as a student with high potential. Dedicated track for promising student developers.",
+				"description": "Personally invited by the organisers to DOU Day with a free ticket.",
 				"tags": [
 					"Invitation",
 					"Free ticket",
@@ -582,7 +582,7 @@
 				"note": "Go · microservices · production",
 				"bullets": [
 					"Design and build architecturally complex Go microservices from scratch for a production platform: interface-driven (hexagonal) architecture, inter-service communication, real production load.",
-					"Designed an AI orchestrator — a web analog of claude-code (~27k lines of Go): a control-plane / execution-plane split — Claude runs through a tool-use loop while all agent code executes inside isolated Docker sandboxes. Core guarantee, enforced by an automated test: secrets (Anthropic key, git tokens) never reach the sandbox. MCP-over-SSE, credential-free git (GitHub App), an egress-allowlist proxy against exfiltration, a container-lifecycle supervisor.",
+					"Designed an AI orchestrator — a web analog of claude-code: a control-plane / execution-plane split — Claude runs through a tool-use loop while all agent code executes inside isolated Docker sandboxes. Core guarantee, enforced by an automated test: secrets (Anthropic key, git tokens) never reach the sandbox. MCP-over-SSE, credential-free git (GitHub App), an egress-allowlist proxy against exfiltration, a container-lifecycle supervisor.",
 					"AI support-bot platform (RAG): semantic memory on PostgreSQL + pgvector (text / vector / hybrid search), a self-learning knowledge graph, an MCP server, schema-per-tenant isolation, token-based billing.",
 					"Real-time LLM streaming (SSE / WebSocket) with mid-turn cancellation; security: SSRF protection, seccomp / cap-drop, argon2id / pbkdf2, fully parameterized SQL."
 				],

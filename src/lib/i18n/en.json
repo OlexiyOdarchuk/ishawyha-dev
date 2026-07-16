@@ -1,819 +1,845 @@
 {
-  "meta": {
-    "title": "Oleksii Odarchuk — ishawyha.dev",
-    "description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
-  },
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "achievements": "Wins",
-    "projects": "Projects",
-    "rombik": "rombik",
-    "services": "Services",
-    "lab": "Lab",
-    "bench": "Bench",
-    "contact": "Contact",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "donate": "Donate"
-  },
-  "pages": {
-    "projects": {
-      "metaTitle": "Projects — Oleksii Odarchuk",
-      "metaDesc": "Selected projects: Piton, go-monobank-sdk, monokasa, SHMiner and more — Go, WebAssembly, Telegram bots.",
-      "kicker": "// projects/",
-      "title": "Projects",
-      "subtitle": "What I build off-hours — from my own programming language to SDKs and bots."
-    },
-    "lab": {
-      "metaTitle": "Lab — rombik, Piton, benchmark in the browser",
-      "metaDesc": "Interactive lab: build a DSTU flowchart from code with rombik, run the Piton language in your browser (WebAssembly), and compare JS vs Go·WASM speed.",
-      "kicker": "// lab/",
-      "title": "Lab",
-      "subtitle": "My things, live: rombik (flowcharts from code, DSTU), the Piton language in the browser, and a live SHA-256 benchmark."
-    },
-    "services": {
-      "metaTitle": "Services — hire me",
-      "metaDesc": "I take commercial work: Telegram bots, Go backends, web apps, automation. Send a request.",
-      "kicker": "// services/",
-      "title": "Hire me",
-      "subtitle": "Backends, bots and integrations end to end — clean architecture and real deadlines."
-    },
-    "about": {
-      "metaTitle": "About — Oleksii Odarchuk",
-      "metaDesc": "Go backend developer, creator of the Piton language. Wins, stack, education and contacts.",
-      "kicker": "// about/",
-      "title": "About me",
-      "subtitle": "Go backend engineer, creator of the Piton language. A bit about the path, results and tech."
-    }
-  },
-  "home": {
-    "teaserProjects": {
-      "title": "Selected projects",
-      "subtitle": "The flagship is rombik (a hosted SaaS). Plus the Piton language, SDKs, bots and a miner.",
-      "cta": "All projects"
-    },
-    "metrics": {
-      "title": "By the numbers",
-      "items": [
-        {
-          "value": 1000,
-          "suffix": "×",
-          "label": "faster SHA-256 — Go vs JS in SHMiner"
-        },
-        {
-          "value": 150,
-          "suffix": "+",
-          "label": "AbitAssistant users"
-        },
-        {
-          "value": 10,
-          "suffix": "",
-          "label": "input languages in rombik"
-        },
-        {
-          "value": 5,
-          "suffix": "",
-          "label": "monobank APIs in go-monobank-sdk"
-        }
-      ]
-    }
-  },
-  "hero": {
-    "available": "Open to freelance & job offers",
-    "name": "Oleksii Odarchuk",
-    "nameLine1": "Oleksii",
-    "nameLine2": "Odarchuk",
-    "role": "Backend Developer (Go) · Creator of rombik and Piton",
-    "tagline": "I build systems where speed meets architectural reliability.",
-    "intro": "Go backend engineer. Drawn to clean architecture, complex domain logic, and performance where it matters. I build tools (rombik — a flowchart SaaS, the Piton language), reverse-engineer other people's code, and poke at security.",
-    "hireLine": "💼 Available for commercial work and open to job offers — Telegram bots, Go backends, web apps and integrations.",
-    "ctaPrimary": "Open the lab",
-    "ctaSecondary": "Hire me",
-    "ctaGithub": "GitHub",
-    "cvLabel": "Resume",
-    "cvUa": "UA · PDF",
-    "cvEn": "EN · PDF",
-    "nowLabel": "Now",
-    "winsLabel": "Selected wins",
-    "nowItems": [
-      "Working as a Backend Golang developer at SkyService"
-    ],
-    "badges": {
-      "best": {
-        "emoji": "🏆",
-        "label": "1st place",
-        "title": "BEST Hackathon 2026",
-        "subtitle": "GPS-less drone trajectory · IMU"
-      },
-      "mate": {
-        "emoji": "🥉",
-        "label": "3rd place",
-        "title": "Mate Hackathon 2026",
-        "subtitle": "AI MarTech · 7-hour MVP"
-      },
-      "dou": {
-        "emoji": "🎟",
-        "label": "DOU Day 2026",
-        "title": "Student with High Potential",
-        "subtitle": "Invitation · free ticket"
-      }
-    }
-  },
-  "about": {
-    "title": "About me",
-    "p1": "I'm a Go backend engineer, second-year student at Lviv Polytechnic IT College. I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
-    "p2": "Outside of code: 10+ years of folk dancing, occasional poetry, and recently — screenwriting. That taught me rhythm and structure — the things every good product is built on.",
-    "facts": [
-      {
-        "label": "Based in",
-        "value": "Mizoch, Rivne Region, Ukraine"
-      },
-      {
-        "label": "Education",
-        "value": "Lviv Polytechnic IT College"
-      },
-      {
-        "label": "Stack",
-        "value": "Go · C · TinyGo · PostgreSQL · Svelte"
-      },
-      {
-        "label": "Languages",
-        "value": "Ukrainian (native), English B1"
-      }
-    ]
-  },
-  "achievements": {
-    "title": "Wins & hackathons",
-    "subtitle": "Not just code — outcomes measured in places, speed, and offers.",
-    "benchLink": "Run the benchmark",
-    "items": {
-      "best": {
-        "label": "🏆 1st place",
-        "title": "BEST Hackathon",
-        "company": "GPS-less drone trajectory",
-        "date": "April 18–19, 2026",
-        "description": "Algorithm to reconstruct a UAV's trajectory without GPS — from IMU, barometer and other inertial-sensor logs. Sensor fusion in Go + C, clean modular architecture (telemetry / integration / simulation). The judges singled out the architectural resilience — 1st place among top teams.",
-        "tags": [
-          "Go",
-          "C",
-          "Sensor Fusion",
-          "IMU",
-          "Inertial Nav"
-        ]
-      },
-      "mate": {
-        "label": "🥉 3rd place",
-        "title": "Mate Hackathon",
-        "company": "AI MarTech (50 participants, 10 teams)",
-        "date": "March 14, 2026",
-        "description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banano 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
-        "tags": [
-          "Go",
-          "GPT-4o",
-          "fal.ai",
-          "REST",
-          "7-hour MVP"
-        ]
-      },
-      "dou": {
-        "label": "🎟 Invitation",
-        "title": "DOU Day 2026",
-        "company": "Student with High Potential",
-        "date": "2026",
-        "description": "Personally invited by the organisers to DOU Day with a free ticket as a student with high potential. Dedicated track for promising student developers.",
-        "tags": [
-          "Invitation",
-          "Free ticket",
-          "Community"
-        ]
-      },
-      "security": {
-        "label": "🛡 Disclosure → offer",
-        "title": "Security Researcher",
-        "company": "Student Hryvnia (college blockchain)",
-        "date": "2026",
-        "description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool — 1000× faster.",
-        "tags": [
-          "Reverse engineering",
-          "Go",
-          "Goroutines",
-          "AES",
-          "WebSockets"
-        ]
-      }
-    }
-  },
-  "projects": {
-    "title": "Selected projects",
-    "subtitle": "What I build off-hours — and what I'm proud of.",
-    "viewSource": "View on GitHub",
-    "viewLive": "Open the site",
-    "sourceShort": "Source",
-    "liveBench": "Live benchmark",
-    "featured": {
-      "rombik": {
-        "kicker": "Flagship · hosted SaaS",
-        "name": "rombik",
-        "tagline": "Code → DSTU flowchart: web, API, CLI",
-        "description": "A SaaS I designed and run: turns code in ten languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Eight formats: SVG, PNG, PDF, Word and Visio as native shapes, draw.io, Typst, Excalidraw. Free watermarked PNG without sign-up; a clean export needs an account.",
-        "tags": [
-          "Go · Gin",
-          "tree-sitter",
-          "API",
-          "CLI",
-          "Word · Visio · draw.io",
-          "DSTU"
-        ],
-        "cta1": "Learn more",
-        "cta2": "Open rombik",
-        "cta3": "Public API"
-      },
-      "piton": {
-        "kicker": "Flagship",
-        "name": "Piton",
-        "tagline": "A Ukrainian programming language with a homegrown interpreter",
-        "description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. A built-in D2 engine draws SVG flowcharts (DSTU). The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server.",
-        "tags": [
-          "Go",
-          "TinyGo",
-          "WebAssembly",
-          "AST",
-          "SVG",
-          "Nix"
-        ],
-        "cta1": "Try in the browser",
-        "cta2": "Open documentation",
-        "cta3": "GitHub"
-      }
-    },
-    "list": {
-      "piton": {
-        "kicker": "Own language",
-        "title": "Piton",
-        "subtitle": "A Ukrainian programming language + interpreter",
-        "description": "An interpreted language with authentic Ukrainian syntax (transliterated): recursive descent parser, tree-walking evaluator, Turing-complete, written from scratch in Go without yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — ~220 KB, runs right in the browser. Flowcharts are drawn by a built-in D2 engine.",
-        "tags": [
-          "Go",
-          "TinyGo",
-          "WebAssembly",
-          "AST",
-          "Nix"
-        ]
-      },
-      "gomonobanksdk": {
-        "kicker": "Open source SDK",
-        "title": "go-monobank-sdk",
-        "subtitle": "Go SDK for every monobank API",
-        "description": "Full coverage of personal, provider (with monoКЕП), business for legal entities, acquiring (subscriptions, monopay button, split-receivers, T2P) and Installment Purchases. ECDSA webhook verification with auto-rotating keys, drop-in http.Handler, typed money/currency/MCC, HMAC-SHA256 for installment callbacks, a fake monobank server for tests, and a separate OpenTelemetry sub-module.",
-        "tags": [
-          "Go",
-          "ECDSA",
-          "HMAC-SHA256",
-          "OpenTelemetry",
-          "iter.Seq2",
-          "MIT"
-        ]
-      },
-      "monokasa": {
-        "kicker": "SDK consumer",
-        "title": "monokasa",
-        "subtitle": "Telegram bot for selling tickets",
-        "description": "Sells tickets to a single show through a monobank jar and issues PDFs with QR codes scanned at the venue entrance. Live consumer of my own go-monobank-sdk: webhook auto-registers at startup, reservations get a 15-minute hold, and show-time reminders fire at-most-once even across restarts.",
-        "tags": [
-          "Go",
-          "SQLite",
-          "telebot",
-          "PDF",
-          "QR",
-          "go-monobank-sdk"
-        ]
-      },
-      "shminer": {
-        "kicker": "1000× faster",
-        "title": "SHMiner",
-        "subtitle": "Desktop crypto miner",
-        "description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
-        "tags": [
-          "Go",
-          "Svelte",
-          "Wails",
-          "Goroutines",
-          "WebSockets",
-          "AES"
-        ]
-      },
-      "linkshortener": {
-        "kicker": "",
-        "title": "LinkShortener Bot",
-        "subtitle": "Telegram + analytics",
-        "description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
-        "tags": [
-          "Go",
-          "PostgreSQL",
-          "Redis",
-          "ClickHouse",
-          "Docker"
-        ]
-      },
-      "todolist": {
-        "kicker": "",
-        "title": "ToDoList Pro",
-        "subtitle": "Production-grade task manager",
-        "description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
-        "tags": [
-          "Go",
-          "Gin",
-          "Svelte 5",
-          "JWT",
-          "OAuth 2.0",
-          "PostgreSQL"
-        ]
-      },
-      "abit": {
-        "kicker": "150+ users",
-        "title": "AbitAssistant Bot",
-        "subtitle": "Telegram bot for applicants",
-        "description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
-        "tags": [
-          "Python",
-          "Aiogram",
-          "PostgreSQL",
-          "BeautifulSoup",
-          "Pandas"
-        ]
-      },
-      "rombik": {
-        "kicker": "Hosted SaaS",
-        "title": "rombik",
-        "subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
-        "description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
-        "tags": [
-          "Go · Gin",
-          "tree-sitter",
-          "API · CLI",
-          "SVG · PDF · DOCX",
-          "DSTU"
-        ]
-      }
-    }
-  },
-  "services": {
-    "kicker": "// services/",
-    "title": "Hire me",
-    "subtitle": "I take on commercial work — backends, bots, and integrations. Clean architecture and real deadlines, like a hackathon but without the rush.",
-    "teaserCta": "Hire me",
-    "list": {
-      "bots": {
-        "title": "Telegram bots",
-        "description": "Bots of any complexity: sales and payments via monobank, analytics, scraping, reminders, API integrations. From MVP to a production-ready solution with a database and deployment.",
-        "tags": [
-          "Go",
-          "Python",
-          "Aiogram",
-          "PostgreSQL",
-          "monobank"
-        ]
-      },
-      "backend": {
-        "title": "Backend & APIs",
-        "description": "Go/Gin services with clean architecture, REST APIs, auth (JWT, OAuth 2.0), payment and webhook integrations, Docker deploys. Built to survive load and shifting requirements.",
-        "tags": [
-          "Go",
-          "Gin",
-          "REST",
-          "PostgreSQL",
-          "Docker"
-        ]
-      },
-      "web": {
-        "title": "Web apps",
-        "description": "Fast sites, landing pages and dashboards on SvelteKit + TypeScript + Tailwind. Animations, i18n, responsive, polished design — just like this site.",
-        "tags": [
-          "Svelte 5",
-          "TypeScript",
-          "Tailwind",
-          "Vite"
-        ]
-      },
-      "automation": {
-        "title": "Automation & scraping",
-        "description": "Scripts, scrapers, closed-API integrations (reverse-engineered when needed), data processing, one-off engineering tasks. I'll save you hours of routine.",
-        "tags": [
-          "Python",
-          "Go",
-          "Reverse engineering",
-          "API"
-        ]
-      }
-    },
-    "form": {
-      "title": "Tell me about the task",
-      "subtitle": "Fill in the form — I'll reply on Telegram or by email within a day.",
-      "name": "Name",
-      "namePlaceholder": "What should I call you",
-      "contact": "Contact",
-      "contactPlaceholder": "Telegram, email or phone",
-      "service": "Task type",
-      "servicePlaceholder": "Pick a direction",
-      "serviceOther": "Other",
-      "budget": "Budget (optional)",
-      "budgetPlaceholder": "e.g. $200–500 or \"let's discuss\"",
-      "message": "Description",
-      "messagePlaceholder": "What needs to be done, timeline, links to examples...",
-      "submit": "Send request",
-      "sending": "Sending...",
-      "successTitle": "Request sent!",
-      "successBody": "Thanks — I'll get back to you as soon as I can. You can also ping me directly on Telegram.",
-      "errorTitle": "Couldn't send",
-      "errorBody": "Please try again, or reach me directly on Telegram or by email.",
-      "again": "Send another",
-      "required": "Please fill this in",
-      "altTelegram": "Message on Telegram"
-    }
-  },
-  "lab": {
-    "kicker": "Lab",
-    "title": "Piton Lab — try my language",
-    "subtitle": "The interpreter is compiled to WebAssembly via TinyGo — ~220 KB. Flowcharts are drawn by a built-in D2 engine (a separate Go·WASM module), lazy-loaded only when you actually need a chart.",
-    "loadHint": "Hit \"Run\" — the interpreter loads on first interaction (~220 KB).",
-    "loading": "Loading interpreter...",
-    "loadingViz": "Loading visualizer...",
-    "loaded": "Interpreter ready",
-    "run": "Run",
-    "visualize": "Flowchart",
-    "output": "Console",
-    "flowchart": "Flowchart",
-    "examples": "Examples",
-    "exampleNames": {
-      "hello": "Hello, world",
-      "loop": "poky loop",
-      "list": "List + dodaty",
-      "func": "Functions + conditions",
-      "math": "Math"
-    },
-    "emptyOutput": "Hit \"Run\" to see output",
-    "emptyFlow": "Hit \"Flowchart\" to generate SVG",
-    "error": "Failed to load the interpreter",
-    "share": "Share",
-    "shared": "Copied!",
-    "piton": {
-      "highlights": [
-        {
-          "title": "Latest Version 1.9.2",
-          "desc": "The newest engine and optimizations straight from the repo."
-        },
-        {
-          "title": "WASM Interpreter",
-          "desc": "Only ~220 KB for lightning-fast loading (via TinyGo)."
-        },
-        {
-          "title": "Flowcharts via D2",
-          "desc": "A built-in D2 engine draws DSTU vector flowcharts as SVG."
-        },
-        {
-          "title": "100% Local",
-          "desc": "Serverless and secure, all code runs directly in your browser."
-        }
-      ]
-    },
-    "rombik": {
-      "kicker": "rombik",
-      "title": "rombik — flowcharts from code",
-      "subtitle": "A SaaS that draws DSTU 19.701-90 flowcharts and Nassi–Shneiderman structograms from code in ten languages: Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Below — ready-made examples (Python, C++, Pascal); the full editor, API and CLI live in the app.",
-      "body": "What colleges still draw by hand for hours, rombik builds in a second: paste code, get a clean standards-compliant flowchart ready for coursework. Below — examples from the real engine.",
-      "highlights": [
-        {
-          "title": "Go engine",
-          "desc": "parser → IR → layout → diagram → render; clean stage boundaries"
-        },
-        {
-          "title": "Ten languages",
-          "desc": "Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal — exact DSTU primitives"
-        },
-        {
-          "title": "Web · API · CLI · MCP",
-          "desc": "editor with pan/zoom, a public HTTP API, a CLI, an MCP server and a skill for agents"
-        },
-        {
-          "title": "Eight formats",
-          "desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw; native editable shapes in Word/Visio"
-        }
-      ],
-      "openApp": "Open the full editor",
-      "api": "Public API",
-      "run": "Build",
-      "ready": "Done",
-      "building": "Building chart…",
-      "loadingEngine": "Loading engine…",
-      "emptyOutput": "Hit \"Build\" to see the flowchart",
-      "filename": "algorithm.py",
-      "weightHint": "First run pulls tree-sitter (a WASM grammar) + the engine — a few MB; instant and local afterwards",
-      "examples": {
-        "grade": "Grade",
-        "loop": "Loop sum",
-        "factorial": "Factorial"
-      },
-      "tryRombik": "Open in rombik",
-      "demoHint": "Ready-made examples: pick an algorithm — rombik shows its DSTU flowchart. Want to paste your own code? Open the full rombik.",
-      "build": "Rebuild"
-    }
-  },
-  "bench": {
-    "title": "JS vs Go·WASM — same hash, two engines",
-    "subtitle": "Same SHA-256, same input, two engines. Left: a JS copy of the official Student Hryvnia client. Right: my Go rewrite from SHMiner, compiled to WASM with TinyGo. Lanes run sequentially, 10 seconds each — JS first on a single core, then Go·WASM on N cores. Each lane gets the full CPU to itself, so the numbers stay honest.",
-    "start": "Start",
-    "startAgain": "Run again",
-    "stop": "Stop",
-    "loading": "Loading WASM...",
-    "ready": "Ready to start",
-    "running": "Running...",
-    "runningJs": "Measuring JS lane",
-    "runningGo": "Measuring Go·WASM",
-    "done": "Finished",
-    "live": "live",
-    "labelJs": "Official JS miner",
-    "labelGo": "SHMiner (Go·WASM)",
-    "hashrate": "H/s",
-    "speedupLabel": "Go·WASM speedup",
-    "speedupBody": "that's how much faster Go·WASM is than the official JS miner on your machine — in this configuration",
-    "elapsed": "Elapsed",
-    "elapsedSec": "s",
-    "tokensLabel": "Tokens found",
-    "hashesLabel": "Hashes total",
-    "errorTitle": "Bench error",
-    "workersLabel": "Go workers",
-    "workersOverCore": "Above core count",
-    "workersCustom": "custom",
-    "workersApply": "Apply",
-    "workersActive": "running",
-    "detectedCores": "your cores",
-    "jsModeLabel": "JS mode",
-    "jsModeOriginal": "Original miner",
-    "jsModeFast": "Without sleep(1)",
-    "jsModeOriginalTag": "verbatim",
-    "jsModeFastTag": "no sleep",
-    "jsModeOriginalHint": "verbatim from the official client — with `sleep(1)` every 1000 hashes",
-    "jsModeFastHint": "same code, no artificial sleep",
-    "disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Go·WASM lane spins up a pool of Web Workers — one per core, just like SHMiner's goroutine pool. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
-    "desktopNoteTitle": "This is a browser demo",
-    "desktopNoteBody": "Native Go from the desktop client is much faster than TinyGo·WASM in the browser — native Go's SHA-256 uses SIMD/AVX CPU instructions (4-8 blocks in parallel; scalar WASM does 0), and Web Workers pay for serialization. The real numbers (1000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
-    "desktopCta": "SHMiner on GitHub"
-  },
-  "stack": {
-    "title": "Tech stack",
-    "subtitle": "Tools I live with day to day.",
-    "categories": {
-      "languages": "Languages",
-      "backend": "Backend",
-      "db": "Databases",
-      "frontend": "Frontend",
-      "ai": "AI / APIs",
-      "devops": "DevOps & tools"
-    }
-  },
-  "education": {
-    "title": "Education",
-    "items": {
-      "college": {
-        "title": "Network Technologies",
-        "place": "Lviv Polytechnic IT College",
-        "date": "2024 — present",
-        "note": "2nd year"
-      },
-      "lyceum": {
-        "title": "IT class",
-        "place": "Science Lyceum, Rivne",
-        "date": "2022 — 2024"
-      }
-    }
-  },
-  "contact": {
-    "title": "Let's talk?",
-    "subtitle": "Looking for a Strong Junior Go role or a serious internship. Ready for intensive work.",
-    "emailLabel": "Email",
-    "telegramLabel": "Telegram",
-    "githubLabel": "GitHub",
-    "copyEmail": "Copy",
-    "copied": "Copied!",
-    "cvLabel": "Resume (PDF)",
-    "cvUa": "Завантажити українською",
-    "cvEn": "Download in English"
-  },
-  "activity": {
-    "title": "Latest commits"
-  },
-  "palette": {
-    "placeholder": "Search a command or section...",
-    "empty": "No matches",
-    "gotoHome": "Go to → Home",
-    "gotoAbout": "Go to → About",
-    "gotoAchievements": "Go to → Wins",
-    "gotoProjects": "Go to → Projects",
-    "gotoServices": "Go to → Services",
-    "gotoLab": "Open → Piton Lab",
-    "gotoBench": "Run → Benchmark",
-    "gotoRombik": "Open → rombik (product)",
-    "gotoContact": "Go to → Contact",
-    "copyEmail": "Copy email",
-    "openTelegram": "Open Telegram",
-    "openGithub": "Open GitHub",
-    "downloadCvUa": "Download resume (UA)",
-    "downloadCvEn": "Download resume (EN)",
-    "toggleLang": "Toggle language"
-  },
-  "footer": {
-    "rights": "Oleksii Odarchuk",
-    "stamp": {
-      "rev": "Rev."
-    },
-    "made": "Crafted with a taste for architecture"
-  },
-  "errorPage": {
-    "title404": "Page Not Found",
-    "desc404": "Looks like you are lost. This page doesn't exist or has been moved.",
-    "titleGeneric": "Something went wrong",
-    "descGeneric": "An unexpected error has occurred.",
-    "home": "Back to Home"
-  },
-  "rombikPage": {
-    "metaTitle": "rombik — a SaaS flowchart generator (DSTU)",
-    "metaDesc": "rombik — my first real commercial SaaS: code in ten languages → a DSTU/GOST 19.701-90 (ISO 5807) flowchart or Nassi–Shneiderman structogram. Go engine, web editor, describe→flowchart via AI, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
-    "kicker": "// rombik · flagship",
-    "title": "rombik",
-    "tagline": "Code → a DSTU flowchart. My first full-fledged commercial SaaS.",
-    "intro": "Paste Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP or Pascal code — get a clean DSTU 19.701-90 (ISO 5807) flowchart or a Nassi–Shneiderman structogram, ready for coursework or a report. What colleges still draw by hand for hours, rombik builds in a second. I designed and run all of it myself: the engine, the backend, billing, analytics, the web editor, the CLI and the AI integrations.",
-    "ctaApp": "Open rombik",
-    "ctaApi": "Public API",
-    "ctaDemo": "Try the demo ↓",
-    "stats": [
-      {
-        "value": "10",
-        "label": "input languages"
-      },
-      {
-        "value": "8",
-        "label": "export formats"
-      },
-      {
-        "value": "100%",
-        "label": "to DSTU / ISO 5807"
-      },
-      {
-        "value": "1",
-        "label": "person — engine to billing"
-      }
-    ],
-    "pipeline": {
-      "kicker": "How the engine works",
-      "title": "A compiler pipeline — from code to diamonds",
-      "subtitle": "A classic compiler pipeline, except the output isn't machine code but a flowchart. Every stage has clean boundaries and its own tests.",
-      "stages": [
-        {
-          "name": "parser",
-          "desc": "tree-sitter parses 10 languages into a structured tree (Pascal — a custom cgo binding)"
-        },
-        {
-          "name": "IR",
-          "desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry"
-        },
-        {
-          "name": "layout",
-          "desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts"
-        },
-        {
-          "name": "diagram",
-          "desc": "shapes with coordinates, polyline edges, a “Figure N” caption"
-        },
-        {
-          "name": "render",
-          "desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw"
-        }
-      ],
-      "problemsTitle": "The details everyone gets wrong — and here they're right",
-      "problems": [
-        "Half-open range: “for i in range(a, b)” → a hexagon with “end = b − 1”",
-        "The loop's back-edge enters the header arrow, not a side vertex of the diamond — as DSTU requires",
-        "if / elif / else as a vertical ladder, no diagonal steps",
-        "A call to your own function → a subprogram symbol, not a plain process",
-        "Tall charts are split with named connectors (A/B/C…), not just a page break",
-        "Byte-exact golden tests: accidentally broken geometry trips a test immediately"
-      ]
-    },
-    "features": {
-      "kicker": "What it does",
-      "title": "Not “roughly like Graphviz” — pixel-for-pixel to the standard",
-      "items": [
-        {
-          "title": "Exact DSTU primitives",
-          "desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye."
-        },
-        {
-          "title": "Ten languages",
-          "desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods."
-        },
-        {
-          "title": "Flowcharts and structograms",
-          "desc": "The same code as a classic DSTU flowchart or a Nassi–Shneiderman structogram (nested boxes, no arrows). A toggle in the editor — every language and format."
-        },
-        {
-          "title": "Eight formats",
-          "desc": "SVG, PNG, PDF, Word and Visio as native editable shapes, draw.io, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)."
-        },
-        {
-          "title": "Web editor",
-          "desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo."
-        },
-        {
-          "title": "Each function — its own chart",
-          "desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call."
-        },
-        {
-          "title": "To your professor's spec",
-          "desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options."
-        },
-        {
-          "title": "Describe → flowchart via AI",
-          "desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart."
-        }
-      ]
-    },
-    "stack": {
-      "kicker": "On my own stack",
-      "title": "Built from what I made myself",
-      "subtitle": "rombik isn't assembled from someone else's blocks — it stands on my own earlier projects.",
-      "items": [
-        {
-          "title": "Billing on my own go-monobank-sdk",
-          "desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.",
-          "link": "/projects",
-          "linkLabel": "go-monobank-sdk →"
-        },
-        {
-          "title": "Compiler craft from Piton",
-          "desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.",
-          "link": "/lab#lab",
-          "linkLabel": "Piton in the lab →"
-        }
-      ]
-    },
-    "commercial": {
-      "kicker": "A live commercial product",
-      "title": "Not a pet project — a working business",
-      "subtitle": "Pay-per-chart, real payments, analytics and an admin panel — all in production.",
-      "items": [
-        {
-          "title": "Honest billing",
-          "desc": "Pay per chart (not per call, not per file). Free watermarked PNG without sign-up; a clean export in any format needs an account (1 chart); Pro is the editor subscription + custom options."
-        },
-        {
-          "title": "Real analytics",
-          "desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code."
-        },
-        {
-          "title": "Production-grade",
-          "desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy."
-        },
-        {
-          "title": "Everywhere",
-          "desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update."
-        }
-      ]
-    },
-    "ai": {
-      "kicker": "AI-native",
-      "title": "Made for humans and agents alike",
-      "subtitle": "Beyond the web editor — a full set of machine interfaces.",
-      "items": [
-        {
-          "title": "Public HTTP API",
-          "desc": "/render, /render/batch, /me, /products, /topup, /gift. Machine-readable spec at /api/v1/openapi.json."
-        },
-        {
-          "title": "CLI",
-          "desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design."
-        },
-        {
-          "title": "MCP server",
-          "desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent."
-        },
-        {
-          "title": "AI skill",
-          "desc": "/api/v1/skill.md — a ready guide an agent reads, then installs the CLI and renders charts itself."
-        }
-      ],
-      "mcpTitle": "Connect to Claude / an agent",
-      "mcpSnippet": "{\n  \"mcpServers\": {\n    \"rombik\": { \"command\": \"rombik\", \"args\": [\"mcp\"] }\n  }\n}"
-    },
-    "demo": {
-      "kicker": "Try it live",
-      "title": "Ready-made examples from the real engine",
-      "subtitle": "Pick an algorithm — a DSTU flowchart appears below. Want your own code? Open the full rombik."
-    },
-    "finalCta": {
-      "title": "See how it works",
-      "subtitle": "Free watermarked PNG without sign-up. Web editor, API, CLI and MCP — in the app.",
-      "button": "Open rombik"
-    }
-  }
+	"meta": {
+		"title": "Oleksii Odarchuk — ishawyha.dev",
+		"description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — Student with High Potential."
+	},
+	"nav": {
+		"home": "Home",
+		"about": "About",
+		"achievements": "Wins",
+		"projects": "Projects",
+		"rombik": "rombik",
+		"services": "Services",
+		"lab": "Lab",
+		"bench": "Bench",
+		"contact": "Contact",
+		"openMenu": "Open menu",
+		"closeMenu": "Close menu",
+		"donate": "Donate"
+	},
+	"pages": {
+		"projects": {
+			"metaTitle": "Projects — Oleksii Odarchuk",
+			"metaDesc": "Selected projects: Piton, go-monobank-sdk, monokasa, SHMiner and more — Go, WebAssembly, Telegram bots.",
+			"kicker": "// projects/",
+			"title": "Projects",
+			"subtitle": "What I build off-hours — from my own programming language to SDKs and bots."
+		},
+		"lab": {
+			"metaTitle": "Lab — rombik, Piton, benchmark in the browser",
+			"metaDesc": "Interactive lab: build a DSTU flowchart from code with rombik, run the Piton language in your browser (WebAssembly), and compare JS vs Go·WASM speed.",
+			"kicker": "// lab/",
+			"title": "Lab",
+			"subtitle": "My things, live: rombik (flowcharts from code, DSTU), the Piton language in the browser, and a live SHA-256 benchmark."
+		},
+		"services": {
+			"metaTitle": "Services — hire me",
+			"metaDesc": "I take commercial work: Telegram bots, Go backends, web apps, automation. Send a request.",
+			"kicker": "// services/",
+			"title": "Hire me",
+			"subtitle": "Backends, bots and integrations end to end — clean architecture and real deadlines."
+		},
+		"about": {
+			"metaTitle": "About — Oleksii Odarchuk",
+			"metaDesc": "Go backend developer, creator of the Piton language. Wins, stack, education and contacts.",
+			"kicker": "// about/",
+			"title": "About me",
+			"subtitle": "Go backend engineer, creator of the Piton language. A bit about the path, results and tech."
+		}
+	},
+	"home": {
+		"teaserProjects": {
+			"title": "Selected projects",
+			"subtitle": "The flagship is rombik (a hosted SaaS). Plus the Piton language, SDKs, bots and a miner.",
+			"cta": "All projects"
+		},
+		"metrics": {
+			"title": "By the numbers",
+			"items": [
+				{
+					"value": 1000,
+					"suffix": "×",
+					"label": "faster SHA-256 — Go vs JS in SHMiner"
+				},
+				{
+					"value": 150,
+					"suffix": "+",
+					"label": "AbitAssistant users"
+				},
+				{
+					"value": 10,
+					"suffix": "",
+					"label": "input languages in rombik"
+				},
+				{
+					"value": 5,
+					"suffix": "",
+					"label": "monobank APIs in go-monobank-sdk"
+				}
+			]
+		}
+	},
+	"hero": {
+		"available": "Open to freelance & job offers",
+		"name": "Oleksii Odarchuk",
+		"nameLine1": "Oleksii",
+		"nameLine2": "Odarchuk",
+		"role": "Backend Developer (Go) · Creator of rombik and Piton",
+		"tagline": "I build systems where speed meets architectural reliability.",
+		"intro": "Go backend engineer. Drawn to clean architecture, complex domain logic, and performance where it matters. I build tools (rombik — a flowchart SaaS, the Piton language), reverse-engineer other people's code, and poke at security.",
+		"hireLine": "💼 Available for commercial work and open to job offers — Telegram bots, Go backends, web apps and integrations.",
+		"ctaPrimary": "Open the lab",
+		"ctaSecondary": "Hire me",
+		"ctaGithub": "GitHub",
+		"cvLabel": "Resume",
+		"cvUa": "UA · PDF",
+		"cvEn": "EN · PDF",
+		"nowLabel": "Now",
+		"winsLabel": "Selected wins",
+		"nowItems": [
+			"Working as a Backend Golang developer at SkyService"
+		],
+		"badges": {
+			"best": {
+				"emoji": "🏆",
+				"label": "1st place",
+				"title": "BEST Hackathon 2026",
+				"subtitle": "GPS-less drone trajectory · IMU"
+			},
+			"mate": {
+				"emoji": "🥉",
+				"label": "3rd place",
+				"title": "Mate Hackathon 2026",
+				"subtitle": "AI MarTech · 7-hour MVP"
+			},
+			"dou": {
+				"emoji": "🎟",
+				"label": "DOU Day 2026",
+				"title": "Student with High Potential",
+				"subtitle": "Invitation · free ticket"
+			}
+		}
+	},
+	"about": {
+		"title": "About me",
+		"p1": "I'm a Go backend engineer, second-year student at Lviv Polytechnic IT College. I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
+		"p2": "Outside of code: 10+ years of folk dancing, occasional poetry, and recently — screenwriting. That taught me rhythm and structure — the things every good product is built on.",
+		"facts": [
+			{
+				"label": "Based in",
+				"value": "Mizoch, Rivne Region, Ukraine"
+			},
+			{
+				"label": "Education",
+				"value": "Lviv Polytechnic IT College"
+			},
+			{
+				"label": "Stack",
+				"value": "Go · C · TinyGo · PostgreSQL · Svelte"
+			},
+			{
+				"label": "Languages",
+				"value": "Ukrainian (native), English B1"
+			}
+		]
+	},
+	"achievements": {
+		"title": "Wins & hackathons",
+		"subtitle": "Not just code — outcomes measured in places, speed, and offers.",
+		"benchLink": "Run the benchmark",
+		"items": {
+			"best": {
+				"label": "🏆 1st place",
+				"title": "BEST Hackathon",
+				"company": "GPS-less drone trajectory",
+				"date": "April 18–19, 2026",
+				"description": "Algorithm to reconstruct a UAV's trajectory without GPS — from IMU, barometer and other inertial-sensor logs. Sensor fusion in Go + C, clean modular architecture (telemetry / integration / simulation). The judges singled out the architectural resilience — 1st place among top teams.",
+				"tags": [
+					"Go",
+					"C",
+					"Sensor Fusion",
+					"IMU",
+					"Inertial Nav"
+				]
+			},
+			"mate": {
+				"label": "🥉 3rd place",
+				"title": "Mate Hackathon",
+				"company": "AI MarTech (50 participants, 10 teams)",
+				"date": "March 14, 2026",
+				"description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banano 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
+				"tags": [
+					"Go",
+					"GPT-4o",
+					"fal.ai",
+					"REST",
+					"7-hour MVP"
+				]
+			},
+			"dou": {
+				"label": "🎟 Invitation",
+				"title": "DOU Day 2026",
+				"company": "Student with High Potential",
+				"date": "2026",
+				"description": "Personally invited by the organisers to DOU Day with a free ticket as a student with high potential. Dedicated track for promising student developers.",
+				"tags": [
+					"Invitation",
+					"Free ticket",
+					"Community"
+				]
+			},
+			"security": {
+				"label": "🛡 Disclosure → offer",
+				"title": "Security Researcher",
+				"company": "Student Hryvnia (college blockchain)",
+				"date": "2026",
+				"description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool — 1000× faster.",
+				"tags": [
+					"Reverse engineering",
+					"Go",
+					"Goroutines",
+					"AES",
+					"WebSockets"
+				]
+			}
+		}
+	},
+	"projects": {
+		"title": "Selected projects",
+		"subtitle": "What I build off-hours — and what I'm proud of.",
+		"viewSource": "View on GitHub",
+		"viewLive": "Open the site",
+		"sourceShort": "Source",
+		"liveBench": "Live benchmark",
+		"featured": {
+			"rombik": {
+				"kicker": "Flagship · hosted SaaS",
+				"name": "rombik",
+				"tagline": "Code → DSTU flowchart: web, API, CLI",
+				"description": "A SaaS I designed and run: turns code in ten languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Eight formats: SVG, PNG, PDF, Word and Visio as native shapes, draw.io, Typst, Excalidraw. Free watermarked PNG without sign-up; a clean export needs an account.",
+				"tags": [
+					"Go · Gin",
+					"tree-sitter",
+					"API",
+					"CLI",
+					"Word · Visio · draw.io",
+					"DSTU"
+				],
+				"cta1": "Learn more",
+				"cta2": "Open rombik",
+				"cta3": "Public API"
+			},
+			"piton": {
+				"kicker": "Flagship",
+				"name": "Piton",
+				"tagline": "A Ukrainian programming language with a homegrown interpreter",
+				"description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. A built-in D2 engine draws SVG flowcharts (DSTU). The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server.",
+				"tags": [
+					"Go",
+					"TinyGo",
+					"WebAssembly",
+					"AST",
+					"SVG",
+					"Nix"
+				],
+				"cta1": "Try in the browser",
+				"cta2": "Open documentation",
+				"cta3": "GitHub"
+			}
+		},
+		"list": {
+			"piton": {
+				"kicker": "Own language",
+				"title": "Piton",
+				"subtitle": "A Ukrainian programming language + interpreter",
+				"description": "An interpreted language with authentic Ukrainian syntax (transliterated): recursive descent parser, tree-walking evaluator, Turing-complete, written from scratch in Go without yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — ~220 KB, runs right in the browser. Flowcharts are drawn by a built-in D2 engine.",
+				"tags": [
+					"Go",
+					"TinyGo",
+					"WebAssembly",
+					"AST",
+					"Nix"
+				]
+			},
+			"gomonobanksdk": {
+				"kicker": "Open source SDK",
+				"title": "go-monobank-sdk",
+				"subtitle": "Go SDK for every monobank API",
+				"description": "Full coverage of personal, provider (with monoКЕП), business for legal entities, acquiring (subscriptions, monopay button, split-receivers, T2P) and Installment Purchases. ECDSA webhook verification with auto-rotating keys, drop-in http.Handler, typed money/currency/MCC, HMAC-SHA256 for installment callbacks, a fake monobank server for tests, and a separate OpenTelemetry sub-module.",
+				"tags": [
+					"Go",
+					"ECDSA",
+					"HMAC-SHA256",
+					"OpenTelemetry",
+					"iter.Seq2",
+					"MIT"
+				]
+			},
+			"monokasa": {
+				"kicker": "SDK consumer",
+				"title": "monokasa",
+				"subtitle": "Telegram bot for selling tickets",
+				"description": "Sells tickets to a single show through a monobank jar and issues PDFs with QR codes scanned at the venue entrance. Live consumer of my own go-monobank-sdk: webhook auto-registers at startup, reservations get a 15-minute hold, and show-time reminders fire at-most-once even across restarts.",
+				"tags": [
+					"Go",
+					"SQLite",
+					"telebot",
+					"PDF",
+					"QR",
+					"go-monobank-sdk"
+				]
+			},
+			"shminer": {
+				"kicker": "1000× faster",
+				"title": "SHMiner",
+				"subtitle": "Desktop crypto miner",
+				"description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
+				"tags": [
+					"Go",
+					"Svelte",
+					"Wails",
+					"Goroutines",
+					"WebSockets",
+					"AES"
+				]
+			},
+			"linkshortener": {
+				"kicker": "",
+				"title": "LinkShortener Bot",
+				"subtitle": "Telegram + analytics",
+				"description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
+				"tags": [
+					"Go",
+					"PostgreSQL",
+					"Redis",
+					"ClickHouse",
+					"Docker"
+				]
+			},
+			"todolist": {
+				"kicker": "",
+				"title": "ToDoList Pro",
+				"subtitle": "Production-grade task manager",
+				"description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
+				"tags": [
+					"Go",
+					"Gin",
+					"Svelte 5",
+					"JWT",
+					"OAuth 2.0",
+					"PostgreSQL"
+				]
+			},
+			"abit": {
+				"kicker": "150+ users",
+				"title": "AbitAssistant Bot",
+				"subtitle": "Telegram bot for applicants",
+				"description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
+				"tags": [
+					"Python",
+					"Aiogram",
+					"PostgreSQL",
+					"BeautifulSoup",
+					"Pandas"
+				]
+			},
+			"rombik": {
+				"kicker": "Hosted SaaS",
+				"title": "rombik",
+				"subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
+				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
+				"tags": [
+					"Go · Gin",
+					"tree-sitter",
+					"API · CLI",
+					"SVG · PDF · DOCX",
+					"DSTU"
+				]
+			}
+		}
+	},
+	"services": {
+		"kicker": "// services/",
+		"title": "Hire me",
+		"subtitle": "I take on commercial work — backends, bots, and integrations. Clean architecture and real deadlines, like a hackathon but without the rush.",
+		"teaserCta": "Hire me",
+		"list": {
+			"bots": {
+				"title": "Telegram bots",
+				"description": "Bots of any complexity: sales and payments via monobank, analytics, scraping, reminders, API integrations. From MVP to a production-ready solution with a database and deployment.",
+				"tags": [
+					"Go",
+					"Python",
+					"Aiogram",
+					"PostgreSQL",
+					"monobank"
+				]
+			},
+			"backend": {
+				"title": "Backend & APIs",
+				"description": "Go/Gin services with clean architecture, REST APIs, auth (JWT, OAuth 2.0), payment and webhook integrations, Docker deploys. Built to survive load and shifting requirements.",
+				"tags": [
+					"Go",
+					"Gin",
+					"REST",
+					"PostgreSQL",
+					"Docker"
+				]
+			},
+			"web": {
+				"title": "Web apps",
+				"description": "Fast sites, landing pages and dashboards on SvelteKit + TypeScript + Tailwind. Animations, i18n, responsive, polished design — just like this site.",
+				"tags": [
+					"Svelte 5",
+					"TypeScript",
+					"Tailwind",
+					"Vite"
+				]
+			},
+			"automation": {
+				"title": "Automation & scraping",
+				"description": "Scripts, scrapers, closed-API integrations (reverse-engineered when needed), data processing, one-off engineering tasks. I'll save you hours of routine.",
+				"tags": [
+					"Python",
+					"Go",
+					"Reverse engineering",
+					"API"
+				]
+			}
+		},
+		"form": {
+			"title": "Tell me about the task",
+			"subtitle": "Fill in the form — I'll reply on Telegram or by email within a day.",
+			"name": "Name",
+			"namePlaceholder": "What should I call you",
+			"contact": "Contact",
+			"contactPlaceholder": "Telegram, email or phone",
+			"service": "Task type",
+			"servicePlaceholder": "Pick a direction",
+			"serviceOther": "Other",
+			"budget": "Budget (optional)",
+			"budgetPlaceholder": "e.g. $200–500 or \"let's discuss\"",
+			"message": "Description",
+			"messagePlaceholder": "What needs to be done, timeline, links to examples...",
+			"submit": "Send request",
+			"sending": "Sending...",
+			"successTitle": "Request sent!",
+			"successBody": "Thanks — I'll get back to you as soon as I can. You can also ping me directly on Telegram.",
+			"errorTitle": "Couldn't send",
+			"errorBody": "Please try again, or reach me directly on Telegram or by email.",
+			"again": "Send another",
+			"required": "Please fill this in",
+			"altTelegram": "Message on Telegram"
+		}
+	},
+	"lab": {
+		"kicker": "Lab",
+		"title": "Piton Lab — try my language",
+		"subtitle": "The interpreter is compiled to WebAssembly via TinyGo — ~220 KB. Flowcharts are drawn by a built-in D2 engine (a separate Go·WASM module), lazy-loaded only when you actually need a chart.",
+		"loadHint": "Hit \"Run\" — the interpreter loads on first interaction (~220 KB).",
+		"loading": "Loading interpreter...",
+		"loadingViz": "Loading visualizer...",
+		"loaded": "Interpreter ready",
+		"run": "Run",
+		"visualize": "Flowchart",
+		"output": "Console",
+		"flowchart": "Flowchart",
+		"examples": "Examples",
+		"exampleNames": {
+			"hello": "Hello, world",
+			"loop": "poky loop",
+			"list": "List + dodaty",
+			"func": "Functions + conditions",
+			"math": "Math"
+		},
+		"emptyOutput": "Hit \"Run\" to see output",
+		"emptyFlow": "Hit \"Flowchart\" to generate SVG",
+		"error": "Failed to load the interpreter",
+		"share": "Share",
+		"shared": "Copied!",
+		"piton": {
+			"highlights": [
+				{
+					"title": "Latest Version 1.9.2",
+					"desc": "The newest engine and optimizations straight from the repo."
+				},
+				{
+					"title": "WASM Interpreter",
+					"desc": "Only ~220 KB for lightning-fast loading (via TinyGo)."
+				},
+				{
+					"title": "Flowcharts via D2",
+					"desc": "A built-in D2 engine draws DSTU vector flowcharts as SVG."
+				},
+				{
+					"title": "100% Local",
+					"desc": "Serverless and secure, all code runs directly in your browser."
+				}
+			]
+		},
+		"rombik": {
+			"kicker": "rombik",
+			"title": "rombik — flowcharts from code",
+			"subtitle": "A SaaS that draws DSTU 19.701-90 flowcharts and Nassi–Shneiderman structograms from code in ten languages: Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Below — ready-made examples (Python, C++, Pascal); the full editor, API and CLI live in the app.",
+			"body": "What colleges still draw by hand for hours, rombik builds in a second: paste code, get a clean standards-compliant flowchart ready for coursework. Below — examples from the real engine.",
+			"highlights": [
+				{
+					"title": "Go engine",
+					"desc": "parser → IR → layout → diagram → render; clean stage boundaries"
+				},
+				{
+					"title": "Ten languages",
+					"desc": "Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal — exact DSTU primitives"
+				},
+				{
+					"title": "Web · API · CLI · MCP",
+					"desc": "editor with pan/zoom, a public HTTP API, a CLI, an MCP server and a skill for agents"
+				},
+				{
+					"title": "Eight formats",
+					"desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw; native editable shapes in Word/Visio"
+				}
+			],
+			"openApp": "Open the full editor",
+			"api": "Public API",
+			"run": "Build",
+			"ready": "Done",
+			"building": "Building chart…",
+			"loadingEngine": "Loading engine…",
+			"emptyOutput": "Hit \"Build\" to see the flowchart",
+			"filename": "algorithm.py",
+			"weightHint": "First run pulls tree-sitter (a WASM grammar) + the engine — a few MB; instant and local afterwards",
+			"examples": {
+				"grade": "Grade",
+				"loop": "Loop sum",
+				"factorial": "Factorial"
+			},
+			"tryRombik": "Open in rombik",
+			"demoHint": "Ready-made examples: pick an algorithm — rombik shows its DSTU flowchart. Want to paste your own code? Open the full rombik.",
+			"build": "Rebuild"
+		}
+	},
+	"bench": {
+		"title": "JS vs Go·WASM — same hash, two engines",
+		"subtitle": "Same SHA-256, same input, two engines. Left: a JS copy of the official Student Hryvnia client. Right: my Go rewrite from SHMiner, compiled to WASM with TinyGo. Lanes run sequentially, 10 seconds each — JS first on a single core, then Go·WASM on N cores. Each lane gets the full CPU to itself, so the numbers stay honest.",
+		"start": "Start",
+		"startAgain": "Run again",
+		"stop": "Stop",
+		"loading": "Loading WASM...",
+		"ready": "Ready to start",
+		"running": "Running...",
+		"runningJs": "Measuring JS lane",
+		"runningGo": "Measuring Go·WASM",
+		"done": "Finished",
+		"live": "live",
+		"labelJs": "Official JS miner",
+		"labelGo": "SHMiner (Go·WASM)",
+		"hashrate": "H/s",
+		"speedupLabel": "Go·WASM speedup",
+		"speedupBody": "that's how much faster Go·WASM is than the official JS miner on your machine — in this configuration",
+		"elapsed": "Elapsed",
+		"elapsedSec": "s",
+		"tokensLabel": "Tokens found",
+		"hashesLabel": "Hashes total",
+		"errorTitle": "Bench error",
+		"workersLabel": "Go workers",
+		"workersOverCore": "Above core count",
+		"workersCustom": "custom",
+		"workersApply": "Apply",
+		"workersActive": "running",
+		"detectedCores": "your cores",
+		"jsModeLabel": "JS mode",
+		"jsModeOriginal": "Original miner",
+		"jsModeFast": "Without sleep(1)",
+		"jsModeOriginalTag": "verbatim",
+		"jsModeFastTag": "no sleep",
+		"jsModeOriginalHint": "verbatim from the official client — with `sleep(1)` every 1000 hashes",
+		"jsModeFastHint": "same code, no artificial sleep",
+		"disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Go·WASM lane spins up a pool of Web Workers — one per core, just like SHMiner's goroutine pool. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
+		"desktopNoteTitle": "This is a browser demo",
+		"desktopNoteBody": "Native Go from the desktop client is much faster than TinyGo·WASM in the browser — native Go's SHA-256 uses SIMD/AVX CPU instructions (4-8 blocks in parallel; scalar WASM does 0), and Web Workers pay for serialization. The real numbers (1000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
+		"desktopCta": "SHMiner on GitHub"
+	},
+	"stack": {
+		"title": "Tech stack",
+		"subtitle": "Tools I live with day to day.",
+		"categories": {
+			"languages": "Languages",
+			"backend": "Backend",
+			"db": "Databases",
+			"frontend": "Frontend",
+			"ai": "AI / APIs",
+			"devops": "DevOps & tools"
+		}
+	},
+	"experience": {
+		"title": "Experience",
+		"items": {
+			"skyservice": {
+				"role": "Backend Developer (Go)",
+				"place": "SkyService",
+				"date": "October 2025 — now",
+				"note": "Go · microservices · production",
+				"bullets": [
+					"Design and build architecturally complex Go microservices from scratch for a production platform: interface-driven (hexagonal) architecture, inter-service communication, real production load.",
+					"AI support-bot platform (RAG): semantic memory on PostgreSQL + pgvector (text / vector / hybrid search), a self-learning knowledge graph, an MCP server, schema-per-tenant isolation, token-based billing.",
+					"AI orchestrator — a web analog of claude-code: drives Claude through a tool-use loop while executing agent code inside isolated Docker sandboxes; secrets never reach the sandbox (guarantee enforced by an automated test), credential-free git, an egress-allowlist proxy against exfiltration.",
+					"Real-time LLM streaming (SSE / WebSocket) with mid-turn cancellation; security: SSRF protection, seccomp / cap-drop, argon2id / pbkdf2, fully parameterized SQL."
+				],
+				"tags": [
+					"Go",
+					"PostgreSQL",
+					"pgvector",
+					"Docker",
+					"MCP",
+					"Anthropic",
+					"SSE/WebSocket"
+				]
+			}
+		}
+	},
+	"education": {
+		"title": "Education",
+		"items": {
+			"college": {
+				"title": "Network Technologies",
+				"place": "Lviv Polytechnic IT College",
+				"date": "2024 — present",
+				"note": "2nd year"
+			},
+			"lyceum": {
+				"title": "IT class",
+				"place": "Science Lyceum, Rivne",
+				"date": "2022 — 2024"
+			}
+		}
+	},
+	"contact": {
+		"title": "Let's talk?",
+		"subtitle": "Looking for a Strong Junior Go role or a serious internship. Ready for intensive work.",
+		"emailLabel": "Email",
+		"telegramLabel": "Telegram",
+		"githubLabel": "GitHub",
+		"copyEmail": "Copy",
+		"copied": "Copied!",
+		"cvLabel": "Resume (PDF)",
+		"cvUa": "Завантажити українською",
+		"cvEn": "Download in English"
+	},
+	"activity": {
+		"title": "Latest commits"
+	},
+	"palette": {
+		"placeholder": "Search a command or section...",
+		"empty": "No matches",
+		"gotoHome": "Go to → Home",
+		"gotoAbout": "Go to → About",
+		"gotoAchievements": "Go to → Wins",
+		"gotoProjects": "Go to → Projects",
+		"gotoServices": "Go to → Services",
+		"gotoLab": "Open → Piton Lab",
+		"gotoBench": "Run → Benchmark",
+		"gotoRombik": "Open → rombik (product)",
+		"gotoContact": "Go to → Contact",
+		"copyEmail": "Copy email",
+		"openTelegram": "Open Telegram",
+		"openGithub": "Open GitHub",
+		"downloadCvUa": "Download resume (UA)",
+		"downloadCvEn": "Download resume (EN)",
+		"toggleLang": "Toggle language"
+	},
+	"footer": {
+		"rights": "Oleksii Odarchuk",
+		"stamp": {
+			"rev": "Rev."
+		},
+		"made": "Crafted with a taste for architecture"
+	},
+	"errorPage": {
+		"title404": "Page Not Found",
+		"desc404": "Looks like you are lost. This page doesn't exist or has been moved.",
+		"titleGeneric": "Something went wrong",
+		"descGeneric": "An unexpected error has occurred.",
+		"home": "Back to Home"
+	},
+	"rombikPage": {
+		"metaTitle": "rombik — a SaaS flowchart generator (DSTU)",
+		"metaDesc": "rombik — my first real commercial SaaS: code in ten languages → a DSTU/GOST 19.701-90 (ISO 5807) flowchart or Nassi–Shneiderman structogram. Go engine, web editor, describe→flowchart via AI, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
+		"kicker": "// rombik · flagship",
+		"title": "rombik",
+		"tagline": "Code → a DSTU flowchart. My first full-fledged commercial SaaS.",
+		"intro": "Paste Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP or Pascal code — get a clean DSTU 19.701-90 (ISO 5807) flowchart or a Nassi–Shneiderman structogram, ready for coursework or a report. What colleges still draw by hand for hours, rombik builds in a second. I designed and run all of it myself: the engine, the backend, billing, analytics, the web editor, the CLI and the AI integrations.",
+		"ctaApp": "Open rombik",
+		"ctaApi": "Public API",
+		"ctaDemo": "Try the demo ↓",
+		"stats": [
+			{
+				"value": "10",
+				"label": "input languages"
+			},
+			{
+				"value": "8",
+				"label": "export formats"
+			},
+			{
+				"value": "100%",
+				"label": "to DSTU / ISO 5807"
+			},
+			{
+				"value": "1",
+				"label": "person — engine to billing"
+			}
+		],
+		"pipeline": {
+			"kicker": "How the engine works",
+			"title": "A compiler pipeline — from code to diamonds",
+			"subtitle": "A classic compiler pipeline, except the output isn't machine code but a flowchart. Every stage has clean boundaries and its own tests.",
+			"stages": [
+				{
+					"name": "parser",
+					"desc": "tree-sitter parses 10 languages into a structured tree (Pascal — a custom cgo binding)"
+				},
+				{
+					"name": "IR",
+					"desc": "a language-agnostic algorithm tree: if / loop / call / io / terminal — no geometry"
+				},
+				{
+					"name": "layout",
+					"desc": "recursive size→place, bus routing of turns and exits, splitting of tall charts"
+				},
+				{
+					"name": "diagram",
+					"desc": "shapes with coordinates, polyline edges, a “Figure N” caption"
+				},
+				{
+					"name": "render",
+					"desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw"
+				}
+			],
+			"problemsTitle": "The details everyone gets wrong — and here they're right",
+			"problems": [
+				"Half-open range: “for i in range(a, b)” → a hexagon with “end = b − 1”",
+				"The loop's back-edge enters the header arrow, not a side vertex of the diamond — as DSTU requires",
+				"if / elif / else as a vertical ladder, no diagonal steps",
+				"A call to your own function → a subprogram symbol, not a plain process",
+				"Tall charts are split with named connectors (A/B/C…), not just a page break",
+				"Byte-exact golden tests: accidentally broken geometry trips a test immediately"
+			]
+		},
+		"features": {
+			"kicker": "What it does",
+			"title": "Not “roughly like Graphviz” — pixel-for-pixel to the standard",
+			"items": [
+				{
+					"title": "Exact DSTU primitives",
+					"desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye."
+				},
+				{
+					"title": "Ten languages",
+					"desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods."
+				},
+				{
+					"title": "Flowcharts and structograms",
+					"desc": "The same code as a classic DSTU flowchart or a Nassi–Shneiderman structogram (nested boxes, no arrows). A toggle in the editor — every language and format."
+				},
+				{
+					"title": "Eight formats",
+					"desc": "SVG, PNG, PDF, Word and Visio as native editable shapes, draw.io, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)."
+				},
+				{
+					"title": "Web editor",
+					"desc": "Canvas with pan/zoom, draggable blocks, manual lasso-splitting of a chart, undo/redo."
+				},
+				{
+					"title": "Each function — its own chart",
+					"desc": "Function params become an input parallelogram; a named lambda — a separate chart plus a call."
+				},
+				{
+					"title": "To your professor's spec",
+					"desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options."
+				},
+				{
+					"title": "Describe → flowchart via AI",
+					"desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart."
+				}
+			]
+		},
+		"stack": {
+			"kicker": "On my own stack",
+			"title": "Built from what I made myself",
+			"subtitle": "rombik isn't assembled from someone else's blocks — it stands on my own earlier projects.",
+			"items": [
+				{
+					"title": "Billing on my own go-monobank-sdk",
+					"desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.",
+					"link": "/projects",
+					"linkLabel": "go-monobank-sdk →"
+				},
+				{
+					"title": "Compiler craft from Piton",
+					"desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.",
+					"link": "/lab#lab",
+					"linkLabel": "Piton in the lab →"
+				}
+			]
+		},
+		"commercial": {
+			"kicker": "A live commercial product",
+			"title": "Not a pet project — a working business",
+			"subtitle": "Pay-per-chart, real payments, analytics and an admin panel — all in production.",
+			"items": [
+				{
+					"title": "Honest billing",
+					"desc": "Pay per chart (not per call, not per file). Free watermarked PNG without sign-up; a clean export in any format needs an account (1 chart); Pro is the editor subscription + custom options."
+				},
+				{
+					"title": "Real analytics",
+					"desc": "Generation, export and API-call events; an admin dashboard with stats, revenue and a live feed — without user code."
+				},
+				{
+					"title": "Production-grade",
+					"desc": "Dual auth (API key + cookie JWT), OAuth + magic-link, machine-readable error codes, OpenAPI 3.1, one-command Docker deploy."
+				},
+				{
+					"title": "Everywhere",
+					"desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update."
+				}
+			]
+		},
+		"ai": {
+			"kicker": "AI-native",
+			"title": "Made for humans and agents alike",
+			"subtitle": "Beyond the web editor — a full set of machine interfaces.",
+			"items": [
+				{
+					"title": "Public HTTP API",
+					"desc": "/render, /render/batch, /me, /products, /topup, /gift. Machine-readable spec at /api/v1/openapi.json."
+				},
+				{
+					"title": "CLI",
+					"desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design."
+				},
+				{
+					"title": "MCP server",
+					"desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent."
+				},
+				{
+					"title": "AI skill",
+					"desc": "/api/v1/skill.md — a ready guide an agent reads, then installs the CLI and renders charts itself."
+				}
+			],
+			"mcpTitle": "Connect to Claude / an agent",
+			"mcpSnippet": "{\n  \"mcpServers\": {\n    \"rombik\": { \"command\": \"rombik\", \"args\": [\"mcp\"] }\n  }\n}"
+		},
+		"demo": {
+			"kicker": "Try it live",
+			"title": "Ready-made examples from the real engine",
+			"subtitle": "Pick an algorithm — a DSTU flowchart appears below. Want your own code? Open the full rombik."
+		},
+		"finalCta": {
+			"title": "See how it works",
+			"subtitle": "Free watermarked PNG without sign-up. Web editor, API, CLI and MCP — in the app.",
+			"button": "Open rombik"
+		}
+	}
 }

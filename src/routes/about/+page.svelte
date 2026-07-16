@@ -4,6 +4,7 @@
   import PageHero from '$lib/components/PageHero.svelte';
   import About from '$lib/components/About.svelte';
   import Achievements from '$lib/components/Achievements.svelte';
+  import Experience from '$lib/components/Experience.svelte';
   import Stack from '$lib/components/Stack.svelte';
   import Education from '$lib/components/Education.svelte';
   import Contact from '$lib/components/Contact.svelte';
@@ -18,6 +19,8 @@
 />
 
 <About showHeader={false} />
+
+<Experience />
 
 <Achievements />
 

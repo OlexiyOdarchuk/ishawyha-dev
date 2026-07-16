@@ -5,6 +5,7 @@
   import Metrics from '$lib/components/Metrics.svelte';
   import LiveActivity from '$lib/components/LiveActivity.svelte';
   import About from '$lib/components/About.svelte';
+  import Experience from '$lib/components/Experience.svelte';
   import Projects from '$lib/components/Projects.svelte';
   import Services from '$lib/components/Services.svelte';
   import Contact from '$lib/components/Contact.svelte';
@@ -17,6 +18,9 @@
 <LiveActivity />
 
 <About />
+
+<!-- Комерційний досвід — головний сигнал для рекрутера, одразу після About -->
+<Experience />
 
 <!-- Services teaser → /services (surfaced early: hire-me first) -->
 <Services variant="teaser" />

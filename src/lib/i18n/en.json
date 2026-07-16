@@ -97,7 +97,7 @@
 		"nowLabel": "Now",
 		"winsLabel": "Selected wins",
 		"nowItems": [
-			"Working as a Backend Golang developer at SkyService"
+			"Backend Developer (Go) at SkyService"
 		],
 		"badges": {
 			"best": {
@@ -568,7 +568,7 @@
 			"backend": "Backend",
 			"db": "Databases",
 			"frontend": "Frontend",
-			"ai": "AI / APIs",
+			"ai": "AI",
 			"devops": "DevOps & tools"
 		}
 	},

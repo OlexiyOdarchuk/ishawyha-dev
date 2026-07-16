@@ -6,11 +6,11 @@
 
   const stack: Record<CategoryKey, string[]> = {
     languages: ['Go', 'Python', 'TypeScript', 'C', 'Bash'],
-    backend: ['Gin', 'Fiber', 'REST API', 'WebSockets', 'Goroutines', 'JWT', 'OAuth 2.0'],
-    db: ['PostgreSQL', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
+    backend: ['Gin', 'Fiber', 'REST API', 'WebSockets', 'SSE', 'Goroutines', 'JWT', 'OAuth 2.0', 'monobank API', 'LiqPay'],
+    db: ['PostgreSQL', 'pgvector', 'Redis', 'ClickHouse', 'SQLite', 'MongoDB'],
     frontend: ['Svelte 5', 'Wails', 'Tailwind CSS', 'Vite'],
-    ai: ['GPT-4o', 'fal.ai', 'OpenAI SDK', 'Google AI Studio', 'monobank API', 'go-monobank-sdk'],
-    devops: ['Docker', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'TinyGo', 'Bruno', 'Typst', 'mdBook', 'Cloudflare']
+    ai: ['Anthropic Claude', 'OpenAI', 'MCP', 'RAG', 'Ollama', 'fal.ai'],
+    devops: ['Docker', 'Kubernetes', 'Linux (Arch / NixOS)', 'Git', 'GitHub Actions', 'TinyGo', 'Typst', 'Cloudflare']
   };
 
   const order: CategoryKey[] = ['languages', 'backend', 'db', 'frontend', 'ai', 'devops'];

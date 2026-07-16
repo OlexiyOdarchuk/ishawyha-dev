@@ -97,7 +97,7 @@
 		"nowLabel": "Зараз",
 		"winsLabel": "Відзнаки",
 		"nowItems": [
-			"Працюю Backend Golang developer в SkyService"
+			"Backend-розробник на Go у SkyService"
 		],
 		"badges": {
 			"best": {
@@ -568,7 +568,7 @@
 			"backend": "Backend",
 			"db": "Бази даних",
 			"frontend": "Frontend",
-			"ai": "AI / API",
+			"ai": "AI",
 			"devops": "DevOps & інструменти"
 		}
 	},

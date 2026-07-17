@@ -271,7 +271,7 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center justify-end gap-2">
             {#if status === 'loading'}
               <span class="inline-flex items-center gap-1.5 font-mono text-[11px] text-[var(--color-muted)]">
                 <Loader2 class="h-3.5 w-3.5 animate-spin" />

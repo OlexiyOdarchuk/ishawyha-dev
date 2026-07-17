@@ -20,7 +20,7 @@
       {#if kicker}
         <span class="kicker mb-4">{kicker}</span>
       {/if}
-      <h1 class="display text-5xl text-[var(--color-fg)] sm:text-6xl md:text-7xl">{title}</h1>
+      <h1 class="display hyphens-auto break-words text-[2.5rem] leading-[1.05] text-[var(--color-fg)] sm:text-6xl md:text-7xl">{title}</h1>
       {#if subtitle}
         <p class="mt-5 max-w-2xl text-lg leading-relaxed text-[var(--color-body)]">{subtitle}</p>
       {/if}

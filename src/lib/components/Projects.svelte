@@ -122,7 +122,7 @@
                 <ExternalLink class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta2}
               </a>
-              <a href="https://rombik.app/api/v1/openapi.json" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+              <a href="https://rombik.app/developers/api" target="_blank" rel="noopener noreferrer" class="btn-ghost">
                 <BookText class="h-4 w-4" />
                 {$t.projects.featured.rombik.cta3}
               </a>

@@ -8,7 +8,7 @@
   let { showHeader = true }: { showHeader?: boolean } = $props();
 
   const APP = 'https://rombik.app/app';
-  const API = 'https://rombik.app/api/v1/openapi.json';
+  const API = 'https://rombik.app/developers/api';
 
   const icons = [Workflow, Route, FileDown, ShieldCheck];
 

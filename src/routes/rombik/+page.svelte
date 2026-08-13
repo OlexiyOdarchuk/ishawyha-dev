@@ -10,7 +10,7 @@
   } from 'lucide-svelte';
 
   const APP = 'https://rombik.app';
-  const API = 'https://rombik.app/api/v1/openapi.json';
+  const API = 'https://rombik.app/developers/api';
 
   const p = $derived($t.rombikPage);
 

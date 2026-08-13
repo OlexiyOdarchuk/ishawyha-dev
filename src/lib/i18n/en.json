@@ -605,7 +605,9 @@
 				"title": "Software Engineering",
 				"place": "Taras Shevchenko National University of Kyiv, FIT",
 				"date": "2026 — present",
-				"note": "1st year"
+				"courseStart": 2026,
+				"courseYears": 4,
+				"courseTpl": "{n}{ord} year"
 			},
 			"college": {
 				"title": "Network Technologies",
@@ -621,7 +623,7 @@
 	},
 	"contact": {
 		"title": "Let's talk?",
-		"subtitle": "Looking for a Strong Junior Go role. Ready for intensive work.",
+		"subtitle": "Looking for a Go role on a strong team. Ready for intensive work.",
 		"emailLabel": "Email",
 		"telegramLabel": "Telegram",
 		"githubLabel": "GitHub",

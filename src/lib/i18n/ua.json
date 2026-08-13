@@ -605,7 +605,9 @@
 				"title": "Інженерія програмного забезпечення",
 				"place": "КНУ імені Тараса Шевченка, ФІТ",
 				"date": "2026 — зараз",
-				"note": "1-й курс"
+				"courseStart": 2026,
+				"courseYears": 4,
+				"courseTpl": "{n}-й курс"
 			},
 			"college": {
 				"title": "Мережеві технології",
@@ -621,7 +623,7 @@
 	},
 	"contact": {
 		"title": "Поговоримо?",
-		"subtitle": "Шукаю Strong Junior Go позицію. Готовий до інтенсивної роботи.",
+		"subtitle": "Шукаю Go-позицію в сильній команді. Готовий до інтенсивної роботи.",
 		"emailLabel": "Email",
 		"telegramLabel": "Telegram",
 		"githubLabel": "GitHub",

@@ -122,7 +122,7 @@
 	},
 	"about": {
 		"title": "About me",
-		"p1": "I'm a Go backend engineer, second-year student at Lviv Polytechnic IT College. I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
+		"p1": "I'm a Go backend engineer, a Software Engineering student at Taras Shevchenko University of Kyiv (FIT). I build systems where every millisecond counts and the architecture survives both load and shifting requirements.",
 		"p2": "Outside of code: 10+ years of folk dancing, occasional poetry, and recently — screenwriting. That taught me rhythm and structure — the things every good product is built on.",
 		"facts": [
 			{
@@ -131,7 +131,7 @@
 			},
 			{
 				"label": "Education",
-				"value": "Lviv Polytechnic IT College"
+				"value": "Taras Shevchenko University of Kyiv, FIT"
 			},
 			{
 				"label": "Stack",
@@ -601,11 +601,16 @@
 	"education": {
 		"title": "Education",
 		"items": {
+			"knu": {
+				"title": "Software Engineering",
+				"place": "Taras Shevchenko University of Kyiv, FIT",
+				"date": "2026 — present",
+				"note": "1st year"
+			},
 			"college": {
 				"title": "Network Technologies",
 				"place": "Lviv Polytechnic IT College",
-				"date": "2024 — present",
-				"note": "2nd year"
+				"date": "2024 — 2026"
 			},
 			"lyceum": {
 				"title": "IT class",

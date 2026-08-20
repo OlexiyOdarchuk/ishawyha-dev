@@ -57,9 +57,9 @@
 			"title": "By the numbers",
 			"items": [
 				{
-					"value": 1000,
+					"value": 2000,
 					"suffix": "×",
-					"label": "faster SHA-256 — Go vs JS in SHMiner"
+					"label": "faster SHA-256 — SHMiner vs the official JS miner"
 				},
 				{
 					"value": 150,
@@ -193,7 +193,7 @@
 				"title": "Security Researcher",
 				"company": "Student Hryvnia (college blockchain)",
 				"date": "2026",
-				"description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool — 1000× faster.",
+				"description": "Found and exploited a critical vulnerability: the frontend capped transaction amounts, the backend didn't — enabling arbitrary negative-value transfers. Disclosed responsibly, got a job offer from the admins. Reverse-engineered the official JS miner via Webpack bundles and rewrote it in Go with a goroutine pool, later a native Rust search core — 2000× faster.",
 				"tags": [
 					"Reverse engineering",
 					"Go",
@@ -290,12 +290,13 @@
 				]
 			},
 			"shminer": {
-				"kicker": "1000× faster",
+				"kicker": "2000× faster",
 				"title": "SHMiner",
 				"subtitle": "Desktop crypto miner",
-				"description": "Cross-platform miner on Wails (Go + Svelte/TS). Rewrote SHA-256 from JS to Go with a goroutine worker pool — 1000× faster hashrate on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
+				"description": "Cross-platform miner on Wails (Go + Svelte/TS) with a native Rust search core: SHA-256 runs straight through the compression function, on hardware SHA instructions. 2000× faster hashrate than the official JS client on identical hardware. AES-encrypted wallet, real-time WebSocket dashboard, multi-wallet, zen mode.",
 				"tags": [
 					"Go",
+					"Rust",
 					"Svelte",
 					"Wails",
 					"Goroutines",
@@ -557,7 +558,7 @@
 		"jsModeFastHint": "same code, no artificial sleep",
 		"disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Go·WASM lane spins up a pool of Web Workers — one per core, just like SHMiner's goroutine pool. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
 		"desktopNoteTitle": "This is a browser demo",
-		"desktopNoteBody": "Native Go from the desktop client is much faster than TinyGo·WASM in the browser — native Go's SHA-256 uses SIMD/AVX CPU instructions (4-8 blocks in parallel; scalar WASM does 0), and Web Workers pay for serialization. The real numbers (1000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
+		"desktopNoteBody": "The desktop client is much faster than TinyGo·WASM in the browser: SHMiner's search runs in a native Rust core that goes straight to the SHA-256 compression function and uses hardware SHA instructions (SHA-NI on x86-64, sha2 on ARM) — which scalar WASM does not have at all — and Web Workers pay for serialization on top. The real numbers (2000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
 		"desktopCta": "SHMiner on GitHub"
 	},
 	"stack": {

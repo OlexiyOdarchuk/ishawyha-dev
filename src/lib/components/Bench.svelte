@@ -29,9 +29,9 @@
   let jsCount = $state(0);
   let jsTokens = $state(0);
   let jsElapsedMs = $state(0);
-  let goCount = $state(0);
-  let goTokens = $state(0);
-  let goElapsedMs = $state(0);
+  let rustCount = $state(0);
+  let rustTokens = $state(0);
+  let rustElapsedMs = $state(0);
 
   // Each call to `start()` bumps runId. Async waiters compare against the
   // captured value and bail out if the user pressed Stop or hit Start again.
@@ -41,28 +41,28 @@
   let jsWorker: Worker | null = null;
   let jsReady = $state(false);
 
-  let goWorkers: Worker[] = [];
-  let goReadyCount = $state(0);
-  let goCounts: number[] = $state([]);
-  let goTokenCounts: number[] = $state([]);
+  let rustWorkers: Worker[] = [];
+  let rustReadyCount = $state(0);
+  let rustCounts: number[] = $state([]);
+  let rustTokenCounts: number[] = $state([]);
 
   function fmt(n: number) {
     return n.toLocaleString('en-US').replace(/,/g, ' ');
   }
 
   const jsRate = $derived(jsElapsedMs > 0 ? Math.round(jsCount / (jsElapsedMs / 1000)) : 0);
-  const goRate = $derived(goElapsedMs > 0 ? Math.round(goCount / (goElapsedMs / 1000)) : 0);
-  const ratio = $derived(jsRate > 0 ? goRate / jsRate : 0);
+  const rustRate = $derived(rustElapsedMs > 0 ? Math.round(rustCount / (rustElapsedMs / 1000)) : 0);
+  const ratio = $derived(jsRate > 0 ? rustRate / jsRate : 0);
 
   function sumGoCounts() {
     let c = 0;
     let tk = 0;
-    for (let i = 0; i < goCounts.length; i++) {
-      c += goCounts[i] || 0;
-      tk += goTokenCounts[i] || 0;
+    for (let i = 0; i < rustCounts.length; i++) {
+      c += rustCounts[i] || 0;
+      tk += rustTokenCounts[i] || 0;
     }
-    goCount = c;
-    goTokens = tk;
+    rustCount = c;
+    rustTokens = tk;
   }
 
   function clearPhaseTimer() {
@@ -74,15 +74,15 @@
     jsWorker?.terminate();
     jsWorker = null;
     jsReady = false;
-    for (const w of goWorkers) w.terminate();
-    goWorkers = [];
-    goReadyCount = 0;
-    goCounts = [];
-    goTokenCounts = [];
+    for (const w of rustWorkers) w.terminate();
+    rustWorkers = [];
+    rustReadyCount = 0;
+    rustCounts = [];
+    rustTokenCounts = [];
   }
 
   async function ensureWorkers(): Promise<boolean> {
-    if (jsReady && goReadyCount === workerCount && goWorkers.length === workerCount) return true;
+    if (jsReady && rustReadyCount === workerCount && rustWorkers.length === workerCount) return true;
     disposeWorkers();
     phase = 'loading';
     errorText = '';
@@ -105,28 +105,28 @@
         errorText = `JS worker crashed: ${e.message || 'unknown'}`;
       };
 
-      goCounts = new Array(workerCount).fill(0);
-      goTokenCounts = new Array(workerCount).fill(0);
+      rustCounts = new Array(workerCount).fill(0);
+      rustTokenCounts = new Array(workerCount).fill(0);
       for (let i = 0; i < workerCount; i++) {
-        const w = new Worker('/bench-go-worker.js');
+        const w = new Worker('/bench-rust-worker.js');
         const idx = i;
         w.onmessage = (e) => {
           const m = e.data;
-          if (m.type === 'ready') goReadyCount += 1;
+          if (m.type === 'ready') rustReadyCount += 1;
           else if (m.type === 'count') {
-            goCounts[idx] = m.count;
-            goTokenCounts[idx] = m.tokens ?? 0;
+            rustCounts[idx] = m.count;
+            rustTokenCounts[idx] = m.tokens ?? 0;
             sumGoCounts();
           } else if (m.type === 'error') {
             phase = 'error';
-            errorText = `Go worker #${idx} @${m.where ?? '?'}: ${m.error}`;
+            errorText = `Rust worker #${idx} @${m.where ?? '?'}: ${m.error}`;
           }
         };
         w.onerror = (e) => {
           phase = 'error';
-          errorText = `Go worker #${idx} crashed: ${e.message || 'unknown'}`;
+          errorText = `Rust worker #${idx} crashed: ${e.message || 'unknown'}`;
         };
-        goWorkers.push(w);
+        rustWorkers.push(w);
       }
     } catch (err) {
       phase = 'error';
@@ -136,16 +136,16 @@
 
     const t0 = performance.now();
     while (
-      (!jsReady || goReadyCount < workerCount) &&
+      (!jsReady || rustReadyCount < workerCount) &&
       (phase as string) !== 'error' &&
       performance.now() - t0 < 30000
     ) {
       await new Promise((r) => setTimeout(r, 50));
     }
     if ((phase as string) === 'error') return false;
-    if (!jsReady || goReadyCount < workerCount) {
+    if (!jsReady || rustReadyCount < workerCount) {
       phase = 'error';
-      errorText = `worker handshake timeout (js=${jsReady} go=${goReadyCount}/${workerCount})`;
+      errorText = `worker handshake timeout (js=${jsReady} go=${rustReadyCount}/${workerCount})`;
       return false;
     }
     return true;
@@ -174,11 +174,11 @@
     jsCount = 0;
     jsTokens = 0;
     jsElapsedMs = 0;
-    goCount = 0;
-    goTokens = 0;
-    goElapsedMs = 0;
-    goCounts = new Array(workerCount).fill(0);
-    goTokenCounts = new Array(workerCount).fill(0);
+    rustCount = 0;
+    rustTokens = 0;
+    rustElapsedMs = 0;
+    rustCounts = new Array(workerCount).fill(0);
+    rustTokenCounts = new Array(workerCount).fill(0);
 
     phase = 'running';
 
@@ -208,31 +208,31 @@
 
     // ── Go lane (worker pool, mirrors SHMiner's goroutine pool) ──
     activeLane = 'go';
-    const goStart = performance.now();
-    for (let i = 0; i < goWorkers.length; i++) {
+    const rustStart = performance.now();
+    for (let i = 0; i < rustWorkers.length; i++) {
       // Each worker gets a 1B-apart nonce slice so token findings are
       // disjoint across the pool.
-      goWorkers[i].postMessage({ type: 'start', nonceOffset: i * 1_000_000_000 });
+      rustWorkers[i].postMessage({ type: 'start', nonceOffset: i * 1_000_000_000 });
     }
     clearPhaseTimer();
     phaseTimer = setInterval(() => {
       if (myRunId !== runId) return;
-      goElapsedMs = performance.now() - goStart;
+      rustElapsedMs = performance.now() - rustStart;
     }, 100);
-    const goFinished = await sleepCancellable(LANE_DURATION_MS, myRunId);
+    const rustFinished = await sleepCancellable(LANE_DURATION_MS, myRunId);
     clearPhaseTimer();
-    for (const w of goWorkers) w.postMessage({ type: 'stop' });
-    goElapsedMs = performance.now() - goStart;
+    for (const w of rustWorkers) w.postMessage({ type: 'stop' });
+    rustElapsedMs = performance.now() - rustStart;
 
     activeLane = null;
-    phase = goFinished ? 'done' : 'done';
+    phase = rustFinished ? 'done' : 'done';
   }
 
   function stop() {
     // Bumping runId is what triggers the awaits to bail out.
     runId++;
     jsWorker?.postMessage({ type: 'stop' });
-    for (const w of goWorkers) w.postMessage({ type: 'stop' });
+    for (const w of rustWorkers) w.postMessage({ type: 'stop' });
     clearPhaseTimer();
     activeLane = null;
     phase = 'done';
@@ -269,7 +269,7 @@
 
   // Per-lane progress (0..1) while the lane is active.
   const jsProgress = $derived(activeLane === 'js' ? Math.min(1, jsElapsedMs / LANE_DURATION_MS) : (jsElapsedMs > 0 ? 1 : 0));
-  const goProgress = $derived(activeLane === 'go' ? Math.min(1, goElapsedMs / LANE_DURATION_MS) : (goElapsedMs > 0 ? 1 : 0));
+  const rustProgress = $derived(activeLane === 'go' ? Math.min(1, rustElapsedMs / LANE_DURATION_MS) : (rustElapsedMs > 0 ? 1 : 0));
 
   onMount(() => {
     if (typeof navigator !== 'undefined' && navigator.hardwareConcurrency) {
@@ -314,7 +314,7 @@
               <span class="text-amber-500">{$t.bench.runningJs}</span>
             {:else if phase === 'running' && activeLane === 'go'}
               <span class="text-indigo-500 motion-safe:animate-pulse">●</span>
-              <span class="text-indigo-500">{$t.bench.runningGo}</span>
+              <span class="text-indigo-500">{$t.bench.runningRust}</span>
             {:else if phase === 'done'}
               <span class="text-emerald-500">●</span>
               <span class="text-emerald-500">{$t.bench.done}</span>
@@ -326,7 +326,7 @@
             {#if phase === 'running' && activeLane}
               <span class="text-[var(--color-muted)]">·</span>
               <span class="text-[var(--color-muted)]">
-                {((activeLane === 'js' ? jsElapsedMs : goElapsedMs) / 1000).toFixed(1)} / {LANE_DURATION_MS / 1000}{$t.bench.elapsedSec}
+                {((activeLane === 'js' ? jsElapsedMs : rustElapsedMs) / 1000).toFixed(1)} / {LANE_DURATION_MS / 1000}{$t.bench.elapsedSec}
               </span>
             {/if}
           </div>
@@ -500,16 +500,16 @@
             class="relative overflow-hidden rounded-2xl border border-[var(--color-ink-line)] bg-[var(--color-ink-soft)] p-6 transition {phase === 'running' && activeLane !== 'go' ? 'opacity-50' : ''}"
           >
             <div class="absolute inset-x-0 top-0 h-[2px] bg-[var(--color-accent-400)]"></div>
-            {#if goProgress > 0 && goProgress < 1}
+            {#if rustProgress > 0 && rustProgress < 1}
               <div
                 class="absolute inset-x-0 top-0 h-[2px] bg-indigo-300/80 transition-all"
-                style="width: {Math.round(goProgress * 100)}%"
+                style="width: {Math.round(rustProgress * 100)}%"
               ></div>
             {/if}
             <div class="flex items-center justify-between gap-2">
               <div class="flex items-center gap-2 text-indigo-500/90">
                 <Zap class="h-4 w-4" />
-                <span class="font-mono text-xs uppercase tracking-wider">{$t.bench.labelGo}</span>
+                <span class="font-mono text-xs uppercase tracking-wider">{$t.bench.labelRust}</span>
               </div>
               <span class="font-mono text-[10px] uppercase tracking-wider text-indigo-500/80">
                 ×{workerCount}
@@ -519,25 +519,25 @@
               </span>
             </div>
             <div class="mt-4 font-mono text-4xl font-bold tabular-nums tracking-tight text-[var(--color-ink-fg)] sm:text-5xl">
-              {goCount > 0 ? fmt(goRate) : '—'}
+              {rustCount > 0 ? fmt(rustRate) : '—'}
             </div>
             <div class="mt-1 font-mono text-xs text-[var(--color-muted)]">{$t.bench.hashrate}</div>
 
             <div class="mt-5 grid grid-cols-2 gap-3 border-t border-[var(--color-ink-line)] pt-4 font-mono text-[11px]">
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.tokensLabel}</div>
-                <div class="mt-1 text-2xl font-bold tabular-nums text-indigo-500">{goCount > 0 ? fmt(goTokens) : '—'}</div>
+                <div class="mt-1 text-2xl font-bold tabular-nums text-indigo-500">{rustCount > 0 ? fmt(rustTokens) : '—'}</div>
               </div>
               <div>
                 <div class="text-[var(--color-muted)] uppercase tracking-wider">{$t.bench.hashesLabel}</div>
-                <div class="mt-1 text-sm tabular-nums text-[var(--color-ink-fg)]">{goCount > 0 ? fmt(goCount) : '—'}</div>
+                <div class="mt-1 text-sm tabular-nums text-[var(--color-ink-fg)]">{rustCount > 0 ? fmt(rustCount) : '—'}</div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Ratio readout — only meaningful once both lanes have data -->
-        {#if ratio > 0 && jsElapsedMs > 0 && goElapsedMs > 0}
+        {#if ratio > 0 && jsElapsedMs > 0 && rustElapsedMs > 0}
           <div class="mt-8 flex flex-col items-center text-center">
             <div class="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
               {$t.bench.speedupLabel}

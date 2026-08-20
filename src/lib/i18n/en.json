@@ -27,7 +27,7 @@
 		},
 		"lab": {
 			"metaTitle": "Lab — rombik, Piton, benchmark in the browser",
-			"metaDesc": "Interactive lab: build a DSTU flowchart from code with rombik, run the Piton language in your browser (WebAssembly), and compare JS vs Go·WASM speed.",
+			"metaDesc": "Interactive lab: build a DSTU flowchart from code with rombik, run the Piton language in your browser (WebAssembly), and compare JS vs Rust·WASM speed.",
 			"kicker": "// lab/",
 			"title": "Lab",
 			"subtitle": "My things, live: rombik (flowcharts from code, DSTU), the Piton language in the browser, and a live SHA-256 benchmark."
@@ -521,8 +521,8 @@
 		}
 	},
 	"bench": {
-		"title": "JS vs Go·WASM — same hash, two engines",
-		"subtitle": "Same SHA-256, same input, two engines. Left: a JS copy of the official Student Hryvnia client. Right: my Go rewrite from SHMiner, compiled to WASM with TinyGo. Lanes run sequentially, 10 seconds each — JS first on a single core, then Go·WASM on N cores. Each lane gets the full CPU to itself, so the numbers stay honest.",
+		"title": "JS vs Rust·WASM — same hash, two engines",
+		"subtitle": "Same SHA-256, same input, two engines. Left: a JS copy of the official Student Hryvnia client. Right: the very same search core the desktop SHMiner links in, rebuilt for WASM. Lanes run sequentially, 10 seconds each — JS first on a single core, then Rust·WASM on N cores. Each lane gets the full CPU to itself, so the numbers stay honest.",
 		"start": "Start",
 		"startAgain": "Run again",
 		"stop": "Stop",
@@ -530,14 +530,14 @@
 		"ready": "Ready to start",
 		"running": "Running...",
 		"runningJs": "Measuring JS lane",
-		"runningGo": "Measuring Go·WASM",
+		"runningRust": "Measuring Rust·WASM",
 		"done": "Finished",
 		"live": "live",
 		"labelJs": "Official JS miner",
-		"labelGo": "SHMiner (Go·WASM)",
+		"labelRust": "SHMiner (Rust·WASM)",
 		"hashrate": "H/s",
-		"speedupLabel": "Go·WASM speedup",
-		"speedupBody": "that's how much faster Go·WASM is than the official JS miner on your machine — in this configuration",
+		"speedupLabel": "Rust·WASM speedup",
+		"speedupBody": "that's how much faster Rust·WASM is than the official JS miner on your machine — in this configuration",
 		"elapsed": "Elapsed",
 		"elapsedSec": "s",
 		"tokensLabel": "Tokens found",
@@ -556,9 +556,9 @@
 		"jsModeFastTag": "no sleep",
 		"jsModeOriginalHint": "verbatim from the official client — with `sleep(1)` every 1000 hashes",
 		"jsModeFastHint": "same code, no artificial sleep",
-		"disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Go·WASM lane spins up a pool of Web Workers — one per core, just like SHMiner's goroutine pool. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
+		"disclaimer": "Runs on your machine in your browser. The JS lane is single-threaded — a verbatim copy of `calculateBlockHash` from the official client (`await window.crypto.subtle.digest`, optionally + `sleep(1)` every 1000 hashes). The Rust·WASM lane spins up a pool of Web Workers — one per core, the way SHMiner spreads the search across threads. Difficulty is 20 bits (5 leading zero hex chars), the SHMiner default.",
 		"desktopNoteTitle": "This is a browser demo",
-		"desktopNoteBody": "The desktop client is much faster than TinyGo·WASM in the browser: SHMiner's search runs in a native Rust core that goes straight to the SHA-256 compression function and uses hardware SHA instructions (SHA-NI on x86-64, sha2 on ARM) — which scalar WASM does not have at all — and Web Workers pay for serialization on top. The real numbers (2000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
+		"desktopNoteBody": "The lane on the right runs the same core as the desktop SHMiner — but the browser has a ceiling. WASM has no hardware SHA instructions (SHA-NI on x86-64, sha2 on ARM), which the core uses natively: all it gets is simd128, roughly four times slower. Web Workers pay for serialization on top. The real numbers (2000×+ vs the official JS miner) only show up in the actual SHMiner. The Wails app is cross-platform: Linux · macOS · Windows.",
 		"desktopCta": "SHMiner on GitHub"
 	},
 	"stack": {

@@ -97,7 +97,9 @@
 		"nowLabel": "Now",
 		"winsLabel": "Selected wins",
 		"nowItems": [
-			"Backend Developer (Go) at SkyService"
+			"Backend Developer (Go) at SkyService",
+			"Embedded internship at Ajax Systems",
+			"Software Engineering student at KNU"
 		],
 		"badges": {
 			"best": {

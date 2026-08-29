@@ -97,7 +97,9 @@
 		"nowLabel": "Зараз",
 		"winsLabel": "Відзнаки",
 		"nowItems": [
-			"Backend-розробник на Go у SkyService"
+			"Backend-розробник на Go у SkyService",
+			"Embedded-стажування в Ajax Systems",
+			"Студент ФІТ КНУ імені Тараса Шевченка"
 		],
 		"badges": {
 			"best": {

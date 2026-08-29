@@ -1,7 +1,7 @@
 {
 	"meta": {
-		"title": "Oleksii Odarchuk — ishawyha.dev",
-		"description": "Backend Developer (Go), creator of the Piton language. BEST Hackathon 2026 — 1st place. DOU Day 2026 — personal invitation."
+		"title": "Oleksii Odarchuk — Backend Developer (Go)",
+		"description": "Backend Developer (Go) at SkyService, creator of rombik — a SaaS for DSTU flowcharts — and the Piton language. BEST Hackathon 2026 — 1st place."
 	},
 	"nav": {
 		"home": "Home",
@@ -20,7 +20,7 @@
 	"pages": {
 		"projects": {
 			"metaTitle": "Projects — Oleksii Odarchuk",
-			"metaDesc": "Selected projects: Piton, go-monobank-sdk, monokasa, SHMiner and more — Go, WebAssembly, Telegram bots.",
+			"metaDesc": "Selected projects: rombik (a SaaS for DSTU flowcharts), the Piton language, go-monobank-sdk, monokasa, SHMiner and more — Go, WebAssembly, Telegram bots.",
 			"kicker": "// projects/",
 			"title": "Projects",
 			"subtitle": "What I build off-hours — from my own programming language to SDKs and bots."
@@ -41,10 +41,10 @@
 		},
 		"about": {
 			"metaTitle": "About — Oleksii Odarchuk",
-			"metaDesc": "Go backend developer, creator of the Piton language. Wins, stack, education and contacts.",
+			"metaDesc": "Go backend developer at SkyService, creator of rombik and the Piton language. Wins, stack, education and contacts.",
 			"kicker": "// about/",
 			"title": "About me",
-			"subtitle": "Go backend engineer, creator of the Piton language. A bit about the path, results and tech."
+			"subtitle": "Go backend engineer at SkyService, creator of rombik and the Piton language. A bit about the path, results and tech."
 		}
 	},
 	"home": {
@@ -167,7 +167,7 @@
 				"title": "Mate Hackathon",
 				"company": "AI MarTech (50 participants, 10 teams)",
 				"date": "March 14, 2026",
-				"description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banano 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
+				"description": "Designed and built a Go backend from scratch in 7 hours for an AI-powered competitor-ad analysis tool. Dual AI pipeline: GPT-4o (triggers) + Nano Banana 2 / fal.ai (creative generation). Beat teams with 5+ years of experience by shipping a stable MVP.",
 				"tags": [
 					"Go",
 					"GPT-4o",
@@ -347,13 +347,13 @@
 			"rombik": {
 				"kicker": "Hosted SaaS",
 				"title": "rombik",
-				"subtitle": "Python · C · C++ · C# · Java · Pascal → DSTU flowchart",
-				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses six languages into a language-agnostic IR → recursive tree layout → bus-routed edges → render to SVG, PNG, PDF, DOCX, Typst and Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
+				"subtitle": "Code in ten languages → DSTU flowchart",
+				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses ten languages (Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal) into a language-agnostic IR → recursive tree layout → bus-routed edges → render to eight formats: SVG, PNG, PDF, Word, Visio, draw.io, Typst, Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
 					"API · CLI",
-					"SVG · PDF · DOCX",
+					"Word · Visio · draw.io",
 					"DSTU"
 				]
 			}
@@ -596,6 +596,27 @@
 					"Anthropic",
 					"SSE/WebSocket"
 				]
+			},
+			"ajax": {
+				"role": "Embedded Engineering Intern",
+				"place": "Ajax Systems",
+				"date": "September — December 2026",
+				"note": "Ajax Lab · Kyiv Aviation Institute · offline intensive",
+				"bullets": [
+					"Taking Ajax Systems' intensive offline internship at Ajax Lab, Kyiv Aviation Institute.",
+					"Program: low-level ARM architecture, cross-compilation (toolchain), secure boot; building a custom Linux — kernel configuration, RootFS, BSP / Device Tree.",
+					"Drivers & peripherals: writing drivers, interfaces, networking and video; testing and debugging at both the hardware and software level.",
+					"Capstone: bringing up a custom OS and a turnkey device on a Raspberry Pi 5 or BeagleY-AI."
+				],
+				"tags": [
+					"C",
+					"ARM",
+					"Linux kernel",
+					"RootFS",
+					"Device Tree",
+					"Drivers",
+					"Raspberry Pi 5"
+				]
 			}
 		}
 	},
@@ -624,7 +645,7 @@
 	},
 	"contact": {
 		"title": "Let's talk?",
-		"subtitle": "Looking for a Go role on a strong team. Ready for intensive work.",
+		"subtitle": "Open to job offers, commercial work and interesting Go projects.",
 		"emailLabel": "Email",
 		"telegramLabel": "Telegram",
 		"githubLabel": "GitHub",

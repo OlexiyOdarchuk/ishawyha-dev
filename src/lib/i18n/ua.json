@@ -1,7 +1,7 @@
 {
 	"meta": {
-		"title": "Олексій Одарчук — ishawyha.dev",
-		"description": "Backend Developer (Go), творець мови Piton. BEST Hackathon 2026 — 1-ше місце. DOU Day 2026 — особисте запрошення."
+		"title": "Олексій Одарчук — Backend Developer (Go)",
+		"description": "Backend Developer (Go) у SkyService, творець rombik — SaaS для блок-схем за ДСТУ — і мови Piton. BEST Hackathon 2026 — 1-ше місце."
 	},
 	"nav": {
 		"home": "Головна",
@@ -20,7 +20,7 @@
 	"pages": {
 		"projects": {
 			"metaTitle": "Проєкти — Олексій Одарчук",
-			"metaDesc": "Вибрані проєкти: Piton, go-monobank-sdk, monokasa, SHMiner та інші — Go, WebAssembly, Telegram-боти.",
+			"metaDesc": "Вибрані проєкти: rombik (SaaS для блок-схем за ДСТУ), мова Piton, go-monobank-sdk, monokasa, SHMiner та інші — Go, WebAssembly, Telegram-боти.",
 			"kicker": "// projects/",
 			"title": "Проєкти",
 			"subtitle": "Те, що я будую у вільний час — від власної мови програмування до SDK і ботів."
@@ -41,10 +41,10 @@
 		},
 		"about": {
 			"metaTitle": "Про мене — Олексій Одарчук",
-			"metaDesc": "Backend-розробник на Go, творець мови Piton. Досягнення, стек, освіта та контакти.",
+			"metaDesc": "Backend-розробник на Go у SkyService, творець rombik і мови Piton. Досягнення, стек, освіта та контакти.",
 			"kicker": "// about/",
 			"title": "Про мене",
-			"subtitle": "Backend-інженер на Go, творець мови Piton. Трохи про шлях, результати й технології."
+			"subtitle": "Backend-інженер на Go у SkyService, творець rombik і мови Piton. Трохи про шлях, результати й технології."
 		}
 	},
 	"home": {
@@ -167,7 +167,7 @@
 				"title": "Mate Hackathon",
 				"company": "AI MarTech (50 учасників, 10 команд)",
 				"date": "14 березня, 2026",
-				"description": "Спроєктував і написав Go-бекенд з нуля за 7 годин для AI-інструменту аналізу реклами конкурентів. Подвійний AI-пайплайн: GPT-4o (тригери) + Nano Banano 2 / fal.ai (генерація). Обійшли команди з 5+ роками досвіду — взяли стабільним MVP.",
+				"description": "Спроєктував і написав Go-бекенд з нуля за 7 годин для AI-інструменту аналізу реклами конкурентів. Подвійний AI-пайплайн: GPT-4o (тригери) + Nano Banana 2 / fal.ai (генерація). Обійшли команди з 5+ роками досвіду — взяли стабільним MVP.",
 				"tags": [
 					"Go",
 					"GPT-4o",
@@ -347,13 +347,13 @@
 			"rombik": {
 				"kicker": "SaaS",
 				"title": "rombik",
-				"subtitle": "Python · C · C++ · C# · Java · Pascal → блок-схема за ДСТУ",
-				"description": "Сервіс для блок-схем за ДСТУ 19.701-90. Go-рушій: tree-sitter парсить шість мов у мова-агностик IR → рекурсивна розкладка дерева → шинна маршрутизація ребер → рендер у SVG, PNG, PDF, DOCX, Typst та Excalidraw. Веб-редактор з пан/зумом і ручним ласо-розбиттям, публічний HTTP API (OpenAPI), CLI, MCP-сервер і скіл для AI-агентів. Оплата за схему; безкоштовний перегляд без реєстрації, експорт — за акаунтом.",
+				"subtitle": "Код десяти мов → блок-схема за ДСТУ",
+				"description": "Сервіс для блок-схем за ДСТУ 19.701-90. Go-рушій: tree-sitter парсить десять мов (Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal) у мова-агностик IR → рекурсивна розкладка дерева → шинна маршрутизація ребер → рендер у вісім форматів: SVG, PNG, PDF, Word, Visio, draw.io, Typst, Excalidraw. Веб-редактор з пан/зумом і ручним ласо-розбиттям, публічний HTTP API (OpenAPI), CLI, MCP-сервер і скіл для AI-агентів. Оплата за схему; безкоштовний перегляд без реєстрації, експорт — за акаунтом.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
 					"API · CLI",
-					"SVG · PDF · DOCX",
+					"Word · Visio · draw.io",
 					"ДСТУ"
 				]
 			}
@@ -596,6 +596,27 @@
 					"Anthropic",
 					"SSE/WebSocket"
 				]
+			},
+			"ajax": {
+				"role": "Embedded Engineering Intern",
+				"place": "Ajax Systems",
+				"date": "вересень — грудень 2026",
+				"note": "Ajax Lab · Київський авіаційний інститут · офлайн-інтенсив",
+				"bullets": [
+					"Проходжу інтенсивне офлайн-стажування Ajax Systems на базі Ajax Lab у Київському авіаційному інституті.",
+					"Програма: низькорівнева архітектура ARM, кроскомпіляція (toolchain), secure boot; збирання власного Linux — конфігурація ядра, RootFS, BSP / Device Tree.",
+					"Драйвери та периферія: написання драйверів, інтерфейси, мережа, відео; тестування й дебаг на рівні заліза та софту.",
+					"Capstone: запуск власної ОС і пристрою «під ключ» на Raspberry Pi 5 або BeagleY-AI."
+				],
+				"tags": [
+					"C",
+					"ARM",
+					"Linux kernel",
+					"RootFS",
+					"Device Tree",
+					"Drivers",
+					"Raspberry Pi 5"
+				]
 			}
 		}
 	},
@@ -624,7 +645,7 @@
 	},
 	"contact": {
 		"title": "Поговоримо?",
-		"subtitle": "Шукаю Go-позицію в сильній команді. Готовий до інтенсивної роботи.",
+		"subtitle": "Відкритий до пропозицій про роботу, комерційних замовлень і цікавих Go-проєктів.",
 		"emailLabel": "Email",
 		"telegramLabel": "Telegram",
 		"githubLabel": "GitHub",

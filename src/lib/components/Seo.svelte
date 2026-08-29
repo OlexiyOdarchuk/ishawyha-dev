@@ -9,6 +9,28 @@
   const url = $derived(`https://ishawyha.dev${path}`);
   const ogLocale = $derived($lang === 'ua' ? 'uk_UA' : 'en_US');
   const ogLocaleAlternate = $derived($lang === 'ua' ? 'en_US' : 'uk_UA');
+
+  const personLd = $derived(
+    JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: $lang === 'ua' ? 'Олексій Одарчук' : 'Oleksii Odarchuk',
+      alternateName: $lang === 'ua' ? 'Oleksii Odarchuk' : 'Олексій Одарчук',
+      url: 'https://ishawyha.dev',
+      image: 'https://ishawyha.dev/og.png',
+      jobTitle: 'Backend Developer (Go)',
+      worksFor: { '@type': 'Organization', name: 'SkyService' },
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name:
+          $lang === 'ua'
+            ? 'КНУ імені Тараса Шевченка'
+            : 'Taras Shevchenko National University of Kyiv'
+      },
+      sameAs: ['https://github.com/OlexiyOdarchuk', 'https://t.me/NeShawyha'],
+      knowsAbout: ['Go', 'PostgreSQL', 'WebAssembly', 'Docker', 'Svelte', 'Rust']
+    })
+  );
 </script>
 
 <svelte:head>
@@ -28,4 +50,5 @@
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content="https://ishawyha.dev/og.png" />
   <link rel="canonical" href={url} />
+  {@html `<script type="application/ld+json">${personLd}</scr` + `ipt>`}
 </svelte:head>

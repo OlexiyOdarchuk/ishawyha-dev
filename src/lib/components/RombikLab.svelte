@@ -23,15 +23,45 @@
   };
 
   let idx = $state(0);
-  let animId = $state(0); // bump to replay the "build" reveal animation
   const demo = $derived(DEMOS[idx]);
+
+  // The chart is rombik's own gif_anim. A GIF can't be rewound, and re-setting the same URL
+  // doesn't restart it, so a replay swaps in a fresh blob: URL of the (already downloaded) file.
+  let src = $state(DEMOS[0].gif);
+  let blobUrl = '';
+  const blobs = new Map<string, Blob>();
+  const shown = new Set([DEMOS[0].key]);
+
+  function showBlob(blob: Blob) {
+    if (blobUrl) URL.revokeObjectURL(blobUrl);
+    blobUrl = URL.createObjectURL(blob);
+    src = blobUrl;
+  }
+  function play(i: number) {
+    const d = DEMOS[i];
+    const cached = blobs.get(d.key);
+    if (cached) return showBlob(cached);
+    // First view of an example: the plain URL starts from frame 0 on its own.
+    const replay = shown.has(d.key);
+    if (!replay) {
+      shown.add(d.key);
+      src = d.gif;
+    }
+    fetch(d.gif)
+      .then((r) => (r.ok ? r.blob() : Promise.reject()))
+      .then((blob) => {
+        blobs.set(d.key, blob);
+        if (replay && idx === i) showBlob(blob);
+      })
+      .catch(() => {});
+  }
 
   function select(i: number) {
     idx = i;
-    animId++;
+    play(i);
   }
   function rebuild() {
-    animId++;
+    play(idx);
     if (typeof window !== 'undefined') window.gtag?.('event', 'click_rombik_run');
   }
 
@@ -170,14 +200,11 @@
             <pre class="rombik-code m-0 flex-1 overflow-x-auto py-5 pr-5 pl-2 font-mono text-[13px] leading-[1.65] whitespace-pre">{@html highlighted}</pre>
           </div>
 
-          <!-- Flowchart sheet with build-reveal animation -->
+          <!-- Flowchart sheet: rombik's animated GIF draws the chart block by block -->
           <div class="flex max-h-[460px] items-start justify-center overflow-auto bg-[var(--color-ink-soft)] p-5">
-            {#key animId}
-              <div class="rombik-sheet w-full overflow-hidden rounded-lg bg-white p-4 shadow-sm">
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html demo.svg}
-              </div>
-            {/key}
+            <div class="rombik-sheet w-full overflow-hidden rounded-lg bg-white p-4 shadow-sm">
+              <img {src} width={demo.w} height={demo.h} alt={demo.label} loading="lazy" decoding="async" />
+            </div>
           </div>
         </div>
 
@@ -201,19 +228,11 @@
 </section>
 
 <style>
-  .rombik-sheet :global(svg) {
+  .rombik-sheet img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
-  }
-  /* «Будує схему»: проявлення зверху вниз. */
-  .rombik-sheet {
-    animation: sheet-build 1.05s cubic-bezier(0.45, 0, 0.2, 1) backwards;
-  }
-  @keyframes sheet-build {
-    from { clip-path: inset(0 0 100% 0); }
-    to { clip-path: inset(0 0 0 0); }
   }
   .rombik-gutter {
     color: var(--color-ink-muted);
@@ -229,9 +248,6 @@
   :global(.rombik-code .tok-string) { color: var(--tok-str); }
   :global(.rombik-code .tok-num) { color: var(--tok-num); }
   :global(.rombik-code .tok-comment) { color: var(--tok-comment); font-style: italic; }
-  @media (prefers-reduced-motion: reduce) {
-    .rombik-sheet { animation-duration: 0.01s; }
-  }
   @media (pointer: coarse) {
     .rombik-code, .rombik-gutter { font-size: 16px !important; }
   }

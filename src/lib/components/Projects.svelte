@@ -129,12 +129,9 @@
             </div>
           </div>
 
-          <!-- Real prebuilt flowchart, builds top→bottom on view -->
+          <!-- Real flowchart from rombik (gif_anim): draws itself block by block -->
           <div class="self-center overflow-hidden rounded-xl border bg-white p-3 shadow-lg" style="border-color: var(--color-rose-line);">
-            <div class="pf-sheet">
-              <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-              {@html rombikDemo.svg}
-            </div>
+            <img class="pf-sheet" src={rombikDemo.gif} width={rombikDemo.w} height={rombikDemo.h} alt={rombikDemo.label} loading="lazy" decoding="async" />
           </div>
         </div>
       </article>
@@ -249,21 +246,12 @@
 </section>
 
 <style>
-  /* Featured rombik flowchart: «будується» зверху вниз при появі. */
-  .pf-sheet :global(svg) {
+  .pf-sheet {
     display: block;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
     max-height: 360px;
-  }
-  .pf-sheet {
-    animation: pf-build 1.2s cubic-bezier(0.45, 0, 0.2, 1) 0.2s backwards;
-  }
-  @keyframes pf-build {
-    from { clip-path: inset(0 0 100% 0); }
-    to { clip-path: inset(0 0 0 0); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .pf-sheet { animation-duration: 0.01s; }
+    margin: 0 auto;
   }
 </style>

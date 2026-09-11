@@ -218,7 +218,7 @@
 				"kicker": "Flagship · hosted SaaS",
 				"name": "rombik",
 				"tagline": "Code → DSTU flowchart: web, API, CLI",
-				"description": "A SaaS I designed and run: turns code in ten languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Eight formats: SVG, PNG, PDF, Word and Visio as native shapes, draw.io, Typst, Excalidraw. Free watermarked PNG without sign-up; a clean export needs an account.",
+				"description": "A SaaS I designed and run: turns code in ten languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Twelve formats: Word, Visio and draw.io as native shapes, SVG, PNG, JPEG, WebP, GIF (animated too — the chart draws itself block by block), PDF, an HTML page with chart + code, Typst, Excalidraw. Free watermarked PNG without sign-up; a clean export needs an account.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
@@ -350,7 +350,7 @@
 				"kicker": "Hosted SaaS",
 				"title": "rombik",
 				"subtitle": "Code in ten languages → DSTU flowchart",
-				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses ten languages (Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal) into a language-agnostic IR → recursive tree layout → bus-routed edges → render to eight formats: SVG, PNG, PDF, Word, Visio, draw.io, Typst, Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
+				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses ten languages (Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal) into a language-agnostic IR → recursive tree layout → bus-routed edges → render to twelve formats: SVG, PNG, JPEG, WebP, GIF, PDF, HTML, Word, Visio, draw.io, Typst, Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
@@ -499,8 +499,8 @@
 					"desc": "editor with pan/zoom, a public HTTP API, a CLI, an MCP server and a skill for agents"
 				},
 				{
-					"title": "Eight formats",
-					"desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw; native editable shapes in Word/Visio"
+					"title": "Twelve formats",
+					"desc": "SVG · PNG · JPEG · WebP · GIF · PDF · HTML · Word · Visio · draw.io · Typst · Excalidraw; native editable shapes in Word/Visio/draw.io, GIF can be animated"
 				}
 			],
 			"openApp": "Open the full editor",
@@ -709,7 +709,7 @@
 				"label": "input languages"
 			},
 			{
-				"value": "8",
+				"value": "12",
 				"label": "export formats"
 			},
 			{
@@ -744,7 +744,7 @@
 				},
 				{
 					"name": "render",
-					"desc": "SVG · PNG · PDF · Word · Visio · draw.io · Typst · Excalidraw"
+					"desc": "SVG · PNG · JPEG · WebP · GIF · PDF · HTML · Word · Visio · draw.io · Typst · Excalidraw"
 				}
 			],
 			"problemsTitle": "The details everyone gets wrong — and here they're right",
@@ -774,8 +774,8 @@
 					"desc": "The same code as a classic DSTU flowchart or a Nassi–Shneiderman structogram (nested boxes, no arrows). A toggle in the editor — every language and format."
 				},
 				{
-					"title": "Eight formats",
-					"desc": "SVG, PNG, PDF, Word and Visio as native editable shapes, draw.io, Typst (CeTZ — straight into your paper) and Excalidraw (touch up by hand)."
+					"title": "Twelve formats",
+					"desc": "SVG, PNG, JPEG, WebP, GIF, PDF; Word, Visio and draw.io as native editable shapes; Typst (CeTZ — straight into your paper), Excalidraw (touch up by hand), an HTML page with chart + code and an animated GIF that draws the chart block by block."
 				},
 				{
 					"title": "Web editor",

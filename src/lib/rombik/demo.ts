@@ -2,6 +2,8 @@
 // Вихід Go-рушія rombik; демо саме рушій НЕ вантажить. Щоб спробувати на своєму коді — rombik.app.
 // Перегенерувати: rombik render <file> -f gif_anim --locale uk --lang <lang> -o static/rombik/<key>.gif
 // (GIF у 2× — w/h тут = половина пікселів, щоб на retina було чітко).
+// Далі вирізати з файлу блок NETSCAPE2.0 (21 FF 0B "NETSCAPE2.0" 03 01 xx xx 00): без нього GIF
+// грає один раз і лишається готовою схемою; повтор — кнопкою «Побудувати знову».
 export type RombikLang = 'python' | 'c' | 'cpp' | 'csharp' | 'java' | 'pascal';
 export type RombikDemo = {
   key: string;

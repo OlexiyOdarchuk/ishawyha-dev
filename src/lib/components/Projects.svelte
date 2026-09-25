@@ -210,9 +210,23 @@
                 <h3 class="mt-2 text-lg font-bold text-[var(--color-fg)] group-hover:text-[var(--color-accent-500)]">{project.title}</h3>
                 <p class="mt-0.5 text-sm text-[var(--color-muted)]">{project.subtitle}</p>
               </div>
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-muted)] transition group-hover:border-[var(--color-accent-400)] group-hover:text-[var(--color-accent-500)]">
-                {#if live[key]}<Globe class="h-4 w-4" />{:else}<Github class="h-4 w-4" />{/if}
-              </span>
+              <div class="flex shrink-0 items-center gap-2">
+                {#if live[key]}
+                  <!-- Код поруч із сайтом: сама картка веде на живий сайт -->
+                  <button
+                    type="button"
+                    onclick={(e) => openExternal(e, links[key])}
+                    class="relative z-10 grid h-9 w-9 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-muted)] transition hover:border-[var(--color-accent-400)] hover:text-[var(--color-accent-500)]"
+                    aria-label="GitHub"
+                    title="GitHub"
+                  >
+                    <Github class="h-4 w-4" />
+                  </button>
+                {/if}
+                <span class="grid h-9 w-9 place-items-center rounded-full border border-[var(--color-line)] text-[var(--color-muted)] transition group-hover:border-[var(--color-accent-400)] group-hover:text-[var(--color-accent-500)]">
+                  {#if live[key]}<Globe class="h-4 w-4" />{:else}<Github class="h-4 w-4" />{/if}
+                </span>
+              </div>
             </div>
 
             <p class="mt-3 flex-1 text-sm leading-relaxed text-[var(--color-body)]">{project.description}</p>
@@ -232,11 +246,6 @@
                 <button type="button" onclick={gotoBench} class="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-accent-400)]/40 bg-[var(--color-accent-400)]/10 px-3 py-1 font-mono text-[11px] font-semibold tracking-wider text-[var(--color-accent-500)] uppercase transition hover:bg-[var(--color-accent-400)]/20">
                   <Activity class="h-3 w-3" />
                   {$t.projects.liveBench}
-                </button>
-              {:else if live[key]}
-                <button type="button" onclick={(e) => openExternal(e, links[key])} class="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-line)] px-3 py-1 font-mono text-[11px] tracking-wider text-[var(--color-muted)] uppercase transition hover:border-[var(--color-accent-400)] hover:text-[var(--color-accent-500)]" aria-label="GitHub">
-                  <Github class="h-3 w-3" />
-                  {$t.projects.sourceShort}
                 </button>
               {/if}
             </div>

@@ -252,12 +252,12 @@
 			"vidbiy": {
 				"kicker": "Android + PWA",
 				"title": "Vidbiy",
-				"subtitle": "An alarm that rings when the air-raid alert ends",
-				"description": "Wakes you the moment the all-clear is given in your oblast, district or community, so a night alert doesn't cost you a morning class. The Kotlin/Compose Android app watches from a foreground service and breaks through silent mode; iPhone and desktop get a PWA with a “nightstand mode” (Wake Lock). Three data sources with automatic failover, a CORS proxy on Cloudflare Workers, seven synthesized alarm sounds.",
+				"subtitle": "An alarm clock that knows about air-raid alerts",
+				"description": "Two modes: wake up right when the all-clear is given, or a regular 07:30 alarm that, if an alert is on, waits and wakes you after it ends. Watches your chosen oblast, district or community. The Kotlin/Compose Android app uses a system alarm and a foreground service that break through silent mode; iPhone and desktop get a PWA with a “nightstand mode”. Three data sources with automatic failover, a CORS proxy on Cloudflare Workers.",
 				"tags": [
 					"Kotlin",
 					"Jetpack Compose",
-					"Foreground Service",
+					"AlarmManager",
 					"PWA",
 					"JavaScript",
 					"Cloudflare Workers"

@@ -16,7 +16,8 @@
   }
 
   const live: Record<string, string> = {
-    piton: 'https://piton.ishawyha.dev'
+    piton: 'https://piton.ishawyha.dev',
+    vidbiy: 'https://vidbiy.ishawyha.dev'
   };
 
   function openExternal(e: MouseEvent, url: string) {
@@ -42,9 +43,10 @@
   ];
 
   // Notable projects get a colored kicker badge; the rest are plain white cards.
-  const order = ['gomonobanksdk', 'monokasa', 'shminer', 'abit', 'todolist', 'linkshortener'] as const;
+  const order = ['vidbiy', 'gomonobanksdk', 'monokasa', 'shminer', 'abit', 'todolist', 'linkshortener'] as const;
 
   const badgeColor: Record<string, string> = {
+    vidbiy: 'bg-[color-mix(in_srgb,var(--color-violet)_14%,transparent)] text-[var(--color-violet)]',
     gomonobanksdk: 'bg-[var(--color-sky-bg)] text-[var(--color-sky)]',
     monokasa: 'bg-[var(--color-emerald-bg)] text-[var(--color-emerald)]',
     shminer: 'bg-[var(--color-gold-bg)] text-[var(--color-gold)]',
@@ -52,6 +54,7 @@
   };
 
   const links: Record<(typeof order)[number] | 'piton', string> = {
+    vidbiy: 'https://github.com/OlexiyOdarchuk/vidbiy',
     gomonobanksdk: 'https://github.com/OlexiyOdarchuk/go-monobank-sdk',
     monokasa: 'https://github.com/OlexiyOdarchuk/monokasa',
     shminer: 'https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner',

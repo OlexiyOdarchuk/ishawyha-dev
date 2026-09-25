@@ -250,6 +250,20 @@
 			}
 		},
 		"list": {
+			"vidbiy": {
+				"kicker": "Android + PWA",
+				"title": "Відбій",
+				"subtitle": "Будильник після відбою повітряної тривоги",
+				"description": "Будить, щойно в обраній області, районі чи громаді настає відбій, щоб нічна тривога не коштувала ранкової пари. Android-програма на Kotlin/Compose стежить у foreground service і пробиває беззвучний режим; для iPhone і комп'ютера — PWA з «режимом тумбочки» (Wake Lock). Три джерела даних з автоматичним перемиканням, CORS-проксі на Cloudflare Workers, сім синтезованих звуків будильника.",
+				"tags": [
+					"Kotlin",
+					"Jetpack Compose",
+					"Foreground Service",
+					"PWA",
+					"JavaScript",
+					"Cloudflare Workers"
+				]
+			},
 			"piton": {
 				"kicker": "Власна мова",
 				"title": "Piton",

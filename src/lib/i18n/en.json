@@ -67,7 +67,7 @@
 					"label": "AbitAssistant users"
 				},
 				{
-					"value": 10,
+					"value": 11,
 					"suffix": "",
 					"label": "input languages in rombik"
 				},
@@ -217,12 +217,14 @@
 				"kicker": "Flagship · hosted SaaS",
 				"name": "rombik",
 				"tagline": "Code → DSTU flowchart: web, API, CLI",
-				"description": "A SaaS I designed and run: turns code in ten languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render), a web editor with pan/zoom and manual lasso-splitting, a public HTTP API, a CLI, an MCP server and a skill for AI agents. Twelve formats: Word, Visio and draw.io as native shapes, SVG, PNG, JPEG, WebP, GIF (animated too — the chart draws itself block by block), PDF, an HTML page with chart + code, Typst, Excalidraw. Free watermarked PNG without sign-up; a clean export needs an account.",
+				"description": "A SaaS I designed and run: turns code in eleven languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render) checked against the full text of the standard; a web editor with pan/zoom and manual lasso-splitting, textbook presets and a shareable professor profile, a public HTTP API, a CLI in Rust, an MCP server, a skill for AI agents and a Telegram bot for study groups. Twelve formats: Word, Visio and draw.io as native shapes, SVG, PNG, JPEG, WebP, GIF (animated too — the chart draws itself block by block), PDF, an HTML page with chart + code, Typst, Excalidraw. Free watermarked PNG without sign-up; Student and Pro subscriptions — a week, a month or a semester.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
-					"API",
-					"CLI",
+					"11 languages",
+					"API · MCP",
+					"CLI in Rust",
+					"Telegram bot",
 					"Word · Visio · draw.io",
 					"DSTU"
 				],
@@ -234,9 +236,10 @@
 				"kicker": "Flagship",
 				"name": "Piton",
 				"tagline": "A Ukrainian programming language with a homegrown interpreter",
-				"description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. A built-in D2 engine draws SVG flowcharts (DSTU). The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server.",
+				"description": "Lightweight interpreted language with authentic Ukrainian syntax (translit). Recursive descent parser, tree-walking evaluator, Turing-complete. Written from scratch in Go, no yacc/bison. A built-in D2 engine draws SVG flowcharts (DSTU). The interpreter is compiled to WebAssembly via TinyGo — 220 KB, runs directly in the browser without a server. I am now rewriting the interpreter in Rust.",
 				"tags": [
 					"Go",
+					"Rust (rewrite)",
 					"TinyGo",
 					"WebAssembly",
 					"AST",
@@ -267,9 +270,10 @@
 				"kicker": "Own language",
 				"title": "Piton",
 				"subtitle": "A Ukrainian programming language + interpreter",
-				"description": "An interpreted language with authentic Ukrainian syntax (transliterated): recursive descent parser, tree-walking evaluator, Turing-complete, written from scratch in Go without yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — ~220 KB, runs right in the browser. Flowcharts are drawn by a built-in D2 engine.",
+				"description": "An interpreted language with authentic Ukrainian syntax (transliterated): recursive descent parser, tree-walking evaluator, Turing-complete, written from scratch in Go without yacc/bison. The interpreter is compiled to WebAssembly via TinyGo — ~220 KB, runs right in the browser. Flowcharts are drawn by a built-in D2 engine. I am now rewriting the interpreter in Rust.",
 				"tags": [
 					"Go",
+					"Rust (rewrite)",
 					"TinyGo",
 					"WebAssembly",
 					"AST",
@@ -362,12 +366,14 @@
 			"rombik": {
 				"kicker": "Hosted SaaS",
 				"title": "rombik",
-				"subtitle": "Code in ten languages → DSTU flowchart",
-				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses ten languages (Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal) into a language-agnostic IR → recursive tree layout → bus-routed edges → render to twelve formats: SVG, PNG, JPEG, WebP, GIF, PDF, HTML, Word, Visio, draw.io, Typst, Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI, an MCP server and a skill for AI agents. Pay per chart; free preview without sign-up, export needs an account.",
+				"subtitle": "Code in eleven languages → DSTU flowchart",
+				"description": "A hosted service for DSTU 19.701-90 flowcharts. A Go engine: tree-sitter parses eleven languages (Python, JS, TS, C, C++, C#, Java, Go, Rust, PHP, Pascal) into a language-agnostic IR → recursive tree layout → bus-routed edges → render to twelve formats: SVG, PNG, JPEG, WebP, GIF, PDF, HTML, Word, Visio, draw.io, Typst, Excalidraw. A web editor with pan/zoom and manual lasso-splitting, a public HTTP API (OpenAPI), a CLI in Rust, an MCP server, a skill for AI agents and a Telegram bot. Student and Pro subscriptions (week / month / semester) and group plans for study chats; free preview without sign-up.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
-					"API · CLI",
+					"API · MCP",
+					"CLI in Rust",
+					"Telegram bot",
 					"Word · Visio · draw.io",
 					"DSTU"
 				]
@@ -496,7 +502,7 @@
 		"rombik": {
 			"kicker": "rombik",
 			"title": "rombik — flowcharts from code",
-			"subtitle": "A SaaS that draws DSTU 19.701-90 flowcharts and Nassi–Shneiderman structograms from code in ten languages: Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Below — ready-made examples (Python, C++, Pascal); the full editor, API and CLI live in the app.",
+			"subtitle": "A SaaS that draws DSTU 19.701-90 flowcharts and Nassi–Shneiderman structograms from code in eleven languages: Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal. Below — ready-made examples (Python, C++, Pascal); the full editor, API and CLI live in the app.",
 			"body": "What colleges still draw by hand for hours, rombik builds in a second: paste code, get a clean standards-compliant flowchart ready for coursework. Below — examples from the real engine.",
 			"highlights": [
 				{
@@ -504,8 +510,8 @@
 					"desc": "parser → IR → layout → diagram → render; clean stage boundaries"
 				},
 				{
-					"title": "Ten languages",
-					"desc": "Python, JS, TS, C, C++, C#, Java, Go, PHP, Pascal — exact DSTU primitives"
+					"title": "Eleven languages",
+					"desc": "Python, JS, TS, C, C++, C#, Java, Go, Rust, PHP, Pascal — exact DSTU primitives"
 				},
 				{
 					"title": "Web · API · CLI · MCP",
@@ -708,17 +714,17 @@
 	},
 	"rombikPage": {
 		"metaTitle": "rombik — a SaaS flowchart generator (DSTU)",
-		"metaDesc": "rombik — my first real commercial SaaS: code in ten languages → a DSTU/GOST 19.701-90 (ISO 5807) flowchart or Nassi–Shneiderman structogram. Go engine, web editor, describe→flowchart via AI, public API, CLI, MCP server, billing on my own go-monobank-sdk.",
+		"metaDesc": "rombik — my first real commercial SaaS: code in eleven languages → a DSTU/GOST 19.701-90 (ISO 5807) flowchart or Nassi–Shneiderman structogram. Go engine, web editor, Telegram bot, describe→flowchart via AI, public API, CLI in Rust, MCP server, subscriptions via plata by mono on my own go-monobank-sdk and Paddle.",
 		"kicker": "// rombik · flagship",
 		"title": "rombik",
 		"tagline": "Code → a DSTU flowchart. My first full-fledged commercial SaaS.",
-		"intro": "Paste Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP or Pascal code — get a clean DSTU 19.701-90 (ISO 5807) flowchart or a Nassi–Shneiderman structogram, ready for coursework or a report. What colleges still draw by hand for hours, rombik builds in a second. I designed and run all of it myself: the engine, the backend, billing, analytics, the web editor, the CLI and the AI integrations.",
+		"intro": "Paste Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP or Pascal code — get a clean DSTU 19.701-90 (ISO 5807) flowchart or a Nassi–Shneiderman structogram, ready for coursework or a report. What colleges still draw by hand for hours, rombik builds in a second. I designed and run all of it myself: the engine, the backend, billing, analytics, the web editor, the Telegram bot, the CLI and the AI integrations.",
 		"ctaApp": "Open rombik",
 		"ctaApi": "Public API",
 		"ctaDemo": "Try the demo ↓",
 		"stats": [
 			{
-				"value": "10",
+				"value": "11",
 				"label": "input languages"
 			},
 			{
@@ -741,7 +747,7 @@
 			"stages": [
 				{
 					"name": "parser",
-					"desc": "tree-sitter parses 10 languages into a structured tree (Pascal — a custom cgo binding)"
+					"desc": "tree-sitter parses 11 languages into a structured tree (Pascal — a custom cgo binding)"
 				},
 				{
 					"name": "IR",
@@ -764,7 +770,7 @@
 			"problems": [
 				"Half-open range: “for i in range(a, b)” → a hexagon with “end = b − 1”",
 				"The loop's back-edge enters the header arrow, not a side vertex of the diamond — as DSTU requires",
-				"if / elif / else as a vertical ladder, no diagonal steps",
+				"if / elif / else as a column or a staircase — whichever the course guide demands; an over-long cascade falls back to a column so it fits on A4",
 				"A call to your own function → a subprogram symbol, not a plain process",
 				"Tall charts are split with named connectors (A/B/C…), not just a page break",
 				"Byte-exact golden tests: accidentally broken geometry trips a test immediately"
@@ -779,8 +785,8 @@
 					"desc": "Terminator, process, decision, input/output, loop start, subprogram, connector — to the standard, not by eye."
 				},
 				{
-					"title": "Ten languages",
-					"desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods."
+					"title": "Eleven languages",
+					"desc": "Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal. Loops, branches, switch/match, recursion, lambdas, class methods; in Rust — match, the ? operator, loop and loop labels."
 				},
 				{
 					"title": "Flowcharts and structograms",
@@ -800,11 +806,11 @@
 				},
 				{
 					"title": "To your professor's spec",
-					"desc": "Input/output words, branch labels, shared or per-exit “End”, uk/en locale, for-loop format — dozens of options."
+					"desc": "Input/output words, branch labels, shared or per-exit “End”, if as a column or a staircase, arrows and connectors per GOST, for-loop format — dozens of options, textbook presets and a professor profile shared with a single link."
 				},
 				{
 					"title": "Describe → flowchart via AI",
-					"desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart."
+					"desc": "Describe an algorithm in words — rombik generates the code via AI (ChatGPT, Claude, Gemini, Grok, DeepSeek) and draws the chart. The on-site assistant sees the editor and picks the settings itself."
 				}
 			]
 		},
@@ -815,13 +821,13 @@
 			"items": [
 				{
 					"title": "Billing on my own go-monobank-sdk",
-					"desc": "Payments, grants and receipts run on my own open-source SDK (go-monobank-sdk): HMAC webhook verification, deduplication, a jar link with a preset amount, atomic grants. My own tool powering my own product.",
+					"desc": "Subscriptions are paid through plata by mono on my own open-source SDK (go-monobank-sdk): webhook verification, deduplication, atomic grants of plan days; USD payments go through Paddle. My own tool powering my own product.",
 					"link": "/projects",
 					"linkLabel": "go-monobank-sdk →"
 				},
 				{
 					"title": "Compiler craft from Piton",
-					"desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler.",
+					"desc": "Before writing rombik's engine I built my own language, Piton: lexer → parser → AST → evaluator. The same pipeline thinking (now parser → IR → layout → render) is rombik's heart. Piton taught me to think like a compiler. I am now rewriting Piton in Rust — the next turn of the same craft.",
 					"link": "/lab#lab",
 					"linkLabel": "Piton in the lab →"
 				}
@@ -830,11 +836,11 @@
 		"commercial": {
 			"kicker": "A live commercial product",
 			"title": "Not a pet project — a working business",
-			"subtitle": "Pay-per-chart, real payments, analytics and an admin panel — all in production.",
+			"subtitle": "Subscriptions, real payments, analytics and an admin panel — all in production.",
 			"items": [
 				{
-					"title": "Honest billing",
-					"desc": "Pay per chart (not per call, not per file). Free watermarked PNG without sign-up; a clean export in any format needs an account (1 chart); Pro is the editor subscription + custom options."
+					"title": "Clear plans",
+					"desc": "Free — preview without sign-up and one clean export a month. Student — unlimited clean exports; Pro — plus the editor, API, CLI, MCP and “like the course guide” via AI. A week, a month or a semester; a study group pays once for the whole Telegram chat; a friend code gives your friend a discount and you plan days."
 				},
 				{
 					"title": "Real analytics",
@@ -846,7 +852,7 @@
 				},
 				{
 					"title": "Everywhere",
-					"desc": "CLI for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, binary auto-update."
+					"desc": "A CLI in Rust for 6 platforms (Linux / macOS / Windows × amd64 / arm64), device-flow auth, auto-update; a Telegram bot for groups and private chats; support from the site, email and Telegram in one conversation."
 				}
 			]
 		},
@@ -861,11 +867,11 @@
 				},
 				{
 					"title": "CLI",
-					"desc": "curl-install, render locally, batch, device-flow auth. The key never reaches the AI model's context — by design."
+					"desc": "Rewritten in Rust: curl-install, render locally, batch, presets, device-flow auth. The key never reaches the AI model's context — by design."
 				},
 				{
 					"title": "MCP server",
-					"desc": "rombik mcp — the official MCP Go SDK; tools render_flowchart, balance, products, topup_link, gift_credits. Tested with a live agent."
+					"desc": "rombik mcp — tools render_flowchart (with structure options and presets), balance, products, topup_link, gift_credits. Tested with a live agent."
 				},
 				{
 					"title": "AI skill",

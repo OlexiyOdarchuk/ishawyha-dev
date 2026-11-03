@@ -3,7 +3,7 @@
   import Reveal from './Reveal.svelte';
   import DouLogo from './DouLogo.svelte';
 
-  const order = ['best', 'mate', 'dou', 'security', 'tickets'] as const;
+  const order = ['best', 'mate', 'tickets', 'security', 'dou'] as const;
 
   // Per-win color scheme + headline accolade. `dou` renders the DOU logo.
   const scheme: Record<(typeof order)[number], { folio: string; bg: string; line: string; fg: string }> = {

@@ -3,14 +3,15 @@
   import Reveal from './Reveal.svelte';
   import DouLogo from './DouLogo.svelte';
 
-  const order = ['best', 'mate', 'dou', 'security'] as const;
+  const order = ['best', 'mate', 'dou', 'security', 'tickets'] as const;
 
   // Per-win color scheme + headline accolade. `dou` renders the DOU logo.
   const scheme: Record<(typeof order)[number], { folio: string; bg: string; line: string; fg: string }> = {
     best:     { folio: '1ST',   bg: 'var(--color-gold-bg)',    line: 'var(--color-gold-line)',    fg: 'var(--color-gold)' },
     mate:     { folio: '3RD',   bg: 'var(--color-rose-bg)',    line: 'var(--color-rose-line)',    fg: 'var(--color-rose)' },
     dou:      { folio: '',      bg: 'var(--color-indigo-bg)',  line: 'var(--color-indigo-line)',  fg: 'var(--color-accent-500)' },
-    security: { folio: '2000×', bg: 'var(--color-emerald-bg)', line: 'var(--color-emerald-line)', fg: 'var(--color-emerald)' }
+    security: { folio: '2000×', bg: 'var(--color-emerald-bg)', line: 'var(--color-emerald-line)', fg: 'var(--color-emerald)' },
+    tickets:  { folio: '∞',     bg: 'var(--color-violet-bg)',  line: 'var(--color-violet-line)',  fg: 'var(--color-violet)' }
   };
 </script>
 

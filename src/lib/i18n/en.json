@@ -203,6 +203,19 @@
 					"AES",
 					"WebSockets"
 				]
+			},
+			"tickets": {
+				"label": "🎟 Bug hunting",
+				"title": "Free tickets",
+				"company": "Mate Conf ticketing platform",
+				"date": "May 2026",
+				"description": "As a Mate Hackathon winner I got a single-use 100% promo code — scoped to one ticket. Noticed the backend trusted the discount parameters sent by the client: the discount could be moved from a single ticket onto the whole cart, so 100% applied to any number of tickets (and the already-used code still worked again). Reported it responsibly to the organizers, who passed it to the platform team; it was fixed. The \"bounty\": one extra ticket 😄",
+				"tags": [
+					"Responsible disclosure",
+					"Business logic",
+					"Client trust",
+					"Edge cases"
+				]
 			}
 		}
 	},

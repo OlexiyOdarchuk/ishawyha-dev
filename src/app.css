@@ -42,6 +42,8 @@
   --color-indigo-bg: #eef2ff;
   --color-indigo-line: #c7d2fe;
   --color-violet: #6d28d9;
+  --color-violet-bg: #f5f3ff;
+  --color-violet-line: #ddd6fe;
   --color-tag-bg: #e0e7ff;
 
   /*
@@ -90,6 +92,8 @@
   --color-indigo-bg: #1a1f3d;
   --color-indigo-line: #2f3566;
   --color-violet: #c4b5fd;
+  --color-violet-bg: #1b1430;
+  --color-violet-line: #3a2b63;
   --color-tag-bg: rgba(129, 140, 248, 0.18);
 
   --color-ink: #131c30;

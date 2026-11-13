@@ -449,6 +449,8 @@
 			"namePlaceholder": "What should I call you",
 			"contact": "Contact",
 			"contactPlaceholder": "Telegram, email or phone",
+			"contactDomainError": "The domain {domain} doesn't accept email. Check the address, or press “Send request” again if it's correct.",
+			"contactSuggest": "Did you mean",
 			"service": "Task type",
 			"servicePlaceholder": "Pick a direction",
 			"serviceOther": "Other",

@@ -449,6 +449,8 @@
 			"namePlaceholder": "Як до вас звертатися",
 			"contact": "Контакт",
 			"contactPlaceholder": "Telegram, email або телефон",
+			"contactDomainError": "Домен {domain} не приймає пошту. Перевірте адресу або натисніть «Надіслати заявку» ще раз, якщо вона правильна.",
+			"contactSuggest": "Можливо,",
 			"service": "Тип задачі",
 			"servicePlaceholder": "Оберіть напрям",
 			"serviceOther": "Інше",

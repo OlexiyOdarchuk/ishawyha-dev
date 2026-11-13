@@ -36,23 +36,73 @@
   const messageValid = $derived(message.trim().length > 0);
   const formValid = $derived(nameValid && contactValid && messageValid);
 
+  // Set when the worker reports that the email domain can't receive mail. Sending
+  // the same address again marks it as confirmed and the request goes through.
+  let badDomain = $state('');
+  let confirmedContact = $state('');
+
+  const COMMON_DOMAINS = [
+    'gmail.com', 'outlook.com', 'hotmail.com', 'live.com', 'yahoo.com', 'icloud.com',
+    'proton.me', 'protonmail.com', 'ukr.net', 'i.ua', 'meta.ua'
+  ];
+  // Real domains a couple of letters away from a common one; never "corrected".
+  const LOOKALIKE_DOMAINS = [
+    'mail.com', 'email.com', 'ymail.com', 'live.ca', 'live.co.uk', 'protonmail.ch', 'pm.me', 'gmx.com', 'me.com'
+  ];
+
+  function editDistance(a: string, b: string): number {
+    const row = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      let prev = row[0];
+      row[0] = i;
+      for (let j = 1; j <= b.length; j++) {
+        const cur = row[j];
+        row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
+        prev = cur;
+      }
+    }
+    return row[b.length];
+  }
+
+  // "name@gmial.com" → "name@gmail.com"; null when the domain looks fine.
+  const contactSuggestion = $derived.by(() => {
+    const m = contact.trim().match(/^([^\s@]+)@([^\s@]+\.[^\s@]+)$/);
+    if (!m) return null;
+    const domain = m[2].toLowerCase();
+    if (domain.length < 6 || COMMON_DOMAINS.includes(domain) || LOOKALIKE_DOMAINS.includes(domain)) return null;
+    const near = COMMON_DOMAINS.find((d) => editDistance(domain, d) <= 2);
+    return near ? `${m[1]}@${near}` : null;
+  });
+
   async function submit(e: SubmitEvent) {
     e.preventDefault();
     touched = true;
     if (!formValid || status === 'sending') return;
     status = 'sending';
+    const sentContact = contact.trim();
     try {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: 'order', name: name.trim(), contact: contact.trim(),
-          service: service || '—', budget: budget.trim(), message: message.trim(), company
+          type: 'order', name: name.trim(), contact: sentContact,
+          service: service || '—', budget: budget.trim(), message: message.trim(), company,
+          confirmed: sentContact === confirmedContact
         })
       });
+      if (res.status === 422) {
+        const data = await res.json().catch(() => ({}));
+        if (data.error === 'email_domain') {
+          badDomain = data.domain || sentContact.split('@')[1] || '';
+          confirmedContact = sentContact;
+          status = 'idle';
+          return;
+        }
+      }
       if (!res.ok) throw new Error(String(res.status));
       status = 'success';
       name = contact = service = budget = message = '';
+      badDomain = confirmedContact = '';
       touched = false;
     } catch {
       status = 'error';
@@ -136,7 +186,17 @@
             </div>
             <div>
               <label for="svc-contact" class="mb-1.5 block text-xs font-semibold text-[var(--color-fg)]">{$t.services.form.contact}</label>
-              <input id="svc-contact" bind:value={contact} type="text" placeholder={$t.services.form.contactPlaceholder} class="{fieldBase} {touched && !contactValid ? fieldErr : fieldOk}" />
+              <input id="svc-contact" bind:value={contact} oninput={() => (badDomain = '')} type="text" placeholder={$t.services.form.contactPlaceholder} aria-describedby="svc-contact-hint" aria-invalid={Boolean(badDomain)} class="{fieldBase} {(touched && !contactValid) || badDomain ? fieldErr : fieldOk}" />
+              <div id="svc-contact-hint" aria-live="polite">
+                {#if badDomain}
+                  <p class="mt-1.5 text-xs text-rose-600">{$t.services.form.contactDomainError.replace('{domain}', badDomain)}</p>
+                {:else if contactSuggestion}
+                  <p class="mt-1.5 text-xs text-[var(--color-muted)]">
+                    {$t.services.form.contactSuggest}
+                    <button type="button" onclick={() => (contact = contactSuggestion ?? contact)} class="font-semibold text-[var(--color-accent-500)] underline hover:text-[var(--color-accent-400)]">{contactSuggestion}</button>?
+                  </p>
+                {/if}
+              </div>
             </div>
             <div>
               <label for="svc-type" class="mb-1.5 block text-xs font-semibold text-[var(--color-fg)]">{$t.services.form.service}</label>

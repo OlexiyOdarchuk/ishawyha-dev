@@ -17,7 +17,8 @@
 
   const live: Record<string, string> = {
     piton: 'https://piton.ishawyha.dev',
-    vidbiy: 'https://vidbiy.ishawyha.dev'
+    vidbiy: 'https://vidbiy.ishawyha.dev',
+    prostir: 'https://prostir.ishawyha.dev'
   };
 
   function openExternal(e: MouseEvent, url: string) {
@@ -43,26 +44,34 @@
   ];
 
   // Notable projects get a colored kicker badge; the rest are plain white cards.
-  const order = ['vidbiy', 'gomonobanksdk', 'monokasa', 'shminer', 'abit', 'todolist', 'linkshortener'] as const;
+  const order = ['prostir', 'vidbiy', 'gomonobanksdk', 'monokasa', 'shminer', 'cornehud'] as const;
 
   const badgeColor: Record<string, string> = {
+    prostir: 'bg-[var(--color-rose-bg)] text-[var(--color-rose)]',
     vidbiy: 'bg-[color-mix(in_srgb,var(--color-violet)_14%,transparent)] text-[var(--color-violet)]',
     gomonobanksdk: 'bg-[var(--color-sky-bg)] text-[var(--color-sky)]',
     monokasa: 'bg-[var(--color-emerald-bg)] text-[var(--color-emerald)]',
     shminer: 'bg-[var(--color-gold-bg)] text-[var(--color-gold)]',
-    abit: 'bg-[var(--color-indigo-bg)] text-[var(--color-accent-500)]'
+    cornehud: 'bg-[var(--color-emerald-bg)] text-[var(--color-emerald)]'
   };
 
   const links: Record<(typeof order)[number] | 'piton', string> = {
+    prostir: 'https://github.com/OlexiyOdarchuk/prostir',
     vidbiy: 'https://github.com/OlexiyOdarchuk/vidbiy',
     gomonobanksdk: 'https://github.com/OlexiyOdarchuk/go-monobank-sdk',
     monokasa: 'https://github.com/OlexiyOdarchuk/monokasa',
     shminer: 'https://github.com/OlexiyOdarchuk/Student-Hryvnia-Miner',
     piton: 'https://github.com/OlexiyOdarchuk/piton',
-    abit: 'https://github.com/OlexiyOdarchuk/AbitAssistant_Bot',
-    todolist: 'https://github.com/OlexiyOdarchuk/todolist',
-    linkshortener: 'https://github.com/OlexiyOdarchuk/linkShortener'
+    cornehud: 'https://github.com/OlexiyOdarchuk/corne-hud'
   };
+
+  // Smaller repos: one line under the grid instead of a card.
+  const more = [
+    { key: 'kamerton', href: 'https://github.com/OlexiyOdarchuk/kamerton' },
+    { key: 'abit', href: 'https://github.com/OlexiyOdarchuk/AbitAssistant_Bot' },
+    { key: 'todolist', href: 'https://github.com/OlexiyOdarchuk/todolist' },
+    { key: 'linkshortener', href: 'https://github.com/OlexiyOdarchuk/linkShortener' }
+  ] as const;
 </script>
 
 <section id="projects" class="scroll-mt-nav relative px-6 py-16">
@@ -253,6 +262,15 @@
         </Reveal>
       {/each}
     </div>
+
+    <Reveal>
+      <p class="mt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+        <span class="font-semibold text-[var(--color-fg)]">{$t.projects.more.label}</span>
+        {#each more as m, i}
+          <a href={m.href} target="_blank" rel="noopener noreferrer" class="underline decoration-[var(--color-line)] underline-offset-4 transition hover:text-[var(--color-accent-500)] hover:decoration-[var(--color-accent-400)]">{$t.projects.more[m.key]}</a>{#if i < more.length - 1}<span aria-hidden="true"> · </span>{/if}
+        {/each}
+      </p>
+    </Reveal>
     {/if}
   </div>
 </section>

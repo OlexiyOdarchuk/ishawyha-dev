@@ -62,14 +62,14 @@
 					"label": "швидший SHA-256 — SHMiner vs офіційний JS-майнер"
 				},
 				{
-					"value": 150,
+					"value": 500,
 					"suffix": "+",
-					"label": "користувачів AbitAssistant"
+					"label": "користувачів rombik"
 				},
 				{
-					"value": 11,
-					"suffix": "",
-					"label": "мов на вході rombik"
+					"value": 14,
+					"suffix": " мс",
+					"label": "кадр по Wi-Fi до дисплея шолома — Prostir"
 				},
 				{
 					"value": 5,
@@ -230,7 +230,7 @@
 				"kicker": "Особливий проєкт · SaaS",
 				"name": "rombik",
 				"tagline": "Код → блок-схема за ДСТУ: веб, API, CLI",
-				"description": "SaaS, який я спроєктував і веду: перетворює код одинадцяти мов (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal) на акуратну блок-схему чи структограму Насі-Шнайдермана за ДСТУ 19.701-90 — те, що в коледжах малюють годинами вручну. Go-рушій (tree-sitter → IR → розкладка → рендер), звірений із повним текстом ГОСТ 19.701-90; веб-редактор з пан/зумом і ручним ласо-розбиттям, пресети «як у підручниках» і профіль викладача за посиланням, публічний HTTP API, CLI на Rust, MCP-сервер, скіл для AI-агентів і Telegram-бот для навчальних груп. Дванадцять форматів: Word, Visio й draw.io нативними фігурами, SVG, PNG, JPEG, WebP, GIF (є й анімований — схема малюється блок за блоком), PDF, HTML-сторінка «схема + код», Typst, Excalidraw. Безкоштовний PNG із водяним знаком без реєстрації; підписки Студент і Pro — тиждень, місяць або семестр.",
+				"description": "SaaS, який я спроєктував і веду: перетворює код одинадцяти мов (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal) на акуратну блок-схему чи структограму Насі-Шнайдермана за ДСТУ 19.701-90 — те, що в коледжах малюють годинами вручну. Go-рушій (tree-sitter → IR → розкладка → рендер), звірений із повним текстом ГОСТ 19.701-90; веб-редактор з пан/зумом і ручним ласо-розбиттям, пресети «як у підручниках» і профіль викладача за посиланням, публічний HTTP API, CLI на Rust, MCP-сервер, скіл для AI-агентів і Telegram-бот для навчальних груп. Дванадцять форматів: Word, Visio й draw.io нативними фігурами, SVG, PNG, JPEG, WebP, GIF (є й анімований — схема малюється блок за блоком), PDF, HTML-сторінка «схема + код», Typst, Excalidraw. Безкоштовний PNG із водяним знаком без реєстрації; підписки Студент і Pro — тиждень, місяць або семестр. Уже 500+ користувачів.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
@@ -265,6 +265,21 @@
 			}
 		},
 		"list": {
+			"prostir": {
+				"kicker": "Rust · VR",
+				"title": "Prostir",
+				"subtitle": "Додаткові монітори для Linux у Meta Quest 3",
+				"description": "Додає ноутбуку чи ПК з KDE Plasma або Hyprland до шести моніторів, які видно в шоломі Quest 3. Це справжні виходи компоновника, а не картинки вікон: на них переносяться вікна, панелі й робочі столи, а миша переходить з екрана на екран там, де вони стикаються. ПК кодує відео відеокартою (VA-API, NVENC або x264), шолом декодує апаратно й кладе потік просто в шари компоновника OpenXR, тож текст чіткий; кадр доходить до дисплея шолома по Wi-Fi приблизно за 14 мс. Нативний OpenXR-клієнт на Rust, власний шифрований протокол, звук і мікрофон. Користуюся щодня.",
+				"tags": [
+					"Rust",
+					"OpenXR",
+					"Wayland",
+					"KWin · Hyprland",
+					"PipeWire",
+					"VA-API",
+					"Android"
+				]
+			},
 			"vidbiy": {
 				"kicker": "Android + PWA",
 				"title": "Відбій",
@@ -336,44 +351,17 @@
 					"AES"
 				]
 			},
-			"linkshortener": {
-				"kicker": "",
-				"title": "LinkShortener Bot",
-				"subtitle": "Telegram + аналітика",
-				"description": "Telegram-бот для скорочення URL з QR-генерацією і гео-аналітикою. PostgreSQL для зберігання, Redis для кешу редиректів, ClickHouse для real-time аналітики кліків (країна, місто, платформа). Docker, GeoIP2.",
+			"cornehud": {
+				"kicker": "Залізо + Rust",
+				"title": "corne-hud",
+				"subtitle": "Живі OLED-екрани для клавіатури Corne",
+				"description": "Фонова служба на Rust керує двома екранами 128×32 розділеної клавіатури через Raw HID: годинник, температури й батарея, мова розкладки після перемикання, спектр звуку, Bongo-кіт, 19 анімацій, свої картинки й GIF, малювання просто на клавіатурі. Власний протокол передає лише змінені шматки кадру, тож анімації йдуть до 20 кадрів на секунду; на боці клавіатури — доповнення до прошивки Vial/QMK на C. Linux, Windows і macOS; з анімацією служба бере близько 0,4 % CPU і 6 МБ RAM.",
 				"tags": [
-					"Go",
-					"PostgreSQL",
-					"Redis",
-					"ClickHouse",
-					"Docker"
-				]
-			},
-			"todolist": {
-				"kicker": "",
-				"title": "ToDoList Pro",
-				"subtitle": "Прод-готовий task manager",
-				"description": "Go/Gin бекенд з чистою архітектурою (repository → service → handler), JWT + OAuth 2.0 (Google), email-верифікація, Swagger-документація. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
-				"tags": [
-					"Go",
-					"Gin",
-					"Svelte 5",
-					"JWT",
-					"OAuth 2.0",
-					"PostgreSQL"
-				]
-			},
-			"abit": {
-				"kicker": "150+ користувачів",
-				"title": "AbitAssistant Bot",
-				"subtitle": "Telegram-бот для абітурієнтів",
-				"description": "Telegram-бот, що допомагає українським студентам відстежувати рейтинги вступу. Реверснув закриті third-party API. 150+ активних користувачів за перший рік, маркетинг-кампанія на 2026.",
-				"tags": [
-					"Python",
-					"Aiogram",
-					"PostgreSQL",
-					"BeautifulSoup",
-					"Pandas"
+					"Rust",
+					"C · QMK/Vial",
+					"Raw HID",
+					"egui",
+					"Linux · Windows · macOS"
 				]
 			},
 			"rombik": {
@@ -391,6 +379,13 @@
 					"ДСТУ"
 				]
 			}
+		},
+		"more": {
+			"label": "Ще на GitHub:",
+			"kamerton": "Камертон — завантаження відео й музики (Rust, egui)",
+			"abit": "AbitAssistant Bot — бот для вступників, 150+ користувачів (Python)",
+			"todolist": "ToDoList Pro — Go/Gin + Svelte 5",
+			"linkshortener": "LinkShortener Bot — Go, ClickHouse"
 		}
 	},
 	"services": {

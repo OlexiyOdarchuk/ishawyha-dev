@@ -62,14 +62,14 @@
 					"label": "faster SHA-256 — SHMiner vs the official JS miner"
 				},
 				{
-					"value": 150,
+					"value": 500,
 					"suffix": "+",
-					"label": "AbitAssistant users"
+					"label": "rombik users"
 				},
 				{
-					"value": 11,
-					"suffix": "",
-					"label": "input languages in rombik"
+					"value": 14,
+					"suffix": " ms",
+					"label": "frame over Wi-Fi to the headset display — Prostir"
 				},
 				{
 					"value": 5,
@@ -230,7 +230,7 @@
 				"kicker": "Flagship · hosted SaaS",
 				"name": "rombik",
 				"tagline": "Code → DSTU flowchart: web, API, CLI",
-				"description": "A SaaS I designed and run: turns code in eleven languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render) checked against the full text of the standard; a web editor with pan/zoom and manual lasso-splitting, textbook presets and a shareable professor profile, a public HTTP API, a CLI in Rust, an MCP server, a skill for AI agents and a Telegram bot for study groups. Twelve formats: Word, Visio and draw.io as native shapes, SVG, PNG, JPEG, WebP, GIF (animated too — the chart draws itself block by block), PDF, an HTML page with chart + code, Typst, Excalidraw. Free watermarked PNG without sign-up; Student and Pro subscriptions — a week, a month or a semester.",
+				"description": "A SaaS I designed and run: turns code in eleven languages (Python, JavaScript, TypeScript, C, C++, C#, Java, Go, Rust, PHP, Pascal) into a clean DSTU 19.701-90 / ISO 5807 flowchart or a Nassi–Shneiderman structogram — the kind colleges still draw by hand for hours. A Go engine (tree-sitter → IR → layout → render) checked against the full text of the standard; a web editor with pan/zoom and manual lasso-splitting, textbook presets and a shareable professor profile, a public HTTP API, a CLI in Rust, an MCP server, a skill for AI agents and a Telegram bot for study groups. Twelve formats: Word, Visio and draw.io as native shapes, SVG, PNG, JPEG, WebP, GIF (animated too — the chart draws itself block by block), PDF, an HTML page with chart + code, Typst, Excalidraw. Free watermarked PNG without sign-up; Student and Pro subscriptions — a week, a month or a semester. Already 500+ users.",
 				"tags": [
 					"Go · Gin",
 					"tree-sitter",
@@ -265,6 +265,21 @@
 			}
 		},
 		"list": {
+			"prostir": {
+				"kicker": "Rust · VR",
+				"title": "Prostir",
+				"subtitle": "Extra Linux monitors in a Meta Quest 3",
+				"description": "Gives a KDE Plasma or Hyprland laptop or desktop up to six extra monitors that live in a Quest 3 headset. They are real compositor outputs, not pictures of windows: windows, panels and workspaces move onto them, and the mouse crosses from screen to screen where they meet. The PC encodes on the GPU (VA-API, NVENC or x264), the headset decodes in hardware and hands the stream straight to OpenXR compositor layers, so text stays sharp; an encoded frame reaches the headset display over Wi-Fi in about 14 ms. Native OpenXR client in Rust, custom encrypted protocol, sound and microphone. I use it every day.",
+				"tags": [
+					"Rust",
+					"OpenXR",
+					"Wayland",
+					"KWin · Hyprland",
+					"PipeWire",
+					"VA-API",
+					"Android"
+				]
+			},
 			"vidbiy": {
 				"kicker": "Android + PWA",
 				"title": "Vidbiy",
@@ -336,44 +351,17 @@
 					"AES"
 				]
 			},
-			"linkshortener": {
-				"kicker": "",
-				"title": "LinkShortener Bot",
-				"subtitle": "Telegram + analytics",
-				"description": "Telegram URL shortener with QR generation and geo-analytics. PostgreSQL for storage, Redis for redirect cache, ClickHouse for real-time click analytics (country, city, platform). Docker, GeoIP2.",
+			"cornehud": {
+				"kicker": "Hardware + Rust",
+				"title": "corne-hud",
+				"subtitle": "Live OLED screens for the Corne keyboard",
+				"description": "A Rust background service drives the two 128×32 screens of a split keyboard over Raw HID: clock, temperatures and battery, a layout flash after switching input language, audio spectrum, a Bongo cat, 19 animations, your own pictures and GIFs, drawing straight onto the keyboard. A custom protocol sends only the changed chunks of each frame, so animations run at up to 20 fps; on the keyboard side, an add-on to the Vial/QMK firmware in C. Linux, Windows and macOS; with an animation running the service uses about 0.4% CPU and 6 MB RAM.",
 				"tags": [
-					"Go",
-					"PostgreSQL",
-					"Redis",
-					"ClickHouse",
-					"Docker"
-				]
-			},
-			"todolist": {
-				"kicker": "",
-				"title": "ToDoList Pro",
-				"subtitle": "Production-grade task manager",
-				"description": "Go/Gin backend with clean architecture (repository → service → handler), JWT + OAuth 2.0 (Google), email verification, Swagger docs. Svelte 5 + TypeScript + Tailwind. Multi-stage Docker build.",
-				"tags": [
-					"Go",
-					"Gin",
-					"Svelte 5",
-					"JWT",
-					"OAuth 2.0",
-					"PostgreSQL"
-				]
-			},
-			"abit": {
-				"kicker": "150+ users",
-				"title": "AbitAssistant Bot",
-				"subtitle": "Telegram bot for applicants",
-				"description": "Helps Ukrainian students track university admission rankings. Reverse-engineered closed third-party APIs. 150+ active users in the first year, marketing campaign planned for 2026.",
-				"tags": [
-					"Python",
-					"Aiogram",
-					"PostgreSQL",
-					"BeautifulSoup",
-					"Pandas"
+					"Rust",
+					"C · QMK/Vial",
+					"Raw HID",
+					"egui",
+					"Linux · Windows · macOS"
 				]
 			},
 			"rombik": {
@@ -391,6 +379,13 @@
 					"DSTU"
 				]
 			}
+		},
+		"more": {
+			"label": "Also on GitHub:",
+			"kamerton": "Kamerton — video and music downloader (Rust, egui)",
+			"abit": "AbitAssistant Bot — admissions bot, 150+ users (Python)",
+			"todolist": "ToDoList Pro — Go/Gin + Svelte 5",
+			"linkshortener": "LinkShortener Bot — Go, ClickHouse"
 		}
 	},
 	"services": {

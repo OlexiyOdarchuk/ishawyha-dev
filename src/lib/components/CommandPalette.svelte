@@ -38,7 +38,7 @@
     { id: 'goto-home',         title: $t.palette.gotoHome,         keywords: 'home main головна',  run: () => nav('/') },
     { id: 'goto-about',        title: $t.palette.gotoAbout,        keywords: 'about me',          run: () => nav('/about') },
     { id: 'goto-achievements', title: $t.palette.gotoAchievements, keywords: 'wins hackathon',    run: () => nav('/about#achievements') },
-    { id: 'goto-projects',     title: $t.palette.gotoProjects,     keywords: 'piton shminer',     run: () => nav('/projects') },
+    { id: 'goto-projects',     title: $t.palette.gotoProjects,     keywords: 'piton shminer prostir corne-hud',     run: () => nav('/projects') },
     { id: 'goto-services',     title: $t.palette.gotoServices,     keywords: 'hire freelance order замовити послуги', run: () => nav('/services') },
     { id: 'goto-lab',          title: $t.palette.gotoLab,          keywords: 'piton playground',  run: () => nav('/lab') },
     { id: 'goto-bench',        title: $t.palette.gotoBench,        keywords: 'sha256 hashrate',   run: () => nav('/lab#bench') },
